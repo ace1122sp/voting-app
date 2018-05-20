@@ -11,7 +11,6 @@ import Pool from './Pool';
 const App = () =>
   <div>
     <Header />
-    <Pool />
     <Footer />
   </div>
 
