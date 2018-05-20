@@ -1,10 +1,14 @@
 const path = require('path');
 
 const config = {
-  entry: [],
+  entry: ['./client/index.js'],
   output: {
-    path: path.resolve('dist');
+    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
+  },
+  devServer: {
+    contentBase: './dist',
+    hot: true
   },
   module: {
     rules: [
