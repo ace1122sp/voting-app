@@ -1,14 +1,24 @@
 import React from 'react';
 
-const UserHeader = props => {}
+const UserHeader = props => {
+  return (
+    <nav>
+      <a href='#'>+ new pool </a>
+      <a href='#'>world </a>
+      <a href='#'>profile </a>
+      <a href='#'>settings </a>
+      <a href='#'>sign out </a>
+    </nav>
+  );
+}
 
 const GuestHeader = props => {
   return (
-    <ul>
-      <li><a href='#'>world</a></li>
-      <li><a href='#'>sign in</a></li>
-      <li><a href='#'>sign up</a></li>
-    </ul>
+    <nav>
+      <a href='#'>world </a>
+      <a href='#'>sign in </a>
+      <a href='#'>sign up </a>
+    </nav>
   );
 }
 
@@ -16,7 +26,7 @@ const GuestHeader = props => {
 const Header = () =>
   <header>
     <h3>voting-app</h3>
-    <GuestHeader />
+    <UserHeader />
   </header>
 
 module.exports = Header;

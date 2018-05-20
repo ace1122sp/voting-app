@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from './Header';
 
 const fakePools = [
   {
@@ -17,7 +16,6 @@ const fakePools = [
 
 const Home = () =>
   <div>
-    <Header />
     <ul>
       <li>{fakePools[0].title}</li>
       <li>{fakePools[1].title}</li>
