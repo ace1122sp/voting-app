@@ -14,13 +14,14 @@ const fakePools = [
 ];
 
 
-const Home = () =>
+const World = () =>
   <div>
     <ul>
       <li>{fakePools[0].title}</li>
       <li>{fakePools[1].title}</li>
     </ul>
+    <button>load more polls...</button>
   </div>
 
 
-module.exports = Home;
+module.exports = World;

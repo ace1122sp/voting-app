@@ -19,8 +19,7 @@ const config = {
       {
         test: /\.js$/,
         loader: "babel-loader",
-        exclude: /node_modules/,
-        query: { presets: ['env', 'react', 'stage-2'] }
+        exclude: /node_modules/
       }
     ]
   }
