@@ -3,11 +3,15 @@ import React from 'react';
 const UserHeader = props => {
   return (
     <nav>
-      <a href='#'>+ new pool </a>
-      <a href='#'>world </a>
-      <a href='#'>profile </a>
-      <a href='#'>settings </a>
-      <a href='#'>sign out </a>
+      <a href='#'>+ new pool</a>
+      {' | '}
+      <a href='#'>world</a>
+      {' | '}
+      <a href='#'>profile</a>
+      {' | '}
+      <a href='#'>settings</a>
+      {' | '}
+      <a href='#'>sign out</a>
     </nav>
   );
 }

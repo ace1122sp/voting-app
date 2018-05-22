@@ -6,7 +6,9 @@ import Main from './Main';
 const App = () =>
   <div>
     <Header />
+    <hr />
     <Main />
+    <hr />
     <Footer />
   </div>
 
