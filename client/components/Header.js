@@ -1,17 +1,18 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const UserHeader = props => {
   return (
     <nav>
-      <a href='#'>+ new pool</a>
+      <NavLink to='/new-pool'>+ new pool</NavLink>
       {' | '}
-      <a href='#'>world</a>
+      <NavLink to='/'>world</NavLink>
       {' | '}
-      <a href='#'>profile</a>
+      <NavLink to='/profile'>profile</NavLink>
       {' | '}
-      <a href='#'>settings</a>
+      <NavLink to='/settings'>settings</NavLink>
       {' | '}
-      <a href='#'>sign out</a>
+      <NavLink to='#'>sign out</NavLink>
     </nav>
   );
 }
@@ -19,9 +20,9 @@ const UserHeader = props => {
 const GuestHeader = props => {
   return (
     <nav>
-      <a href='#'>world </a>
-      <a href='#'>sign in </a>
-      <a href='#'>sign up </a>
+      <NavLink to='/'>world </NavLink>
+      <NavLink to='/sign-in'>sign in </NavLink>
+      <NavLink to='/sign-up'>sign up </NavLink>
     </nav>
   );
 }
