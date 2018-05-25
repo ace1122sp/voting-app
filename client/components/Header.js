@@ -1,6 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+let auth = false;
+
 const UserHeader = props => {
   return (
     <nav>
@@ -21,17 +23,23 @@ const GuestHeader = props => {
   return (
     <nav>
       <NavLink to='/'>world </NavLink>
-      <NavLink to='/sign-in'>sign in </NavLink>
-      <NavLink to='/sign-up'>sign up </NavLink>
+      <NavLink to='/auth/sign-in'>sign in </NavLink>
+      <NavLink to='/auth/sign-up'>sign up </NavLink>
     </nav>
   );
 }
 
 
-const Header = () =>
-  <header>
-    <h3>voting-app</h3>
-    <UserHeader />
-  </header>
+
+const Header = () => {
+  const HeaderToRender = auth ? <UserHeader /> : <GuestHeader />
+  return (
+    <header>
+      <h3>voting-app</h3>
+      {HeaderToRender}
+    </header>
+  );
+}
+
 
 module.exports = Header;
