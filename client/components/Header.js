@@ -23,8 +23,10 @@ const GuestHeader = props => {
   return (
     <nav>
       <NavLink to='/'>world </NavLink>
-      <NavLink to='/auth/sign-in'>sign in </NavLink>
-      <NavLink to='/auth/sign-up'>sign up </NavLink>
+      {' | '}
+      <NavLink to='/auth/sign_in'>sign in </NavLink>
+      {' | '}
+      <NavLink to='/auth/sign_up'>sign up </NavLink>
     </nav>
   );
 }

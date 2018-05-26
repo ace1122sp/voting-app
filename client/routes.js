@@ -11,7 +11,7 @@ const routes = [
     component: World
   },
   {
-    path: '/auth/:sign-option',
+    path: '/auth/:sign_option',
     component: Authenticate
   },
   {
