@@ -34,7 +34,7 @@ const SignUp = props => {
         <label>confirm password</label><br />
         <input type='password' value='' /><br />
         <br /><br />
-        <input type='submit' value='Create' /><br />
+        <input type='submit' value='Create Account' /><br />
       </form><br />
     </div>
   );

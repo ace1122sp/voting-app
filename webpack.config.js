@@ -7,7 +7,7 @@ const config = {
     filename: 'bundle.js'
   },
   devServer: {
-    contentBase: 'dist',
+    contentBase: './dist',
     hot: true,
     historyApiFallback: true
   },

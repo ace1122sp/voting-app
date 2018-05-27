@@ -13,8 +13,7 @@ const Settings = props => {
         <input type='email' value='email' />
         <input type='submit' value='change' /><br />
         <br />
-        <label>password</label>
-        <input type='button' value='change' /><br />
+        <input type='button' value='change password' /><br />
         <br />
         <input type='button' value='Delete Account' /><br />
         <br />
