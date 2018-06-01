@@ -1,5 +1,5 @@
 import World from './components/World';
-import Authenticate from './components/Authenticate';
+import Authenticate from './components/Authenticate/';
 import CreatePool from './components/CreatePool';
 import Profile from './components/Profile';
 import Settings from './components/Settings';
