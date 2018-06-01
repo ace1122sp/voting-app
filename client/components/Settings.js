@@ -7,16 +7,15 @@ const Settings = props => {
       <form>
         <label>username</label><br />
         <input type='text' value='username' />
-        <input type='submit' value='change' /><br />
-        <br />
+        <br /><br />
         <label>email</label><br />
         <input type='email' value='email' />
-        <input type='submit' value='change' /><br />
-        <br />
+        <br /><br />
         <input type='button' value='change password' /><br />
-        <br />
+        <br /><br />
         <input type='button' value='Delete Account' /><br />
         <br />
+        <input type='submit' value='Save Changes' /><br />
       </form><br />
     </div>
   );
