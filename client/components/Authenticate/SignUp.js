@@ -1,0 +1,32 @@
+import React, { Component } from 'react';
+
+class SignUp extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    return (
+      <div>
+        <h3>Create Your Account</h3>
+        <form>
+          <label>email</label><br />
+          <input type='email' value='' /><br />
+          <br />
+          <label>username</label><br />
+          <input type='text' value='' /><br />
+          <br />
+          <label>password</label><br />
+          <input type='password' value='' /><br />
+          <label>confirm password</label><br />
+          <input type='password' value='' /><br />
+          <br /><br />
+          <input type='submit' value='Create Account' /><br />
+        </form><br />
+      </div>
+    );
+  }
+}
+
+export default SignUp;

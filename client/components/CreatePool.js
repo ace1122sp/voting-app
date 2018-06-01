@@ -23,4 +23,4 @@ const CreatePool = props => {
   );
 }
 
-module.exports = CreatePool;
+export default CreatePool;

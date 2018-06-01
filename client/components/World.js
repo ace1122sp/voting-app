@@ -10,7 +10,7 @@ const poolsPrototypeSample = [
     followers: ['3rfd', 'asdfsafd433', 'f34rf4e'],
     voters: [
       { ip: 'n/a', id: 'ad3dfkj34', vote: 0 }, // for registered users it looks user's id
-      { ip: 'n/a', id: 'ad3dfsj34', vote: 1 }, // for guests it looks guest's ip 
+      { ip: 'n/a', id: 'ad3dfsj34', vote: 1 }, // for guests it looks guest's ip
       { ip: 'n/a', id: 'adfdakj34', vote: 0 }
     ]
   },
@@ -23,7 +23,7 @@ const poolsPrototypeSample = [
     followers: ['3rasfd', 'afsafd433', 'f34rasw'],
     voters: [
       { ip: 'n/a', id: 'ad3dfkvgr', vote: 0 }, // for registered users it looks user's id
-      { ip: 'n/a', id: 'ad3dfsj34', vote: 1 }, // for guests it looks guest's ip 
+      { ip: 'n/a', id: 'ad3dfsj34', vote: 1 }, // for guests it looks guest's ip
       { ip: 'n/a', id: 'adfdakj55', vote: 0 }
     ]
   },
@@ -36,7 +36,7 @@ const poolsPrototypeSample = [
     followers: ['3r2fd', 'asdfsafd4', '2f34rf4e'],
     voters: [
       { ip: 'n/a', id: 'ag3dfkj34', vote: 0 }, // for registered users it looks user's id
-      { ip: 'n/a', id: 'sh3dfsj34', vote: 1 }, // for guests it looks guest's ip 
+      { ip: 'n/a', id: 'sh3dfsj34', vote: 1 }, // for guests it looks guest's ip
       { ip: 'n/a', id: 'fd4dakj34', vote: 0 }
     ]
   }
@@ -55,4 +55,4 @@ const World = () => {
 }
 
 
-module.exports = World;
+export default World;

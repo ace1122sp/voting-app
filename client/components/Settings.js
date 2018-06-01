@@ -22,4 +22,4 @@ const Settings = props => {
   );
 }
 
-module.exports = Settings;
+export default Settings;

@@ -23,4 +23,4 @@ const Footer = props => {
   );
 }
 
-module.exports = Footer;
+export default Footer;

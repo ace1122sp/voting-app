@@ -24,5 +24,4 @@ const App = () =>
     <Footer />
   </div>
 
-module.exports = App;
-;
+export default App;

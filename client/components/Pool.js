@@ -35,4 +35,4 @@ const Pool = props => {
   );
 }
 
-module.exports = Pool;
+export default Pool;
