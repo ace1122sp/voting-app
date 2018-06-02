@@ -1,20 +1,23 @@
 import React from 'react';
 
 const Pool = props => {
+  const options = props.options.map((option, index) => {
+    return (
+      <React.Fragment key={option.id}>
+        <input type='radio' id={`vote-option-${index}`} name={`${index}_${option.name}`} value={option.name} />
+        <label>{option.name}</label><br />
+      </React.Fragment>
+    );
+  });
   return (
     <main>
       <div>
       <form>
-        <p>Pool Name</p>
+        <p>{props.name}</p>
         <div>
-          <input type='radio' id='vote-option-1' name='vote-option' value='option-1' />
-          <label>Option A</label><br />
-          <input type='radio' id='vote-option-2' name='vote-option' value='option-2' />
-          <label>Option B</label><br />
+          {options}
         </div>
-        <div>
-          <input type='submit' value='Vote' /><br />
-        </div>
+        <input type='submit' value='Vote' /><br />
       </form>
       <form>
         <p>add new option</p>

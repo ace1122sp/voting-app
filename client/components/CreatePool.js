@@ -73,8 +73,6 @@ class CreatePool extends Component {
 
     // let optionsElement = document.getElementById('poolOptions');
     // const options = Object.assign({});
-    // const count = optionsElement.childNodes.length;
-    //
     //
     // this.setState({ options, name: '' });
     // alert('Pool Created');

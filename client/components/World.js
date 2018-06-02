@@ -1,4 +1,5 @@
 import React from 'react';
+import PoolCard from './PoolCard';
 
 const poolsPrototypeSample = [
   {
@@ -43,7 +44,7 @@ const poolsPrototypeSample = [
 ]
 
 const World = () => {
-  const pools = poolsPrototypeSample.map(pool => <li key={pool.id}>{pool.name}</li>);
+  const pools = poolsPrototypeSample.map(pool => <PoolCard key={pool.id} id={pool.id} name={pool.name} />);
   return (
     <div>
       <ul>
