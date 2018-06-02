@@ -1,0 +1,13 @@
+export const CREATE_USER = 'CREATE_USER';
+export const DELETE_USER = 'DELETE_USER';
+export const UPDATE_USER = 'UPDATE_USER';
+export const FOLLOW_USER = 'FOLLOW_USER';
+export const UNFOLLOW_USER = 'UNFOLLOW_USER';
+export const ADD_OWN_POOL = 'ADD_OWN_POOL';
+export const REMOVE_OWN_POOL = 'REMOVE_OWN_POOL';
+export const CREATE_POOL = 'CREATE_POOL';
+export const DELETE_POOL = 'DELETE_POOL';
+export const ADD_FOLLOWER = 'ADD_FOLLOWER';
+export const REMOVE_FOLLOWER = 'REMOVE_FOLLOWER';
+export const ADD_VOTE = 'ADD_VOTE';
+export const ADD_NEW_VOTING_OPTION = 'ADD_NEW_VOTING_OPTION';
