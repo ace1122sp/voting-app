@@ -1,4 +1,4 @@
-import World from './components/World';
+import World_cont from './containers/World_cont'
 import Authenticate from './components/Authenticate/';
 import CreatePool from './components/CreatePool';
 import Profile from './components/Profile';
@@ -9,7 +9,7 @@ const routes = [
   {
     path: '/',
     exact: true,
-    component: World
+    component: World_cont
   },
   {
     path: '/auth/:sign_option',
