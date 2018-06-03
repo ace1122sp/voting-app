@@ -1,6 +1,8 @@
 import React from 'react';
 
 const Profile = props => {
+
+  // need to add Links to pools
   return (
     <div>
       <aside>
@@ -12,10 +14,6 @@ const Profile = props => {
           <b>total pools</b><br />
           <span>19</span>
         </div><br />
-        <div>
-          <b>the most active pool</b><br />
-          <span>...</span>
-        </div><br />
         <a href='#'>settings</a>
       </aside>
       <main>
@@ -25,7 +23,7 @@ const Profile = props => {
           <button>following</button>
         </nav>
         <div>
-          <p>here come all polles you are interested in...</p>
+          <p>here come all poolls you are interested in...</p>
         </div>
       </main>
     </div>

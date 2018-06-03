@@ -1,9 +1,9 @@
 import World_cont from './containers/World_cont'
 import Authenticate from './components/Authenticate/';
-import CreatePool from './components/CreatePool';
-import Profile from './components/Profile';
-import Settings from './components/Settings';
-import Pool from './components/Pool';
+import CreatePool_cont from './containers/CreatePool_cont';
+import Profile_cont from './containers/Profile_cont';
+import Settings_cont from './containers/Settings_cont';
+import Pool_cont from './containers/Pool_cont';
 
 const routes = [
   {
@@ -17,19 +17,19 @@ const routes = [
   },
   {
     path: '/new-pool',
-    component: CreatePool
+    component: CreatePool_cont
   },
   {
     path: '/profile',
-    component: Profile
+    component: Profile_cont
   },
   {
     path: '/settings',
-    component: Settings
+    component: Settings_cont
   },
   {
     path: '/pools/:pool_id',
-    component: Pool,
+    component: Pool_cont,
     name: 'Ace vs Coa',
     options: [{ id: 'ace', name: 'ace' }, {id: 'coa', name: 'coa'}],
   }

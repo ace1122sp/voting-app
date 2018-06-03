@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 const testUniqueness = (testElement, arr) => !(arr.some(el => el == testElement))
 
+// needs method to dispatch action for creating new pool
+// after pool is creted React Router needs to redirect to newly created pool
 class CreatePool extends Component {
   constructor(props) {
     super(props);
@@ -68,14 +70,16 @@ class CreatePool extends Component {
     this.setState({ options: [...updatedOptions] });
   }
 
+  // handle submit should come from container ---> this.props.createPool
   handleSubmit() {
     // This is fake functionality
 
-    // let optionsElement = document.getElementById('poolOptions');
-    // const options = Object.assign({});
-    //
-    // this.setState({ options, name: '' });
-    // alert('Pool Created');
+    let optionsElement = document.getElementById('poolOptions');
+    const options = Object.assign({});
+
+    this.setState({ options, name: '' });
+    alert('Pool Created');
+    window.location.reload(true);
   }
 
   render() {
