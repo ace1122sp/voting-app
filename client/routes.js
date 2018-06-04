@@ -5,7 +5,7 @@ import Profile_cont from './containers/Profile_cont';
 import Settings_cont from './containers/Settings_cont';
 import Pool_cont from './containers/Pool_cont';
 
-export const routes = [
+const routes = [
   {
     path: '/',
     exact: true,
@@ -27,10 +27,10 @@ export const routes = [
     path: '/settings',
     component: Settings_cont
   },
-  // {
-  //   path: '/pools/:pool_id',
-  //   component: Pool_cont,
-  //   name: 'Ace vs Coa',
-  //   options: [{ id: 'ace', name: 'ace' }, {id: 'coa', name: 'coa'}],
-  // }
+  {
+    path: '/pools/:pool_id',
+    component: Pool_cont
+  }
 ];
+
+export default routes;

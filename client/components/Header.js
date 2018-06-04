@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-let auth = false;
+let auth = true;
 
 const UserHeader = props => {
   return (

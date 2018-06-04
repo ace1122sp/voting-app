@@ -9,7 +9,6 @@ const Pool = props => {
       </React.Fragment>
     );
   });
-  console.log(props);
   return (
     <main>
       <div>

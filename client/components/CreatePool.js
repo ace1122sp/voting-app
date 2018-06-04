@@ -30,9 +30,9 @@ class CreatePool extends Component {
 
   addOption(e) {
     e.preventDefault();
-    const validOption = this.state.toAddOption.trim();
+    const validOption = this.state.toAddOption.split(' ').filter(word => word.length > 0).join(' ');
     const uniqueOption = testUniqueness(validOption, this.state.options);
-
+    
     // Option can't be empty and must be unique, case sensitive
     if(validOption && uniqueOption) {
 
@@ -73,13 +73,19 @@ class CreatePool extends Component {
   // handle submit should come from container ---> this.props.createPool
   handleSubmit() {
     // This is fake functionality
+    const trimmedPoolName = this.state.name.split(' ').filter(word => word.length > 0).join(' ');
+    console.log(trimmedPoolName);
+    if(this.state.options.length > 1 && trimmedPoolName.length > 2) {
 
-    let optionsElement = document.getElementById('poolOptions');
-    const options = Object.assign({});
+      let optionsElement = document.getElementById('poolOptions');
+      const options = Object.assign({});
 
-    this.setState({ options, name: '' });
-    alert('Pool Created');
-    window.location.reload(true);
+      this.setState({ options, name: '' });
+      alert(`Pool "${trimmedPoolName}" Created`);
+      window.location.reload(true);
+    } else {
+      alert('Pool must have a name at least three letters long and there must be at least two options for which you can vote!');
+    }
   }
 
   render() {
@@ -91,7 +97,7 @@ class CreatePool extends Component {
           <input type='text' value={this.state.name} onChange={this.handlePoolNameChange} placeholder='enter pool name' /><br /><br />
           <form onSubmit={this.addOption}>
             <input type='text' value={this.state.toAddOption} onChange={this.handleOptionChange} />
-            <input type='submit' value='add' />
+            <input type='submit' value='add option' />
           </form>
         </div>
         <br />
