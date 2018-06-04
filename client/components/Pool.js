@@ -4,11 +4,12 @@ const Pool = props => {
   const options = props.options.map((option, index) => {
     return (
       <React.Fragment key={option.id}>
-        <input type='radio' id={`vote-option-${index}`} name={`${index}_${option.name}`} value={option.name} />
-        <label>{option.name}</label><br />
+        <input type='radio' id={`vote-option-${index}`} name={`${index}_${option.option}`} value={option.option} />
+        <label>{option.option}</label><br />
       </React.Fragment>
     );
   });
+  console.log(props);
   return (
     <main>
       <div>
