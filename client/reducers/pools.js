@@ -1,26 +1,17 @@
-const defaultPool = {
-  'p00': {
-    id: 'p00',
-    name: 'Star Wars or Star Trek',
-    dateCreated: 'n/a',
-    followers: [],
-    options: [
-      {
-        id: 0,
-        option: 'Star Wars',
-        votes: 0
-      },
-      {
-        id: 1,
-        option: 'Star Trek',
-        votes: 0
-      }
-    ]
-  }
-}
-
-export const pools = (state= {...defaultPool}, action) => {
+export const pools = (state = {}, action) => {
   switch (action.type) {
+    case 'CREATE_POOL':
+      const nameForId = action.pool.name.split(' ').filter(word => word.length > 0).join('');
+      const ID = JSON.stringify(Object.keys(state).length) + nameForId;
+      return Object.assign({}, state, {[ID]: {
+        id: ID,
+        name: action.pool.name,
+        dateCreated: 'n/a',
+        creatorId: 'n/a',
+        followers: [],
+        voters: '?',
+        options: action.pool.options
+      }});
     default:
       return state;
   }

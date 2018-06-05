@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 const testUniqueness = (testElement, arr) => !(arr.some(el => el == testElement))
 
-// needs method to dispatch action for creating new pool
 // after pool is creted React Router needs to redirect to newly created pool
 class CreatePool extends Component {
   constructor(props) {
@@ -32,7 +31,7 @@ class CreatePool extends Component {
     e.preventDefault();
     const validOption = this.state.toAddOption.split(' ').filter(word => word.length > 0).join(' ');
     const uniqueOption = testUniqueness(validOption, this.state.options);
-    
+
     // Option can't be empty and must be unique, case sensitive
     if(validOption && uniqueOption) {
 
@@ -70,19 +69,25 @@ class CreatePool extends Component {
     this.setState({ options: [...updatedOptions] });
   }
 
-  // handle submit should come from container ---> this.props.createPool
   handleSubmit() {
-    // This is fake functionality
     const trimmedPoolName = this.state.name.split(' ').filter(word => word.length > 0).join(' ');
-    console.log(trimmedPoolName);
     if(this.state.options.length > 1 && trimmedPoolName.length > 2) {
-
-      let optionsElement = document.getElementById('poolOptions');
-      const options = Object.assign({});
-
-      this.setState({ options, name: '' });
+      const poolOptions = this.state.options.map((option, index) => {
+        return {
+          id: index,
+          option,
+          votes: 0
+        }
+      })
+      const createdPool = {
+        name: this.state.name,
+        options: poolOptions
+      }
+      this.props.createPool_f(createdPool);
+      this.setState({ options: [], name: '' });
       alert(`Pool "${trimmedPoolName}" Created`);
-      window.location.reload(true);
+
+      // need to manage some redirect after creating pool
     } else {
       alert('Pool must have a name at least three letters long and there must be at least two options for which you can vote!');
     }
