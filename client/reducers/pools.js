@@ -1,9 +1,10 @@
+import { validator } from '../util/validator';
+
 export const pools = (state = {}, action) => {
   let pool, optionId, option;
   switch (action.type) {
     case 'CREATE_POOL':
-      const nameForId = action.pool.name.split(' ').filter(word => word.length > 0).join('');
-      const ID = JSON.stringify(Object.keys(state).length) + nameForId;
+      const ID = validator.createId(action.pool.name, Object.keys(state).length);
       return Object.assign({}, state, {[ID]: {
         id: ID,
         name: action.pool.name,

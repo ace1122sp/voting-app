@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { validator } from '../util/validator';
 
 const showResults = resultsArray => {
   return resultsArray.map(option =>
@@ -33,9 +34,18 @@ class Pool extends Component {
 
   handleAddingNewOption(e) {
     e.preventDefault();
-    const newOption = this.state.newOption;
-    this.props.addVotingOption_f(this.props.poolId, newOption);
-    this.setState({ newOption: '' });
+
+    // Validate option
+    const options = this.props.options.map(el => el.option);
+    const validOption = validator.trimEverything(this.state.newOption);
+    const uniqueOption = validator.isUnique(validOption, options);
+
+    if (validOption && uniqueOption) {
+      this.props.addVotingOption_f(this.props.poolId, validOption);
+      this.setState({ newOption: '' });
+    } else {
+      alert('New option can\'t be an empty string and it can\'t match some of the existing options.');
+    }
   }
 
   handleVoting() {

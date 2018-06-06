@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-
-const testUniqueness = (testElement, arr) => !(arr.some(el => el == testElement))
+import { validator } from '../util/validator';
 
 // after pool is creted React Router needs to redirect to newly created pool
 class CreatePool extends Component {
@@ -29,8 +28,10 @@ class CreatePool extends Component {
 
   addOption(e) {
     e.preventDefault();
-    const validOption = this.state.toAddOption.split(' ').filter(word => word.length > 0).join(' ');
-    const uniqueOption = testUniqueness(validOption, this.state.options);
+
+    // Validate options
+    const validOption = validator.trimEverything(this.state.toAddOption);
+    const uniqueOption = validator.isUnique(validOption, this.state.options);
 
     // Option can't be empty and must be unique, case sensitive
     if(validOption && uniqueOption) {
@@ -70,8 +71,12 @@ class CreatePool extends Component {
   }
 
   handleSubmit() {
-    const trimmedPoolName = this.state.name.split(' ').filter(word => word.length > 0).join(' ');
-    if(this.state.options.length > 1 && trimmedPoolName.length > 2) {
+
+    // Validate pool
+    const trimmedPoolName = validator.trimEverything(this.state.name);
+    const validPool = validator.isValidPool(trimmedPoolName, this.state.options);
+
+    if(validPool) {
       const poolOptions = this.state.options.map((option, index) => {
         return {
           id: index,
