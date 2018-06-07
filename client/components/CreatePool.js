@@ -10,23 +10,17 @@ class CreatePool extends Component {
       toAddOption: '',
       options: []
     }
-
-    this.handlePoolNameChange = this.handlePoolNameChange.bind(this);
-    this.handleOptionChange = this.handleOptionChange.bind(this);
-    this.addOption = this.addOption.bind(this);
-    this.deleteOption = this.deleteOption.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handlePoolNameChange(e) {
+  handlePoolNameChange = (e) => {
     this.setState({ name: e.target.value });
   }
 
-  handleOptionChange(e) {
+  handleOptionChange = (e) => {
     this.setState({ toAddOption: e.target.value });
   }
 
-  addOption(e) {
+  addOption = (e) => {
     e.preventDefault();
 
     // Validate options
@@ -61,7 +55,7 @@ class CreatePool extends Component {
     }
   }
 
-  deleteOption(e) {
+  deleteOption = (e) => {
     const formatedId = e.target.parentNode.id.split(' ').join('-');
     const name = e.target.parentNode.attributes['data-name'].value;
     const updatedOptions = this.state.options.filter(option => option != name);
@@ -70,7 +64,7 @@ class CreatePool extends Component {
     this.setState({ options: [...updatedOptions] });
   }
 
-  handleSubmit() {
+  handleSubmit = () => {
 
     // Validate pool
     const trimmedPoolName = validator.trimEverything(this.state.name);

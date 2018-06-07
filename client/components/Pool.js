@@ -23,16 +23,13 @@ class Pool extends Component {
   constructor(props) {
     super(props);
     this.state = { newOption: '' };
-    this.handleVoting = this.handleVoting.bind(this);
-    this.handleChangeForNewOption = this.handleChangeForNewOption.bind(this);
-    this.handleAddingNewOption = this.handleAddingNewOption.bind(this);
   }
 
-  handleChangeForNewOption(e) {
+  handleChangeForNewOption = (e) => {
     this.setState({ newOption: e.target.value });
   }
 
-  handleAddingNewOption(e) {
+  handleAddingNewOption = (e) => {
     e.preventDefault();
 
     // Validate option
@@ -48,7 +45,7 @@ class Pool extends Component {
     }
   }
 
-  handleVoting() {
+  handleVoting = () => {
     let votedOption;
     const radioInputs = document.querySelectorAll("input[type='radio']");
     radioInputs.forEach(input => {

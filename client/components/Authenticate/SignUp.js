@@ -9,30 +9,25 @@ class SignUp extends Component {
       password: '',
       passwordAgain: ''
     };
-    this.handleChangeEmail = this.handleChangeEmail.bind(this);
-    this.handleChangeUsername = this.handleChangeUsername.bind(this);
-    this.handleChangePassword = this.handleChangePassword.bind(this);
-    this.handleChangePasswordAgain = this.handleChangePasswordAgain.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChangeEmail(e) {
+  handleChangeEmail = (e) => {
     this.setState({ email: e.target.value });
   }
 
-  handleChangeUsername(e) {
+  handleChangeUsername = (e) => {
     this.setState({ username: e.target.value });
   }
 
-  handleChangePassword(e) {
+  handleChangePassword = (e) => {
     this.setState({ password: e.target.value })
   }
 
-  handleChangePasswordAgain(e) {
+  handleChangePasswordAgain = (e) => {
     this.setState({ passwordAgain: e.target.value });
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
     if (this.state.password === this.state.passwordAgain) {
       alert('Fake SignUp done');

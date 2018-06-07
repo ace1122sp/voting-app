@@ -8,20 +8,17 @@ class SignIn extends Component {
       password: ''
     };
 
-    this.handleChangeEmail = this.handleChangeEmail.bind(this);
-    this.handleChangePassword = this.handleChangePassword.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChangeEmail(e) {
+  handleChangeEmail = (e) => {
     this.setState({ email: e.target.value });
   }
 
-  handleChangePassword(e) {
+  handleChangePassword = (e) => {
     this.setState({ password: e.target.value });
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
     alert('You submited');
     this.setState({
