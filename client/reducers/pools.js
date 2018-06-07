@@ -29,7 +29,8 @@ export const pools = (state = {}, action) => {
         votes: 0
       };
       pool.options.push(option);
-      return Object.assign({}, state, pool);
+      return Object.assign({}, state, {[action.pool]: pool});
+      
     default:
       return state;
   }

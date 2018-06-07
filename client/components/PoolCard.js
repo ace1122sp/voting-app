@@ -1,10 +1,10 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const PoolCard = props => {
   return (
     <div>
-      <NavLink to={`/pools/${props.id}`}>{props.name}</NavLink>
+      <Link to={`/pools/${props.id}`}>{props.name}</Link>
     </div>
   );
 }
