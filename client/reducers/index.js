@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import { pools } from './pools';
-import { user } from './user';
+import { users } from './users.js';
 
 const rootReducer = combineReducers({
   pools,
-  user
+  users
 });
 
 export default rootReducer;

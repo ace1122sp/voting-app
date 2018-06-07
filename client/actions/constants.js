@@ -1,8 +1,8 @@
 export const CREATE_USER = 'CREATE_USER';
 export const DELETE_USER = 'DELETE_USER';
-export const UPDATE_USER = 'UPDATE_USER';
-export const FOLLOW_USER = 'FOLLOW_USER';
-export const UNFOLLOW_USER = 'UNFOLLOW_USER';
+export const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
+export const FOLLOW_POOL = 'FOLLOW_POOL';
+export const UNFOLLOW_POOL = 'UNFOLLOW_POOL';
 export const ADD_OWN_POOL = 'ADD_OWN_POOL';
 export const REMOVE_OWN_POOL = 'REMOVE_OWN_POOL';
 export const CREATE_POOL = 'CREATE_POOL';

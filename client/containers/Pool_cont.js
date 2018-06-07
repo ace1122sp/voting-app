@@ -10,7 +10,8 @@ const mapStateToProps = (state, ownProps) => {
   const poolId = ownProps.match.params.pool_id;
   const totalVotes = state.pools[poolId].options.reduce((total, curr) => {
     return curr.votes + total + 1;
-  }, 0)
+  }, 0);
+  
   return {
     name: state.pools[poolId].name,
     poolId: state.pools[poolId].id,

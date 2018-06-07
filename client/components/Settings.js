@@ -3,14 +3,9 @@ import React from 'react';
 const Settings = props => {
   return (
     <div>
-      <h3>Settings</h3>
+      <h1>Settings</h1>
+      <h2>username</h2>
       <form>
-        <label>username</label><br />
-        <input type='text' value='username' />
-        <br /><br />
-        <label>email</label><br />
-        <input type='email' value='email' />
-        <br /><br />
         <input type='button' value='change password' /><br />
         <br /><br />
         <input type='button' value='Delete Profile' /><br />

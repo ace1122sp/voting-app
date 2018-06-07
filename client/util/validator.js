@@ -1,5 +1,6 @@
 export const validator = (function() {
-  const _getArrayOfTrimmedWords = str => str.split(' ').filter(word => word.length > 0)
+  const _getArrayOfTrimmedWords = str => str.split(' ').filter(word => word.length > 0);
+  const _removeSpaces = str => _getArrayOfTrimmedWords(str).join('');
   return {
     trimEverything(str) {
       return _getArrayOfTrimmedWords(str).join(' ');
@@ -14,8 +15,12 @@ export const validator = (function() {
     },
 
     createId(name, length) {
-      const nameForId = _getArrayOfTrimmedWords(name).join('');
+      const nameForId = _removeSpaces(name);
       return JSON.stringify(length) + nameForId;
+    },
+
+    removeSpaces(str) {
+      return _removeSpaces(str);
     }
   }
 })();

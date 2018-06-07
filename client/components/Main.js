@@ -2,6 +2,8 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import routes from '../routes';
 
+// FIXME: figure out how to check if provided poolId for route is valid, and if it isn't then navigate to 404 page 
+
 const Main = () => {
   return (
     <div>

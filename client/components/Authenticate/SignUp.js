@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { validator } from '../../util/validator';
 
 class SignUp extends Component {
   constructor(props) {
@@ -12,11 +13,14 @@ class SignUp extends Component {
   }
 
   handleChangeEmail = (e) => {
-    this.setState({ email: e.target.value });
+
+    let cleanedEmail = validator.removeSpaces(e.target.value);
+    this.setState({ email: cleanedEmail });
   }
 
   handleChangeUsername = (e) => {
-    this.setState({ username: e.target.value });
+    let cleanedUsername = validator.removeSpaces(e.target.value);
+    this.setState({ username: cleanedUsername });
   }
 
   handleChangePassword = (e) => {
@@ -29,16 +33,33 @@ class SignUp extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    if (this.state.password === this.state.passwordAgain) {
-      alert('Fake SignUp done');
-      this.setState({
-        email: '',
-        username: '',
-        password: '',
-        passwordAgain: ''
-      });
+
+    // Password validation
+    if (this.state.password === this.state.passwordAgain && this.state.password.length > 3) {
+
+      // Init validators
+      let usernameUnique = validator.isUnique(this.state.username, this.props.users);
+      let usernameLongEnough;
+      let emailValid;
+
+      this.state.username.length > 3 ? usernameLongEnough = true : usernameLongEnough = false;
+      this.state.email.length > 9 ? emailValid = true : emailValid = false;
+
+      // Username & email validation
+      if (usernameUnique && usernameLongEnough && emailValid) {
+        alert('Successfuly signed up!');
+        this.props.createUser_f({ username: this.state.username, email: this.state.email, password: this.state.password });
+        this.setState({
+          email: '',
+          username: '',
+          password: '',
+          passwordAgain: ''
+        });
+      } else {
+        alert('Oops, somebody has taken that username. And also be sure that your username is longer than 3 characters and your email is longer than 9 characters.');
+      }
     } else {
-      alert('passwords are not identical');
+      alert('Your password must be longer than 3 characters and passwords must match.');
       this.setState({
         password: '',
         passwordAgain: ''
