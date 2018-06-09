@@ -11,3 +11,5 @@ export const ADD_FOLLOWER = 'ADD_FOLLOWER';
 export const REMOVE_FOLLOWER = 'REMOVE_FOLLOWER';
 export const ADD_VOTE = 'ADD_VOTE';
 export const ADD_NEW_VOTING_OPTION = 'ADD_NEW_VOTING_OPTION';
+export const SIGN_IN = 'SIGN_IN';
+export const SIGN_OUT = 'SIGN_OUT';

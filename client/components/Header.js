@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
-let auth = false;
-
 const UserHeader = props => {
+
   return (
     <nav>
       <NavLink to='/new-pool'>+ new pool</NavLink>
@@ -14,7 +13,7 @@ const UserHeader = props => {
       {' | '}
       <NavLink to='/settings'>settings</NavLink>
       {' | '}
-      <NavLink to='#'>sign out</NavLink>
+      <button onClick={props.signOut}>Sign Out</button>
     </nav>
   );
 }
@@ -31,17 +30,32 @@ const GuestHeader = props => {
   );
 }
 
+// const Header = props => {
+//   let user = props.user == null ? false : true;
+//   const HeaderToRender = user ? <UserHeader /> : <GuestHeader />
+//   return (
+//     <header>
+//       <h3>voting-app</h3>
+//       {HeaderToRender}
+//     </header>
+//   );
+// }
 
+class Header extends Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextProps.activeUser !== this.props.activeUser;
+  }
 
-const Header = () => {
-  const HeaderToRender = auth ? <UserHeader /> : <GuestHeader />
-  return (
-    <header>
-      <h3>voting-app</h3>
-      {HeaderToRender}
-    </header>
-  );
+  render () {
+    let user = this.props.activeUser == null ? false : true;
+    const headerToRender= user ? <UserHeader signOut={this.props.signOut_f} /> : <GuestHeader />;
+    return (
+      <header>
+        <h3>voting-app</h3>
+        {headerToRender}
+      </header>
+    );
+  }
 }
-
 
 module.exports = Header;

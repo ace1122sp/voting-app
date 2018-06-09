@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './Header'
+import Header_cont from '../containers/Header_cont'
 import Footer from './Footer';
 import Main from './Main';
 
@@ -17,7 +17,7 @@ const userPrototypeSample = [
 
 const App = () =>
   <div>
-    <Header />
+    <Header_cont />
     <hr />
     <Main />
     <hr />
