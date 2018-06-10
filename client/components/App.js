@@ -1,8 +1,7 @@
 import React from 'react';
-import Header_cont from '../containers/Header_cont'
+import Header_cont from '../containers/Header_cont';
 import Footer from './Footer';
-import Main from './Main';
-
+import Main_cont from '../containers/Main_cont';
 
 const userPrototypeSample = [
   {
@@ -19,7 +18,7 @@ const App = () =>
   <div>
     <Header_cont />
     <hr />
-    <Main />
+    <Main_cont />
     <hr />
     <Footer />
   </div>

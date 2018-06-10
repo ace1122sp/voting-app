@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import routes from '../routes';
+import { authenticatedRoutes, guestRoutes } from '../routes';
 
-// FIXME: figure out how to check if provided poolId for route is valid, and if it isn't then navigate to 404 page 
+// FIXME: figure out how to check if provided poolId for route is valid, and if it isn't then navigate to 404 page
 
-const Main = () => {
+const Main = props => {
+  // TODO: get state about user mode and then serve appropriate routes
+  let routes;
+  props.userSignedIn ? routes = authenticatedRoutes : routes = guestRoutes;
   return (
     <div>
       <Switch>

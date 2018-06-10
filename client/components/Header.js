@@ -30,17 +30,6 @@ const GuestHeader = props => {
   );
 }
 
-// const Header = props => {
-//   let user = props.user == null ? false : true;
-//   const HeaderToRender = user ? <UserHeader /> : <GuestHeader />
-//   return (
-//     <header>
-//       <h3>voting-app</h3>
-//       {HeaderToRender}
-//     </header>
-//   );
-// }
-
 class Header extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     return nextProps.activeUser !== this.props.activeUser;
