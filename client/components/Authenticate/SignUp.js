@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { validator } from '../../util/validator';
+import { Redirect } from 'react-router-dom';
 
 class SignUp extends Component {
   constructor(props) {
@@ -8,12 +9,16 @@ class SignUp extends Component {
       email: '',
       username: '',
       password: '',
-      passwordAgain: ''
+      passwordAgain: '',
+      redirect: false
     };
   }
 
-  handleChangeEmail = (e) => {
+  renderRedirect = () => {
+    if (this.state.redirect) return <Redirect to='/' />
+  }
 
+  handleChangeEmail = (e) => {
     let cleanedEmail = validator.removeSpaces(e.target.value);
     this.setState({ email: cleanedEmail });
   }
@@ -53,7 +58,8 @@ class SignUp extends Component {
           email: '',
           username: '',
           password: '',
-          passwordAgain: ''
+          passwordAgain: '',
+          redirect: true
         });
       } else {
         alert('Oops, somebody has taken that username. And also be sure that your username is longer than 3 characters and your email is longer than 9 characters.');
@@ -70,6 +76,7 @@ class SignUp extends Component {
   render() {
     return (
       <div>
+        {this.renderRedirect()}
         <h3>Create Your Account</h3>
         <form onSubmit={this.handleSubmit}>
           <label>email</label><br />

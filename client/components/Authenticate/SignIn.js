@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 class SignIn extends Component {
   constructor(props) {
@@ -26,12 +27,12 @@ class SignIn extends Component {
     // Very insecure auth proccess
     if (this.props.users.hasOwnProperty(username)) {
       if (this.props.users[username].password == password) {
+        alert(`${username}, you have successfuly signed in!`);
+        this.props.signIn_f(this.props.users[username]);
         this.setState({
           username: '',
           password: ''
         });
-        this.props.signIn_f(this.props.users[username]);
-        alert(`${username}, you have successfuly signed in!`);
       } else {
         alert('Username or password are incorrect!');
       }

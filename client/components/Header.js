@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const UserHeader = props => {
+  const signOut = () => {
+    props.signOut();
+  }
 
   return (
     <nav>
@@ -13,7 +16,7 @@ const UserHeader = props => {
       {' | '}
       <NavLink to='/settings'>settings</NavLink>
       {' | '}
-      <button onClick={props.signOut}>Sign Out</button>
+      <button onClick={signOut}>Sign Out</button>
     </nav>
   );
 }
