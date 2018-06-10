@@ -3,9 +3,9 @@ import Profile from '../components/Profile';
 
 const mapStateToProps = state => {
 
-  // It needs user's username, lists of user created pools,
-  // list of pools which user follows
-  return {}
+  return {
+    user: state.activeUser
+  }
 }
 
 const mapDispatchToProps = dispatch => {

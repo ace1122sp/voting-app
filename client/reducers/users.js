@@ -1,4 +1,13 @@
-export const users = (state = {}, action) => {
+const default_user = {
+  id: 'na',
+  username: 'ace11',
+  email: 'ace@ace11.ace',
+  password: '1111',
+  createdPools: [],
+  followingPools: []
+}
+
+export const users = (state = {'ace11': { ...default_user }}, action) => {
   switch (action.type) {
     case 'CREATE_USER':
       return Object.assign({}, state, {[action.user.username]: {

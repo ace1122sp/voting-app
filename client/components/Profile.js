@@ -8,11 +8,11 @@ const Profile = props => {
       <aside>
         <div>
           <b>username</b><br />
-          <span>ace11</span>
+          <span>{props.user.username}</span>
         </div><br />
         <div>
           <b>total pools</b><br />
-          <span>19</span>
+          <span>{props.user.createdPools.length}</span>
         </div><br />
         <a href='#'>settings</a>
       </aside>
