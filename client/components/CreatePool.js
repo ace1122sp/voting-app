@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import { validator } from '../util/validator';
 
 // after pool is creted React Router needs to redirect to newly created pool
@@ -8,8 +9,13 @@ class CreatePool extends Component {
     this.state = {
       name: '',
       toAddOption: '',
-      options: []
+      options: [],
+      redirect: false
     }
+  }
+
+  renderRedirect() {
+    if (this.state.redirect) return <Redirect to='/' />;
   }
 
   handlePoolNameChange = (e) => {
@@ -77,13 +83,19 @@ class CreatePool extends Component {
           option,
           votes: 0
         }
-      })
+      });
       const createdPool = {
         name: this.state.name,
-        options: poolOptions
-      }
+        options: poolOptions,
+        dateCreated: Date(),
+        creator: {
+          username: this.props.creatorName,
+          id: this.props.creatorId
+        }
+      };
+
       this.props.createPool_f(createdPool);
-      this.setState({ options: [], name: '' });
+      this.setState({ options: [], name: '', redirect: true });
       alert(`Pool "${trimmedPoolName}" Created`);
 
       // need to manage some redirect after creating pool
@@ -95,6 +107,7 @@ class CreatePool extends Component {
   render() {
     return (
       <div>
+        {this.renderRedirect()}
         <h2>Create Pool</h2>
         <div>
           <label>Pool Name</label><br />

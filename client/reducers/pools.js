@@ -8,8 +8,11 @@ export const pools = (state = {}, action) => {
       return Object.assign({}, state, {[ID]: {
         id: ID,
         name: action.pool.name,
-        dateCreated: 'n/a',
-        creatorId: 'n/a',
+        dateCreated: action.pool.dateCreated,
+        creator: {
+          username: action.pool.creator.username,
+          id: action.pool.creator.id
+        },
         followers: [],
         voters: '?',
         options: action.pool.options
@@ -30,7 +33,7 @@ export const pools = (state = {}, action) => {
       };
       pool.options.push(option);
       return Object.assign({}, state, {[action.pool]: pool});
-      
+
     default:
       return state;
   }
