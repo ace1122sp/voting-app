@@ -15,22 +15,14 @@ export const changePassword = () => {
   return {}
 }
 
-export const followPool = () => {
-  return {}
-}
-
-export const unfollowPool = () => {
-  return {}
-}
-
 export const addOwnPoolToProfile = () => {
   return {}
 }
 
-export const signIn = user => {
+export const signIn = username => {
   return {
     type: SIGN_IN,
-    user
+    username
   }
 }
 

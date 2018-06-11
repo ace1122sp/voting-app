@@ -12,6 +12,6 @@ const mapDispatchToProps = dispatch => {
   return {}
 }
 
-const Main_cont = withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
+const Main_cont = withRouter(connect(mapStateToProps, null)(Main));
 
 export default Main_cont;

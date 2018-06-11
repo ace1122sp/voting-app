@@ -22,11 +22,3 @@ export const addVotingOption = (pool, optionName) => {
     optionName
   }
 }
-
-export const followPool = (id, followingPools) => {
-  return {
-    type: FOLLOW_POOL,
-    id,
-    followingPools
-  }
-}

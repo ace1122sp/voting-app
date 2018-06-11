@@ -26,9 +26,9 @@ export const users = (state = {'ace11': { ...default_user }}, action) => {
       return state;
 
     case FOLLOW_POOL:
-      let updatedUser = Object.assign({}, state[action.id]);
+      let updatedUser = Object.assign({}, state[action.username]);
       updatedUser.followingPools = [...action.followingPools];
-      return Object.assign({}, state, { [action.id]: { ...updatedUser }});
+      return Object.assign({}, state, { [action.username]: { ...updatedUser }});
 
     default:
       return state;

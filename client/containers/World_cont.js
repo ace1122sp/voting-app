@@ -11,6 +11,6 @@ const mapDispatchToProps = dispatch => {
   return {}
 }
 
-const World_cont = connect(mapStateToProps, mapDispatchToProps)(World);
+const World_cont = connect(mapStateToProps, null)(World);
 
 export default World_cont;

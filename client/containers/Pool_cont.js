@@ -13,24 +13,13 @@ const mapStateToProps = (state, ownProps) => {
   const totalVotes = state.pools[poolId].options.reduce((total, curr) => {
     return curr.votes + total + 1;
   }, 0);
-  let followingPools;
-  let userId;
-
-  if (state.activeUser) {
-    followingPools = state.activeUser.followingPools;
-    userId = state.activeUser.id;
-  } else {
-    followingPools = null;
-    userId = null;
-  }
 
   return {
     name: state.pools[poolId].name,
     poolId: state.pools[poolId].id,
     options: state.pools[poolId].options,
     totalVotes,
-    followingPools,
-    userId
+    username: state.activeUser
   }
 }
 
@@ -40,7 +29,6 @@ const mapDispatchToProps = dispatch => {
   return {
     vote_f: (pool, option) => dispatch(vote(pool, option)),
     addVotingOption_f: (pool, optionName) => dispatch(addVotingOption(pool, optionName)),
-    followPool_f: (id, followingPools) => dispatch(followPool(id, followingPools))
   }
 }
 

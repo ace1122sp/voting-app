@@ -3,7 +3,7 @@ import Profile from '../components/Profile';
 
 const mapStateToProps = state => {
   return {
-    user: state.activeUser
+    user: state.users[state.activeUser]
   }
 }
 
@@ -11,6 +11,6 @@ const mapDispatchToProps = dispatch => {
   return {}
 }
 
-const Profile_cont = connect(mapStateToProps, mapDispatchToProps)(Profile);
+const Profile_cont = connect(mapStateToProps, null)(Profile);
 
 export default Profile_cont;

@@ -28,7 +28,7 @@ class SignIn extends Component {
     if (this.props.users.hasOwnProperty(username)) {
       if (this.props.users[username].password == password) {
         alert(`${username}, you have successfuly signed in!`);
-        this.props.signIn_f(this.props.users[username]);
+        this.props.signIn_f(username);
         this.setState({
           username: '',
           password: ''
@@ -38,7 +38,7 @@ class SignIn extends Component {
       }
     } else {
       alert('Username or password are incorrect!');
-      this.props.users.hasOwnProperty(username);
+      // this.props.users.hasOwnProperty(username); ??????????
     }
 
   }
