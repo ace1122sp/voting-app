@@ -2,19 +2,17 @@ import { connect } from 'react-redux';
 import Settings from '../components/Settings';
 
 const mapStateToProps = state => {
-
-  // needs user's email & username
-  // think through password changing
-  return {}
+  return {
+    username: state.activeUser
+  }
 }
 
 const mapDispatchToProps = dispatch => {
 
-  // needs saveProfileSettings(), deleteProfile()
-  // think through changing password
+  // deleteProfile()
   return {}
 }
 
-const Settings_cont = connect(mapStateToProps, mapDispatchToProps)(Settings);
+const Settings_cont = connect(mapStateToProps, null)(Settings);
 
 export default Settings_cont;
