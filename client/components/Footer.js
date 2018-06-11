@@ -5,8 +5,8 @@ const Footer = props => {
     <footer>
       <div>
         <p>
-          This web app is created for freeCodeCamp project task. It is part of my studing process and because of that, it may have some security
-          vulnerabilities. Please do not store any sensitive information in the app.
+          This web app is created for freeCodeCamp project task. It is part of my studying process and because of that, it may have some security
+          vulnerabilities. Please do not store any sensitive information in the app and do not use passwords which you are using in other apps.
         </p>
       </div>
       <div>

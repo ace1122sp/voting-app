@@ -70,16 +70,16 @@ class Pool extends Component {
             {getOptions(this.props.options, this.props.name)}
           </div>
           <button onClick={this.handleVoting}>Vote</button><br />
-        <form onSubmit={this.handleAddingNewOption}>
+        {this.props.userId && <form onSubmit={this.handleAddingNewOption}>
           <p>add new option</p>
           <input type='text' value={this.state.newOption} onChange={this.handleChangeForNewOption} />
           <input type='submit' value='add' /><br />
-        </form>
-        <div>
+        </form>}
+        {this.props.userId && <div>
           <button onClick={this.handleFollowing}>follow </button>
           <button>tweet </button>
           <button>share </button>
-        </div>
+        </div>}
         </div>
         <div>
           <h4>Chart</h4>
