@@ -16,7 +16,8 @@ export const users = (state = {'ace11': { ...default_user }}, action) => {
         id: 'n/a',
         username: action.user.username,
         email: action.user.email,
-        password: action.user.password
+        password: action.user.password,
+        createdPools: []
       }});
 
     case DELETE_USER:
