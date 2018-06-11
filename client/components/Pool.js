@@ -56,6 +56,11 @@ class Pool extends Component {
     });
   }
 
+  handleFollowing = () => {
+    let updatedFollowingPools = [...this.props.followingPools, this.props.poolId];
+    this.props.followPool_f(this.props.userId, updatedFollowingPools);
+  }
+
   render() {
     return (
       <main>
@@ -71,7 +76,7 @@ class Pool extends Component {
           <input type='submit' value='add' /><br />
         </form>
         <div>
-          <button>follow </button>
+          <button onClick={this.handleFollowing}>follow </button>
           <button>tweet </button>
           <button>share </button>
         </div>

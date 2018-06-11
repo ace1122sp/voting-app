@@ -1,4 +1,4 @@
-import { CREATE_USER, DELETE_USER, CHANGE_PASSWORD, FOLLOW_POOL, UNFOLLOW_POOL, ADD_OWN_POOL, SIGN_IN, SIGN_OUT } from './constants';
+import { CREATE_USER, DELETE_USER, CHANGE_PASSWORD, FOLLOW_POOL, UNFOLLOW_POOL, ADD_OWN_POOL, SIGN_IN, SIGN_OUT } from '../constants';
 
 export const createUser = user => {
   return {

@@ -1,9 +1,11 @@
+import { SIGN_IN, SIGN_OUT } from '../constants';
+
 export const activeUser = (state = null, action) => {
   switch (action.type) {
-    case 'SIGN_IN':
+    case SIGN_IN:
       return action.user;
 
-    case 'SIGN_OUT':
+    case SIGN_OUT:
       return null;
 
     default:
