@@ -1,8 +1,8 @@
-import { CREATE_POOL, ADD_VOTE, ADD_NEW_VOTING_OPTION } from '../constants';
+import { CREATE_POOL, ADD_VOTE, ADD_NEW_VOTING_OPTION, ADD_FOLLOWER } from '../constants';
 import { validator } from '../util/validator';
 
 export const pools = (state = {}, action) => {
-  let pool, optionId, option;
+  let pool, optionId, option, updatedFollowers, updatedPool;
   switch (action.type) {
     case CREATE_POOL:
       const ID = validator.createId(action.pool.name, Object.keys(state).length);
@@ -34,6 +34,11 @@ export const pools = (state = {}, action) => {
       };
       pool.options.push(option);
       return Object.assign({}, state, {[action.pool]: pool});
+
+    case ADD_FOLLOWER:
+      updatedFollowers = [...state[action.poolId].followers, action.username];
+      updatedPool = Object.assign({}, state[action.poolId], { followers: updatedFollowers });
+      return Object.assign({}, state, { [action.poolId]: updatedPool });
 
     default:
       return state;

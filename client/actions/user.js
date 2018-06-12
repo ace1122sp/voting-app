@@ -31,3 +31,11 @@ export const signOut = () => {
     type: SIGN_OUT
   }
 }
+
+export const followPool = (username, poolId) => {
+  return {
+    type: FOLLOW_POOL,
+    username,
+    poolId
+  }
+}

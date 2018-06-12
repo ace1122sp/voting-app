@@ -6,10 +6,12 @@ const default_user = {
   email: 'ace@ace11.ace',
   password: '1111',
   createdPools: [],
+  followingPools: []
 }
-followingPools: []
 
-export const users = (state = {'ace11': { ...default_user }}, action) => {
+export const users = (state = { 'ace11': { ...default_user } }, action) => {
+  let updatedFollowingPools, updatedUser;
+
   switch (action.type) {
     case CREATE_USER:
       return Object.assign({}, state, {[action.user.username]: {
@@ -27,9 +29,9 @@ export const users = (state = {'ace11': { ...default_user }}, action) => {
       return state;
 
     case FOLLOW_POOL:
-      let updatedUser = Object.assign({}, state[action.username]);
-      updatedUser.followingPools = [...action.followingPools];
-      return Object.assign({}, state, { [action.username]: { ...updatedUser }});
+      updatedFollowingPools = [...state[action.username].followingPools, action.poolId];
+      updatedUser = Object.assign({}, state[action.username], {followingPools: updatedFollowingPools});
+      return Object.assign({}, state, { [action.username]: updatedUser });
 
     default:
       return state;

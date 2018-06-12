@@ -2,6 +2,8 @@ import { connect } from 'react-redux';
 import World from '../components/World';
 
 const mapStateToProps = state => {
+
+  console.log(state);
   return {
     pools: {...state.pools}
   }

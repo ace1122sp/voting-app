@@ -1,4 +1,4 @@
-import { CREATE_POOL, ADD_VOTE, ADD_NEW_VOTING_OPTION, FOLLOW_POOL } from '../constants';
+import { CREATE_POOL, ADD_VOTE, ADD_NEW_VOTING_OPTION, ADD_FOLLOWER } from '../constants';
 
 export const createPool = pool => {
   return {
@@ -20,5 +20,13 @@ export const addVotingOption = (pool, optionName) => {
     type: ADD_NEW_VOTING_OPTION,
     pool,
     optionName
+  }
+}
+
+export const addFollower = (poolId, username) => {
+  return {
+    type: ADD_FOLLOWER,
+    poolId,
+    username
   }
 }
