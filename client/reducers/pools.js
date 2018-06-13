@@ -10,10 +10,7 @@ export const pools = (state = {}, action) => {
         id: ID,
         name: action.pool.name,
         dateCreated: action.pool.dateCreated,
-        creator: {
-          username: action.pool.creator.username,
-          id: action.pool.creator.id
-        },
+        creator: action.pool.creator,
         followers: [],
         voters: '?',
         options: action.pool.options

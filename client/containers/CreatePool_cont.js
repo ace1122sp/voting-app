@@ -4,8 +4,7 @@ import { createPool } from '../actions/pools';
 
 const mapStateToProps = state => {
   return {
-    creatorName: state.activeUser.username,
-    creatorId: state.activeUser.id
+    creatorName: state.activeUser
   }
 }
 

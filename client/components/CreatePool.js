@@ -88,10 +88,7 @@ class CreatePool extends Component {
         name: this.state.name,
         options: poolOptions,
         dateCreated: Date(),
-        creator: {
-          username: this.props.creatorName,
-          id: this.props.creatorId
-        }
+        creator: this.props.creatorName 
       };
 
       this.props.createPool_f(createdPool);
