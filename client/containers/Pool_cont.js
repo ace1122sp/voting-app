@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Pool from '../components/Pool';
-import { vote, addVotingOption, addFollower } from '../actions/pools';
-import { followPool } from '../actions/user';
+import { vote, addVotingOption, addFollower, removeFollower } from '../actions/pools';
+import { followPool, unfollowPool } from '../actions/user';
 
 const mapStateToProps = (state, ownProps) => {
 
@@ -15,25 +15,29 @@ const mapStateToProps = (state, ownProps) => {
   const totalVotes = state.pools[poolId].options.reduce((total, curr) => {
     return curr.votes + total + 1;
   }, 0);
+  const isFollowedByActiveUser = state.pools[poolId].followers.some(follower => follower == state.activeUser) ? 'unfollow' : 'follow';
 
   return {
     name: state.pools[poolId].name,
     poolId: state.pools[poolId].id,
     options: state.pools[poolId].options,
+    isFollowedByActiveUser,
     totalVotes,
     username: state.activeUser
   }
 }
 
 const mapDispatchToProps = dispatch => {
-
-  // need to provide follow()
   return {
     vote_f: (pool, option) => dispatch(vote(pool, option)),
     addVotingOption_f: (pool, optionName) => dispatch(addVotingOption(pool, optionName)),
     follow_f: (username, poolId) => {
-      dispatch(addFollower(poolId, username));
       dispatch(followPool(username, poolId));
+      dispatch(addFollower(poolId, username));
+    },
+    unfollow_f: (username, poolId) => {
+      dispatch(unfollowPool(username, poolId));
+      dispatch(removeFollower(poolId, username));
     }
   }
 }

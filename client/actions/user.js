@@ -39,3 +39,11 @@ export const followPool = (username, poolId) => {
     poolId
   }
 }
+
+export const unfollowPool = (username, poolId) => {
+  return {
+    type: UNFOLLOW_POOL,
+    username,
+    poolId
+  }
+}

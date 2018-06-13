@@ -22,7 +22,9 @@ const getOptions = (optionsArray, name) => {
 class Pool extends Component {
   constructor(props) {
     super(props);
-    this.state = { newOption: '' };
+    this.state = {
+      newOption: ''
+    };
   }
 
   handleChangeForNewOption = (e) => {
@@ -60,6 +62,12 @@ class Pool extends Component {
     this.props.follow_f(this.props.username, this.props.poolId);
   }
 
+  handleUnfollowing = () => {
+    this.props.unfollow_f(this.props.username, this.props.poolId);
+  }
+
+  followOrUnfollow = () => this.props.isFollowedByActiveUser == 'unfollow' ? this.handleUnfollowing() : this.handleFollowing();
+
   render() {
     return (
       <main>
@@ -75,7 +83,7 @@ class Pool extends Component {
           <input type='submit' value='add' /><br />
         </form>}
         {this.props.username && <div>
-          <button onClick={this.handleFollowing}>follow </button>
+          <button onClick={this.followOrUnfollow}>{this.props.isFollowedByActiveUser}</button>
           <button>tweet </button>
           <button>share </button>
         </div>}
