@@ -1,13 +1,11 @@
 import { CREATE_POOL, ADD_VOTE, ADD_NEW_VOTING_OPTION, ADD_FOLLOWER, REMOVE_FOLLOWER } from '../constants';
-import { validator } from '../util/validator';
 
 export const pools = (state = {}, action) => {
   let pool, optionId, option, updatedFollowers, updatedPool;
   switch (action.type) {
     case CREATE_POOL:
-      const ID = validator.createId(action.pool.name, Object.keys(state).length);
-      return Object.assign({}, state, {[ID]: {
-        id: ID,
+      return Object.assign({}, state, {[action.pool.id]: {
+        id: action.pool.id,
         name: action.pool.name,
         dateCreated: action.pool.dateCreated,
         creator: action.pool.creator,

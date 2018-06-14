@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { validator } from '../util/validator';
+import { generator } from '../util/generator';
 
 // after pool is creted React Router needs to redirect to newly created pool
 class CreatePool extends Component {
@@ -84,18 +85,21 @@ class CreatePool extends Component {
           votes: 0
         }
       });
+      const timestamp = Date.now();
+      const id = generator.generateId(this.state.name, this.props.creatorName, timestamp);
       const createdPool = {
         name: this.state.name,
         options: poolOptions,
         dateCreated: Date(),
-        creator: this.props.creatorName 
+        creator: this.props.creatorName,
+        id: id
       };
 
       this.props.createPool_f(createdPool);
       this.setState({ options: [], name: '', redirect: true });
-      alert(`Pool "${trimmedPoolName}" Created`);
 
-      // need to manage some redirect after creating pool
+      // need to dispatch action to add id of a pool to active user createdPools prop
+      alert(`Pool "${trimmedPoolName}" Created`);
     } else {
       alert('Pool must have a name at least three letters long and there must be at least two options for which you can vote!');
     }
