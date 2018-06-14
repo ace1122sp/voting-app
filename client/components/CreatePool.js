@@ -96,6 +96,7 @@ class CreatePool extends Component {
       };
 
       this.props.createPool_f(createdPool);
+      this.props.addOwnPoolToProfile_f(this.props.creatorName, id);
       this.setState({ options: [], name: '', redirect: true });
 
       // need to dispatch action to add id of a pool to active user createdPools prop

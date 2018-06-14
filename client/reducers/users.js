@@ -1,4 +1,4 @@
-import { CREATE_USER, DELETE_USER, CHANGE_PASSWORD, FOLLOW_POOL, UNFOLLOW_POOL } from '../constants';
+import { CREATE_USER, DELETE_USER, CHANGE_PASSWORD, FOLLOW_POOL, UNFOLLOW_POOL, ADD_OWN_POOL } from '../constants';
 
 const default_user = {
   id: 'na',
@@ -10,7 +10,7 @@ const default_user = {
 }
 
 export const users = (state = { 'ace11': { ...default_user } }, action) => {
-  let updatedFollowingPools, updatedUser;
+  let updatedFollowingPools, updatedUser, updatedCreatedPools;
 
   switch (action.type) {
     case CREATE_USER:
@@ -36,6 +36,11 @@ export const users = (state = { 'ace11': { ...default_user } }, action) => {
     case UNFOLLOW_POOL:
       updatedFollowingPools = state[action.username].followingPools.filter(pool => pool != action.poolId);
       updatedUser = Object.assign({}, state[action.username], { followingPools: updatedFollowingPools });
+      return Object.assign({}, state, { [action.username]: updatedUser });
+
+    case ADD_OWN_POOL:
+      updatedCreatedPools = [...state[action.username].createdPools, action.poolId];
+      updatedUser = Object.assign({}, state[action.username], { createdPools: updatedCreatedPools });
       return Object.assign({}, state, { [action.username]: updatedUser });
 
     default:

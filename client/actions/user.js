@@ -15,8 +15,12 @@ export const changePassword = () => {
   return {}
 }
 
-export const addOwnPoolToProfile = () => {
-  return {}
+export const addOwnPoolToProfile = (username, poolId) => {
+  return {
+    type: ADD_OWN_POOL,
+    username,
+    poolId
+  }
 }
 
 export const signIn = username => {
