@@ -22,6 +22,8 @@ const mapStateToProps = (state, ownProps) => {
     poolId: state.pools[poolId].id,
     options: state.pools[poolId].options,
     isFollowedByActiveUser,
+    dateCreated: state.pools[poolId].dateCreated,
+    creator: state.pools[poolId].creator,
     totalVotes,
     username: state.activeUser
   }

@@ -27,11 +27,11 @@ class Pool extends Component {
     };
   }
 
-  handleChangeForNewOption = (e) => {
+  handleChangeForNewOption = e => {
     this.setState({ newOption: e.target.value });
   }
 
-  handleAddingNewOption = (e) => {
+  handleAddingNewOption = e => {
     e.preventDefault();
 
     // Validate option
@@ -72,7 +72,8 @@ class Pool extends Component {
     return (
       <main>
         <div>
-          <p>{this.props.name}</p>
+          <h2>{this.props.name}</h2>
+          <h4>created by {this.props.creator || 'n/a'} <span>{this.props.dateCreated}</span></h4>
           <div>
             {getOptions(this.props.options, this.props.name)}
           </div>
@@ -89,7 +90,7 @@ class Pool extends Component {
         </div>}
         </div>
         <div>
-          <h4>Chart</h4>
+          <h3>Chart</h3>
           <p>imagine some chart over here</p>
           {showResults(this.props.options)}
         </div>
