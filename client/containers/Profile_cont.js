@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
 import Profile from '../components/Profile';
+import { deletePool } from '../actions/pools';
+import { schedulePoolForDelete } from '../actions/scheduleForDelete';
 
 const mapStateToProps = state => {
   let poolsFollowing = state.users[state.activeUser].followingPools.map(pool => {
@@ -12,12 +14,18 @@ const mapStateToProps = state => {
   return {
     user: state.users[state.activeUser],
     poolsFollowing,
-    poolsCreated
+    poolsCreated,
+    poolToDelete: state.poolToDelete
   };
 }
 
 const mapDispatchToProps = dispatch => {
-  return {}
+  return {
+    deletePool_f: poolId => {
+      dispatch(deletePool(poolId));
+      dispatch(schedulePoolForDelete(null));
+    }
+  }
 }
 
 const Profile_cont = connect(mapStateToProps, null)(Profile);

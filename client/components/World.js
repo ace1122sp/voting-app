@@ -3,6 +3,7 @@ import PoolCard from './PoolCard';
 
 const World = props => {
   const poolsArr = [];
+  if (props.poolToDelete) props.deletePool_f(props.poolToDelete);
   for (let pool in props.pools) {
     poolsArr.push(props.pools[pool]);
   }

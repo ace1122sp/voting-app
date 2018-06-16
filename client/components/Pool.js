@@ -68,15 +68,20 @@ class Pool extends Component {
 
   followOrUnfollow = () => this.props.isFollowedByActiveUser == 'unfollow' ? this.handleUnfollowing() : this.handleFollowing();
 
-  handleDeletingPool = () => {
-    if (this.props.username == this.props.creator) this.props.deletePool_f(this.props.poolId);
+  handlePoolDelete = () => {
+    this.props.schedulePoolForDelete_f(this.props.poolId);
+    this.goBack();
+  }
+
+  goBack = () => {
+    this.props.history.goBack();
   }
 
   render() {
     let deleteButton;
-    const deletePool = <button onClick={this.handleDeletingPool}>delete pool</button>;
+    const deletePool = <button onClick={this.handlePoolDelete}>delete pool</button>;
     this.props.username == this.props.creator ? deleteButton = deletePool : deleteButton = null;
-
+    console.log(this.props);
     return (
       <main>
         <div>

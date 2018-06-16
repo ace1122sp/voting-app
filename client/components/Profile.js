@@ -22,6 +22,8 @@ class Profile extends Component {
     super(props);
     this.state = { poolsToShow: 'all' };
     this.allPools = combineArraysOfObjectsIntoArrOfUniqueObjects(this.props.poolsCreated, this.props.poolsFollowing);
+
+    if (this.props.poolToDelete) this.props.deletePool_f(this.props.poolToDelete);
   }
 
   showAllPools = () => {

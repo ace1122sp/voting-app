@@ -13,3 +13,4 @@ export const ADD_VOTE = 'ADD_VOTE';
 export const ADD_NEW_VOTING_OPTION = 'ADD_NEW_VOTING_OPTION';
 export const SIGN_IN = 'SIGN_IN';
 export const SIGN_OUT = 'SIGN_OUT';
+export const SCHEDULE_POOL_FOR_DELETE = 'SCHEDULE_POOL_FOR_DELETE';
