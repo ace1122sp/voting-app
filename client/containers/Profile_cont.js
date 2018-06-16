@@ -4,10 +4,10 @@ import { deletePool } from '../actions/pools';
 import { schedulePoolForDelete } from '../actions/scheduleForDelete';
 
 const mapStateToProps = state => {
-  let poolsFollowing = state.users[state.activeUser].followingPools.map(pool => {
+  const poolsFollowing = state.users[state.activeUser].followingPools.filter(pool => state.pools.hasOwnProperty(pool) ).map(pool => {
     return { id: pool, name: state.pools[pool].name };
   });
-  let poolsCreated = state.users[state.activeUser].createdPools.map(pool => {
+  const poolsCreated = state.users[state.activeUser].createdPools.filter(pool => state.pools.hasOwnProperty(pool)).map(pool => {
     return { id: pool, name: state.pools[pool].name };
   });
 
@@ -15,7 +15,7 @@ const mapStateToProps = state => {
     user: state.users[state.activeUser],
     poolsFollowing,
     poolsCreated,
-    poolToDelete: state.poolToDelete
+    poolToDelete: state.poolToDelete,
   };
 }
 
@@ -28,6 +28,6 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-const Profile_cont = connect(mapStateToProps, null)(Profile);
+const Profile_cont = connect(mapStateToProps, mapDispatchToProps)(Profile);
 
 export default Profile_cont;

@@ -21,7 +21,6 @@ class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = { poolsToShow: 'all' };
-    this.allPools = combineArraysOfObjectsIntoArrOfUniqueObjects(this.props.poolsCreated, this.props.poolsFollowing);
 
     if (this.props.poolToDelete) this.props.deletePool_f(this.props.poolToDelete);
   }
@@ -40,8 +39,9 @@ class Profile extends Component {
 
   render() {
     let poolsSelection;
-    this.state.poolsToShow == 'all' ? poolsSelection = this.allPools : this.state.poolsToShow == 'own' ? poolsSelection = this.props.poolsCreated : poolsSelection = this.props.poolsFollowing;
-    const pools = poolsSelection.map(pool => <PoolCard key={pool.id} id={pool.id} name={pool.name} />);
+    let allPools = combineArraysOfObjectsIntoArrOfUniqueObjects(this.props.poolsCreated, this.props.poolsFollowing);
+    this.state.poolsToShow == 'all' ? poolsSelection = allPools : this.state.poolsToShow == 'own' ? poolsSelection = this.props.poolsCreated : poolsSelection = this.props.poolsFollowing;
+    let pools = poolsSelection.map(pool => <PoolCard key={pool.id} id={pool.id} name={pool.name} />);
     return (
       <div>
         <aside>
@@ -51,7 +51,7 @@ class Profile extends Component {
           </div><br />
           <div>
             <b>total pools</b><br />
-            <span>{this.props.user.createdPools.length}</span>
+            <span>{this.props.poolsCreated.length}</span>
           </div><br />
           <a href='#'>settings</a>
         </aside>
