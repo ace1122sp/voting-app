@@ -1,4 +1,4 @@
-import { CREATE_POOL, ADD_VOTE, ADD_NEW_VOTING_OPTION, ADD_FOLLOWER, REMOVE_FOLLOWER } from '../constants';
+import { CREATE_POOL, ADD_VOTE, ADD_NEW_VOTING_OPTION, ADD_FOLLOWER, REMOVE_FOLLOWER, DELETE_POOL } from '../constants';
 
 export const createPool = pool => {
   return {
@@ -36,5 +36,12 @@ export const removeFollower = (poolId, username) => {
     type: REMOVE_FOLLOWER,
     poolId,
     username
+  }
+}
+
+export const deletePool = poolId => {
+  return {
+    type: DELETE_POOL,
+    poolId
   }
 }

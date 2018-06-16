@@ -1,7 +1,7 @@
-import { CREATE_POOL, ADD_VOTE, ADD_NEW_VOTING_OPTION, ADD_FOLLOWER, REMOVE_FOLLOWER } from '../constants';
+import { CREATE_POOL, ADD_VOTE, ADD_NEW_VOTING_OPTION, ADD_FOLLOWER, REMOVE_FOLLOWER, DELETE_POOL } from '../constants';
 
 export const pools = (state = {}, action) => {
-  let pool, optionId, option, updatedFollowers, updatedPool;
+  let pool, optionId, option, updatedFollowers, updatedPool, updatedPools;
   switch (action.type) {
     case CREATE_POOL:
       return Object.assign({}, state, {[action.pool.id]: {
@@ -39,6 +39,11 @@ export const pools = (state = {}, action) => {
       updatedFollowers = state[action.poolId].followers.filter(user => user != action.username);
       updatedPool = Object.assign({}, state[action.poolId], { followers: updatedFollowers });
       return Object.assign({}, state, { [action.poolId]: updatedPool });
+
+    case DELETE_POOL:
+      updatedPools = Object.assign({}, state);
+      delete updatedPools[action.poolId];
+      return updatedPools;
 
     default:
       return state;

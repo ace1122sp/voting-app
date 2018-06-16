@@ -1,15 +1,13 @@
 import { connect } from 'react-redux';
 import Pool from '../components/Pool';
-import { vote, addVotingOption, addFollower, removeFollower } from '../actions/pools';
+import { vote, addVotingOption, addFollower, removeFollower, deletePool } from '../actions/pools';
 import { followPool, unfollowPool } from '../actions/user';
 
 const mapStateToProps = (state, ownProps) => {
 
-  // according to :pool_id you need to provide pool's info
+  // based on :pool_id you need to provide pool's info
   // atm you don't need to send followers, just maybe its number,
   // just votes, but not info about voters
-
-  // you need middlewares to be able to send the pool id to user who's created it
 
   const poolId = ownProps.match.params.pool_id;
   const totalVotes = state.pools[poolId].options.reduce((total, curr) => {
@@ -40,7 +38,8 @@ const mapDispatchToProps = dispatch => {
     unfollow_f: (username, poolId) => {
       dispatch(unfollowPool(username, poolId));
       dispatch(removeFollower(poolId, username));
-    }
+    },
+    deletePool_f: poolId => dispatch(deletePool(poolId))
   }
 }
 

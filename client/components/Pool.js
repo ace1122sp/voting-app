@@ -68,7 +68,15 @@ class Pool extends Component {
 
   followOrUnfollow = () => this.props.isFollowedByActiveUser == 'unfollow' ? this.handleUnfollowing() : this.handleFollowing();
 
+  handleDeletingPool = () => {
+    if (this.props.username == this.props.creator) this.props.deletePool_f(this.props.poolId);
+  }
+
   render() {
+    let deleteButton;
+    const deletePool = <button onClick={this.handleDeletingPool}>delete pool</button>;
+    this.props.username == this.props.creator ? deleteButton = deletePool : deleteButton = null;
+
     return (
       <main>
         <div>
@@ -89,6 +97,7 @@ class Pool extends Component {
           <button>share </button>
         </div>}
         </div>
+        {deleteButton}
         <div>
           <h3>Chart</h3>
           <p>imagine some chart over here</p>

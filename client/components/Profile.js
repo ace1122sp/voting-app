@@ -17,41 +17,6 @@ const combineArraysOfObjectsIntoArrOfUniqueObjects = (...args) => {
   return uniqueResults;
 }
 
-// const Profile = props => {
-//   const poolsArr = combineArraysOfObjectsIntoArrOfUniqueObjects(props.poolsCreated, props.poolsFollowing);
-//   const pools = poolsArr.map(pool => <PoolCard key={pool.id} id={pool.id} name={pool.name} />);
-//
-//   // need to add Links to pools
-//   return (
-//     <div>
-//       <aside>
-//         <div>
-//           <b>username</b><br />
-//           <span>{props.user.username}</span>
-//         </div><br />
-//         <div>
-//           <b>total pools</b><br />
-//           <span>{props.user.createdPools.length}</span>
-//         </div><br />
-//         <a href='#'>settings</a>
-//       </aside>
-//       <main>
-//         <nav>
-//           <button>all</button>
-//           <button>my pools</button>
-//           <button>following</button>
-//         </nav>
-//         <ul>
-//           {pools}
-//         </ul>
-//         <div>
-//           <p>here come all poolls you are interested in...</p>
-//         </div>
-//       </main>
-//     </div>
-//   );
-// }
-
 class Profile extends Component {
   constructor(props) {
     super(props);
@@ -71,7 +36,6 @@ class Profile extends Component {
     this.setState({ poolsToShow: 'followed' });
   }
 
-  // need to add Links to pools
   render() {
     let poolsSelection;
     this.state.poolsToShow == 'all' ? poolsSelection = this.allPools : this.state.poolsToShow == 'own' ? poolsSelection = this.props.poolsCreated : poolsSelection = this.props.poolsFollowing;
@@ -98,9 +62,6 @@ class Profile extends Component {
           <ul>
             {pools}
           </ul>
-          <div>
-            <p>here come all poolls you are interested in...</p>
-          </div>
         </main>
       </div>
     );
