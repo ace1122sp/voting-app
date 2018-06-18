@@ -21,13 +21,11 @@ export const pools = (state = {}, action) => {
 
     case ADD_NEW_VOTING_OPTION:
       pool = Object.assign({}, state[action.pool]);
-      optionId = pool.options.length;
       option = {
-        id: optionId,
-        option: action.optionName,
+        option: action.option,
         votes: 0
       };
-      pool.options.push(option);
+      pool.options[action.option] = option;
       return Object.assign({}, state, {[action.pool]: pool});
 
     case ADD_FOLLOWER:

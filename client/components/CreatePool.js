@@ -81,9 +81,9 @@ class CreatePool extends Component {
     const validPool = validator.isValidPool(trimmedPoolName, this.state.options);
 
     if(validPool) {
-      const poolOptions = this.state.options.map((option, index) => {
-        return {
-          id: index,
+      const poolOptions = {};
+      this.state.options.forEach( option => {
+        poolOptions[option] = {
           option,
           votes: 0
         }

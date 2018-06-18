@@ -15,11 +15,11 @@ export const vote = (pool, option) => {
   }
 }
 
-export const addVotingOption = (pool, optionName) => {
+export const addVotingOption = (pool, option) => {
   return {
     type: ADD_NEW_VOTING_OPTION,
     pool,
-    optionName
+    option
   }
 }
 

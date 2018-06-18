@@ -11,15 +11,22 @@ const mapStateToProps = (state, ownProps) => {
   // just votes, but not info about voters
 
   const poolId = ownProps.match.params.pool_id;
-  const totalVotes = state.pools[poolId].options.reduce((total, curr) => {
-    return curr.votes + total + 1;
-  }, 0);
+
+  let totalVotes = 0
+  const optionsKeys = Object.keys(state.pools[poolId].options);
+  const options = [];
+
+  optionsKeys.forEach(key => {
+    totalVotes += state.pools[poolId].options[key].votes;
+    options.push(state.pools[poolId].options[key]);
+  });
+
   const isFollowedByActiveUser = state.pools[poolId].followers.some(follower => follower == state.activeUser) ? 'unfollow' : 'follow';
 
   return {
     name: state.pools[poolId].name,
     poolId: state.pools[poolId].id,
-    options: state.pools[poolId].options,
+    options,
     isFollowedByActiveUser,
     dateCreated: state.pools[poolId].dateCreated,
     creator: state.pools[poolId].creator,
@@ -30,8 +37,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    vote_f: (pool, option) => dispatch(vote(pool, option)),
-    addVotingOption_f: (pool, optionName) => dispatch(addVotingOption(pool, optionName)),
+    vote_f: (poolId, option) => dispatch(vote(poolId, option)),
+    addVotingOption_f: (poolId, option) => dispatch(addVotingOption(poolId, option)),
     follow_f: (username, poolId) => {
       dispatch(followPool(username, poolId));
       dispatch(addFollower(poolId, username));
