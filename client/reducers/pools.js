@@ -15,14 +15,14 @@ export const pools = (state = {}, action) => {
       }});
 
     case ADD_VOTE:
-      pool = Object.assign({}, state[action.pool]);
+      pool = Object.assign({}, state[action.poolId]);
       pool.options[action.optionId].votes += 1;
-      return Object.assign({}, state, {[action.pool]: pool});
+      return Object.assign({}, state, {[action.poolId]: pool});
 
     case ADD_NEW_VOTING_OPTION:
-      pool = Object.assign({}, state[action.pool]);
+      pool = Object.assign({}, state[action.poolId]);
       pool.options[action.option.id] = Object.assign({ id: action.option.id, value: action.option.value, votes: 0 });
-      return Object.assign({}, state, {[action.pool]: pool});
+      return Object.assign({}, state, {[action.poolId]: pool});
 
     case ADD_FOLLOWER:
       updatedFollowers = [...state[action.poolId].followers, action.username];
@@ -39,10 +39,10 @@ export const pools = (state = {}, action) => {
       delete updatedPools[action.poolId];
       return updatedPools;
 
-    // case REMOVE_POOL_OPTION:
-    //   pool = Object.assign({}, state[action.poolId]);
-    //   delete pool.options[action.option];
-    //   return Object.assign({}, state, { [action.poolId]: pool });
+    case REMOVE_POOL_OPTION:
+      pool = Object.assign({}, state[action.poolId]);
+      delete pool.options[action.option];
+      return Object.assign({}, state, { [action.poolId]: pool });
 
     default:
       return state;

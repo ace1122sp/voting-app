@@ -10,10 +10,10 @@ const showResults = resultsArray => {
   );
 }
 
-const getOptions = optionsArray => {
+const getOptions = (optionsArray, name) => {
   return optionsArray.map((option, index) =>
     <React.Fragment key={option.value}>
-      <input type='radio' id={`vote-option-${index}`} name={option.value} value={option.id} />
+      <input type='radio' id={`vote-option-${index}`} name={name} value={option.id} />
       <label htmlFor={`vote-option-${index}`}>{option.value}</label><br />
     </React.Fragment>
   )

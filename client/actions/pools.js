@@ -7,18 +7,18 @@ export const createPool = pool => {
   }
 }
 
-export const vote = (pool, optionId) => {
+export const vote = (poolId, optionId) => {
   return {
     type: ADD_VOTE,
-    pool,
+    poolId,
     optionId
   }
 }
 
-export const addVotingOption = (pool, option) => {
+export const addVotingOption = (poolId, option) => {
   return {
     type: ADD_NEW_VOTING_OPTION,
-    pool,
+    poolId,
     option
   }
 }
@@ -46,10 +46,10 @@ export const deletePool = poolId => {
   }
 }
 
-// export const removePoolOption = (poolId, option) => {
-//   return {
-//     type: REMOVE_POOL_OPTION,
-//     poolId,
-//     option
-//   }
-// }
+export const removePoolOption = (poolId, option) => {
+  return {
+    type: REMOVE_POOL_OPTION,
+    poolId,
+    option
+  }
+}
