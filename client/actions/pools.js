@@ -46,10 +46,10 @@ export const deletePool = poolId => {
   }
 }
 
-export const removePoolOption = (poolId, option) => {
+export const removePoolOption = (poolId, optionId) => {
   return {
     type: REMOVE_POOL_OPTION,
     poolId,
-    option
+    optionId
   }
 }

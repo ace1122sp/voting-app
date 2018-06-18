@@ -41,7 +41,7 @@ export const pools = (state = {}, action) => {
 
     case REMOVE_POOL_OPTION:
       pool = Object.assign({}, state[action.poolId]);
-      delete pool.options[action.option];
+      delete pool.options[action.optionId];
       return Object.assign({}, state, { [action.poolId]: pool });
 
     default:

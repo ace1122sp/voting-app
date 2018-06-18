@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Pool from '../components/Pool';
-import { vote, addVotingOption, addFollower, removeFollower, deletePool } from '../actions/pools';
+import { vote, addVotingOption, addFollower, removeFollower, deletePool, removePoolOption } from '../actions/pools';
 import { followPool, unfollowPool } from '../actions/user';
 import { schedulePoolForDelete } from '../actions/scheduleForDelete';
 
@@ -47,7 +47,8 @@ const mapDispatchToProps = dispatch => {
       dispatch(unfollowPool(username, poolId));
       dispatch(removeFollower(poolId, username));
     },
-    schedulePoolForDelete_f: poolId => dispatch(schedulePoolForDelete(poolId))
+    schedulePoolForDelete_f: poolId => dispatch(schedulePoolForDelete(poolId)),
+    removePoolOption_f: (poolId, optionId) => dispatch(removePoolOption(poolId, optionId))
   }
 }
 
