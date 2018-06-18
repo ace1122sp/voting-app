@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { validator } from '../util/validator';
-import { generator } from '../util/generator';
 
 class CreatePool extends Component {
   constructor(props) {
@@ -94,7 +93,7 @@ class CreatePool extends Component {
         }
       });
       const timestamp = Date.now();
-      const id = generator.generateId(this.state.name, this.props.creatorName, timestamp);
+      const id = validator.generateId(this.state.name, this.props.creatorName, timestamp);
       const createdPool = {
         name: this.state.name,
         options: poolOptions,

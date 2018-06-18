@@ -21,6 +21,14 @@ export const validator = (function() {
 
     removeSpaces(str) {
       return _removeSpaces(str);
+    },
+
+    generateId(poolName, username, timestamp) {
+      const clearedName = _removeSpaces(poolName);
+      const timestampNumber = parseInt(timestamp);
+      const randomString = JSON.stringify(Math.round(Math.round(timestampNumber * Math.random())));
+      const pieceOfTimestamp = JSON.stringify(timestampNumber).slice(6);
+      return clearedName + username + randomString + pieceOfTimestamp;
     }
   }
 })();
