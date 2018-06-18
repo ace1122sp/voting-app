@@ -3,7 +3,6 @@ import { Redirect } from 'react-router-dom';
 import { validator } from '../util/validator';
 import { generator } from '../util/generator';
 
-// after pool is creted React Router needs to redirect to newly created pool
 class CreatePool extends Component {
   constructor(props) {
     super(props);
@@ -71,6 +70,10 @@ class CreatePool extends Component {
     this.setState({ options: [...updatedOptions] });
   }
 
+  goBack = () => {
+    this.props.history.goBack();
+  }
+
   handleSubmit = () => {
 
     // Validate pool
@@ -99,8 +102,8 @@ class CreatePool extends Component {
       this.props.addOwnPoolToProfile_f(this.props.creatorName, id);
       this.setState({ options: [], name: '', redirect: true });
 
-      // need to dispatch action to add id of a pool to active user createdPools prop
       alert(`Pool "${trimmedPoolName}" Created`);
+      this.goBack();
     } else {
       alert('Pool must have a name at least three letters long and there must be at least two options for which you can vote!');
     }

@@ -53,7 +53,6 @@ class Profile extends Component {
             <b>total pools</b><br />
             <span>{this.props.poolsCreated.length}</span>
           </div><br />
-          <a href='#'>settings</a>
         </aside>
         <main>
           <nav>

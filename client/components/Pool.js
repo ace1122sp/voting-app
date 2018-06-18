@@ -81,7 +81,6 @@ class Pool extends Component {
     let deleteButton;
     const deletePool = <button onClick={this.handlePoolDelete}>delete pool</button>;
     this.props.username == this.props.creator ? deleteButton = deletePool : deleteButton = null;
-    console.log(this.props);
     return (
       <main>
         <div>
