@@ -11,7 +11,7 @@ const initState = {
     '03a': {
       id: '03a',
       name: 'JavaScript or PHP',
-      options: [{ id: 0, option: 'JavaScript', votes: 130 }, { id: 1, option: 'PHP', votes: 101 }],
+      options: [{ id: 0, value: 'JavaScript', votes: 130 }, { id: 1, value: 'PHP', votes: 101 }],
       dateCreated: '27-5-18',
       creator: '439r53fsgj9',
       followers: ['3r2fd', 'asdfsafd4', '2f34rf4e'],
@@ -24,7 +24,7 @@ const initState = {
     '01a': {
       id: '01a',
       name: 'Obi-Wan or Luke Skywalker',
-      options : [{ id: 0, option: 'Obi-Wan Kenobi', votes: 10 }, { id: 1, option: 'Luke Skywalker', votes: 11 }],
+      options : [{ id: 0, value: 'Obi-Wan Kenobi', votes: 10 }, { id: 1, value: 'Luke Skywalker', votes: 11 }],
       dateCreated: '27-5-18',
       creator: '439r53j9',
       followers: ['3rfd', 'asdfsafd433', 'f34rf4e'],
@@ -37,7 +37,7 @@ const initState = {
     '02a': {
       id: '02a',
       name: 'Star Wars or Star Trek',
-      options: [{ id: 0, option: 'Star Wars', votes: 113 }, { id: 1, option: 'Star Trek', votes: 211 }],
+      options: [{ id: 0, value: 'Star Wars', votes: 113 }, { id: 1, value: 'Star Trek', votes: 211 }],
       dateCreated: '27-5-18',
       creator: '4393g3j9',
       followers: ['3rasfd', 'afsafd433', 'f34rasw'],

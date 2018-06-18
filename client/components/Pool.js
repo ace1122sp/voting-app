@@ -3,18 +3,18 @@ import { validator } from '../util/validator';
 
 const showResults = resultsArray => {
   return resultsArray.map(option =>
-    <div key={option.votes+option.option}>
-      <strong>{option.option}: </strong>
+    <div key={option.id}>
+      <strong>{option.value}: </strong>
       <span>{option.votes}</span>
     </div>
   );
 }
 
-const getOptions = (optionsArray, name) => {
+const getOptions = optionsArray => {
   return optionsArray.map((option, index) =>
-    <React.Fragment key={option.option}>
-      <input type='radio' id={`vote-option-${index}`} name={name} value={option.option} />
-      <label htmlFor={`vote-option-${index}`}>{option.option}</label><br />
+    <React.Fragment key={option.value}>
+      <input type='radio' id={`vote-option-${index}`} name={option.value} value={option.id} />
+      <label htmlFor={`vote-option-${index}`}>{option.value}</label><br />
     </React.Fragment>
   )
 };
@@ -35,12 +35,14 @@ class Pool extends Component {
     e.preventDefault();
 
     // Validate option
-    const options = this.props.options.map(el => el.option);
+    const options = this.props.options.map(el => el.value);
     const validOption = validator.trimEverything(this.state.newOption);
     const uniqueOption = validator.isUnique(validOption, options);
 
     if (validOption && uniqueOption) {
-      this.props.addVotingOption_f(this.props.poolId, validOption);
+      const formatedId = validOption.split(' ').join('-');
+      const option = { id: formatedId, value: validOption };
+      this.props.addVotingOption_f(this.props.poolId, option);
       this.setState({ newOption: '' });
     } else {
       alert('New option can\'t be an empty string and it can\'t match some of the existing options.');

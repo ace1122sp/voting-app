@@ -38,8 +38,12 @@ class CreatePool extends Component {
 
       // Init
       const formatedId = validOption.split(' ').join('-');
+      const option = {
+        id: formatedId,
+        value: validOption
+      };
       const optionsContainer = document.getElementById('poolOptions');
-      const updatedOptions = [...this.state.options, validOption];
+      const updatedOptions = [...this.state.options, option];
 
       // Create elements
       const div = document.createElement('div');
@@ -83,8 +87,9 @@ class CreatePool extends Component {
     if(validPool) {
       const poolOptions = {};
       this.state.options.forEach( option => {
-        poolOptions[option] = {
-          option,
+        poolOptions[option.id] = {
+          id: option.id,
+          value: option.value,
           votes: 0
         }
       });

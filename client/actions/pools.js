@@ -1,4 +1,4 @@
-import { CREATE_POOL, ADD_VOTE, ADD_NEW_VOTING_OPTION, ADD_FOLLOWER, REMOVE_FOLLOWER, DELETE_POOL } from '../constants';
+import { CREATE_POOL, ADD_VOTE, ADD_NEW_VOTING_OPTION, ADD_FOLLOWER, REMOVE_FOLLOWER, DELETE_POOL, REMOVE_POOL_OPTION } from '../constants';
 
 export const createPool = pool => {
   return {
@@ -7,11 +7,11 @@ export const createPool = pool => {
   }
 }
 
-export const vote = (pool, option) => {
+export const vote = (pool, optionId) => {
   return {
     type: ADD_VOTE,
     pool,
-    option
+    optionId
   }
 }
 
@@ -45,3 +45,11 @@ export const deletePool = poolId => {
     poolId
   }
 }
+
+// export const removePoolOption = (poolId, option) => {
+//   return {
+//     type: REMOVE_POOL_OPTION,
+//     poolId,
+//     option
+//   }
+// }

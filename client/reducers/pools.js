@@ -1,4 +1,4 @@
-import { CREATE_POOL, ADD_VOTE, ADD_NEW_VOTING_OPTION, ADD_FOLLOWER, REMOVE_FOLLOWER, DELETE_POOL } from '../constants';
+import { CREATE_POOL, ADD_VOTE, ADD_NEW_VOTING_OPTION, ADD_FOLLOWER, REMOVE_FOLLOWER, DELETE_POOL, REMOVE_POOL_OPTION } from '../constants';
 
 export const pools = (state = {}, action) => {
   let pool, optionId, option, updatedFollowers, updatedPool, updatedPools;
@@ -16,16 +16,12 @@ export const pools = (state = {}, action) => {
 
     case ADD_VOTE:
       pool = Object.assign({}, state[action.pool]);
-      pool.options[action.option].votes += 1;
+      pool.options[action.optionId].votes += 1;
       return Object.assign({}, state, {[action.pool]: pool});
 
     case ADD_NEW_VOTING_OPTION:
       pool = Object.assign({}, state[action.pool]);
-      option = {
-        option: action.option,
-        votes: 0
-      };
-      pool.options[action.option] = option;
+      pool.options[action.option.id] = Object.assign({ id: action.option.id, value: action.option.value, votes: 0 });
       return Object.assign({}, state, {[action.pool]: pool});
 
     case ADD_FOLLOWER:
@@ -42,6 +38,11 @@ export const pools = (state = {}, action) => {
       updatedPools = Object.assign({}, state);
       delete updatedPools[action.poolId];
       return updatedPools;
+
+    // case REMOVE_POOL_OPTION:
+    //   pool = Object.assign({}, state[action.poolId]);
+    //   delete pool.options[action.option];
+    //   return Object.assign({}, state, { [action.poolId]: pool });
 
     default:
       return state;
