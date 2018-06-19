@@ -7,7 +7,7 @@ const mapStateToProps = state => {
 
   console.log(state);
   return {
-    pools: {...state.pools},
+    pools: state.pools,
     poolToDelete: state.poolToDelete
   }
 }

@@ -3,24 +3,16 @@ import Pool from '../components/Pool';
 import { vote, addVotingOption, addFollower, removeFollower, deletePool, removePoolOption } from '../actions/pools';
 import { followPool, unfollowPool } from '../actions/user';
 import { schedulePoolForDelete } from '../actions/scheduleForDelete';
+import { general } from '../util/general';
 
 const mapStateToProps = (state, ownProps) => {
 
   // based on :pool_id you need to provide pool's info
   // atm you don't need to send followers, just maybe its number,
   // just votes, but not info about voters
-
   const poolId = ownProps.match.params.pool_id;
-
-  let totalVotes = 0
-  const optionsKeys = Object.keys(state.pools[poolId].options);
-  const options = [];
-
-  optionsKeys.forEach(key => {
-    totalVotes += state.pools[poolId].options[key].votes;
-    options.push(state.pools[poolId].options[key]);
-  });
-
+  const options = general.getArrOfOptions(state.pools[poolId].options);
+  const totalVotes = general.getTotalVotes(state.pools[poolId].options);
   const isFollowedByActiveUser = state.pools[poolId].followers.some(follower => follower == state.activeUser) ? 'unfollow' : 'follow';
 
   return {

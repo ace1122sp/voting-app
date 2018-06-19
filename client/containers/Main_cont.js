@@ -5,13 +5,10 @@ import Main from '../components/Main';
 const mapStateToProps = state => {
   let userSignedIn;
   state.activeUser ? userSignedIn = true : userSignedIn = false;
+
   return {
     userSignedIn
   }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {}
 }
 
 const Main_cont = withRouter(connect(mapStateToProps, null)(Main));
