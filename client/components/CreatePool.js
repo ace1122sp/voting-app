@@ -92,8 +92,8 @@ class CreatePool extends Component {
           votes: 0
         }
       });
-      const timestamp = Date.now();
-      const id = validator.generateId(this.state.name, this.props.creatorName, timestamp);
+
+      const id = validator.generateId(this.state.name, this.props.creatorName);
       const createdPool = {
         name: this.state.name,
         options: poolOptions,
