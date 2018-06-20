@@ -1,21 +1,6 @@
 import React, { Component } from 'react';
 import PoolCard from './PoolCard';
-
-const combineArraysOfObjectsIntoArrOfUniqueObjects = (...args) => {
-  const allObjects = {};
-  const uniqueResults = [];
-  args.forEach(arg => {
-    arg.forEach(obj => {
-      allObjects[obj.id] = { id: obj.id, name: obj.name }
-    });
-  });
-
-  for (let obj in allObjects) {
-    uniqueResults.push(allObjects[obj]);
-  }
-
-  return uniqueResults;
-}
+import { general } from '../util/general';
 
 class Profile extends Component {
   constructor(props) {
@@ -39,9 +24,10 @@ class Profile extends Component {
 
   render() {
     let poolsSelection;
-    let allPools = combineArraysOfObjectsIntoArrOfUniqueObjects(this.props.poolsCreated, this.props.poolsFollowing);
+    let allPools = general.getUniqueObjectsArray(this.props.poolsCreated, this.props.poolsFollowing);
     this.state.poolsToShow == 'all' ? poolsSelection = allPools : this.state.poolsToShow == 'own' ? poolsSelection = this.props.poolsCreated : poolsSelection = this.props.poolsFollowing;
     let pools = poolsSelection.map(pool => <PoolCard key={pool.id} id={pool.id} name={pool.name} />);
+
     return (
       <div>
         <aside>

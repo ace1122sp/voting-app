@@ -15,8 +15,8 @@ class Pool extends Component {
     if (this.state.creatorUser && this.props.options.length > 2) this.props.removePoolOption_f(this.props.poolId, e.target.value);
   }
 
-  getOptions = (optionsArray, name) => {
-    const options = optionsArray.map((option, index) =>
+  getOptions = (optionsArray, name) =>
+    optionsArray.map((option, index) =>
       <React.Fragment key={option.value}>
         <input type='radio' id={`vote-option-${index}`} name={name} value={option.id} />
         <label htmlFor={`vote-option-${index}`}>{option.value}</label>
@@ -25,17 +25,13 @@ class Pool extends Component {
       </React.Fragment>
     );
 
-    return options;
-  };
-
-  showResults = resultsArray => {
-    return resultsArray.map(option =>
+  showResults = resultsArray =>
+    resultsArray.map(option =>
       <div key={option.id}>
         <strong>{option.value}: </strong>
         <span>{option.votes}</span>
       </div>
     );
-  }
 
   handleChangeForNewOption = e => {
     this.setState({ newOption: e.target.value });
@@ -52,6 +48,7 @@ class Pool extends Component {
     if (validOption && uniqueOption) {
       const formatedId = validOption.split(' ').join('-');
       const option = { id: formatedId, value: validOption };
+
       this.props.addVotingOption_f(this.props.poolId, option);
       this.setState({ newOption: '' });
     } else {
@@ -60,11 +57,11 @@ class Pool extends Component {
   }
 
   handleVoting = () => {
-    let votedOption;
     const radioInputs = document.querySelectorAll("input[type='radio']");
+
     radioInputs.forEach(input => {
       if (input.checked) {
-        votedOption = input.value;
+        let votedOption = input.value;
         this.props.vote_f(this.props.poolId, votedOption);
       }
     });
@@ -93,6 +90,7 @@ class Pool extends Component {
     let deleteButton;
     const deletePool = <button onClick={this.handlePoolDelete}>delete pool</button>;
     this.props.username == this.props.creator ? deleteButton = deletePool : deleteButton = null;
+
     return (
       <main>
         <div>

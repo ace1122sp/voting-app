@@ -1,13 +1,13 @@
 import React from 'react';
 import PoolCard from './PoolCard';
+import { general } from '../util/general';
 
 const World = props => {
-  const poolsArr = [];
   if (props.poolToDelete) props.deletePool_f(props.poolToDelete);
-  for (let pool in props.pools) {
-    poolsArr.push(props.pools[pool]);
-  }
+
+  const poolsArr = general.getPropsInArray(props.pools);
   const pools = poolsArr.map(pool => <PoolCard key={pool.id} id={pool.id} name={pool.name} />);
+
   return (
     <div>
       <ul>

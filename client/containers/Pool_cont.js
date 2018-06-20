@@ -11,7 +11,7 @@ const mapStateToProps = (state, ownProps) => {
   // atm you don't need to send followers, just maybe its number,
   // just votes, but not info about voters
   const poolId = ownProps.match.params.pool_id;
-  const options = general.getArrOfOptions(state.pools[poolId].options);
+  const options = general.getPropsInArray(state.pools[poolId].options);
   const totalVotes = general.getTotalVotes(state.pools[poolId].options);
   const isFollowedByActiveUser = state.pools[poolId].followers.some(follower => follower == state.activeUser) ? 'unfollow' : 'follow';
 

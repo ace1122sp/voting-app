@@ -8,18 +8,17 @@ class SignIn extends Component {
       username: '',
       password: ''
     };
-
   }
 
-  handleChangeEmail = (e) => {
+  handleChangeEmail = e => {
     this.setState({ username: e.target.value });
   }
 
-  handleChangePassword = (e) => {
+  handleChangePassword = e => {
     this.setState({ password: e.target.value });
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
     const username = this.state.username;
     const password = this.state.password;
@@ -38,9 +37,7 @@ class SignIn extends Component {
       }
     } else {
       alert('Username or password are incorrect!');
-      // this.props.users.hasOwnProperty(username); ??????????
     }
-
   }
 
   render() {

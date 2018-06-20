@@ -18,37 +18,32 @@ class SignUp extends Component {
     if (this.state.redirect) return <Redirect to='/' />
   }
 
-  handleChangeEmail = (e) => {
-    let cleanedEmail = validator.removeSpaces(e.target.value);
-    this.setState({ email: cleanedEmail });
+  handleChangeEmail = e => {
+    this.setState({ email: validator.removeSpaces(e.target.value) });
   }
 
-  handleChangeUsername = (e) => {
-    let cleanedUsername = validator.removeSpaces(e.target.value);
-    this.setState({ username: cleanedUsername });
+  handleChangeUsername = e => {
+    this.setState({ username: validator.removeSpaces(e.target.value) });
   }
 
-  handleChangePassword = (e) => {
+  handleChangePassword = e => {
     this.setState({ password: e.target.value })
   }
 
-  handleChangePasswordAgain = (e) => {
+  handleChangePasswordAgain = e => {
     this.setState({ passwordAgain: e.target.value });
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
 
     // Password validation
     if (this.state.password === this.state.passwordAgain && this.state.password.length > 3) {
 
       // Init validators
-      let usernameUnique = validator.isUnique(this.state.username, this.props.users);
-      let usernameLongEnough;
-      let emailValid;
-
-      this.state.username.length > 3 ? usernameLongEnough = true : usernameLongEnough = false;
-      this.state.email.length > 9 ? emailValid = true : emailValid = false;
+      const usernameUnique = validator.isUnique(this.state.username, this.props.users);
+      const usernameLongEnough = this.state.username.length > 3;
+      const emailValid = this.state.email.length > 9;
 
       // Username & email validation
       if (usernameUnique && usernameLongEnough && emailValid) {

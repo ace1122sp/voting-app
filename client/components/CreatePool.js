@@ -17,15 +17,15 @@ class CreatePool extends Component {
     if (this.state.redirect) return <Redirect to='/' />;
   }
 
-  handlePoolNameChange = (e) => {
+  handlePoolNameChange = e => {
     this.setState({ name: e.target.value });
   }
 
-  handleOptionChange = (e) => {
+  handleOptionChange = e => {
     this.setState({ toAddOption: e.target.value });
   }
 
-  addOption = (e) => {
+  addOption = e => {
     e.preventDefault();
 
     // Validate options
@@ -64,7 +64,7 @@ class CreatePool extends Component {
     }
   }
 
-  deleteOption = (e) => {
+  deleteOption = e => {
     const formatedId = e.target.parentNode.id.split(' ').join('-');
     const name = e.target.parentNode.attributes['data-name'].value;
     const updatedOptions = this.state.options.filter(option => option != name);
@@ -99,7 +99,7 @@ class CreatePool extends Component {
         options: poolOptions,
         dateCreated: Date(),
         creator: this.props.creatorName,
-        id: id
+        id
       };
 
       this.props.createPool_f(createdPool);

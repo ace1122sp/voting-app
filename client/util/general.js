@@ -12,14 +12,14 @@ export const general = (() => {
       return usernames;
     },
 
-    getArrOfOptions: obj => {
-      const options = [];
+    getPropsInArray: obj => {
+      const props = [];
       for (let key in obj) {
-        let option = obj[key];
-        options.push(option);
+        let prop = obj[key];
+        props.push(prop);
       }
 
-      return options;
+      return props;
     },
 
     getTotalVotes: obj => {
@@ -29,6 +29,23 @@ export const general = (() => {
       }
 
       return totalVotes;
-    }
+    },
+
+    getUniqueObjectsArray: (...args) => {
+      const allObjects = {};
+      const uniqueResults = [];
+
+      args.forEach(arg => {
+        arg.forEach(obj => {
+          allObjects[obj.id] = { id: obj.id, name: obj.name }
+        });
+      });
+
+      for (let obj in allObjects) {
+        uniqueResults.push(allObjects[obj]);
+      }
+
+      return uniqueResults;
+   }
   }
 })();
