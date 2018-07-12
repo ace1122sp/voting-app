@@ -10,6 +10,7 @@ const mapStateToProps = (state, ownProps) => {
   // based on :pool_id you need to provide pool's info
   // atm you don't need to send followers, just maybe its number,
   // just votes, but not info about voters
+
   const poolId = ownProps.match.params.pool_id;
   const options = general.getPropsInArray(state.pools[poolId].options);
   const totalVotes = general.getTotalVotes(state.pools[poolId].options);

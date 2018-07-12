@@ -1,12 +1,14 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-
-const PUBLIC = path.resolve('voting-app', '../dist/');
-
-const app = express();
+const router = require('./routes');
 
 // Initialize
+const PUBLIC = path.resolve('voting-app', '../dist/');
+const PORT = process.env.PORT || 3000;
+
+const app = express();
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 const jsonParser = bodyParser.json();
 
@@ -16,11 +18,12 @@ app.use(jsonParser);
 app.use(express.static(PUBLIC));
 
 // Routes
-app.get('/', (req, res) => {
+app.use('/api/', router);
+app.get('*', (req, res) => {
   res.sendFile(path.join(PUBLIC, 'index.html'));
 });
 
 // Boot up the server
-app.listen('3000', () => {
-  console.log('server is listening at port 3000');
+app.listen(PORT, () => {
+  console.log('server is listening at port ' + PORT);
 });
