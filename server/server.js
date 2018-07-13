@@ -24,8 +24,8 @@ mongoose.connect(MONGO_URL)
   });
 
 // Add Middlewares
-app.use(urlencodedParser);
 app.use(jsonParser);
+app.use(urlencodedParser);
 app.use(express.static(PUBLIC));
 
 // Routes

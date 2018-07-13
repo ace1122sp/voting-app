@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const PoolCardSchema = new Schema({
   poolId: {
-    type: String,
+    type: String, // maybe to change to Schema.Types.ObjectId
     required: true
   }, 
   poolName: {
