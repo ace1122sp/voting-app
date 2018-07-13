@@ -1,4 +1,4 @@
-const config = {
+module.exports = {
   app: {
     port: 3000
   },
@@ -7,4 +7,8 @@ const config = {
     port: 27017,
     name: 'voting-app-db'
   }
-}
+};
+
+
+
+// next: write middleware controllers
