@@ -1,9 +1,10 @@
 const express = require('express');
 const usersRouter = express.Router();
+const controllers = require('../controllers/userControllers');
 
 usersRouter.route('/:userId')
-  .get() // get user info
-  .put() // change password
-  .delete() // delete user
+  .get(controllers.getUser) // get user info
+  .put(controllers.updatePassword) // change password
+  .delete(controllers.deleteUser); // delete user
 
 module.exports = usersRouter;
