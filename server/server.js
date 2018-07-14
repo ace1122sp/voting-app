@@ -5,6 +5,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const router = require('./routes');
 const mongoose = require('mongoose');
+const morgan = require('morgan');
 
 // Initialize
 const PUBLIC = path.resolve('voting-app', '../dist/');
@@ -27,6 +28,7 @@ mongoose.connect(MONGO_URL)
 app.use(jsonParser);
 app.use(urlencodedParser);
 app.use(express.static(PUBLIC));
+app.use(morgan('dev'));
 
 // Routes
 app.use('/api/', router);
