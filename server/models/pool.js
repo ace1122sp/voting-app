@@ -20,8 +20,8 @@ const PoolSchema = new Schema({
     trim: true
   },
   followers: {
-    type: [String],
-    default: []
+    type: Schema.Types.Mixed,
+    default: {}
   },
   options: {
     type: Schema.Types.Mixed

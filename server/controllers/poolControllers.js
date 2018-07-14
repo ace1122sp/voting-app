@@ -7,9 +7,9 @@ module.exports = {
     Pool.find({})
       .limit(10)
       .select('_id name')
-      .exec((error, doc) => {
-        if (error) {
-          console.error(error.message);
+      .exec((err, doc) => {
+        if (err) {
+          console.error(err.message);
           return res.sendStatus(500); // temporary solution
         } else {
           return res.json(doc);
@@ -35,9 +35,9 @@ module.exports = {
   },
   getPool: (req, res) => {
     const id = req.params.poolId;
-    Pool.findById(id, (error, doc) => {
-      if (error) {
-        console.error(error.message);
+    Pool.findById(id, (err, doc) => {
+      if (err) {
+        console.error(err.message);
         return res.sendStatus(500); // this is temporary handled
       } else {
         return res.json(doc);
@@ -46,9 +46,9 @@ module.exports = {
   },
   deletePool: (req, res) => {
     const id = req.params.poolId;
-    Pool.findByIdAndRemove(id, (error, doc) => {
-      if (error) {
-        console.error(error.message);
+    Pool.findByIdAndRemove(id, (err, doc) => {
+      if (err) {
+        console.error(err.message);
         return res.sendStatus(500); // this is temporary handled
       } else {
         console.log(`successfuly deleted pool: ${id}`);
@@ -56,9 +56,73 @@ module.exports = {
       }
     });
   },
-  vote: (req, res) => {},
-  followPool: (req, res) => {},
-  unfollowPool: (req, res) => {},
+  vote: (req, res) => {
+    const id = req.params.poolId;
+    const option = [req.body.option];
+
+    Pool.findById(id, (err, doc) => {
+      if (err) {
+        console.error(err.message);
+        return res.sendStatus(500);
+      } else {
+        let updatedOption = doc.options[option];
+        updatedOption.votes++;
+        let updatedOptions = Object.assign({}, doc.options, { [option]: updatedOption });
+
+        doc.update({ $set: { options: updatedOptions } }, (err, doc) => {
+          if (err) {
+            console.error(err.message);
+            return res.sendStatus(500);
+          } else {
+            return res.sendStatus(200);
+          }
+        });
+      }
+    });
+  },
+  followPool: (req, res) => {
+    const poolId = req.params.poolId;
+    const followerId = req.body.followerId;
+
+    Pool.findById(poolId, (err, doc) => {
+      if (err) {
+        console.error(err.message); 
+        return res.sendStatus(500); // temp handle
+      } else {
+        const updatedFollowers = Object.assign({}, doc.followers, { [followerId]: true });
+        doc.update({ $set: { followers: updatedFollowers } }, (err, doc) => {
+          if (err) {
+            console.error(err.message);
+            return res.sendStatus(500); // temp handle
+          } else {
+            return res.json(doc);
+          } 
+        });
+      }
+    });
+  },
+  unfollowPool: (req, res) => {
+    const poolId = req.params.poolId;
+    const followerId = req.params.followerId;
+
+    Pool.findById(poolId, (err, doc) => {
+      if (err) {
+        console.error(err.message);
+        return res.sendStatus(500); // temp handle
+      } else {
+        const updatedFollowers = Object.assign({}, doc.followers);
+        delete updatedFollowers[followerId];
+        doc.update({ $set: { followers: updatedFollowers } }, (err, doc) => {
+          if (err) {
+            console.error(err.message);
+            return res.sendStatus(500); // temp handle
+          } else {
+            return res.json(doc);
+          }
+        });
+      }
+    });
+  },
   addOption: (req, res) => {},
   removeOption: (req, res) => {}
 }
