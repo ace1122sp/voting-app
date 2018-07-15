@@ -123,6 +123,51 @@ module.exports = {
       }
     });
   },
-  addOption: (req, res) => {},
-  removeOption: (req, res) => {}
+  addOption: (req, res) => {
+    const id = req.params.poolId;
+    const option = {
+      id: req.body.option.id,
+      value: req.body.option.value,
+      votes: req.body.option.votes
+    };
+
+    Pool.findById(id, (err, doc) => {
+      if (err) {
+        console.error(err.message);
+        return res.sendStatus(500);
+      } else {
+        let updatedOptions = Object.assign({}, doc.options, { [option.id]: option });
+        doc.update({ $set: { options: updatedOptions } }, (err, doc) => {
+          if (err) {
+            console.error(err.message);
+            return res.sendStatus(500);
+          } else {
+            return res.json(doc);
+          }
+        });
+      }
+    });
+  },
+  removeOption: (req, res) => {
+    const poolId = req.params.poolId;
+    const optionId = req.params.optionId;
+
+    Pool.findById(poolId, (err, doc) => {
+      if (err) {
+        console.error(err.message);
+        return res.sendStatus(500);
+      } else {
+        let updatedOptions = Object.assign({}, doc.options);
+        delete updatedOptions[optionId];
+        doc.update({ $set: { options: updatedOptions } }, (err, doc) => {
+          if (err) {
+            console.error(err.message);
+            return res.sendStatus(500);
+          } else {
+            return res.json(doc);
+          }
+        });
+      }
+    });
+  }
 }
