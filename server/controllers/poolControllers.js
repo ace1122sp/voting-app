@@ -2,6 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const Pool = require('../models/pool');
 
+// write validation module
+// validator.forOptions .
+
 module.exports = {
   getPools: (req, res) => {
     Pool.find({})
@@ -19,13 +22,14 @@ module.exports = {
   createPool: (req, res) => {
     const data = req.body.pool;
     let pool = new Pool({
-      name: data.name,
-      creator: data.creator,
+      name: JSON.stringify(data.name),
+      creator: JSON.stringify(data.creator),
       options: data.options  
     });
+    // only perform if pool valid
     pool.save()
       .then(doc => {
-        console.log(`requested pool ${doc.name}`);
+        console.log(`pool created`);
         return res.sendStatus(200);
       })
       .catch(err => {
@@ -34,7 +38,7 @@ module.exports = {
       });
   },
   getPool: (req, res) => {
-    const id = req.params.poolId;
+    const id = JSON.stringify(req.params.poolId);
     Pool.findById(id, (err, doc) => {
       if (err) {
         console.error(err.message);
@@ -45,7 +49,7 @@ module.exports = {
     });
   },
   deletePool: (req, res) => {
-    const id = req.params.poolId;
+    const id = JSON.stringify(req.params.poolId);
     Pool.findByIdAndRemove(id, (err, doc) => {
       if (err) {
         console.error(err.message);
@@ -57,8 +61,8 @@ module.exports = {
     });
   },
   vote: (req, res) => {
-    const id = req.params.poolId;
-    const option = [req.body.option];
+    const id = JSON.stringify(req.params.poolId);
+    const option = [req.body.option]; // what type is this, need to validate
 
     Pool.findById(id, (err, doc) => {
       if (err) {
@@ -81,8 +85,8 @@ module.exports = {
     });
   },
   followPool: (req, res) => {
-    const poolId = req.params.poolId;
-    const followerId = req.body.followerId;
+    const poolId = JSON.stringify(req.params.poolId);
+    const followerId = JSON.stringify(req.body.followerId);
 
     Pool.findById(poolId, (err, doc) => {
       if (err) {
@@ -102,8 +106,8 @@ module.exports = {
     });
   },
   unfollowPool: (req, res) => {
-    const poolId = req.params.poolId;
-    const followerId = req.params.followerId;
+    const poolId = JSON.stringify(req.params.poolId);
+    const followerId = JSON.stringify(req.params.followerId);
 
     Pool.findById(poolId, (err, doc) => {
       if (err) {
@@ -124,8 +128,8 @@ module.exports = {
     });
   },
   addOption: (req, res) => {
-    const id = req.params.poolId;
-    const option = {
+    const id = JSON.stringify(req.params.poolId);
+    const option = { // need to validate option
       id: req.body.option.id,
       value: req.body.option.value,
       votes: req.body.option.votes
@@ -149,8 +153,8 @@ module.exports = {
     });
   },
   removeOption: (req, res) => {
-    const poolId = req.params.poolId;
-    const optionId = req.params.optionId;
+    const poolId = JSON.stringify(req.params.poolId);
+    const optionId = JSON.stringify(req.params.optionId);
 
     Pool.findById(poolId, (err, doc) => {
       if (err) {
