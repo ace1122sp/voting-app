@@ -69,9 +69,6 @@ module.exports = {
         console.error(err.message);
         return res.sendStatus(500);
       } else {
-        // let updatedOption = doc.options[option];
-        // updatedOption.votes++;
-        // let updatedOptions = Object.assign({}, doc.options, { [option]: updatedOption });
         let updatedOptions = [...doc.options];
         updatedOptions.map(option => {
           if (option.id == optionId) option.votes++;
@@ -137,7 +134,6 @@ module.exports = {
     const option = { // need to validate option
       _id: req.body.option.id,
       value: req.body.option.value,
-      // votes: req.body.option.votes
     };
 
     Pool.findById(id, (err, doc) => {
@@ -145,7 +141,6 @@ module.exports = {
         console.error(err.message);
         return res.sendStatus(500);
       } else {
-        // let updatedOptions = Object.assign({}, doc.options, { [option.id]: option });
         doc.update({ $push: { options: option } }, (err, doc) => {
           if (err) {
             console.error(err.message);
@@ -166,8 +161,6 @@ module.exports = {
         console.error(err.message);
         return res.sendStatus(500);
       } else {
-        // let updatedOptions = Object.assign({}, doc.options);
-        // delete updatedOptions[optionId];
         let updatedOptions = doc.options.filter(option => option.id !== optionId);
         doc.update({ $set: { options: updatedOptions } }, (err, doc) => {
           if (err) {
