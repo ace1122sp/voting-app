@@ -1,6 +1,19 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const OptionSchema = new Schema({
+  _id: {
+    type: Number,
+  },
+  value: {
+    type: String
+  },
+  votes: {
+    type: Number,
+    default: 0
+  }
+});
+
 const PoolSchema = new Schema({
   name: {
     type: String,
@@ -24,7 +37,7 @@ const PoolSchema = new Schema({
     default: {}
   },
   options: {
-    type: Schema.Types.Mixed
+    type: [OptionSchema]
   }
 });
 

@@ -3,25 +3,25 @@ const poolsRouter = express.Router();
 const controllers = require('../controllers/poolControllers');
 
 poolsRouter.route('/')
-  .get(controllers.getPools) // return pool cards
-  .post(controllers.createPool) // create new pool 
+  .get(controllers.getPools) 
+  .post(controllers.createPool);
 
 poolsRouter.route('/:poolId')
-  .get(controllers.getPool) // get pool
-  .delete(controllers.deletePool) // delete pool
+  .get(controllers.getPool) 
+  .delete(controllers.deletePool);
   
-poolsRouter.patch('/:poolId/votes', controllers.vote); // update votes
+poolsRouter.patch('/:poolId/votes', controllers.vote);
 
 poolsRouter.route('/:poolId/followers')
-  .put(controllers.followPool); // add new follower
+  .put(controllers.followPool); 
 
 poolsRouter.route('/:poolId/followers/:followerId')
-  .delete(controllers.unfollowPool); // remove follower
+  .delete(controllers.unfollowPool);
 
 poolsRouter.route('/:poolId/options')
-  .put(controllers.addOption); // add a new option
+  .put(controllers.addOption);
 
 poolsRouter.route('/:poolId/options/:optionId')
-  .delete(controllers.removeOption); // delete an option
+  .delete(controllers.removeOption);
 
 module.exports = poolsRouter;

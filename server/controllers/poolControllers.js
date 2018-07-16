@@ -38,7 +38,7 @@ module.exports = {
       });
   },
   getPool: (req, res) => {
-    const id = JSON.stringify(req.params.poolId);
+    const id = req.params.poolId;
     Pool.findById(id, (err, doc) => {
       if (err) {
         console.error(err.message);
@@ -49,7 +49,7 @@ module.exports = {
     });
   },
   deletePool: (req, res) => {
-    const id = JSON.stringify(req.params.poolId);
+    const id = req.params.poolId;
     Pool.findByIdAndRemove(id, (err, doc) => {
       if (err) {
         console.error(err.message);
@@ -61,17 +61,22 @@ module.exports = {
     });
   },
   vote: (req, res) => {
-    const id = JSON.stringify(req.params.poolId);
-    const option = [req.body.option]; // what type is this, need to validate
+    const id = req.params.poolId;
+    const optionId = req.body.optionId;
 
     Pool.findById(id, (err, doc) => {
       if (err) {
         console.error(err.message);
         return res.sendStatus(500);
       } else {
-        let updatedOption = doc.options[option];
-        updatedOption.votes++;
-        let updatedOptions = Object.assign({}, doc.options, { [option]: updatedOption });
+        // let updatedOption = doc.options[option];
+        // updatedOption.votes++;
+        // let updatedOptions = Object.assign({}, doc.options, { [option]: updatedOption });
+        let updatedOptions = [...doc.options];
+        updatedOptions.map(option => {
+          if (option.id == optionId) option.votes++;
+          return option;
+        });
 
         doc.update({ $set: { options: updatedOptions } }, (err, doc) => {
           if (err) {
@@ -85,7 +90,7 @@ module.exports = {
     });
   },
   followPool: (req, res) => {
-    const poolId = JSON.stringify(req.params.poolId);
+    const poolId = req.params.poolId;
     const followerId = JSON.stringify(req.body.followerId);
 
     Pool.findById(poolId, (err, doc) => {
@@ -106,8 +111,8 @@ module.exports = {
     });
   },
   unfollowPool: (req, res) => {
-    const poolId = JSON.stringify(req.params.poolId);
-    const followerId = JSON.stringify(req.params.followerId);
+    const poolId = req.params.poolId;
+    const followerId = req.params.followerId;
 
     Pool.findById(poolId, (err, doc) => {
       if (err) {
@@ -128,11 +133,11 @@ module.exports = {
     });
   },
   addOption: (req, res) => {
-    const id = JSON.stringify(req.params.poolId);
+    const id = req.params.poolId;
     const option = { // need to validate option
-      id: req.body.option.id,
+      _id: req.body.option.id,
       value: req.body.option.value,
-      votes: req.body.option.votes
+      // votes: req.body.option.votes
     };
 
     Pool.findById(id, (err, doc) => {
@@ -140,8 +145,8 @@ module.exports = {
         console.error(err.message);
         return res.sendStatus(500);
       } else {
-        let updatedOptions = Object.assign({}, doc.options, { [option.id]: option });
-        doc.update({ $set: { options: updatedOptions } }, (err, doc) => {
+        // let updatedOptions = Object.assign({}, doc.options, { [option.id]: option });
+        doc.update({ $push: { options: option } }, (err, doc) => {
           if (err) {
             console.error(err.message);
             return res.sendStatus(500);
@@ -153,16 +158,17 @@ module.exports = {
     });
   },
   removeOption: (req, res) => {
-    const poolId = JSON.stringify(req.params.poolId);
-    const optionId = JSON.stringify(req.params.optionId);
+    const poolId = req.params.poolId;
+    const optionId = req.params.optionId;
 
     Pool.findById(poolId, (err, doc) => {
       if (err) {
         console.error(err.message);
         return res.sendStatus(500);
       } else {
-        let updatedOptions = Object.assign({}, doc.options);
-        delete updatedOptions[optionId];
+        // let updatedOptions = Object.assign({}, doc.options);
+        // delete updatedOptions[optionId];
+        let updatedOptions = doc.options.filter(option => option.id !== optionId);
         doc.update({ $set: { options: updatedOptions } }, (err, doc) => {
           if (err) {
             console.error(err.message);
