@@ -1,16 +1,26 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const arrayMinSizeTest = val => val.length > 1;
+
+// write hook on pre update also to use arrayMinSizeTest
+
 const OptionSchema = new Schema({
   _id: {
     type: Number,
+    min: 1,
+    max: 20,
+    required: true
   },
   value: {
-    type: String
+    type: String,
+    max: 50,
+    required: true
   },
   votes: {
     type: Number,
-    default: 0
+    default: 0,
+    min: 0
   }
 });
 
@@ -29,6 +39,7 @@ const PoolSchema = new Schema({
   creator: {
     type: String,
     default: 'n/a',
+    min: 3,
     max: 30,
     trim: true
   },
@@ -37,7 +48,9 @@ const PoolSchema = new Schema({
     default: {}
   },
   options: {
-    type: [OptionSchema]
+    type: [OptionSchema],
+    validate: [{ validator: arrayMinSizeTest, msg: 'Pool must have minimum 2 different options.' }],
+    required: true
   }
 });
 
