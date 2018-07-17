@@ -27,7 +27,7 @@ module.exports = {
     
     const options = data.options.map(option => {
       return {
-        _id: parseInt(option._id) || '',
+        id: parseInt(option._id) || '',
         value: JSON.stringify(option.value) || ''
       };
     });
@@ -88,10 +88,10 @@ module.exports = {
       let updatedOptions = [...doc.options];
       
       updatedOptions.forEach(option => {
-        if (option._id == optionId) option.votes++;
+        if (option.id == optionId) option.votes++;
       });
       
-      doc.update({ $set: { options: updatedOptions } }, (err, doc) => {
+      doc.update({ $set: { options: updatedOptions } }, { multi: true }, (err, doc) => {
         if (err) {
           console.error(err.message);
           return res.sendStatus(500);
@@ -151,23 +151,29 @@ module.exports = {
   },
 
   addOption: (req, res) => {
-    const id = req.params.poolId;
-    const option = { // need to validate option
-      _id: req.body.option.id,
-      value: req.body.option.value,
+    const poolId = req.params.poolId;
+    const option = {
+      id: parseInt(req.body.option.id) || '',
+      value: JSON.stringify(req.body.option.value) || '',
     };
-
-    Pool.findById(id, (err, doc) => {
+    
+    if (!validator.isMongoId(poolId)) return res.sendStatus(400);
+    
+    Pool.findById(poolId, (err, doc) => {
       if (err) {
         console.error(err.message);
         return res.sendStatus(500);
       }
-      doc.update({ $push: { options: option } }, (err, doc) => {
+
+      if (doc == null) return res.sendStatus(404);
+      
+      doc.update({ $push: { options: option } }, { new: true }, (err, report) => {
         if (err) {
           console.error(err.message);
-          return res.sendStatus(500);
+          return res.sendStatus(400);
         }
-        console.log(`added option to pool ${id}`);
+        
+        console.log(`added option to pool ${poolId}`);
         res.json(doc);
       });
     });
@@ -175,7 +181,9 @@ module.exports = {
 
   removeOption: (req, res) => {
     const poolId = req.params.poolId;
-    const optionId = req.params.optionId;
+    const optionId = parseInt(req.params.optionId) || '';
+
+    if (!validator.isMongoId(poolId)) return res.sendStatus(400);
 
     Pool.findById(poolId, (err, doc) => {
       if (err) {
@@ -183,11 +191,14 @@ module.exports = {
         return res.sendStatus(500);
       }
       let updatedOptions = doc.options.filter(option => option.id !== optionId);
-      doc.update({ $set: { options: updatedOptions } }, { runValidators: true }, (err, doc) => {
+      doc.update({ $set: { options: updatedOptions } }, { runValidators: true, new: true, multi: true }, (err, report) => {
         if (err) {
           console.error(err.message);
-          return res.sendStatus(500);
+          return res.status(403).send('Pool must have minimum 2 different options.');
         }
+        
+        if (doc == null) return res.sendStatus(404);
+        
         console.log(`option removed from pool ${poolId}`);
         res.json(doc);
       });

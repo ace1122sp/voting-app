@@ -3,10 +3,8 @@ const Schema = mongoose.Schema;
 
 const arrayMinSizeTest = val => val.length > 1;
 
-// write hook on pre update also to use arrayMinSizeTest
-
 const OptionSchema = new Schema({
-  _id: {
+  id: {
     type: Number,
     min: 1,
     max: 20,
