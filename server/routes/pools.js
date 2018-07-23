@@ -14,13 +14,13 @@ const _validatorErrorResponse = (req, res, next) => {
 
 poolsRouter.route('/')
   .get(controllers.getPools) 
-  .post(validatePool, _validatorErrorResponse, controllers.createPool);
+  .post(validatePool, validateOptions, _validatorErrorResponse, controllers.createPool);
 
 poolsRouter.route('/:poolId')
   .get(validatePoolId, _validatorErrorResponse, controllers.getPool) 
   .delete(validatePoolId, _validatorErrorResponse, controllers.deletePool);
   
-poolsRouter.patch('/:poolId/votes', [validatePoolId, ...validateOptionId], _validatorErrorResponse, controllers.vote);
+poolsRouter.patch('/:poolId/votes', validatePoolId, validateOptionId, _validatorErrorResponse, controllers.vote);
 
 poolsRouter.route('/:poolId/followers')
   .put(validatePoolId, validateFollowerId, _validatorErrorResponse, _validatorErrorResponse, controllers.followPool); 
@@ -29,7 +29,7 @@ poolsRouter.route('/:poolId/followers/:followerId')
   .delete(validatePoolId, validateFollowerId, _validatorErrorResponse, controllers.unfollowPool);
 
 poolsRouter.route('/:poolId/options')
-  .put(validateOption, _validatorErrorResponse, controllers.addOption);
+  .put(validatePoolId, validateOption, _validatorErrorResponse, controllers.addOption);
 
 poolsRouter.route('/:poolId/options/:optionId')
   .delete(validatePoolId, validateOptionId, _validatorErrorResponse, controllers.removeOption);

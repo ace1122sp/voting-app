@@ -1,14 +1,3 @@
-/* --- requests ---
-0 - createPool ---> name, creator?, options
-1 - getPool ---> poolId
-2 - deletePool ---> poolId
-3 - vote ---> poolId, optionId
-4 - followPool ---> poolId, followerId
-5 - unfollowPool ---> poolId, followerId
-6 - addOption ---> poolId, option(id, value)
-7 - removeOption ---> poolId, optionId
-*/
-
 /* --- what to validate ---
 0 - name ---> string
 1 - creator ---> isMongoId
@@ -57,7 +46,7 @@ const validateOption = [
 const validateOptions = (req, res, next) => {
   if (!Array.isArray(req.body.options)) return res.sendStatus(400);
 
-  req.body.optopns = req.body.options.map(option => {
+  req.body.options = req.body.options.map(option => {
     return {
       id: parseInt(option._id) || '',
       value: JSON.stringify(option.value) || ''

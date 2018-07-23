@@ -1,8 +1,4 @@
-const validator = require('validator');
 const Pool = require('../models/pool');
-
-// write validation module
-// validator.forOptions .
 
 module.exports = {
   getPools: (req, res) => {
@@ -22,21 +18,6 @@ module.exports = {
 
     // validation
     const data = req.body;
-    // if (!data.name || !data.options) return res.sendStatus(400);
-    // if (!Array.isArray(data.options)) return res.sendStatus(400);
-    
-    // const options = data.options.map(option => {
-    //   return {
-    //     id: parseInt(option._id) || '',
-    //     value: JSON.stringify(option.value) || ''
-    //   };
-    // });
-
-    // let pool = new Pool({
-    //   name: JSON.stringify(data.name),
-    //   creator: JSON.stringify(data.creator) || 'n/a',
-    //   options
-    // });
 
     let pool = new Pool({
       name: data.name,
@@ -57,7 +38,6 @@ module.exports = {
   
   getPool: (req, res) => {
     const poolId = req.params.poolId;
-    // if (!validator.isMongoId(poolId)) return res.sendStatus(400);
 
     Pool.findById(poolId, (err, doc) => {
       if (err) {
@@ -70,7 +50,7 @@ module.exports = {
   
   deletePool: (req, res) => {
     const poolId = req.params.poolId;
-    // if (!validator.isMongoId(poolId)) return res.sendStatus(400);
+    
     Pool.findByIdAndRemove(poolId, (err, doc) => {
       if (err) {
         console.error(err.message);
@@ -81,10 +61,9 @@ module.exports = {
     });
   },
   
-  vote: (req, res) => { // validation doesnt work
+  vote: (req, res) => { 
     const poolId = req.params.poolId;
     const optionId = req.body.optionId;
-    // if (!validator.isMongoId(poolId) || !validator.isInt(optionId)) return res.sendStatus(400);
 
     Pool.findById(poolId, (err, doc) => {
       if (err) {
@@ -112,8 +91,6 @@ module.exports = {
     const poolId = req.params.poolId;
     const followerId = req.body.followerId;
 
-    // if (!validator.isMongoId(poolId) || !validator.isMongoId(followerId)) return res.sendStatus(400);
-
     Pool.findById(poolId, (err, doc) => {
       if (err) {
         console.error(err.message); 
@@ -137,8 +114,6 @@ module.exports = {
     const poolId = req.params.poolId;
     const followerId = req.params.followerId;
 
-    // if (!validator.isMongoId(poolId) || !validator.isMongoId(followerId)) return res.sendStatus(400);
-
     Pool.findById(poolId, (err, doc) => {
       if (err) {
         console.error(err.message);
@@ -159,16 +134,11 @@ module.exports = {
 
   addOption: (req, res) => {
     const poolId = req.params.poolId;
-    // const option = {
-    //   id: parseInt(req.body.id) || '',
-    //   value: JSON.stringify(req.body.value) || '',
-    // };
+
     const option = {
       id: req.body.id,
       value: req.body.value
     };
-    
-    // if (!validator.isMongoId(poolId)) return res.sendStatus(400);
     
     Pool.findById(poolId, (err, doc) => {
       if (err) {
@@ -192,10 +162,7 @@ module.exports = {
 
   removeOption: (req, res) => {
     const poolId = req.params.poolId;
-    // const optionId = parseInt(req.params.optionId) || '';
     const optionId = parseInt(req.params.optionId);
-
-    // if (!validator.isMongoId(poolId)) return res.sendStatus(400);
 
     Pool.findById(poolId, (err, doc) => {
       if (err) {
