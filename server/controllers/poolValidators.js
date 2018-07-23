@@ -66,7 +66,6 @@ const validateOptions = (req, res, next) => {
 
   next();
 }
-// write options validator
 
 module.exports = {
   validatePool, 

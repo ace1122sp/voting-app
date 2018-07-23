@@ -1,17 +1,8 @@
 const validator = require('validator');
 const Pool = require('../models/pool');
-const { validationResult } = require('express-validator/check');
 
 // write validation module
 // validator.forOptions .
-const _validatorErrorResponse = (req, res) => {
-  // use of express-validator
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(422).json({ errors: errors.array() });
-  }
-}
-
 
 module.exports = {
   getPools: (req, res) => {
