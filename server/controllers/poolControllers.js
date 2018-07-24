@@ -22,7 +22,7 @@ module.exports = {
     let pool = new Pool({
       name: data.name,
       creator: data.creator,
-      options
+      options: data.options
     });
     
     pool.save()

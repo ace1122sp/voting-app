@@ -48,7 +48,7 @@ const validateOptions = (req, res, next) => {
 
   req.body.options = req.body.options.map(option => {
     return {
-      id: parseInt(option._id) || '',
+      id: parseInt(option.id) || '',
       value: JSON.stringify(option.value) || ''
     };
   });

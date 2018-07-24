@@ -8,7 +8,3 @@ module.exports = {
     name: 'voting-app-db'
   }
 };
-
-
-
-// next: write middleware controllers

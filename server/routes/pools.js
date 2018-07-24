@@ -17,13 +17,13 @@ poolsRouter.route('/:poolId')
 poolsRouter.patch('/:poolId/votes', validatePoolId, validateOptionId, errorResponse, controllers.vote);
 
 poolsRouter.route('/:poolId/followers')
-  .put(validatePoolId, validateFollowerId, errorResponse, controllers.followPool); 
+  .patch(validatePoolId, validateFollowerId, errorResponse, controllers.followPool); 
 
 poolsRouter.route('/:poolId/followers/:followerId')
   .delete(validatePoolId, validateFollowerId, errorResponse, controllers.unfollowPool);
 
 poolsRouter.route('/:poolId/options')
-  .put(validatePoolId, validateOption, errorResponse, controllers.addOption);
+  .patch(validatePoolId, validateOption, errorResponse, controllers.addOption);
 
 poolsRouter.route('/:poolId/options/:optionId')
   .delete(validatePoolId, validateOptionId, errorResponse, controllers.removeOption);
