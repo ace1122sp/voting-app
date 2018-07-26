@@ -10,7 +10,6 @@ module.exports = {
       email: req.body.user.email
     };
 
-    // let newUser = new User({...user});
     let newUser = new User({
       username: user.username,
       email: user.email,
