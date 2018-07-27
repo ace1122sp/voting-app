@@ -6,8 +6,8 @@ usersRouter.route('/')
   .post(controllers.createUser);
 
 usersRouter.route('/:userId')
-  .get(controllers.getUser) // get user info
-  .put(controllers.updatePassword) // change password
-  .delete(controllers.deleteUser); // delete user
+  .get(controllers.getUser) 
+  .put(controllers.updatePassword)
+  .delete(controllers.deleteUser);
 
 module.exports = usersRouter;
