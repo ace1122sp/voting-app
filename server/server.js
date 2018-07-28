@@ -27,12 +27,12 @@ mongoose.connect(MONGO_URL)
     process.exit(1);
   });
 
-// passport setup
+// // passport setup
 passport.use(new LocalStrategy((username, password, done) => {
   User.findOne({ username: username }, (err, user) => {
     if (err) return done(err);
     if (!user) return done(null, false);
-    if (!user.password !== password) return done(null, false);
+    if (user.password !== password) return done(null, false);    
     return done(null, user);
   });
 }));
@@ -42,7 +42,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
-  User.findById((err, doc) => {
+  User.findById(id, (err, doc) => {
     done(null, doc);
   });
 });
@@ -73,20 +73,11 @@ const ensureAuthenticated = (req, res, next) => {
   res.redirect('/temp'); // if not authenticated
 }
 
-// temporary test auth routes
-app.route('/temp/login') 
-  .post(passport.authenticate('local', { failureRedirect: '/temp' }), (req, res) => {
-    res.redirect('/temp/profile');
-  });
-
-app.route('/temp/logout')
-  .get((req, res) => {
-    req.logout();
-    res.redirect('/temp');
-  });
-
 // temporary registration of new user
 app.route('/temp/register')
+  .get((req, res) => {
+    res.sendFile(path.resolve(__dirname, './register.html'));
+  })
   .post((req, res, next) => {
     User.findOne({ username: req.body.username }, (err, user) => {
       if (err) {
@@ -104,18 +95,33 @@ app.route('/temp/register')
           if (err) {
             res.redirect('/temp');
           } else {
-            next(null, this);
+            next(null, doc);
           }
         });
       }
-    })
-  }, passport.authenticate('local', { failureRedirect: '/temp' }), (req, res, next) => {
+    });
+  }, passport.authenticate('local', { failureRedirect: '/temp' }), (req, res) => {
     res.redirect('/temp/profile');
+  });
+
+// temporary test auth routes
+app.route('/temp/login')
+  .get((req, res) => {
+    res.sendFile(path.resolve(__dirname, './login.html'));
+  })
+  .post(passport.authenticate('local', { failureRedirect: '/temp' }), (req, res) => {
+    res.redirect('/temp/profile');
+  });
+
+app.route('/temp/logout')
+  .get((req, res) => {
+    req.logout();
+    res.redirect('/temp');
   });
 
 app.route('/temp/profile')
   .get(ensureAuthenticated, (req, res) => {
-    res.send('this is profile page');
+    res.sendFile(path.resolve(__dirname, 'profile.html'));
   });
 
 app.route('/temp')
