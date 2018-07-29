@@ -1,5 +1,3 @@
-const express = require('express');
-const mongoose = require('mongoose');
 const User = require('../models/user');
 
 module.exports = {
@@ -37,17 +35,35 @@ module.exports = {
       }
     })
   },
-  getUser: (req, res) => {
-    const id = req.params.userId;
-
-    User.findById(id, 'username createdPools followingPools', (err, doc) => {
+  registerUser: (req, res, next) => {
+    User.findOne({ username: req.body.username }, (err, user) => {
       if (err) {
-        console.error(err.message);
-        return res.sendStatus(500);
+        next(err);
+      } else if (user) {
+        return res.status(400).json({ "message": "username already taken" });
       } else {
-        return res.json(doc);
+        const newUser = new User({
+          username: req.body.username,
+          password: req.body.password,
+          email: req.body.email
+        });
+
+        newUser.save((err, doc) => {
+          if (err) {
+            return res.sendStatus(500);
+          } else {
+            next(null, doc);
+          }
+        });
       }
     });
+  },
+  logout: (req, res) => {
+    req.logout();
+    res.status(204).json({ "message": "user logged out" });
+  },
+  getUser: (req, res) => {
+    res.json(req.user);
   },
   updatePassword: (req, res) => {
     const id = req.params.userId;

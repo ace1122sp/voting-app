@@ -67,68 +67,6 @@ app.use((err, req, res, next) => {
   res.status(500).send('something broken');
 });
 
-// temporary authenticate check middleware
-const ensureAuthenticated = (req, res, next) => {
-  if (req.isAuthenticated()) return next();
-  res.redirect('/temp'); // if not authenticated
-}
-
-// temporary registration of new user
-app.route('/temp/register')
-  .get((req, res) => {
-    res.sendFile(path.resolve(__dirname, './register.html'));
-  })
-  .post((req, res, next) => {
-    User.findOne({ username: req.body.username }, (err, user) => {
-      if (err) {
-        next(err);
-      } else if (user) {
-        res.redirect('/temp');
-      } else {
-        const newUser = new User({
-          username: req.body.username,
-          password: req.body.password,
-          email: req.body.email
-        });
-
-        newUser.save((err, doc) => {
-          if (err) {
-            res.redirect('/temp');
-          } else {
-            next(null, doc);
-          }
-        });
-      }
-    });
-  }, passport.authenticate('local', { failureRedirect: '/temp' }), (req, res) => {
-    res.redirect('/temp/profile');
-  });
-
-// temporary test auth routes
-app.route('/temp/login')
-  .get((req, res) => {
-    res.sendFile(path.resolve(__dirname, './login.html'));
-  })
-  .post(passport.authenticate('local', { failureRedirect: '/temp' }), (req, res) => {
-    res.redirect('/temp/profile');
-  });
-
-app.route('/temp/logout')
-  .get((req, res) => {
-    req.logout();
-    res.redirect('/temp');
-  });
-
-app.route('/temp/profile')
-  .get(ensureAuthenticated, (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'profile.html'));
-  });
-
-app.route('/temp')
-  .get((req, res) => {
-    res.send('this is temporary root page for auth testing...');
-  });
-
 // Routes
 app.use('/api/', router);
 app.get('*', (req, res) => {
