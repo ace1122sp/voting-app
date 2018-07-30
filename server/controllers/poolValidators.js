@@ -11,10 +11,8 @@ const filter = require('express-validator/filter');
 
 // validates name and creator
 const validatePool = [
-  check.body(['name', 'creator', 'options'])
+  check.body(['name', 'options'])
     .exists(),
-  check.body('creator')
-    .isMongoId(),
   filter.sanitizeBody('name')
     .trim()
     .escape()

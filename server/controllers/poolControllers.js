@@ -15,6 +15,7 @@ module.exports = {
   },
   
   createPool: (req, res) => {
+    // you also need to update user's created pools
     const data = req.body;
 
     let pool = new Pool({
@@ -47,6 +48,7 @@ module.exports = {
   },
   
   deletePool: (req, res) => {
+    // you also need to update user's created pools 
     const poolId = req.params.poolId;
     
     Pool.findByIdAndRemove(poolId, (err, doc) => {
@@ -86,8 +88,11 @@ module.exports = {
   },
   
   followPool: (req, res) => {
+    // you also need to update user's followings
     const poolId = req.params.poolId;
-    const followerId = req.body.followerId;
+
+    // const followerId = req.body.followerId;
+    const followerId = req.user._id;
 
     Pool.findById(poolId, (err, doc) => {
       if (err) {
@@ -109,8 +114,11 @@ module.exports = {
   },
   
   unfollowPool: (req, res) => {
+    // you also need to update user's followings
+
     const poolId = req.params.poolId;
-    const followerId = req.params.followerId;
+    // const followerId = req.params.followerId;
+    const followerId = req.user._id;
 
     Pool.findById(poolId, (err, doc) => {
       if (err) {

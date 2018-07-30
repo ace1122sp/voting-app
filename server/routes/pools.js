@@ -18,10 +18,12 @@ poolsRouter.route('/:poolId')
 poolsRouter.patch('/:poolId/votes', validatePoolId, validateOptionId, errorResponse, controllers.vote);
 
 poolsRouter.route('/:poolId/followers')
-  .patch(ensureAuthenticated, validatePoolId, validateFollowerId, errorResponse, controllers.followPool); 
+  // .patch(ensureAuthenticated, validatePoolId, validateFollowerId, errorResponse, controllers.followPool); 
+  .patch(ensureAuthenticated, validatePoolId, errorResponse, controllers.followPool); 
 
 poolsRouter.route('/:poolId/followers/:followerId')
-  .delete(ensureAuthenticated, validatePoolId, validateFollowerId, errorResponse, controllers.unfollowPool);
+  // .delete(ensureAuthenticated, validatePoolId, validateFollowerId, errorResponse, controllers.unfollowPool);
+  .delete(ensureAuthenticated, validatePoolId, errorResponse, controllers.unfollowPool);
 
 poolsRouter.route('/:poolId/options')
   .patch(ensureAuthenticated, validatePoolId, validateOption, errorResponse, controllers.addOption);
