@@ -13,7 +13,7 @@ module.exports = {
           password: req.body.password,
           email: req.body.email
         });
-
+        newUser.follow();
         newUser.save((err, doc) => {
           if (err) {
             return res.sendStatus(500);
@@ -29,10 +29,15 @@ module.exports = {
     res.status(204).json({ "message": "user logged out" });
   },
   getUser: (req, res) => {
-    res.json(req.user); // filter what info you are sending
+    const user = {
+      username: req.user.username,
+      email: req.user.email,
+      createdPools: req.user.createdPools,
+      followingPools: req.user.followingPools,
+    }
+    res.json(user); 
   },
   updatePassword: (req, res) => {
-    // const id = req.params.userId;
     const id = req.user._id;
     const newPassword = req.body.newPassword;
 
@@ -53,7 +58,6 @@ module.exports = {
     });
   },
   deleteUser: (req, res) => {
-    // const id = req.params.userId;
     const id = req.user._id;
     User.findByIdAndRemove(id, (err, doc) => {
       if (err) {

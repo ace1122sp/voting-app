@@ -20,14 +20,23 @@ const UserSchema = new Schema({
     max: 50
   },
   createdPools: {
-    type: [String],
+    type: [Schema.Types.ObjectId],
     default: []
   },
   followingPools: {
-    type: [String],
+    type: [Schema.Types.ObjectId],
     default: []
   }
 });
+
+UserSchema.methods = {
+  follow: function() { // to take poolId and to update followingPools
+    
+  },
+  unfollow: function() {}, // to remove poolId from followingPools
+  addPool: function() {}, // to add poolId to createdPools
+  removePool: function() {} // to remove poolId from createdPools
+}
 
 const User = mongoose.model('User', UserSchema);
 

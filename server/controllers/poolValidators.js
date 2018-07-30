@@ -1,10 +1,8 @@
 /* --- what to validate ---
 0 - name ---> string
-1 - creator ---> isMongoId
 2 - option ---> id: number, value: string
 3 - poolId ---> isMongoId
 4 - optionId ---> number
-5 - followerId ---> isMongoId
 */
 const check = require('express-validator/check');
 const filter = require('express-validator/filter');
@@ -19,11 +17,6 @@ const validatePool = [
 ];
 const validatePoolId = [
   check.check('poolId')
-    .exists()
-    .isMongoId()
-];
-const validateFollowerId = [
-  check.check('followerId')
     .exists()
     .isMongoId()
 ];
@@ -57,7 +50,6 @@ const validateOptions = (req, res, next) => {
 module.exports = {
   validatePool, 
   validatePoolId,
-  validateFollowerId,
   validateOptionId,
   validateOption,
   validateOptions

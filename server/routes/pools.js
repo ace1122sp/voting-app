@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { validatePool, validatePoolId, validateFollowerId, validateOptionId, validateOption, validateOptions } = require('../controllers/poolValidators');
+const { validatePool, validatePoolId, validateOptionId, validateOption, validateOptions } = require('../controllers/poolValidators');
 const { ensureOwner, ensureAuthenticated } = require('../controllers/userValidators');
 const controllers = require('../controllers/poolControllers');
 const { errorResponse } = require('../controllers/errorControllers');
@@ -18,11 +18,9 @@ poolsRouter.route('/:poolId')
 poolsRouter.patch('/:poolId/votes', validatePoolId, validateOptionId, errorResponse, controllers.vote);
 
 poolsRouter.route('/:poolId/followers')
-  // .patch(ensureAuthenticated, validatePoolId, validateFollowerId, errorResponse, controllers.followPool); 
   .patch(ensureAuthenticated, validatePoolId, errorResponse, controllers.followPool); 
 
 poolsRouter.route('/:poolId/followers/:followerId')
-  // .delete(ensureAuthenticated, validatePoolId, validateFollowerId, errorResponse, controllers.unfollowPool);
   .delete(ensureAuthenticated, validatePoolId, errorResponse, controllers.unfollowPool);
 
 poolsRouter.route('/:poolId/options')
@@ -31,4 +29,4 @@ poolsRouter.route('/:poolId/options')
 poolsRouter.route('/:poolId/options/:optionId')
   .delete(ensureAuthenticated, validatePoolId, validateOptionId, errorResponse, ensureOwner, controllers.removeOption);
 
-module.exports = poolsRouter;
+  module.exports = poolsRouter;

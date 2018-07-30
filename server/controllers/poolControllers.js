@@ -2,6 +2,9 @@ const Pool = require('../models/pool');
 
 module.exports = {
   getPools: (req, res) => {
+    
+    // you'll need to think about a way how to serve sets of pools and how to implement lazy loading
+    // this method needs to be upgraded
     Pool.find({})
       .limit(10)
       .select('_id name')
@@ -43,7 +46,7 @@ module.exports = {
         console.error(err.message);
         return res.sendStatus(500);
       } 
-      res.status(200).json(doc);
+      res.status(200).json(doc); 
     });
   },
   

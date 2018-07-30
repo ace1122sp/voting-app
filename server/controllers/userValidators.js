@@ -2,7 +2,6 @@
 0 - username ---> does exist, is string
 1 - password ---> does exist, is string
 2 - email ---> does exist, is email format
-3 - userId ---> does exist, is MongoObjectId
 */
 
 const check = require('express-validator/check');
@@ -15,18 +14,17 @@ const validateNewUser = [
     .exists(),
   check.body('email')
     .isEmail(),
-  filter.sanitizeBody('username')
+  filter.sanitizeBody(['username', 'password'])
     .trim()
     .escape()
 ];
-const validateId = [
-  check.param('userId')
-    .exists()
-    .isMongoId()
-];
+
 const validatePassword = [
   check.check('newPassword')
-    .exists()
+    .exists(),
+  filter.sanitizeBody('newPassword')
+    .trim()
+    .escape()
 ];
 
 const ensureAuthenticated = (req, res, next) => {
@@ -35,7 +33,6 @@ const ensureAuthenticated = (req, res, next) => {
 }
 
 const ensureOwner = (req, res, next) => {
-  // try to figure out better approach to validate ownership
   Pool.findById(req.params.poolId, (err, doc) => {
     if (err) {
       console.error(err.message);
@@ -48,7 +45,6 @@ const ensureOwner = (req, res, next) => {
 
 module.exports = {
   validateNewUser, 
-  validateId,
   validatePassword,
   ensureAuthenticated,
   ensureOwner
