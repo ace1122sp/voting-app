@@ -23,9 +23,12 @@ usersRouter.route('/logout')
   .get(controllers.logout);
 
 usersRouter.route('/:userId')
-  .get(ensureAuthenticated, validateId, errorResponse, controllers.getUser) 
-  .put(ensureAuthenticated, validateId, validatePassword, errorResponse, controllers.updatePassword)
-  .delete(ensureAuthenticated, validateId, errorResponse, controllers.deleteUser);
+  // .get(ensureAuthenticated, validateId, errorResponse, controllers.getUser) 
+  .get(ensureAuthenticated, controllers.getUser) 
+  // .put(ensureAuthenticated, validateId, validatePassword, errorResponse, controllers.updatePassword)
+  .put(ensureAuthenticated, validatePassword, errorResponse, controllers.updatePassword)
+  // .delete(ensureAuthenticated, validateId, errorResponse, controllers.deleteUser);
+  .delete(ensureAuthenticated, controllers.deleteUser);
 
 // this is temporary handle
 usersRouter.route('/badLogin')

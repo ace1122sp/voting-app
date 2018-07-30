@@ -9,7 +9,6 @@ const poolsRouter = express.Router();
 
 poolsRouter.route('/')
   .get(controllers.getPools) 
-  // .post(ensureAuthenticated, validatePool, validateOptions, errorResponse, controllers.createPool);
   .post(ensureAuthenticated, validatePool, validateOptions, errorResponse, controllers.createPool);
 
 poolsRouter.route('/:poolId')

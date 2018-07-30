@@ -1,40 +1,6 @@
 const User = require('../models/user');
 
 module.exports = {
-  createUser: (req, res) => {
-    const user = {
-      username: req.body.username,
-      password: req.body.password,
-      email: req.body.email
-    };
-
-    let newUser = new User({
-      username: user.username,
-      email: user.email,
-      password: user.password
-    });
-    
-    User.findOne({ username: user.username }, (err, doc) => {
-      if (err) {
-        console.error(err.message);
-        return res.sendStatus(500);
-      }
-
-      if (doc === null) {
-        newUser.save()
-          .then(doc => {
-            res.status(201).json(doc);
-          })
-          .catch(err => {
-            console.error(err.message);
-            return res.sendStatus(400);
-          });
-      } else {
-        console.log(`username ${doc.username} already taken`);
-        return res.sendStatus(400);
-      }
-    })
-  },
   registerUser: (req, res, next) => {
     User.findOne({ username: req.body.username }, (err, user) => {
       if (err) {
@@ -63,10 +29,11 @@ module.exports = {
     res.status(204).json({ "message": "user logged out" });
   },
   getUser: (req, res) => {
-    res.json(req.user);
+    res.json(req.user); // filter what info you are sending
   },
   updatePassword: (req, res) => {
-    const id = req.params.userId;
+    // const id = req.params.userId;
+    const id = req.user._id;
     const newPassword = req.body.newPassword;
 
     User.findById(id, (err, doc) => {
@@ -86,7 +53,8 @@ module.exports = {
     });
   },
   deleteUser: (req, res) => {
-    const id = req.params.userId;
+    // const id = req.params.userId;
+    const id = req.user._id;
     User.findByIdAndRemove(id, (err, doc) => {
       if (err) {
         console.error(err.message);
