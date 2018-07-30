@@ -15,13 +15,11 @@ module.exports = {
   },
   
   createPool: (req, res) => {
-
-    // validation
     const data = req.body;
 
     let pool = new Pool({
       name: data.name,
-      creator: data.creator,
+      creator: req.user._id,
       options: data.options
     });
     

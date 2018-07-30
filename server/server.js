@@ -1,20 +1,22 @@
 require('dotenv').config();
 const config = require('./config');
+
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const router = require('./routes');
 const mongoose = require('mongoose');
-const User = require('./models/user');
 const morgan = require('morgan');
 const passport = require('passport');
 const session = require('express-session');
+const LocalStrategy = require('passport-local').Strategy;
+
+const router = require('./routes');
+const User = require('./models/user');
 
 // Initialize
 const PUBLIC = path.resolve('voting-app', '../dist/');
 const PORT = process.env.PORT || 3000;
 const MONGO_URL = `mongodb://${config.db.host}:${config.db.port}/voting-app`;
-const LocalStrategy = require('passport-local').Strategy;
 const app = express();
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 const jsonParser = bodyParser.json();
@@ -27,7 +29,7 @@ mongoose.connect(MONGO_URL)
     process.exit(1);
   });
 
-// // passport setup
+// passport setup
 passport.use(new LocalStrategy((username, password, done) => {
   User.findOne({ username: username }, (err, user) => {
     if (err) return done(err);

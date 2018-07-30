@@ -35,11 +35,8 @@ const PoolSchema = new Schema({
     default: Date.now
   },
   creator: {
-    type: String,
-    default: 'n/a',
-    min: 3,
-    max: 30,
-    trim: true
+    type: Schema.Types.ObjectId,
+    required: true
   },
   followers: {
     type: Schema.Types.Mixed,

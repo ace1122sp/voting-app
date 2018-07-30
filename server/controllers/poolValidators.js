@@ -13,11 +13,11 @@ const filter = require('express-validator/filter');
 const validatePool = [
   check.body(['name', 'creator', 'options'])
     .exists(),
-  filter.sanitizeBody(['name', 'creator'])
-    .trim()
-    .escape(),
   check.body('creator')
-    .isMongoId()
+    .isMongoId(),
+  filter.sanitizeBody('name')
+    .trim()
+    .escape()
 ];
 const validatePoolId = [
   check.check('poolId')
