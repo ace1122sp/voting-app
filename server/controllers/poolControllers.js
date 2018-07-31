@@ -118,10 +118,7 @@ module.exports = {
   },
   
   followPool: (req, res) => {
-    // you also need to update user's followings
     const poolId = req.params.poolId;
-
-    // const followerId = req.body.followerId;
     const followerId = req.user._id;
 
     Pool.findById(poolId, (err, doc) => {
@@ -137,6 +134,19 @@ module.exports = {
           console.error(err.message);
           return res.sendStatus(500);
         } 
+        User.findById(req.user._id, (err, user) => {
+          if (err) {
+            console.error(err.message);
+          } else {
+            user.follow(poolId, (err, user) => {
+              if (err) {
+                console.error(err.message);
+              } else {
+                console.log(`user ${req.user._id} now follows pool ${poolId}`);
+              }
+            });
+          }
+        })
         console.log(`user ${followerId} added to followers of pool ${poolId}`);
         res.sendStatus(200); 
       });
@@ -144,10 +154,7 @@ module.exports = {
   },
   
   unfollowPool: (req, res) => {
-    // you also need to update user's followings
-
     const poolId = req.params.poolId;
-    // const followerId = req.params.followerId;
     const followerId = req.user._id;
 
     Pool.findById(poolId, (err, doc) => {
@@ -162,6 +169,19 @@ module.exports = {
           console.error(err.message);
           return res.sendStatus(500);
         }
+        User.findById(req.user._id, (err, user) => {
+          if (err) {
+            console.error(err.message);
+          } else {
+            user.unfollow(poolId, (err, doc) => {
+              if (err) {
+                console.error(err.message);
+              } else {
+                console.log(`user ${req.user._id} has unfollowed pool ${poolId}`);
+              }
+            });
+          }
+        });
         console.log(`user ${followerId} removed from followers of pool ${poolId}`);
         res.sendStatus(204);
       });
