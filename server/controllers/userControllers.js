@@ -13,7 +13,7 @@ module.exports = {
           password: req.body.password,
           email: req.body.email
         });
-        newUser.follow();
+                
         newUser.save((err, doc) => {
           if (err) {
             return res.sendStatus(500);

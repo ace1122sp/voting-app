@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
@@ -20,22 +21,42 @@ const UserSchema = new Schema({
     max: 50
   },
   createdPools: {
-    type: [Schema.Types.ObjectId],
+    type: [{type: Schema.Types.ObjectId, ref: 'Pool'}],
     default: []
   },
   followingPools: {
-    type: [Schema.Types.ObjectId],
+    type: [{type: Schema.Types.ObjectId, ref: 'Pool'}],
     default: []
   }
 });
 
 UserSchema.methods = {
-  follow: function() { // to take poolId and to update followingPools
-    
+  follow: function(poolId) {
+    this.followingPools.push(poolId, cb);
+    this.save()
+      .then(doc => cb(null, doc))
+      .catch(err => cb(err, null));
   },
-  unfollow: function() {}, // to remove poolId from followingPools
-  addPool: function() {}, // to add poolId to createdPools
-  removePool: function() {} // to remove poolId from createdPools
+  unfollow: function(poolId, cb) {
+    let updatedFollowingPools = this.followingPools.filter(pool => pool != poolId);
+    this.followingPools = [...updatedFollowingPools];
+    this.save()
+      .then(doc => cb(null, doc))
+      .catch(err => cb(err, null));
+  },
+  addPool: function (poolId, cb) {
+    this.createdPools.push(poolId);
+    this.save()
+      .then(doc => cb(null, doc))
+      .catch(err => cb(err, null));
+  }, 
+  removePool: function(poolId, cb) {
+    let updatedCreatedPools = this.createdPools.filter(pool => pool != poolId);
+    this.createdPools = [...updatedCreatedPools];
+    this.save()
+      .then(doc => cb(null, doc))
+      .catch(err => cb(err, null));
+  } 
 }
 
 const User = mongoose.model('User', UserSchema);

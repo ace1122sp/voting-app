@@ -1,4 +1,5 @@
 const Pool = require('../models/pool');
+const User = require('../models/user');
 
 module.exports = {
   getPools: (req, res) => {
@@ -18,7 +19,6 @@ module.exports = {
   },
   
   createPool: (req, res) => {
-    // you also need to update user's created pools
     const data = req.body;
 
     let pool = new Pool({
@@ -29,8 +29,22 @@ module.exports = {
     
     pool.save()
       .then(doc => {
+        let poolId = doc._id;
+        User.findById(req.user._id, ((err, user) => {
+          if (err) {
+            console.error(err.message);
+          } else {
+            user.addPool(poolId, (err, user) => {
+              if (err) {
+                console.error(err.message)
+              } else {
+                console.log(`pool added to user's createdPools`);
+              }
+            });
+          }
+        }));
         console.log(`pool created`);
-        res.status(201).json(doc);
+        return res.status(201).json(doc);
       })
       .catch(err => {
         console.error(err.message);
@@ -51,7 +65,6 @@ module.exports = {
   },
   
   deletePool: (req, res) => {
-    // you also need to update user's created pools 
     const poolId = req.params.poolId;
     
     Pool.findByIdAndRemove(poolId, (err, doc) => {
@@ -59,6 +72,20 @@ module.exports = {
         console.error(err.message);
         return res.sendStatus(500); 
       }
+      
+      User.findById(req.user._id, (err, user) => {
+        if (err) {
+          console.error(err.message);
+        } else {
+          user.removePool(poolId, (err, user) => {
+            if (err) {
+              console.err(err.message);
+            } else {
+              console.log(`pool removed from user`);
+            }
+          })
+        }
+      });
       console.log(`successfuly deleted pool: ${poolId}`);
       res.sendStatus(204); 
     });
