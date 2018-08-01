@@ -20,7 +20,7 @@ poolsRouter.patch('/:poolId/votes', validatePoolId, validateOptionId, errorRespo
 poolsRouter.route('/:poolId/followers')
   .patch(ensureAuthenticated, validatePoolId, errorResponse, controllers.followPool); 
 
-poolsRouter.route('/:poolId/followers/:followerId')
+poolsRouter.route('/:poolId/followers')
   .delete(ensureAuthenticated, validatePoolId, errorResponse, controllers.unfollowPool);
 
 poolsRouter.route('/:poolId/options')

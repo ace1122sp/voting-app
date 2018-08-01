@@ -1,15 +1,6 @@
 import { CREATE_USER, DELETE_USER, CHANGE_PASSWORD, FOLLOW_POOL, UNFOLLOW_POOL, ADD_OWN_POOL } from '../constants';
 
-const default_user = {
-  id: 'na',
-  username: 'ace11',
-  email: 'ace@ace11.ace',
-  password: '1111',
-  createdPools: [],
-  followingPools: []
-}
-
-export const users = (state = { 'ace11': { ...default_user } }, action) => {
+export const users = (state = { }, action) => {
   let updatedFollowingPools, updatedUser, updatedCreatedPools;
 
   switch (action.type) {

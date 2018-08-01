@@ -1,0 +1,40 @@
+--- steps ---
+###################
+ROUTE: /api/
+
+------- user thunks -------
+ROUTE: ./users/
+
+--- auth ---
+0 - POST ./register ===> fetchRegister()
+1 - POST ./login ===> fetchLogin
+2 - GET ./logout ===> fetchLogout
+----------
+
+--- other ---
+0 - GET ./ ---> to get the user on every page refresh ===> fetchUser
+1 - PUT ./ ---> to update password ===> fetchUserUpdate
+2 - DELETE ./ ---> to delete profile ===> fetchUserDelete
+----------
+
+-------------------------
+-------------------------
+
+
+------- pool thunks -------
+ROUTE ./pools/
+
+--- pool ---
+0 - GET ./ ---> to get pool cards ===> fetchPoolCards
+1 - POST ./ ---> to create pool ===> fetchNewPool
+2 - GET ./:poolId ---> to get pool ===> fetchPool 
+3 - DELETE ./:poolId ---> to delete pool ===> fetchPoolDelete
+4 - PATCH ./:poolId/votes ---> to send a vote ===> fetchVote
+5 - PATCH ./:poolId/followers ---> to follow a pool ===> fetchFollow
+6 - DELETE ./:poolId/followers ---> to unfollow a pool ===> fetchUnfollow 
+7 - PATCH ./:poolId/options ---> to add an options ===> fetchOptionAdd
+8 - DELETE ./:poolId/options/:optionId ---> to remove an option ===> fetchOptionRemove
+----------
+
+-------------------------
+-------------------------
