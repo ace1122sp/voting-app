@@ -18,7 +18,7 @@ export const fetchRegister = (url, package) =>
       .catch();
   }
 
-export const fetchLogin = (url, password) =>
+export const fetchLogin = (url, package) =>
   dispatch => {
     const options = {
       method: 'POST',
