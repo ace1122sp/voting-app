@@ -14,8 +14,19 @@ export const fetchRegister = (url, package) =>
       headers: { "Content-type": "application/json" }
     };
     return fetch(url, options)
-      .then()
-      .catch();
+      .then(res => {
+        if (res.ok) return res.json();
+        throw new Error('Bad request');
+      })
+      .then(res => {
+        // do something with code 
+        // you get users profile 
+        // store it in redux store
+      })
+      .catch(err => {
+        // send some info about err to user
+        console.error(err.message);
+      });
   }
 
 export const fetchLogin = (url, package) =>
@@ -29,22 +40,53 @@ export const fetchLogin = (url, package) =>
       headers: { "Content-type": "applications/json" }
     };
     return fetch(url, options)
-      .then()
-      .catch();
+      .then(res => {
+        if (res.ok) return res.json();
+        throw new Error('Bad request');
+      })
+      .then(res => {
+        // do something with code 
+        // you get users profile 
+        // store it in redux store
+      })
+      .catch(err => {
+        // send some info about err to user
+        console.error(err.message);
+      });
   }
 
 export const fetchLogout = url =>
   dispatch => {
     return fetch(url)
-      .then()
-      .catch();
+      .then(res => {
+        if (res.ok) return true;
+        throw new Error('Bad request');
+      })
+      .then(res => {  
+        // you get the boolean if user successfuly logged out
+      })
+      .catch(err => {
+        // inform user about err 
+        console.error(err.message);
+      });
   }
 
 export const fetchUser = url =>
   dispatch => {
     return fetch(url)
-      .then()
-      .catch();
+      .then(res => {
+        if (res.ok) return res.json();
+        throw new Error('Bad request');
+      })
+      .then(res => {
+        // do something with code 
+        // you get users profile 
+        // store it in redux store
+      })
+      .catch(err => {
+        // send some info about err to user
+        console.error(err.message);
+      });
   }
 
 export const fetchUserUpdate = (url, newPassword) =>
@@ -57,8 +99,18 @@ export const fetchUserUpdate = (url, newPassword) =>
       headers: { "Content-type": "application/json" }
     };
     return fetch(url, options)
-      .then()
-      .catch();
+      .then(res => {
+        if (res.ok) return true;
+        throw new Error('Bad request');
+      })
+      .then(res => {
+        // you get boolean if user updated
+        // do something next
+      })
+      .catch(err => {
+        // inform user about error
+        console.error(err.message);
+      });
   }
 
 export const fetchUserDelete = url =>
@@ -67,6 +119,16 @@ export const fetchUserDelete = url =>
       method: 'DELETE'
     };
     return fetch(url, options)
-      .then()
-      .catch();
+      .then(res => {
+        if (res.ok) return true;
+        throw new Error('Bad request');
+      })
+      .then(res => {
+        // you get boolean if user updated
+        // do something next
+      })
+      .catch(err => {
+        // inform user about error
+        console.error(err.message);
+      });
   }
