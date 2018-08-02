@@ -1,70 +1,96 @@
-export const fetchPoolCards = () =>
+export const fetchPoolCards = url =>
   dispatch => {
-    const options = {};
+    return fetch(url)
+      .then()
+      .catch();
+  }
+
+export const fetchNewPool = (url, package) =>
+  dispatch => {
+    const options = {
+      method: 'POST',
+      body: JSON.stringify({
+        name: package.name,
+        options: package.options
+      }),
+      headers: { "Content-type": "application/json" }
+    };
     return fetch(url, options)
       .then()
       .catch();
   }
 
-export const fetchNewPool = () =>
+export const fetchPool = url =>
   dispatch => {
-    const options = {};
+    return fetch(url)
+      .then()
+      .catch();
+  }
+
+export const fetchPoolDelete = url =>
+  dispatch => {
+    const options = {
+      method: 'DELETE'
+    };
     return fetch(url, options)
       .then()
       .catch();
   }
 
-export const fetchPool = () =>
+export const fetchVote = (url, optionId) =>
   dispatch => {
-    const options = {};
+    const options = {
+      method: 'PATCH',
+      body: JSON.stringify({
+        optionId
+      }),
+      headers: { "Content-type": "application/json" }
+    };
     return fetch(url, options)
       .then()
       .catch();
   }
 
-export const fetchPoolDelete = () =>
+export const fetchFollow = url =>
   dispatch => {
-    const options = {};
+    const options = {
+      method: 'PATCH'
+    };
     return fetch(url, options)
       .then()
       .catch();
   }
 
-export const fetchVote = () =>
+export const fetchUnfollow = url =>
   dispatch => {
-    const options = {};
+    const options = {
+      method: 'DELETE'
+    };
     return fetch(url, options)
       .then()
       .catch();
   }
 
-export const fetchFollow = () =>
+export const fetchOptionAdd = (url, package) =>
   dispatch => {
-    const options = {};
+    const options = {
+      method: 'PATCH',
+      body: JSON.stringify({
+        id: package.id,
+        value: package.value
+      }),
+      headers: { "Content-type": "application/json" }
+    };
     return fetch(url, options)
       .then()
       .catch();
   }
 
-export const fetchUnfollow = () =>
+export const fetchOptionRemove = url =>
   dispatch => {
-    const options = {};
-    return fetch(url, options)
-      .then()
-      .catch();
-  }
-
-export const fetchOptionAdd = () =>
-  dispatch => {
-    const options = {};
-    return fetch(url, options)
-      .then()
-      .catch();
-  }
-
-export const fetchOptionRemove = () =>
-  dispatch => {
-    const options = {};
+    const options = {
+      method: 'DELETE'
+    };
     return fetch(url, options)
       .then()
       .catch();
