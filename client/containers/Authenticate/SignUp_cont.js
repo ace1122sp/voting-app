@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import SignUp from '../../components/Authenticate/SignUp';
-import { createUser } from '../../actions/user';
+import { fetchRegister } from '../../actions/thunks/user';
 import { general } from '../../util/general';
 
 const mapStateToProps = state => {
@@ -11,7 +11,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    createUser_f: userObj => dispatch(createUser(userObj))
+    createUser_f: user => dispatch(fetchRegister(user))
   };
 }
 

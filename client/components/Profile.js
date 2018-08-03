@@ -24,8 +24,8 @@ class Profile extends Component {
 
   render() {
     let poolsSelection;
-    let allPools = general.getUniqueObjectsArray(this.props.poolsCreated, this.props.poolsFollowing);
-    this.state.poolsToShow == 'all' ? poolsSelection = allPools : this.state.poolsToShow == 'own' ? poolsSelection = this.props.poolsCreated : poolsSelection = this.props.poolsFollowing;
+    let allPools = general.getUniqueObjectsArray(this.props.user.createdPools, this.props.user.followingPools);
+    this.state.poolsToShow == 'all' ? poolsSelection = allPools : this.state.poolsToShow == 'own' ? poolsSelection = this.props.user.createdPools : poolsSelection = this.props.user.followingPools;
     let pools = poolsSelection.map(pool => <PoolCard key={pool.id} id={pool.id} name={pool.name} />);
 
     return (
@@ -37,7 +37,7 @@ class Profile extends Component {
           </div><br />
           <div>
             <b>total pools</b><br />
-            <span>{this.props.poolsCreated.length}</span>
+            <span>{this.props.user.createdPools.length}</span>
           </div><br />
         </aside>
         <main>

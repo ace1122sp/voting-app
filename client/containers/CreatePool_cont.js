@@ -5,7 +5,7 @@ import { addOwnPoolToProfile } from '../actions/user';
 
 const mapStateToProps = state => {
   return {
-    creatorName: state.activeUser
+    username: state.user.username
   }
 }
 

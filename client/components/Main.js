@@ -4,7 +4,7 @@ import { commonRoutes, authenticatedRoutes, guestRoutes } from '../routes';
 
 const Main = props => {
   let routes = [...commonRoutes];
-  props.userSignedIn ? routes = [...routes, ...authenticatedRoutes] : routes = [...routes, ...guestRoutes];
+  props.user ? routes = [...routes, ...authenticatedRoutes] : routes = [...routes, ...guestRoutes];
   return (
     <div>
       <Switch>

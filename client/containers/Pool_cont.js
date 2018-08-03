@@ -6,15 +6,10 @@ import { schedulePoolForDelete } from '../actions/scheduleForDelete';
 import { general } from '../util/general';
 
 const mapStateToProps = (state, ownProps) => {
-
-  // based on :pool_id you need to provide pool's info
-  // atm you don't need to send followers, just maybe its number,
-  // just votes, but not info about voters
-
   const poolId = ownProps.match.params.pool_id;
   const options = general.getPropsInArray(state.pools[poolId].options);
   const totalVotes = general.getTotalVotes(state.pools[poolId].options);
-  const isFollowedByActiveUser = state.pools[poolId].followers.some(follower => follower == state.activeUser) ? 'unfollow' : 'follow';
+  const isFollowedByActiveUser = state.pools[poolId].followers.some(follower => follower == state.user) ? 'unfollow' : 'follow';
 
   return {
     name: state.pools[poolId].name,
@@ -24,7 +19,7 @@ const mapStateToProps = (state, ownProps) => {
     dateCreated: state.pools[poolId].dateCreated,
     creator: state.pools[poolId].creator,
     totalVotes,
-    username: state.activeUser
+    username: state.user
   }
 }
 

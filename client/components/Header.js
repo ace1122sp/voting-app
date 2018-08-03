@@ -35,11 +35,11 @@ const GuestHeader = props => {
 
 class Header extends Component {
   shouldComponentUpdate(nextProps, nextState) {
-    return nextProps.activeUser !== this.props.activeUser;
+    return nextProps.user !== this.props.user;
   }
 
   render () {
-    let user = this.props.activeUser == null ? false : true;
+    let user = this.props.user == null ? false : true;
     const headerToRender= user ? <UserHeader signOut={this.props.signOut_f} /> : <GuestHeader />;
     return (
       <header>

@@ -1,53 +1,49 @@
-import { CREATE_USER, DELETE_USER, CHANGE_PASSWORD, FOLLOW_POOL, UNFOLLOW_POOL, ADD_OWN_POOL, SIGN_IN, SIGN_OUT } from '../constants';
+import { LOAD_USER, UNLOAD_USER, UPDATE_USER, ADD_TO_CREATED_POOLS, REMOVE_FROM_CREATED_POOLS, FOLLOW_POOL, UNFOLLOW_POOL } from '../constants';
 
-export const createUser = user => {
+export const loadUser = user => {
   return {
-    type: CREATE_USER,
+    type: LOAD_USER,
     user
   }
 }
 
-export const deleteUser = () => {
-  return {}
-}
-
-export const changePassword = () => {
-  return {}
-}
-
-export const addOwnPoolToProfile = (username, poolId) => {
+export const unloadUser = () => {
   return {
-    type: ADD_OWN_POOL,
-    username,
+    type: UNLOAD_USER
+  }
+}
+
+export const updateUser = message => {
+  return {
+    type: UPDATE_USER,
+    message
+  }
+}
+
+export const addToCreatedPools = poolCard => {
+  return {
+    type: ADD_TO_CREATED_POOLS,
+    poolCard
+  }
+}
+
+export const removeFromCreatedPools = poolId => {
+  return {
+    type: REMOVE_FROM_CREATED_POOLS,
     poolId
   }
 }
 
-export const signIn = username => {
-  return {
-    type: SIGN_IN,
-    username
-  }
-}
-
-export const signOut = () => {
-  return {
-    type: SIGN_OUT
-  }
-}
-
-export const followPool = (username, poolId) => {
+export const followPool = poolCard => {
   return {
     type: FOLLOW_POOL,
-    username,
-    poolId
+    poolCard
   }
 }
 
-export const unfollowPool = (username, poolId) => {
+export const unfollowPool = poolId => {
   return {
     type: UNFOLLOW_POOL,
-    username,
     poolId
   }
 }

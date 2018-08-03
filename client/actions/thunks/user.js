@@ -1,3 +1,5 @@
+import { loadUser, unloadUser, updateUser } from '../user';
+
 // think about creating fetchGenerator for all fethc functions
 
 export const fetchRegister = (url, package) => 
@@ -18,10 +20,8 @@ export const fetchRegister = (url, package) =>
         if (res.ok) return res.json();
         throw new Error('Bad request');
       })
-      .then(res => {
-        // do something with code 
-        // you get users profile 
-        // store it in redux store
+      .then(user => {
+        dispatch(loadUser(user));
       })
       .catch(err => {
         // send some info about err to user
@@ -45,9 +45,7 @@ export const fetchLogin = (url, package) =>
         throw new Error('Bad request');
       })
       .then(res => {
-        // do something with code 
-        // you get users profile 
-        // store it in redux store
+        dispatch(loadUser(user));
       })
       .catch(err => {
         // send some info about err to user
@@ -63,7 +61,7 @@ export const fetchLogout = url =>
         throw new Error('Bad request');
       })
       .then(res => {  
-        // you get the boolean if user successfuly logged out
+        dispatch(unloadUser());
       })
       .catch(err => {
         // inform user about err 
@@ -79,9 +77,7 @@ export const fetchUser = url =>
         throw new Error('Bad request');
       })
       .then(res => {
-        // do something with code 
-        // you get users profile 
-        // store it in redux store
+        dispatch(loadUser(user));
       })
       .catch(err => {
         // send some info about err to user
@@ -104,8 +100,7 @@ export const fetchUserUpdate = (url, newPassword) =>
         throw new Error('Bad request');
       })
       .then(res => {
-        // you get boolean if user updated
-        // do something next
+        dispatch(updateUser('Your password has been successfuly changed!'));
       })
       .catch(err => {
         // inform user about error
@@ -124,8 +119,7 @@ export const fetchUserDelete = url =>
         throw new Error('Bad request');
       })
       .then(res => {
-        // you get boolean if user updated
-        // do something next
+        dispatch(updateUser('Your profile has been deleted!'))
       })
       .catch(err => {
         // inform user about error

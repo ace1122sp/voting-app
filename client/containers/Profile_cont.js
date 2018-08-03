@@ -4,17 +4,8 @@ import { deletePool } from '../actions/pools';
 import { schedulePoolForDelete } from '../actions/scheduleForDelete';
 
 const mapStateToProps = state => {
-  const poolsFollowing = state.users[state.activeUser].followingPools.filter(pool => state.pools.hasOwnProperty(pool) ).map(pool => {
-    return { id: pool, name: state.pools[pool].name };
-  });
-  const poolsCreated = state.users[state.activeUser].createdPools.filter(pool => state.pools.hasOwnProperty(pool)).map(pool => {
-    return { id: pool, name: state.pools[pool].name };
-  });
-
   return {
-    user: state.users[state.activeUser],
-    poolsFollowing,
-    poolsCreated,
+    user: state.user,
     poolToDelete: state.poolToDelete,
   };
 }

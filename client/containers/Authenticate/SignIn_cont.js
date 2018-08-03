@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import SignIn from '../../components/Authenticate/SignIn';
-import { signIn } from '../../actions/user';
+import { fetchLogin } from '../../actions/thunks/user';
 
 const mapStateToProps = state => {
   return {
@@ -10,7 +10,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    signIn_f: username => dispatch(signIn(username))
+    signIn_f: credentials => dispatch(fetchLogin(credentials))
   }
 }
 

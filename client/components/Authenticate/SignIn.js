@@ -22,22 +22,10 @@ class SignIn extends Component {
     e.preventDefault();
     const username = this.state.username;
     const password = this.state.password;
+    // validate input if necessary 
+    this.props.signIn_f(username);
 
-    // Very insecure auth proccess
-    if (this.props.users.hasOwnProperty(username)) {
-      if (this.props.users[username].password == password) {
-        alert(`${username}, you have successfuly signed in!`);
-        this.props.signIn_f(username);
-        this.setState({
-          username: '',
-          password: ''
-        });
-      } else {
-        alert('Username or password are incorrect!');
-      }
-    } else {
-      alert('Username or password are incorrect!');
-    }
+    // handle bad login
   }
 
   render() {

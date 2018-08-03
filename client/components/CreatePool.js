@@ -93,17 +93,17 @@ class CreatePool extends Component {
         }
       });
 
-      const id = validator.generateId(this.state.name, this.props.creatorName);
+      const id = validator.generateId(this.state.name, this.props.username);
       const createdPool = {
         name: this.state.name,
         options: poolOptions,
         dateCreated: Date(),
-        creator: this.props.creatorName,
+        creator: this.props.username,
         id
       };
 
       this.props.createPool_f(createdPool);
-      this.props.addOwnPoolToProfile_f(this.props.creatorName, id);
+      this.props.addOwnPoolToProfile_f(this.props.username, id);
       this.setState({ options: [], name: '', redirect: true });
 
       alert(`Pool "${trimmedPoolName}" Created`);

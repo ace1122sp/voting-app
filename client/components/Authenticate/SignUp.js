@@ -47,7 +47,7 @@ class SignUp extends Component {
 
       // Username & email validation
       if (usernameUnique && usernameLongEnough && emailValid) {
-        alert('Successfuly signed up!');
+
         this.props.createUser_f({ username: this.state.username, email: this.state.email, password: this.state.password });
         this.setState({
           email: '',

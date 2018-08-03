@@ -1,6 +1,9 @@
 import React from 'react';
 
 const Settings = props => {
+  // implement functionality
+
+  // props --> changePassword() deleteProfile() username
   return (
     <div>
       <h1>Settings</h1>

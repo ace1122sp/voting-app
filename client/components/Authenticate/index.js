@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import SignUp_cont from '../../containers/Authenticate/SignUp_cont';
 import SignIn_cont from '../../containers/Authenticate/SignIn_cont';

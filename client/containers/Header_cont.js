@@ -1,17 +1,17 @@
 import { connect } from 'react-redux';
 import Header from '../components/Header';
-import { signOut } from '../actions/user';
+import { fetchLogout } from '../actions/thunks/user';
 import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = state => {
   return {
-    activeUser: state.activeUser
+    user: state.user
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    signOut_f: () => dispatch(signOut())
+    signOut_f: () => dispatch(fetchLogout())
   }
 }
 
