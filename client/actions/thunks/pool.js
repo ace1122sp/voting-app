@@ -1,13 +1,23 @@
 import { URL_POOLS, urlPool, urlVote, urlFollowers, urlAddOption, urlRemoveOption } from '../../resources/urls';
 import { loadPool } from '../pool';
 import { schedulePoolForDelete } from '../scheduleForDelete';
-import { removeFollower } from '../pools';
+import { removeFollower, loadPoolCards } from '../pools';
 
 export const fetchPoolCards = () =>
   dispatch => {
-    return fetch(url)
-      .then()
-      .catch();
+    return fetch(URL_POOLS)
+      .then(res => {
+        if (res.ok) return res.json();
+        throw new Error('Bad request');
+      })
+      .then(poolCards => {
+        // if it returns an object ---> you need to convert it to an arr
+        dispatch(loadPoolCards(poolCards));
+      })
+      .catch(err => {
+        // send some info about err to user 
+        console.error(err.message);
+      });
   }
 
 export const fetchNewPool = package =>
