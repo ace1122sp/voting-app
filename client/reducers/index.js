@@ -1,14 +1,14 @@
 import { combineReducers } from 'redux';
 import { pools } from './pools';
 import { poolToDelete } from './poolToDelete';
-import { users } from './users.js';
-import { activeUser } from './activeUser';
+import { user } from './user';
+import { userUpdateStatus } from './userUpdateStatus';
 
 const rootReducer = combineReducers({
   pools,
   poolToDelete,
-  users,
-  activeUser
+  user,
+  userUpdateStatus
 });
 
 export default rootReducer;
