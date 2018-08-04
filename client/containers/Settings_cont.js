@@ -11,7 +11,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     changePassword: newPassword => dispatch(fetchUserUpdate(newPassword)),
-    deleteProfile: () => dispatch(fetchUserDelete)
+    deleteProfile: () => dispatch(fetchUserDelete())
   }
 }
 

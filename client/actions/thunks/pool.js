@@ -1,11 +1,16 @@
-export const fetchPoolCards = url =>
+import { URL_POOLS, urlPool, urlVote, urlFollowers, urlAddOption, urlRemoveOption } from '../../resources/urls';
+import { loadPool } from '../pool';
+import { schedulePoolForDelete } from '../scheduleForDelete';
+import { removeFollower } from '../pools';
+
+export const fetchPoolCards = () =>
   dispatch => {
     return fetch(url)
       .then()
       .catch();
   }
 
-export const fetchNewPool = (url, package) =>
+export const fetchNewPool = package =>
   dispatch => {
     const options = {
       method: 'POST',
@@ -15,29 +20,56 @@ export const fetchNewPool = (url, package) =>
       }),
       headers: { "Content-type": "application/json" }
     };
-    return fetch(url, options)
-      .then()
-      .catch();
+    return fetch(URL_POOLS, options)
+      .then(res => {
+        if (res.ok) return res.json();
+        throw new Error('Bad request');
+      })
+      .then(pool => {
+        dispatch(loadPool(pool));
+      })
+      .catch(err => {
+        // send some info about err to user
+        console.error(err.message);
+      });
   }
 
-export const fetchPool = url =>
+export const fetchPool = poolId =>
   dispatch => {
-    return fetch(url)
-      .then()
-      .catch();
+    return fetch(urlPool(poolId))
+      .then(res => {
+        if (res.ok) return res.json();
+        throw new Error('Bad request');
+      })
+      .then(pool => {
+        dispatch(loadPool(pool));
+      })
+      .catch(err => {
+        // send some info about err to user
+        console.error(err.message);
+      });
   }
 
-export const fetchPoolDelete = url =>
+export const fetchPoolDelete = poolId =>
   dispatch => {
     const options = {
       method: 'DELETE'
     };
-    return fetch(url, options)
-      .then()
-      .catch();
+    return fetch(urlPool(poolId), options)
+      .then(res => {
+        if (res.ok) {
+          dispatch(schedulePoolForDelete(true));
+        } else {
+          throw new Error('Bad request');
+        }
+      })
+      .catch(err => {
+        // send some info about err to user
+        console.error(err.message);
+      });
   }
 
-export const fetchVote = (url, optionId) =>
+export const fetchVote = (poolId, optionId) =>
   dispatch => {
     const options = {
       method: 'PATCH',
@@ -46,32 +78,59 @@ export const fetchVote = (url, optionId) =>
       }),
       headers: { "Content-type": "application/json" }
     };
-    return fetch(url, options)
-      .then()
-      .catch();
+    return fetch(urlVote(poolId), options)
+      .then(res => {
+        if (res.ok) {
+          dispatch(optionId);
+        } else {
+          throw new Error('Bad request');
+        }
+      })
+      .catch(err => {
+        // send some info about err to user
+        console.error(err.message);
+      });
   }
 
-export const fetchFollow = url =>
+export const fetchFollow = (poolId, username) =>
   dispatch => {
     const options = {
       method: 'PATCH'
     };
-    return fetch(url, options)
-      .then()
-      .catch();
+    return fetch(urlFollowers(poolId), options)
+      .then(res => {
+        if (res.ok) {
+          dispatch(poolId, username);
+        } else {
+          throw new Error('Bad request');
+        }
+      })
+      .catch(err => {
+        // send some info about err to user
+        console.error(err.message);
+      });
   }
 
-export const fetchUnfollow = url =>
+export const fetchUnfollow = (poolId, username) =>
   dispatch => {
     const options = {
       method: 'DELETE'
     };
-    return fetch(url, options)
-      .then()
-      .catch();
+    return fetch(urlFollowers(poolId), options)
+      .then(res => {
+        if (res.ok) {
+          dispatch(removeFollower(poolId, username));
+        } else {
+          throw new Error('Bad request');
+        }
+      })
+      .catch(err => {
+        // send some info about err to user
+        console.error(err.message);
+      });
   }
 
-export const fetchOptionAdd = (url, package) =>
+export const fetchOptionAdd = (poolId, package) =>
   dispatch => {
     const options = {
       method: 'PATCH',
@@ -81,17 +140,35 @@ export const fetchOptionAdd = (url, package) =>
       }),
       headers: { "Content-type": "application/json" }
     };
-    return fetch(url, options)
-      .then()
-      .catch();
+    return fetch(urlAddOptions(poolId), options)
+      .then(res => {
+        if (res.ok) return res.json();
+        throw new Error('Bad request');
+      })
+      .then(pool => {
+        dispatch(loadPool(pool));
+      })
+      .catch(err => {
+        // send some info about err to user
+        console.error(err.message);
+      });
   }
 
-export const fetchOptionRemove = url =>
+export const fetchOptionRemove = (poolId, optionId) =>
   dispatch => {
     const options = {
       method: 'DELETE'
     };
-    return fetch(url, options)
-      .then()
-      .catch();
+    return fetch(urlRemoveOption(poolId, optionId), options)
+      .then(res => {
+        if (res.ok) return res.json();
+        throw new Error('Bad request');
+      })
+      .then(pool => {
+        dispatch(loadPool(pool));
+      })
+      .catch(err => {
+        // send some info about err to user
+        console.error(err.message);
+      });
   }

@@ -1,8 +1,8 @@
 import { loadUser, unloadUser, updateUser } from '../user';
-
+import { URL_REGISTER, URL_LOGIN, URL_LOGOUT, URL_PROFILE } from '../../resources/urls';
 // think about creating fetchGenerator for all fethc functions
 
-export const fetchRegister = (url, package) => 
+export const fetchRegister = package => 
   dispatch => {
     const options = {
       method: 'POST',
@@ -15,7 +15,7 @@ export const fetchRegister = (url, package) =>
       ),
       headers: { "Content-type": "application/json" }
     };
-    return fetch(url, options)
+    return fetch(URL_REGISTER, options)
       .then(res => {
         if (res.ok) return res.json();
         throw new Error('Bad request');
@@ -29,7 +29,7 @@ export const fetchRegister = (url, package) =>
       });
   }
 
-export const fetchLogin = (url, package) =>
+export const fetchLogin = package =>
   dispatch => {
     const options = {
       method: 'POST',
@@ -39,12 +39,12 @@ export const fetchLogin = (url, package) =>
       }),
       headers: { "Content-type": "applications/json" }
     };
-    return fetch(url, options)
+    return fetch(URL_LOGIN, options)
       .then(res => {
         if (res.ok) return res.json();
         throw new Error('Bad request');
       })
-      .then(res => {
+      .then(user => {
         dispatch(loadUser(user));
       })
       .catch(err => {
@@ -53,9 +53,9 @@ export const fetchLogin = (url, package) =>
       });
   }
 
-export const fetchLogout = url =>
+export const fetchLogout = () =>
   dispatch => {
-    return fetch(url)
+    return fetch(URL_LOGOUT)
       .then(res => {
         if (res.ok) return true;
         throw new Error('Bad request');
@@ -69,14 +69,14 @@ export const fetchLogout = url =>
       });
   }
 
-export const fetchUser = url =>
+export const fetchUser = () =>
   dispatch => {
-    return fetch(url)
+    return fetch(URL_PROFILE)
       .then(res => {
         if (res.ok) return res.json();
         throw new Error('Bad request');
       })
-      .then(res => {
+      .then(user => {
         dispatch(loadUser(user));
       })
       .catch(err => {
@@ -85,7 +85,7 @@ export const fetchUser = url =>
       });
   }
 
-export const fetchUserUpdate = (url, newPassword) =>
+export const fetchUserUpdate = newPassword =>
   dispatch => {
     const options = {
       method: 'PUT',
@@ -94,7 +94,7 @@ export const fetchUserUpdate = (url, newPassword) =>
       }),
       headers: { "Content-type": "application/json" }
     };
-    return fetch(url, options)
+    return fetch(URL_PROFILE, options)
       .then(res => {
         if (res.ok) return true;
         throw new Error('Bad request');
@@ -108,12 +108,12 @@ export const fetchUserUpdate = (url, newPassword) =>
       });
   }
 
-export const fetchUserDelete = url =>
+export const fetchUserDelete = () =>
   dispatch => {
     const options = {
       method: 'DELETE'
     };
-    return fetch(url, options)
+    return fetch(URL_PROFILE, options)
       .then(res => {
         if (res.ok) return true;
         throw new Error('Bad request');

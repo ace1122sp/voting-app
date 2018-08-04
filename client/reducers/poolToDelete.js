@@ -1,9 +1,9 @@
 import { SCHEDULE_POOL_FOR_DELETE } from '../constants';
 
-export const poolToDelete = (state = null, action) => {
+export const poolToDelete = (state = false, action) => {
   switch (action.type) {
     case SCHEDULE_POOL_FOR_DELETE:
-      return action.poolId;
+      return action.message;
 
     default:
       return state;

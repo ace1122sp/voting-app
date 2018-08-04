@@ -1,8 +1,8 @@
 import { SCHEDULE_POOL_FOR_DELETE } from '../constants';
 
-export const schedulePoolForDelete = poolId => {
+export const schedulePoolForDelete = message => {
   return {
     type: SCHEDULE_POOL_FOR_DELETE,
-    poolId
+    message
   }
 }

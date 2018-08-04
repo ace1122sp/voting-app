@@ -1,25 +1,22 @@
-import { CREATE_POOL, ADD_VOTE, ADD_NEW_VOTING_OPTION, ADD_FOLLOWER, REMOVE_FOLLOWER, DELETE_POOL, REMOVE_POOL_OPTION } from '../constants';
+import { LOAD_POOL, UNLOAD_POOL, ADD_VOTE, ADD_FOLLOWER, REMOVE_FOLLOWER } from '../constants';
 
-export const createPool = pool => {
+export const loadPool = pool => {
   return {
-    type: CREATE_POOL,
+    type: LOAD_POOL,
     pool
   }
 }
 
-export const vote = (poolId, optionId) => {
+export const unloadPool = () => {
   return {
-    type: ADD_VOTE,
-    poolId,
-    optionId
+    type: UNLOAD_POOL
   }
 }
 
-export const addVotingOption = (poolId, option) => {
+export const vote = optionId => {
   return {
-    type: ADD_NEW_VOTING_OPTION,
-    poolId,
-    option
+    type: ADD_VOTE,
+    optionId
   }
 }
 
@@ -30,7 +27,7 @@ export const addFollower = (poolId, username) => {
     username
   }
 }
-
+// think about follower solutions
 export const removeFollower = (poolId, username) => {
   return {
     type: REMOVE_FOLLOWER,
@@ -39,17 +36,4 @@ export const removeFollower = (poolId, username) => {
   }
 }
 
-export const deletePool = poolId => {
-  return {
-    type: DELETE_POOL,
-    poolId
-  }
-}
-
-export const removePoolOption = (poolId, optionId) => {
-  return {
-    type: REMOVE_POOL_OPTION,
-    poolId,
-    optionId
-  }
-}
+// maybe addOption(option) removeOption(optionId)
