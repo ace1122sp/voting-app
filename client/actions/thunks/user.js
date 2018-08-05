@@ -2,15 +2,15 @@ import { loadUser, unloadUser, updateUser } from '../user';
 import { URL_REGISTER, URL_LOGIN, URL_LOGOUT, URL_PROFILE } from '../../resources/urls';
 // think about creating fetchGenerator for all fethc functions
 
-export const fetchRegister = package => 
+export const fetchRegister = user => 
   dispatch => {
     const options = {
       method: 'POST',
       body: JSON.stringify(
         { 
-          username: package.username, 
-          password: package.password,
-          email: package.email
+          username: user.username, 
+          password: user.password,
+          email: user.email
         }
       ),
       headers: { "Content-type": "application/json" }
@@ -29,13 +29,13 @@ export const fetchRegister = package =>
       });
   }
 
-export const fetchLogin = package =>
+export const fetchLogin = user =>
   dispatch => {
     const options = {
       method: 'POST',
       body: JSON.stringify({
-        username: package.username,
-        password: package.password
+        username: user.username,
+        password: user.password
       }),
       headers: { "Content-type": "applications/json" }
     };

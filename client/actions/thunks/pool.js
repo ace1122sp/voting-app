@@ -1,7 +1,6 @@
 import { URL_POOLS, urlPool, urlVote, urlFollowers, urlAddOption, urlRemoveOption } from '../../resources/urls';
-import { loadPool } from '../pool';
 import { schedulePoolForDelete } from '../scheduleForDelete';
-import { removeFollower, loadPoolCards, addFollower } from '../pools';
+import { loadPool, removeFollower, loadPoolCards, addFollower } from '../pools';
 import { followPool, unfollowPool } from '../user';
 
 export const fetchPoolCards = () =>
@@ -21,13 +20,13 @@ export const fetchPoolCards = () =>
       });
   }
 
-export const fetchNewPool = package =>
+export const fetchNewPool = pool =>
   dispatch => {
     const options = {
       method: 'POST',
       body: JSON.stringify({
-        name: package.name,
-        options: package.options
+        name: pool.name,
+        options: pool.options
       }),
       headers: { "Content-type": "application/json" }
     };
@@ -149,13 +148,13 @@ export const fetchUnfollow = (poolId, username) =>
       });
   }
 
-export const fetchOptionAdd = (poolId, package) =>
+export const fetchOptionAdd = (poolId, option) =>
   dispatch => {
     const options = {
       method: 'PATCH',
       body: JSON.stringify({
-        id: package.id,
-        value: package.value
+        id: option.id,
+        value: option.value
       }),
       headers: { "Content-type": "application/json" }
     };
