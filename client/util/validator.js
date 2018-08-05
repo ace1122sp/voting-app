@@ -7,6 +7,8 @@ export const validator = (function() {
 
     isUnique: (element, arr) => !(arr.some(el => el == element)),
 
+    isUniqueOption: (element, arr) => !(arr.some(el => el.value == element)),
+
     isValidPool: (name, options) => options.length > 1 && name.length > 2,
 
     createId: (name, length) => JSON.stringify(length) + _removeSpaces(name),

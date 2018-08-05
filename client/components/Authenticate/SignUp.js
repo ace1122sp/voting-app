@@ -41,12 +41,11 @@ class SignUp extends Component {
     if (this.state.password === this.state.passwordAgain && this.state.password.length > 3) {
 
       // Init validators
-      const usernameUnique = validator.isUnique(this.state.username, this.props.users);
       const usernameLongEnough = this.state.username.length > 3;
       const emailValid = this.state.email.length > 9;
 
       // Username & email validation
-      if (usernameUnique && usernameLongEnough && emailValid) {
+      if (usernameLongEnough && emailValid) {
 
         this.props.createUser_f({ username: this.state.username, email: this.state.email, password: this.state.password });
         this.setState({

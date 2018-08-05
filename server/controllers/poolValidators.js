@@ -36,10 +36,10 @@ const validateOption = [
 ];
 const validateOptions = (req, res, next) => {
   if (!Array.isArray(req.body.options)) return res.sendStatus(400);
-
+  // sanitize every option 
   req.body.options = req.body.options.map(option => {
     return {
-      id: parseInt(option.id) || '',
+      id: JSON.stringify(option.id) || '',
       value: JSON.stringify(option.value) || ''
     };
   });

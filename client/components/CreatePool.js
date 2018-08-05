@@ -30,7 +30,7 @@ class CreatePool extends Component {
 
     // Validate options
     const validOption = validator.trimEverything(this.state.toAddOption);
-    const uniqueOption = validator.isUnique(validOption, this.state.options);
+    const uniqueOption = validator.isUniqueOption(validOption, this.state.options);
 
     // Option can't be empty and must be unique, case sensitive
     if(validOption && uniqueOption) {
@@ -59,7 +59,7 @@ class CreatePool extends Component {
       div.appendChild(span);
       div.appendChild(button);
       optionsContainer.appendChild(div);
-
+      console.log(updatedOptions)
       this.setState({ toAddOption: '', options: [...updatedOptions] });
     }
   }
@@ -83,27 +83,14 @@ class CreatePool extends Component {
     const trimmedPoolName = validator.trimEverything(this.state.name);
     const validPool = validator.isValidPool(trimmedPoolName, this.state.options);
 
-    if(validPool) {
-      const poolOptions = {};
-      this.state.options.forEach( option => {
-        poolOptions[option.id] = {
-          id: option.id,
-          value: option.value,
-          votes: 0
-        }
-      });
+    if (validPool) {
 
-      const id = validator.generateId(this.state.name, this.props.username);
       const createdPool = {
         name: this.state.name,
-        options: poolOptions,
-        dateCreated: Date(),
-        creator: this.props.username,
-        id
+        options: this.state.options,
       };
 
       this.props.createPool_f(createdPool);
-      this.props.addOwnPoolToProfile_f(this.props.username, id);
       this.setState({ options: [], name: '', redirect: true });
 
       alert(`Pool "${trimmedPoolName}" Created`);

@@ -1,6 +1,6 @@
 import { loadUser, unloadUser, updateUser } from '../user';
 import { URL_REGISTER, URL_LOGIN, URL_LOGOUT, URL_PROFILE } from '../../resources/urls';
-// think about creating fetchGenerator for all fethc functions
+// think about creating fetchGenerator for all fetch functions
 
 export const fetchRegister = user => 
   dispatch => {
@@ -13,7 +13,7 @@ export const fetchRegister = user =>
           email: user.email
         }
       ),
-      headers: { "Content-type": "application/json" }
+      headers: { 'Content-Type': 'application/json' }
     };
     return fetch(URL_REGISTER, options)
       .then(res => {
@@ -33,11 +33,13 @@ export const fetchLogin = user =>
   dispatch => {
     const options = {
       method: 'POST',
-      body: JSON.stringify({
-        username: user.username,
-        password: user.password
-      }),
-      headers: { "Content-type": "applications/json" }
+      body: JSON.stringify(
+        {
+          username: user.username,
+          password: user.password
+        }
+      ),
+      headers: { 'Content-Type': 'application/json' }
     };
     return fetch(URL_LOGIN, options)
       .then(res => {
@@ -92,7 +94,7 @@ export const fetchUserUpdate = newPassword =>
       body: JSON.stringify({
         newPassword
       }),
-      headers: { "Content-type": "application/json" }
+      headers: { 'Content-Type': 'application/json' }
     };
     return fetch(URL_PROFILE, options)
       .then(res => {

@@ -6,9 +6,7 @@ const arrayMinSizeTest = val => val.length > 1;
 
 const OptionSchema = new Schema({
   id: {
-    type: Number,
-    min: 1,
-    max: 20,
+    type: String,
     required: true
   },
   value: {

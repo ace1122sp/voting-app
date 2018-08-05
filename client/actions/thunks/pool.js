@@ -24,11 +24,8 @@ export const fetchNewPool = pool =>
   dispatch => {
     const options = {
       method: 'POST',
-      body: JSON.stringify({
-        name: pool.name,
-        options: pool.options
-      }),
-      headers: { "Content-type": "application/json" }
+      body: JSON.stringify(pool),
+      headers: { 'Content-Type': 'application/json' }
     };
     return fetch(URL_POOLS, options)
       .then(res => {
@@ -91,7 +88,7 @@ export const fetchVote = (poolId, optionId) =>
       body: JSON.stringify({
         optionId
       }),
-      headers: { "Content-type": "application/json" }
+      headers: { 'Content-Type': 'application/json' }
     };
     return fetch(urlVote(poolId), options)
       .then(res => {
@@ -156,7 +153,7 @@ export const fetchOptionAdd = (poolId, option) =>
         id: option.id,
         value: option.value
       }),
-      headers: { "Content-type": "application/json" }
+      headers: { 'Content-Type': 'application/json' }
     };
     return fetch(urlAddOptions(poolId), options)
       .then(res => {
