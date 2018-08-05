@@ -1,22 +1,22 @@
 import { connect } from 'react-redux';
 import World from '../components/World';
-import { deletePool } from '../actions/pools';
+import { unloadPool } from '../actions/pools';
 import { schedulePoolForDelete } from '../actions/scheduleForDelete';
 
 const mapStateToProps = state => {
 
   console.log(state);
   return {
-    pools: state.pools,
+    poolCards: state.poolCards,
     poolToDelete: state.poolToDelete
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    deletePool_f: poolId => {
-      dispatch(deletePool(poolId));
-      dispatch(schedulePoolForDelete(null));
+    deletePool_f: () => {
+      dispatch(unloadPool());
+      dispatch(schedulePoolForDelete(false));
     }
   }
 }

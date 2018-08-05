@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import Profile from '../components/Profile';
-import { deletePool } from '../actions/pools';
+
 import { schedulePoolForDelete } from '../actions/scheduleForDelete';
+import { unloadPool } from '../actions/pools';
 
 const mapStateToProps = state => {
   return {
@@ -12,9 +13,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    deletePool_f: poolId => {
-      dispatch(deletePool(poolId));
-      dispatch(schedulePoolForDelete(null));
+    deletePool_f: () => {
+      dispatch(unloadPool());
+      dispatch(schedulePoolForDelete(false));
     }
   }
 }

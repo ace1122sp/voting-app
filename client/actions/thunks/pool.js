@@ -1,7 +1,8 @@
 import { URL_POOLS, urlPool, urlVote, urlFollowers, urlAddOption, urlRemoveOption } from '../../resources/urls';
 import { loadPool } from '../pool';
 import { schedulePoolForDelete } from '../scheduleForDelete';
-import { removeFollower, loadPoolCards } from '../pools';
+import { removeFollower, loadPoolCards, addFollower } from '../pools';
+import { followPool, unfollowPool } from '../user';
 
 export const fetchPoolCards = () =>
   dispatch => {
@@ -36,6 +37,11 @@ export const fetchNewPool = package =>
         throw new Error('Bad request');
       })
       .then(pool => {
+        let poolCard = { 
+          _id: pool._id, 
+          name: pool.name 
+        };
+        dispatch(addToCreatedPools(poolCard));
         dispatch(loadPool(pool));
       })
       .catch(err => {
@@ -102,7 +108,7 @@ export const fetchVote = (poolId, optionId) =>
       });
   }
 
-export const fetchFollow = (poolId, username) =>
+export const fetchFollow = (poolId, poolName, username) =>
   dispatch => {
     const options = {
       method: 'PATCH'
@@ -110,7 +116,9 @@ export const fetchFollow = (poolId, username) =>
     return fetch(urlFollowers(poolId), options)
       .then(res => {
         if (res.ok) {
-          dispatch(poolId, username);
+          let poolCard = { _id: poolId, name: poolName };
+          dispatch(followPool(poolCard));
+          dispatch(addFollower(username));
         } else {
           throw new Error('Bad request');
         }
@@ -130,6 +138,7 @@ export const fetchUnfollow = (poolId, username) =>
       .then(res => {
         if (res.ok) {
           dispatch(removeFollower(poolId, username));
+          dispatch(unfollowPool(poolId));
         } else {
           throw new Error('Bad request');
         }

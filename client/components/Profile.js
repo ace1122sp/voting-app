@@ -7,7 +7,7 @@ class Profile extends Component {
     super(props);
     this.state = { poolsToShow: 'all' };
 
-    if (this.props.poolToDelete) this.props.deletePool_f(this.props.poolToDelete);
+    if (this.props.poolToDelete) this.props.deletePool_f();
   }
 
   showAllPools = () => {

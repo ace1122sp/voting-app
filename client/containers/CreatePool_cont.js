@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import CreatePool from '../components/CreatePool';
-import { createPool } from '../actions/pools';
-import { addOwnPoolToProfile } from '../actions/user';
+import { fetchNewPool } from '../actions/thunks/pool';
 
 const mapStateToProps = state => {
   return {
@@ -11,8 +10,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    createPool_f: pool => dispatch(createPool(pool)),
-    addOwnPoolToProfile_f: (username, poolId) => dispatch(addOwnPoolToProfile(username, poolId))
+    createPool_f: pool => dispatch(fetchNewPool(pool)),
   }
 }
 

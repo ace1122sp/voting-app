@@ -1,23 +1,23 @@
 import { connect } from 'react-redux';
+
 import Pool from '../components/Pool';
-import { vote, addVotingOption, addFollower, removeFollower, deletePool, removePoolOption } from '../actions/pools';
-import { followPool, unfollowPool } from '../actions/user';
-import { schedulePoolForDelete } from '../actions/scheduleForDelete';
 import { general } from '../util/general';
+import { fetchVote, fetchOptionAdd, fetchOptionRemove, fetchFollow, fetchUnfollow } from '../actions/thunks/pool';
+import { schedulePoolForDelete } from '../actions/scheduleForDelete';
 
 const mapStateToProps = (state, ownProps) => {
   const poolId = ownProps.match.params.pool_id;
-  const options = general.getPropsInArray(state.pools[poolId].options);
-  const totalVotes = general.getTotalVotes(state.pools[poolId].options);
-  const isFollowedByActiveUser = state.pools[poolId].followers.some(follower => follower == state.user) ? 'unfollow' : 'follow';
+  const options = state.pool.options;
+  const totalVotes = general.getTotalVotes(state.pool.options);
+  const isFollowedByActiveUser = state.pool.followers.some(follower => follower == state.user) ? 'unfollow' : 'follow';
 
   return {
-    name: state.pools[poolId].name,
-    poolId: state.pools[poolId].id,
+    name: state.pool.name,
+    creator: state.pool.creator,
+    dateCreated: state.pool.dateCreated,
+    poolId: state.pool._id,
     options,
     isFollowedByActiveUser,
-    dateCreated: state.pools[poolId].dateCreated,
-    creator: state.pools[poolId].creator,
     totalVotes,
     username: state.user
   }
@@ -25,18 +25,16 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    vote_f: (poolId, option) => dispatch(vote(poolId, option)),
-    addVotingOption_f: (poolId, option) => dispatch(addVotingOption(poolId, option)),
-    follow_f: (username, poolId) => {
-      dispatch(followPool(username, poolId));
-      dispatch(addFollower(poolId, username));
+    vote_f: (poolId, optionId) => dispatch(fetchVote(poolId, optionId)),
+    addVotingOption_f: (poolId, option) => dispatch(fetchOptionAdd(poolId, option)),
+    follow_f: (poolId, poolName, username) => {
+      dispatch(fetchFollow(poolId, poolName, username));
     },
     unfollow_f: (username, poolId) => {
-      dispatch(unfollowPool(username, poolId));
-      dispatch(removeFollower(poolId, username));
+      dispatch(fetchUnfollow(poolId, username));
     },
-    schedulePoolForDelete_f: poolId => dispatch(schedulePoolForDelete(poolId)),
-    removePoolOption_f: (poolId, optionId) => dispatch(removePoolOption(poolId, optionId))
+    schedulePoolForDelete_f: () => dispatch(schedulePoolForDelete(true)),
+    removePoolOption_f: (poolId, optionId) => dispatch(fetchOptionRemove(poolId, optionId))
   }
 }
 

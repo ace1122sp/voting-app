@@ -1,13 +1,6 @@
 import { connect } from 'react-redux';
 import SignUp from '../../components/Authenticate/SignUp';
 import { fetchRegister } from '../../actions/thunks/user';
-import { general } from '../../util/general';
-
-const mapStateToProps = state => {
-  return {
-    users: general.getUsernamesInArray(state.users)
-  };
-}
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -15,6 +8,6 @@ const mapDispatchToProps = dispatch => {
   };
 }
 
-const SignUp_cont = connect(mapStateToProps, mapDispatchToProps)(SignUp);
+const SignUp_cont = connect(null, mapDispatchToProps)(SignUp);
 
 export default SignUp_cont;

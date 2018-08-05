@@ -4,7 +4,7 @@ import Main from '../components/Main';
 
 const mapStateToProps = state => {
   let user;
-  state.activeUser ? user = true : user = false;
+  state.user ? user = true : user = false;
 
   return {
     user

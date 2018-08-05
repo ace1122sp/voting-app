@@ -3,10 +3,10 @@ import PoolCard from './PoolCard';
 import { general } from '../util/general';
 
 const World = props => {
-  if (props.poolToDelete) props.deletePool_f(props.poolToDelete);
+  if (props.poolToDelete) props.deletePool_f();
 
-  const poolsArr = general.getPropsInArray(props.pools);
-  const pools = poolsArr.map(pool => <PoolCard key={pool.id} id={pool.id} name={pool.name} />);
+  const poolsArr = general.getPropsInArray(props.poolCards);
+  const pools = poolsArr.map(pool => <PoolCard key={pool._id} id={pool._id} name={pool.name} />);
 
   return (
     <div>

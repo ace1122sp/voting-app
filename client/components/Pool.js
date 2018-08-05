@@ -68,7 +68,7 @@ class Pool extends Component {
   }
 
   handleFollowing = () => {
-    this.props.follow_f(this.props.username, this.props.poolId);
+    this.props.follow_f(this.props.poolId, this.props.name, this.props.username);
   }
 
   handleUnfollowing = () => {
@@ -78,7 +78,7 @@ class Pool extends Component {
   followOrUnfollow = () => this.props.isFollowedByActiveUser == 'unfollow' ? this.handleUnfollowing() : this.handleFollowing();
 
   handlePoolDelete = () => {
-    this.props.schedulePoolForDelete_f(this.props.poolId);
+    this.props.schedulePoolForDelete_f();
     this.goBack();
   }
 
