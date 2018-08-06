@@ -6,13 +6,15 @@ class Pool extends Component {
     super(props);
     this.state = {
       newOption: '',
-      creatorUser: this.props.username == this.props.creator
+      creatorUser: this.props.username == this.props.pool.creator
     };
   }
-
+  componentWillMount() {
+    this.props.getPool_f(this.props.poolId);
+  }
   handleOptionDelete = e => {
     e.preventDefault();
-    if (this.state.creatorUser && this.props.options.length > 2) this.props.removePoolOption_f(this.props.poolId, e.target.value);
+    if (this.state.creatorUser && this.props.pool.options.length > 2) this.props.removePoolOption_f(this.props.poolId, e.target.value);
   }
 
   getOptions = (optionsArray, name) =>
@@ -41,7 +43,7 @@ class Pool extends Component {
     e.preventDefault();
 
     // Validate option
-    const options = this.props.options.map(el => el.value);
+    const options = this.props.pool.options.map(el => el.value);
     const validOption = validator.trimEverything(this.state.newOption);
     const uniqueOption = validator.isUnique(validOption, options);
 
@@ -68,7 +70,7 @@ class Pool extends Component {
   }
 
   handleFollowing = () => {
-    this.props.follow_f(this.props.poolId, this.props.name, this.props.username);
+    this.props.follow_f(this.props.poolId, this.props.pool.name, this.props.username);
   }
 
   handleUnfollowing = () => {
@@ -78,7 +80,7 @@ class Pool extends Component {
   followOrUnfollow = () => this.props.isFollowedByActiveUser == 'unfollow' ? this.handleUnfollowing() : this.handleFollowing();
 
   handlePoolDelete = () => {
-    this.props.schedulePoolForDelete_f();
+    this.props.deletePool_f(this.props.poolId);
     this.goBack();
   }
 
@@ -89,18 +91,18 @@ class Pool extends Component {
   render() {
     let deleteButton;
     const deletePool = <button onClick={this.handlePoolDelete}>delete pool</button>;
-    this.props.username == this.props.creator ? deleteButton = deletePool : deleteButton = null;
+    this.props.username == this.props.pool.creator ? deleteButton = deletePool : deleteButton = null;
 
     return (
       <main>
         <div>
-          <h2>{this.props.name}</h2>
-          <h4>created by {this.props.creator || 'n/a'} <span>{this.props.dateCreated}</span></h4>
+          <h2>{this.props.pool.name}</h2>
+          <h4>created by {this.props.pool.creator || 'n/a'} <span>{this.props.pool.dateCreated}</span></h4>
           <div>
-            {this.getOptions(this.props.options, this.props.name)}
+            {this.props.pool.name && this.getOptions(this.props.pool.options, this.props.pool.name)}
           </div>
           <button onClick={this.handleVoting}>Vote</button><br />
-        {this.props.username && <form onSubmit={this.handleAddingNewOption}>
+        {this.props.pool.name && this.props.username && <form onSubmit={this.handleAddingNewOption}>
           <p>add new option</p>
           <input type='text' value={this.state.newOption} onChange={this.handleChangeForNewOption} />
           <input type='submit' value='add' /><br />
@@ -115,7 +117,7 @@ class Pool extends Component {
         <div>
           <h3>Chart</h3>
           <p>imagine some chart over here</p>
-          {this.showResults(this.props.options)}
+          {this.props.pool.name && this.showResults(this.props.pool.options)}
         </div>
       </main>
     );

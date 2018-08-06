@@ -1,6 +1,6 @@
 import { URL_POOLS, urlPool, urlVote, urlFollowers, urlAddOption, urlRemoveOption } from '../../resources/urls';
 import { schedulePoolForDelete } from '../scheduleForDelete';
-import { loadPool, removeFollower, loadPoolCards, addFollower } from '../pools';
+import { loadPool, removeFollower, loadPoolCards, addFollower, unloadPool } from '../pools';
 import { followPool, unfollowPool, addToCreatedPools, removeFromCreatedPools } from '../user';
 
 export const fetchPoolCards = () =>
@@ -48,6 +48,7 @@ export const fetchNewPool = pool =>
 
 export const fetchPool = poolId =>
   dispatch => {
+    dispatch(unloadPool());
     return fetch(urlPool(poolId))
       .then(res => {
         if (res.ok) return res.json();

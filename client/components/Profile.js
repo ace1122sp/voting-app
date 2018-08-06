@@ -26,8 +26,8 @@ class Profile extends Component {
     let poolsSelection;
     let allPools = general.getUniqueObjectsArray(this.props.user.createdPools, this.props.user.followingPools);
     this.state.poolsToShow == 'all' ? poolsSelection = allPools : this.state.poolsToShow == 'own' ? poolsSelection = this.props.user.createdPools : poolsSelection = this.props.user.followingPools;
-    // click on pool card --> first, you need to fetch that pool, and then you can render it 
     let pools = poolsSelection.map(pool => <PoolCard key={pool._id} id={pool._id} name={pool.name} />);
+    
     return (
       <div>
         <aside>
