@@ -23,7 +23,7 @@ module.exports = {
 
     let pool = new Pool({
       name: data.name,
-      creator: req.user._id,
+      creator: req.user.username,
       options: data.options
     });
     

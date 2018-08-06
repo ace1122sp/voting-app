@@ -34,7 +34,7 @@ const GuestHeader = props => {
 }
 
 class Header extends Component {
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate(nextProps) {
     return nextProps.user !== this.props.user;
   }
 

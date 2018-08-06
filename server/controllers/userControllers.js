@@ -29,13 +29,28 @@ module.exports = {
     res.status(204).json({ "message": "user logged out" });
   },
   getUser: (req, res) => {
-    const user = {
-      username: req.user.username,
-      email: req.user.email,
-      createdPools: req.user.createdPools,
-      followingPools: req.user.followingPools,
-    }
-    res.json(user); 
+    req.user
+    .populate({
+      path: 'createdPools',
+      select: '_id name'
+    })
+    .populate({
+      path: 'followingPools',
+      select: '_id name'
+    })
+    .execPopulate()
+    .then(user => {
+      const formattedUser = {
+        username: user.username,
+        email: user.email,
+        createdPools: user.createdPools,
+        followingPools: user.followingPools
+      }
+      res.json(formattedUser); 
+    })
+    .catch(err => {
+      res.sendStatus(500);
+    });
   },
   updatePassword: (req, res) => {
     const id = req.user._id;

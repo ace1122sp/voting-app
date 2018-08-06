@@ -13,7 +13,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    deletePool_f: () => {
+    deletePool_f: () => { // not used atm
       dispatch(unloadPool());
       dispatch(schedulePoolForDelete(false));
     }

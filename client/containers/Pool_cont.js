@@ -6,20 +6,21 @@ import { fetchVote, fetchOptionAdd, fetchOptionRemove, fetchFollow, fetchUnfollo
 import { schedulePoolForDelete } from '../actions/scheduleForDelete';
 
 const mapStateToProps = (state, ownProps) => {
+  const username = state.user ? state.user.username : null;
   const poolId = ownProps.match.params.pool_id;
   const options = state.pool.options;
   const totalVotes = general.getTotalVotes(state.pool.options);
-  const isFollowedByActiveUser = state.pool.followers.some(follower => follower == state.user) ? 'unfollow' : 'follow';
-
+  const isFollowedByActiveUser = !state.user ? null : state.user.followingPools.some(pool => pool == poolId) ? 'unfollow' : 'follow';
+  
   return {
     name: state.pool.name,
     creator: state.pool.creator,
     dateCreated: state.pool.dateCreated,
-    poolId: state.pool._id,
+    poolId,
     options,
     isFollowedByActiveUser,
     totalVotes,
-    username: state.user
+    username
   }
 }
 

@@ -37,7 +37,7 @@ export const general = (() => {
 
       args.forEach(arg => {
         arg.forEach(obj => {
-          allObjects[obj.id] = { id: obj.id, name: obj.name }
+          allObjects[obj._id] = { _id: obj.id, name: obj.name }
         });
       });
 

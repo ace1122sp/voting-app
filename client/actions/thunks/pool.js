@@ -1,7 +1,7 @@
 import { URL_POOLS, urlPool, urlVote, urlFollowers, urlAddOption, urlRemoveOption } from '../../resources/urls';
 import { schedulePoolForDelete } from '../scheduleForDelete';
 import { loadPool, removeFollower, loadPoolCards, addFollower } from '../pools';
-import { followPool, unfollowPool } from '../user';
+import { followPool, unfollowPool, addToCreatedPools, removeFromCreatedPools } from '../user';
 
 export const fetchPoolCards = () =>
   dispatch => {
@@ -71,6 +71,7 @@ export const fetchPoolDelete = poolId =>
       .then(res => {
         if (res.ok) {
           dispatch(schedulePoolForDelete(true));
+          dispatch(removeFromCreatedPools(poolId));
         } else {
           throw new Error('Bad request');
         }
@@ -155,7 +156,7 @@ export const fetchOptionAdd = (poolId, option) =>
       }),
       headers: { 'Content-Type': 'application/json' }
     };
-    return fetch(urlAddOptions(poolId), options)
+    return fetch(urlAddOption(poolId), options)
       .then(res => {
         if (res.ok) return res.json();
         throw new Error('Bad request');

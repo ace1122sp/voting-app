@@ -34,7 +34,7 @@ const PoolSchema = new Schema({
     default: Date.now
   },
   creator: {
-    type: Schema.Types.ObjectId,
+    type: String,
     required: true
   },
   followers: {
