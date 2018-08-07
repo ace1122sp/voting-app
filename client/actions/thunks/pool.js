@@ -1,6 +1,6 @@
 import { URL_POOLS, urlPool, urlVote, urlFollowers, urlAddOption, urlRemoveOption } from '../../resources/urls';
 import { schedulePoolForDelete } from '../scheduleForDelete';
-import { loadPool, removeFollower, loadPoolCards, addFollower, unloadPool } from '../pools';
+import { loadPool, removeFollower, loadPoolCards, addFollower, unloadPool, vote } from '../pools';
 import { followPool, unfollowPool, addToCreatedPools, removeFromCreatedPools } from '../user';
 
 export const fetchPoolCards = () =>
@@ -95,7 +95,7 @@ export const fetchVote = (poolId, optionId) =>
     return fetch(urlVote(poolId), options)
       .then(res => {
         if (res.ok) {
-          dispatch(optionId);
+          dispatch(vote(optionId));
         } else {
           throw new Error('Bad request');
         }

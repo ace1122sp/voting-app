@@ -31,8 +31,8 @@ const UserSchema = new Schema({
 });
 
 UserSchema.methods = {
-  follow: function(poolId) {
-    this.followingPools.push(poolId, cb);
+  follow: function(poolId, cb) {
+    this.followingPools.push(poolId);
     this.save()
       .then(doc => cb(null, doc))
       .catch(err => cb(err, null));

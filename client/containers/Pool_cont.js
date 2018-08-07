@@ -4,11 +4,11 @@ import Pool from '../components/Pool';
 import { general } from '../util/general';
 import { fetchVote, fetchOptionAdd, fetchOptionRemove, fetchFollow, fetchUnfollow, fetchPool, fetchPoolDelete } from '../actions/thunks/pool';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
   const username = state.user ? state.user.username : null;
   const poolId = ownProps.match.params.pool_id;
   const totalVotes = general.getTotalVotes(state.pool.options);
-  const isFollowedByActiveUser = !state.user ? null : state.user.followingPools.some(pool => pool == poolId) ? 'unfollow' : 'follow';
+  const isFollowedByActiveUser = !state.user ? null : state.user.followingPools.some(pool => pool._id == poolId) ? 'unfollow' : 'follow';
   
   return {
     poolId,
