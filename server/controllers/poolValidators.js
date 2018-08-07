@@ -23,27 +23,17 @@ const validatePoolId = [
 const validateOptionId = [
   check.check('optionId')
     .exists()
-    .isInt()
 ];
 const validateOption = [
   check.body(['id', 'value'])
     .exists(),
-  check.body('id')
-    .isInt(),
-  filter.sanitizeBody('value')
+  filter.sanitizeBody('value', 'id')
     .trim()
     .escape()
 ];
 const validateOptions = (req, res, next) => {
   if (!Array.isArray(req.body.options)) return res.sendStatus(400);
   // sanitize every option 
-  req.body.options = req.body.options.map(option => {
-    return {
-      id: JSON.stringify(option.id) || '',
-      value: JSON.stringify(option.value) || ''
-    };
-  });
-
   next();
 }
 

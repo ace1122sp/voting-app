@@ -20,7 +20,6 @@ module.exports = {
   
   createPool: (req, res) => {
     const data = req.body;
-
     let pool = new Pool({
       name: data.name,
       creator: req.user.username,
@@ -218,7 +217,7 @@ module.exports = {
 
   removeOption: (req, res) => {
     const poolId = req.params.poolId;
-    const optionId = parseInt(req.params.optionId);
+    const optionId = req.params.optionId;
 
     Pool.findById(poolId, (err, doc) => {
       if (err) {
@@ -233,8 +232,6 @@ module.exports = {
         }
         
         if (doc == null) return res.sendStatus(404);
-        
-        console.log(`option removed from pool ${poolId}`);
         res.json(doc);
       });
     });

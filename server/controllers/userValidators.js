@@ -38,7 +38,7 @@ const ensureOwner = (req, res, next) => {
       console.error(err.message);
       return res.sendStatus(400);
     }
-    if (req.user._id !== doc.creator) return res.sendStatus(403);
+    if (req.user.username !== doc.creator) return res.sendStatus(403);
     next();
   });
 }

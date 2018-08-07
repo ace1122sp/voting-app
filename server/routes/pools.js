@@ -29,4 +29,10 @@ poolsRouter.route('/:poolId/options')
 poolsRouter.route('/:poolId/options/:optionId')
   .delete(ensureAuthenticated, validatePoolId, validateOptionId, errorResponse, ensureOwner, controllers.removeOption);
 
+poolsRouter.route('/unauthorized')
+  .get((req, res) => {
+    res.status(401).json({ "message": "action not allowed" });
+  });
+
+
   module.exports = poolsRouter;
