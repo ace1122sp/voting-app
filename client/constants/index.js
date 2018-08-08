@@ -8,8 +8,6 @@ export const UNFOLLOW_POOL = 'UNFOLLOW_POOL';
 export const LOAD_POOL_CARDS = 'LOAD_POOL_CARDS';
 export const LOAD_POOL = 'LOAD_POOL';
 export const UNLOAD_POOL = 'UNLOAD_POOL';
-export const ADD_FOLLOWER = 'ADD_FOLLOWER';
-export const REMOVE_FOLLOWER = 'REMOVE_FOLLOWER';
 export const ADD_VOTE = 'ADD_VOTE';
 export const SCHEDULE_POOL_FOR_DELETE = 'SCHEDULE_POOL_FOR_DELETE';
 

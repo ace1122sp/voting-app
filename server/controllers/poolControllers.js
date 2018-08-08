@@ -118,72 +118,43 @@ module.exports = {
   
   followPool: (req, res) => {
     const poolId = req.params.poolId;
-    const followerId = req.user._id;
 
-    Pool.findById(poolId, (err, doc) => {
+    User.findById(req.user._id, (err, user) => {
       if (err) {
-        console.error(err.message); 
-        return res.sendStatus(500); 
-      } 
-      
-      const updatedFollowers = Object.assign({}, doc.followers, { [followerId]: true });
-      
-      doc.update({ $set: { followers: updatedFollowers } }, (err, doc) => {
-        if (err) {
-          console.error(err.message);
-          return res.sendStatus(500);
-        } 
-        User.findById(req.user._id, (err, user) => {
+        console.error(err.message);
+        return res.sendStatus(500);
+      } else {
+        user.follow(poolId, err => {
           if (err) {
             console.error(err.message);
+            return res.sendStatus(500);
           } else {
-            user.follow(poolId, (err, user) => {
-              if (err) {
-                console.error(err.message);
-              } else {
-                console.log(`user ${req.user._id} now follows pool ${poolId}`);
-              }
-            });
+            console.log(`user ${req.user._id} now follows pool ${poolId}`);
+            res.sendStatus(200); 
           }
-        })
-        console.log(`user ${followerId} added to followers of pool ${poolId}`);
-        res.sendStatus(200); 
-      });
+        });
+      }
     });
   },
   
   unfollowPool: (req, res) => {
     const poolId = req.params.poolId;
-    const followerId = req.user._id;
 
-    Pool.findById(poolId, (err, doc) => {
+    User.findById(req.user._id, (err, user) => {
       if (err) {
         console.error(err.message);
-        return res.sendStatus(500); 
-      }
-      const updatedFollowers = Object.assign({}, doc.followers);
-      delete updatedFollowers[followerId];
-      doc.update({ $set: { followers: updatedFollowers } }, (err, doc) => {
-        if (err) {
-          console.error(err.message);
-          return res.sendStatus(500);
-        }
-        User.findById(req.user._id, (err, user) => {
+        return res.sendStatus(500);
+      } else {
+        user.unfollow(poolId, err => {
           if (err) {
             console.error(err.message);
+            return res.sendStatus(500);
           } else {
-            user.unfollow(poolId, (err, doc) => {
-              if (err) {
-                console.error(err.message);
-              } else {
-                console.log(`user ${req.user._id} has unfollowed pool ${poolId}`);
-              }
-            });
+            console.log(`user ${req.user._id} has unfollowed pool ${poolId}`);
+            res.sendStatus(204);
           }
         });
-        console.log(`user ${followerId} removed from followers of pool ${poolId}`);
-        res.sendStatus(204);
-      });
+      }
     });
   },
 

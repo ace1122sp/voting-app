@@ -1,4 +1,4 @@
-import { LOAD_POOL_CARDS, LOAD_POOL, UNLOAD_POOL, ADD_VOTE, ADD_FOLLOWER, REMOVE_FOLLOWER } from '../constants';
+import { LOAD_POOL_CARDS, LOAD_POOL, UNLOAD_POOL, ADD_VOTE } from '../constants';
 
 export const loadPoolCards = poolCards => {
   return {
@@ -24,20 +24,6 @@ export const vote = optionId => {
   return {
     type: ADD_VOTE,
     optionId
-  }
-}
-
-export const addFollower = username => {
-  return {
-    type: ADD_FOLLOWER,
-    username
-  }
-}
-// think about follower solutions
-export const removeFollower = username => {
-  return {
-    type: REMOVE_FOLLOWER,
-    username
   }
 }
 

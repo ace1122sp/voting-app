@@ -14,7 +14,7 @@ export const user = (state = null, action) => {
       return Object.assign({}, state, { createdPools: updatedCreatedPools });
 
     case REMOVE_FROM_CREATED_POOLS:
-      updatedCreatedPools = state.createdPools.filter(pool => pool.id !== poolId);
+      updatedCreatedPools = state.createdPools.filter(pool => pool._id !== action.poolId);
       return Object.assign({}, state, { createdPools: updatedCreatedPools });
 
     case FOLLOW_POOL:
@@ -22,7 +22,7 @@ export const user = (state = null, action) => {
       return Object.assign({}, state, { followingPools: updatedFollowingPools });
 
     case UNFOLLOW_POOL:
-      updatedFollowingPools = state.followingPools.filter(pool => pool.id !== poolId);
+      updatedFollowingPools = state.followingPools.filter(pool => pool._id !== action.poolId);
       return Object.assign({}, state, { followingPools: updatedFollowingPools });
 
     default:

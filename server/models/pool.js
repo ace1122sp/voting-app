@@ -37,10 +37,6 @@ const PoolSchema = new Schema({
     type: String,
     required: true
   },
-  followers: {
-    type: Schema.Types.Mixed,
-    default: {}
-  },
   options: {
     type: [OptionSchema],
     validate: [{ validator: arrayMinSizeTest, msg: 'Pool must have minimum 2 different options.' }],

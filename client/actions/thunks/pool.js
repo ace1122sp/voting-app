@@ -106,7 +106,7 @@ export const fetchVote = (poolId, optionId) =>
       });
   }
 
-export const fetchFollow = (poolId, poolName, username) =>
+export const fetchFollow = (poolId, poolName) =>
   dispatch => {
     const options = {
       method: 'PATCH'
@@ -116,7 +116,6 @@ export const fetchFollow = (poolId, poolName, username) =>
         if (res.ok) {
           let poolCard = { _id: poolId, name: poolName };
           dispatch(followPool(poolCard));
-          dispatch(addFollower(username));
         } else {
           throw new Error('Bad request');
         }
@@ -127,7 +126,7 @@ export const fetchFollow = (poolId, poolName, username) =>
       });
   }
 
-export const fetchUnfollow = (poolId, username) =>
+export const fetchUnfollow = poolId =>
   dispatch => {
     const options = {
       method: 'DELETE'
@@ -135,7 +134,6 @@ export const fetchUnfollow = (poolId, username) =>
     return fetch(urlFollowers(poolId), options)
       .then(res => {
         if (res.ok) {
-          dispatch(removeFollower(poolId, username));
           dispatch(unfollowPool(poolId));
         } else {
           throw new Error('Bad request');

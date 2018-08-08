@@ -1,7 +1,7 @@
-import { LOAD_POOL, UNLOAD_POOL, ADD_VOTE, ADD_FOLLOWER, REMOVE_FOLLOWER,  } from '../constants';
+import { LOAD_POOL, UNLOAD_POOL, ADD_VOTE } from '../constants';
 
 export const pool = (state = {}, action) => {
-  let updatedFollowers, targetOption, updatedOptions;
+  let targetOption, updatedOptions;
   switch (action.type) {
     case LOAD_POOL:
       return action.pool;
@@ -16,15 +16,6 @@ export const pool = (state = {}, action) => {
       updatedOptions.push(targetOption);
       return Object.assign({}, state, { options: updatedOptions });
   
-    case ADD_FOLLOWER:
-      updatedFollowers = Object.assign({}, state.followers, { [action.username]: true });
-      return Object.assign({}, state, { followers: updatedFollowers });
-    
-    case REMOVE_FOLLOWER:
-      updatedFollowers = Object.assign({}, state.followers);
-      delete updatedFollowers[action.username];
-      return Object.assign({}, state, { followers: updatedFollowers });
-    
     default: 
       return state
   }
