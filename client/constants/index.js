@@ -9,5 +9,7 @@ export const LOAD_POOL_CARDS = 'LOAD_POOL_CARDS';
 export const LOAD_POOL = 'LOAD_POOL';
 export const UNLOAD_POOL = 'UNLOAD_POOL';
 export const ADD_VOTE = 'ADD_VOTE';
+export const ADD_OPTION = 'ADD_OPTION';
+export const REMOVE_OPTION = 'REMOVE_OPTION';
 export const SCHEDULE_POOL_FOR_DELETE = 'SCHEDULE_POOL_FOR_DELETE';
 

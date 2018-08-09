@@ -1,6 +1,6 @@
 import { URL_POOLS, urlPool, urlVote, urlFollowers, urlAddOption, urlRemoveOption } from '../../resources/urls';
 import { schedulePoolForDelete } from '../scheduleForDelete';
-import { loadPool, removeFollower, loadPoolCards, addFollower, unloadPool, vote } from '../pools';
+import { loadPool, loadPoolCards, unloadPool, vote, addOption, removeOption } from '../pools';
 import { followPool, unfollowPool, addToCreatedPools, removeFromCreatedPools } from '../user';
 
 export const fetchPoolCards = () =>
@@ -160,8 +160,8 @@ export const fetchOptionAdd = (poolId, option) =>
         if (res.ok) return res.json();
         throw new Error('Bad request');
       })
-      .then(pool => {
-        dispatch(loadPool(pool));
+      .then(res => {
+        if (res.nModified) dispatch(addOption(option));
       })
       .catch(err => {
         // send some info about err to user
@@ -176,11 +176,11 @@ export const fetchOptionRemove = (poolId, optionId) =>
     };
     return fetch(urlRemoveOption(poolId, optionId), options)
       .then(res => {
-        if (res.ok) return res.json();
-        throw new Error('Bad request');
-      })
-      .then(pool => {
-        dispatch(loadPool(pool));
+        if (res.ok) {
+          dispatch(removeOption(optionId));
+        } else {
+          throw new Error('Bad request');
+        }
       })
       .catch(err => {
         // send some info about err to user

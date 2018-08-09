@@ -1,4 +1,4 @@
-import { LOAD_POOL, UNLOAD_POOL, ADD_VOTE } from '../constants';
+import { LOAD_POOL, UNLOAD_POOL, ADD_VOTE, ADD_OPTION, REMOVE_OPTION } from '../constants';
 
 export const pool = (state = {}, action) => {
   let targetOption, updatedOptions;
@@ -14,6 +14,14 @@ export const pool = (state = {}, action) => {
       targetOption.votes += 1;
       updatedOptions = state.options.filter(option => option.id !== action.optionId);
       updatedOptions.push(targetOption);
+      return Object.assign({}, state, { options: updatedOptions });
+
+    case ADD_OPTION:
+      updatedOptions = [...state.options, action.option];
+      return Object.assign({}, state, { options: updatedOptions });
+
+    case REMOVE_OPTION:
+      updatedOptions = state.options.filter(option => option.id !== action.optionId);
       return Object.assign({}, state, { options: updatedOptions });
   
     default: 

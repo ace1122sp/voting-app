@@ -174,14 +174,13 @@ module.exports = {
 
       if (doc == null) return res.sendStatus(404);
       
-      doc.update({ $push: { options: option } }, { new: true }, (err, report) => {
+      doc.update({ $push: { options: option } }, (err, report) => {
         if (err) {
           console.error(err.message);
           return res.sendStatus(400);
         }
-        
         console.log(`added option to pool ${poolId}`);
-        res.json(doc);
+        res.json(report);
       });
     });
   },
@@ -196,14 +195,14 @@ module.exports = {
         return res.sendStatus(500);
       }
       let updatedOptions = doc.options.filter(option => option.id !== optionId);
-      doc.update({ $set: { options: updatedOptions } }, { runValidators: true, new: true, multi: true }, (err, report) => {
+      doc.update({ $set: { options: updatedOptions } }, { runValidators: true, multi: true }, (err, report) => {
         if (err) {
           console.error(err.message);
           return res.status(403).send('Pool must have minimum 2 different options.');
         }
-        
+        console.log(report);
         if (doc == null) return res.sendStatus(404);
-        res.json(doc);
+        res.sendStatus(204);
       });
     });
   }

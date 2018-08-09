@@ -1,4 +1,4 @@
-import { LOAD_POOL_CARDS, LOAD_POOL, UNLOAD_POOL, ADD_VOTE } from '../constants';
+import { LOAD_POOL_CARDS, LOAD_POOL, UNLOAD_POOL, ADD_VOTE, ADD_OPTION, REMOVE_OPTION } from '../constants';
 
 export const loadPoolCards = poolCards => {
   return {
@@ -23,6 +23,20 @@ export const unloadPool = () => {
 export const vote = optionId => {
   return {
     type: ADD_VOTE,
+    optionId
+  }
+}
+
+export const addOption = option => {
+  return {
+    type: ADD_OPTION,
+    option
+  }
+}
+
+export const removeOption = optionId => {
+  return {
+    type: REMOVE_OPTION,
     optionId
   }
 }
