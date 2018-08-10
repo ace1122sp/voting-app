@@ -57,9 +57,11 @@ module.exports = {
     Pool.findById(poolId, (err, doc) => {
       if (err) {
         console.error(err.message);
-        return res.sendStatus(500);
-      } 
-      res.status(200).json(doc); 
+        res.sendStatus(500);
+      } else {
+        if (doc === null) return res.sendStatus(410);
+        res.status(200).json(doc); 
+      }
     });
   },
   

@@ -9,11 +9,8 @@ class Pool extends Component {
     this.state = {
       newOption: '',
       creatorUser: this.props.username == this.props.pool.creator,
-      loading: true
     };
-  }
-  
-  componentWillMount() {
+
     this.props.getPool_f(this.props.poolId)
       .then(promise => {
         if (promise.pool == 'deleted') {
@@ -24,13 +21,12 @@ class Pool extends Component {
         }
       })
       .then(() => {
-        this.setState({ loading: false });
+        this.props.endLoading_f();
       })
       .catch(err => {
-        this.props.history.push('/server-error');        
-      });    
+        this.props.history.push('/server-error');
+      });     
   }
-
 
   handleOptionDelete = e => {
     e.preventDefault();
@@ -112,7 +108,7 @@ class Pool extends Component {
     let deleteButton;
     const deletePool = <button onClick={this.handlePoolDelete}>delete pool</button>;
     this.props.username == this.props.pool.creator ? deleteButton = deletePool : deleteButton = null; // resolve before mounting ??
-    if (this.state.loading) return <Loading />;
+    if (this.props.poolLoading) return <Loading />;
     return (
       <main>
         <div>

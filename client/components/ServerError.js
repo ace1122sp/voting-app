@@ -1,7 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const ServerError = () => {
+const ServerError = props => {
+  props.endLoadingPool_f();
   return (
     <main>
       <h1>Snap, something went wrong...</h1>

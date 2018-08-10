@@ -6,6 +6,8 @@ export const fetchRegister = user =>
   dispatch => {
     const options = {
       method: 'POST',
+      mode: 'cors', 
+      credentials: 'include',
       body: JSON.stringify(
         { 
           username: user.username, 
@@ -33,6 +35,8 @@ export const fetchLogin = user =>
   dispatch => {
     const options = {
       method: 'POST',
+      mode: 'cors', 
+      credentials: 'include',
       body: JSON.stringify(
         {
           username: user.username,
@@ -57,7 +61,7 @@ export const fetchLogin = user =>
 
 export const fetchLogout = () =>
   dispatch => {
-    return fetch(URL_LOGOUT)
+    return fetch(URL_LOGOUT, { mode: 'cors',  credentials: 'include',})
       .then(res => {
         if (res.ok) return true;
         throw new Error('Bad request');
@@ -73,7 +77,7 @@ export const fetchLogout = () =>
 
 export const fetchUser = () =>
   dispatch => {
-    return fetch(URL_PROFILE)
+    return fetch(URL_PROFILE, { mode: 'cors',  credentials: 'include',})
       .then(res => {
         if (res.ok) return res.json();
         throw new Error('Bad request');
@@ -91,6 +95,8 @@ export const fetchUserUpdate = newPassword =>
   dispatch => {
     const options = {
       method: 'PUT',
+      mode: 'cors', 
+      credentials: 'include',
       body: JSON.stringify({
         newPassword
       }),
@@ -113,7 +119,9 @@ export const fetchUserUpdate = newPassword =>
 export const fetchUserDelete = () =>
   dispatch => {
     const options = {
-      method: 'DELETE'
+      method: 'DELETE',
+      mode: 'cors',
+      credentials: 'include'
     };
     return fetch(URL_PROFILE, options)
       .then(res => {

@@ -5,7 +5,7 @@ import { followPool, unfollowPool, addToCreatedPools, removeFromCreatedPools } f
 
 export const fetchPoolCards = () =>
   dispatch => {
-    return fetch(URL_POOLS)
+    return fetch(URL_POOLS, { mode: 'cors', credentials: 'include' })
       .then(res => {
         if (res.ok) return res.json();
         throw new Error('Bad request');
@@ -24,6 +24,7 @@ export const fetchNewPool = pool =>
   dispatch => {
     const options = {
       method: 'POST',
+      mode: 'cors', credentials: 'include',
       body: JSON.stringify(pool),
       headers: { 'Content-Type': 'application/json' }
     };
@@ -49,24 +50,28 @@ export const fetchNewPool = pool =>
 export const fetchPool = poolId =>
   dispatch => {
     dispatch(unloadPool());
-    return fetch(urlPool(poolId))
+    return fetch(urlPool(poolId), { mode: 'cors', credentials: 'include' })
       .then(res => {
         if (res.ok) return res.json();
-        throw new Error('Bad request');
+        if (res.status == 410) {
+          dispatch(unloadPool());
+          return Promise.resolve('deleted');
+        }
       })
       .then(pool => {
-        dispatch(loadPool(pool));
+        return Promise.resolve(dispatch(loadPool(pool)));
       })
       .catch(err => {
-        // send some info about err to user
-        console.error(err.message);
+        console.error('Something went wrong');
+        return Promise.reject('Something went wrong');
       });
   }
 
 export const fetchPoolDelete = poolId =>
   dispatch => {
     const options = {
-      method: 'DELETE'
+      method: 'DELETE',
+      mode: 'cors', credentials: 'include'
     };
     return fetch(urlPool(poolId), options)
       .then(res => {
@@ -87,6 +92,7 @@ export const fetchVote = (poolId, optionId) =>
   dispatch => {
     const options = {
       method: 'PATCH',
+      mode: 'cors', credentials: 'include',
       body: JSON.stringify({
         optionId
       }),
@@ -109,7 +115,8 @@ export const fetchVote = (poolId, optionId) =>
 export const fetchFollow = (poolId, poolName) =>
   dispatch => {
     const options = {
-      method: 'PATCH'
+      method: 'PATCH',
+      mode: 'cors', credentials: 'include'
     };
     return fetch(urlFollowers(poolId), options)
       .then(res => {
@@ -129,7 +136,8 @@ export const fetchFollow = (poolId, poolName) =>
 export const fetchUnfollow = poolId =>
   dispatch => {
     const options = {
-      method: 'DELETE'
+      method: 'DELETE',
+      mode: 'cors', credentials: 'include'
     };
     return fetch(urlFollowers(poolId), options)
       .then(res => {
@@ -149,6 +157,7 @@ export const fetchOptionAdd = (poolId, option) =>
   dispatch => {
     const options = {
       method: 'PATCH',
+      mode: 'cors', credentials: 'include',
       body: JSON.stringify({
         id: option.id,
         value: option.value
@@ -172,7 +181,8 @@ export const fetchOptionAdd = (poolId, option) =>
 export const fetchOptionRemove = (poolId, optionId) =>
   dispatch => {
     const options = {
-      method: 'DELETE'
+      method: 'DELETE',
+      mode: 'cors', credentials: 'include'
     };
     return fetch(urlRemoveOption(poolId, optionId), options)
       .then(res => {
