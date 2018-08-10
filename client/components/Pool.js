@@ -1,17 +1,37 @@
 import React, { Component } from 'react';
 import { validator } from '../util/validator';
 
+const Loading = () => <h1>Page is loading...</h1>
+
 class Pool extends Component {
   constructor(props) {
     super(props);
     this.state = {
       newOption: '',
-      creatorUser: this.props.username == this.props.pool.creator
+      creatorUser: this.props.username == this.props.pool.creator,
+      loading: true
     };
   }
+  
   componentWillMount() {
-    this.props.getPool_f(this.props.poolId);
+    this.props.getPool_f(this.props.poolId)
+      .then(promise => {
+        if (promise.pool == 'deleted') {
+          this.handleUnfollowing();
+          this.props.history.push('/no-pool');
+        } else {
+          return Promise.resolve(true)
+        }
+      })
+      .then(() => {
+        this.setState({ loading: false });
+      })
+      .catch(err => {
+        this.props.history.push('/server-error');        
+      });    
   }
+
+
   handleOptionDelete = e => {
     e.preventDefault();
     if (this.state.creatorUser && this.props.pool.options.length > 2) this.props.removePoolOption_f(this.props.poolId, e.target.value);
@@ -91,8 +111,8 @@ class Pool extends Component {
   render() {
     let deleteButton;
     const deletePool = <button onClick={this.handlePoolDelete}>delete pool</button>;
-    this.props.username == this.props.pool.creator ? deleteButton = deletePool : deleteButton = null;
-
+    this.props.username == this.props.pool.creator ? deleteButton = deletePool : deleteButton = null; // resolve before mounting ??
+    if (this.state.loading) return <Loading />;
     return (
       <main>
         <div>
