@@ -23,7 +23,6 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    // getPool_f: poolId => dispatch(fetchPool(poolId)),
     getPool_f: poolId => {
       dispatch(startLoadingPool());
       return Promise.resolve(dispatch(fetchPool(poolId)));

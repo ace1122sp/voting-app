@@ -33,8 +33,18 @@ class Pool extends Component {
     if (this.state.creatorUser && this.props.pool.options.length > 2) this.props.removePoolOption_f(this.props.poolId, e.target.value);
   }
 
+  _sortOptions = (option1, option2) => {
+    if (option1.value < option2.value) {
+      return -1;
+    } else if (option1.value > option2.value) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+  
   getOptions = (optionsArray, name, creator) =>
-    optionsArray.map((option, index) =>
+    optionsArray.sort(this._sortOptions).map((option, index) =>
       <React.Fragment key={option.value}>
         <input type='radio' id={`vote-option-${index}`} name={name} value={option.id} />
         <label htmlFor={`vote-option-${index}`}>{option.value}</label>
@@ -44,7 +54,7 @@ class Pool extends Component {
     );
 
   showResults = resultsArray =>
-    resultsArray.map(option =>
+    resultsArray.sort(this._sortOptions).map(option =>
       <div key={option.id}>
         <strong>{option.value}: </strong>
         <span>{option.votes}</span>
