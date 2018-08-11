@@ -1,7 +1,7 @@
 import { LOAD_POOL, UNLOAD_POOL, ADD_VOTE, ADD_OPTION, REMOVE_OPTION } from '../constants';
 
 export const pool = (state = {}, action) => {
-  let targetOption, updatedOptions;
+  let targetOption, updatedOptions, option;
   switch (action.type) {
     case LOAD_POOL:
       return action.pool;
@@ -17,7 +17,8 @@ export const pool = (state = {}, action) => {
       return Object.assign({}, state, { options: updatedOptions });
 
     case ADD_OPTION:
-      updatedOptions = [...state.options, action.option];
+      option = Object.assign({}, action.option, { votes: 0 });
+      updatedOptions = [...state.options, option];
       return Object.assign({}, state, { options: updatedOptions });
 
     case REMOVE_OPTION:

@@ -33,12 +33,12 @@ class Pool extends Component {
     if (this.state.creatorUser && this.props.pool.options.length > 2) this.props.removePoolOption_f(this.props.poolId, e.target.value);
   }
 
-  getOptions = (optionsArray, name) =>
+  getOptions = (optionsArray, name, creator) =>
     optionsArray.map((option, index) =>
       <React.Fragment key={option.value}>
         <input type='radio' id={`vote-option-${index}`} name={name} value={option.id} />
         <label htmlFor={`vote-option-${index}`}>{option.value}</label>
-        {this.state.creatorUser && <button value={option.id} onClick={this.handleOptionDelete}>X</button>}
+        {creator && <button value={option.id} onClick={this.handleOptionDelete}>X</button>}
         <br />
       </React.Fragment>
     );
@@ -105,17 +105,15 @@ class Pool extends Component {
   }
 
   render() {
-    let deleteButton;
-    const deletePool = <button onClick={this.handlePoolDelete}>delete pool</button>;
-    this.props.username == this.props.pool.creator ? deleteButton = deletePool : deleteButton = null; // resolve before mounting ??
-    if (this.props.poolLoading) return <Loading />;
+    if (this.props.poolLoading) return <Loading />;  
+    const isCreator = this.props.username === this.props.pool.creator;
     return (
       <main>
         <div>
           <h2>{this.props.pool.name}</h2>
           <h4>created by {this.props.pool.creator || 'n/a'} <span>{this.props.pool.dateCreated}</span></h4>
           <div>
-            {this.props.pool.name && this.getOptions(this.props.pool.options, this.props.pool.name)}
+            {this.props.pool.name && this.getOptions(this.props.pool.options, this.props.pool.name, isCreator)}
           </div>
           <button onClick={this.handleVoting}>Vote</button><br />
         {this.props.pool.name && this.props.username && <form onSubmit={this.handleAddingNewOption}>
@@ -129,7 +127,7 @@ class Pool extends Component {
           <button>share </button>
         </div>}
         </div>
-        {deleteButton}
+        {isCreator && <button onClick={this.handlePoolDelete}>delete pool</button>}
         <div>
           <h3>Chart</h3>
           <p>imagine some chart over here</p>
