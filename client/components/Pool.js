@@ -7,8 +7,7 @@ class Pool extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      newOption: '',
-      creatorUser: this.props.username == this.props.pool.creator,
+      newOption: ''
     };
 
     this.props.getPool_f(this.props.poolId)
@@ -30,7 +29,8 @@ class Pool extends Component {
 
   handleOptionDelete = e => {
     e.preventDefault();
-    if (this.state.creatorUser && this.props.pool.options.length > 2) this.props.removePoolOption_f(this.props.poolId, e.target.value);
+    const isAllowed = this.props.username === this.props.pool.creator;
+    if (isAllowed && this.props.pool.options.length > 2) this.props.removePoolOption_f(this.props.poolId, e.target.value);
   }
 
   _sortOptions = (option1, option2) => {
