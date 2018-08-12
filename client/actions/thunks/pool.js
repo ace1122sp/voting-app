@@ -3,15 +3,15 @@ import { schedulePoolForDelete } from '../scheduleForDelete';
 import { loadPool, loadPoolCards, unloadPool, vote, addOption, removeOption } from '../pools';
 import { followPool, unfollowPool, addToCreatedPools, removeFromCreatedPools } from '../user';
 
-export const fetchPoolCards = () =>
+export const fetchPoolCards = offset =>
   dispatch => {
-    return fetch(URL_POOLS, { mode: 'cors', credentials: 'include' })
+    const url = `${URL_POOLS}?offset=${offset}`;
+    return fetch(url, { mode: 'cors', credentials: 'include' })
       .then(res => {
         if (res.ok) return res.json();
         throw new Error('Bad request');
       })
       .then(poolCards => {
-        // if it returns an object ---> you need to convert it to an arr
         dispatch(loadPoolCards(poolCards));
       })
       .catch(err => {

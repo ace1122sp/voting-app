@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import World from '../components/World';
+import { fetchPoolCards } from '../actions/thunks/pool';
 import { unloadPool } from '../actions/pools';
 import { schedulePoolForDelete } from '../actions/scheduleForDelete';
 
@@ -17,6 +18,9 @@ const mapDispatchToProps = dispatch => {
     deletePool_f: () => {
       dispatch(unloadPool());
       dispatch(schedulePoolForDelete(false));
+    },
+    getPoolCards_f: offset => {
+      dispatch(fetchPoolCards(offset));
     }
   }
 }

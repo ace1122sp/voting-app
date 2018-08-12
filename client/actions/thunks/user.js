@@ -1,6 +1,5 @@
 import { loadUser, unloadUser, updateUser } from '../user';
 import { URL_REGISTER, URL_LOGIN, URL_LOGOUT, URL_PROFILE } from '../../resources/urls';
-// think about creating fetchGenerator for all fetch functions
 
 export const fetchRegister = user => 
   dispatch => {
