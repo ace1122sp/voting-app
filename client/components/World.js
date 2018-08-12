@@ -8,22 +8,18 @@ const World = props => {
   const poolsArr = general.getPropsInArray(props.poolCards);
   const pools = poolsArr.map(pool => <PoolCard key={pool._id} id={pool._id} name={pool.name} />);
 
+  // need to work on this implementation
   const handleGettingPoolCards = () => {
-    if (props.poolCards.length < 1) {
-      props.getPoolCards_f(0);
-    }
+      props.getAdditionalPoolCards_f(10);
   }
-
   return (
     <div>
-    {handleGettingPoolCards()}
       <ul>
         {pools}
       </ul>
-      <button>load more polls...</button>
+      <button onClick={handleGettingPoolCards}>load more polls...</button>
   </div>
   );
 }
-
 
 export default World;

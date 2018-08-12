@@ -1,8 +1,15 @@
-import { LOAD_POOL_CARDS, LOAD_POOL, UNLOAD_POOL, ADD_VOTE, ADD_OPTION, REMOVE_OPTION, START_LOADING_POOL, END_LOADING_POOL } from '../constants';
+import { LOAD_INIT_POOL_CARDS, LOAD_ADDITIONAL_POOL_CARDS, LOAD_POOL, UNLOAD_POOL, ADD_VOTE, ADD_OPTION, REMOVE_OPTION, START_LOADING_POOL, END_LOADING_POOL } from '../constants';
 
-export const loadPoolCards = poolCards => {
+export const loadInitPoolCards = poolCards => {
   return {
-    type: LOAD_POOL_CARDS,
+    type: LOAD_INIT_POOL_CARDS,
+    poolCards
+  }
+} 
+
+export const loadAdditionalPoolCards = poolCards => {
+  return {
+    type: LOAD_ADDITIONAL_POOL_CARDS,
     poolCards
   }
 }

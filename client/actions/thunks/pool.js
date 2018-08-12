@@ -1,23 +1,58 @@
 import { URL_POOLS, urlPool, urlVote, urlFollowers, urlAddOption, urlRemoveOption } from '../../resources/urls';
 import { schedulePoolForDelete } from '../scheduleForDelete';
-import { loadPool, loadPoolCards, unloadPool, vote, addOption, removeOption } from '../pools';
+import { loadPool, unloadPool, vote, addOption, removeOption, loadInitPoolCards, loadAdditionalPoolCards } from '../pools';
 import { followPool, unfollowPool, addToCreatedPools, removeFromCreatedPools } from '../user';
 
-export const fetchPoolCards = offset =>
+// export const fetchPoolCards = offset =>
+//   dispatch => {
+//     const url = `${URL_POOLS}?offset=${offset}`;
+//     return fetch(url, { mode: 'cors', credentials: 'include' })
+//       .then(res => {
+//         if (res.ok) return res.json();
+//         throw new Error('Bad request');
+//       })
+//       .then(poolCards => {
+//         dispatch(loadPoolCards(poolCards));
+//       })
+//       .catch(err => {
+//         // send some info about err to user 
+//         console.error(err.message);
+//       });
+//   }
+
+export const fetchInitPoolCards = () =>
+  dispatch => {
+    const url = `${URL_POOLS}?offset=0`;
+    return fetch(url, { mode: 'cors', credentials: 'include' })
+      .then(res => {
+        if (res.ok) return res.json();
+        throw new Error('Bad reques');
+      })
+      .then(poolCards => {
+        dispatch(loadInitPoolCards(poolCards));
+      })
+      .catch(err => {
+        // send some info abour err to user
+        console.error(err.message)
+      })
+  }
+
+
+export const fetchAdditionalPoolCards = offset =>
   dispatch => {
     const url = `${URL_POOLS}?offset=${offset}`;
     return fetch(url, { mode: 'cors', credentials: 'include' })
       .then(res => {
         if (res.ok) return res.json();
-        throw new Error('Bad request');
+        throw new Error('Bad reques');
       })
       .then(poolCards => {
-        dispatch(loadPoolCards(poolCards));
+        dispatch(loadAdditionalPoolCards(poolCards));
       })
       .catch(err => {
-        // send some info about err to user 
-        console.error(err.message);
-      });
+        // send some info abour err to user
+        console.error(err.message)
+      })
   }
 
 export const fetchNewPool = pool =>
