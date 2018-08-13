@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const bcrypt = require('bcrypt');
 
 module.exports = {
   registerUser: (req, res, next) => {
@@ -8,19 +9,25 @@ module.exports = {
       } else if (user) {
         return res.status(400).json({ "message": "username already taken" });
       } else {
-        const newUser = new User({
-          username: req.body.username,
-          password: req.body.password,
-          email: req.body.email
-        });
-                
-        newUser.save((err, doc) => {
-          if (err) {
-            return res.sendStatus(500);
-          } else {
-            next(null, doc);
-          }
-        });
+        bcrypt.hash(req.body.password, 8)
+        .then(hash => {
+          const newUser = new User({
+            username: req.body.username,
+            password: hash,
+            email: req.body.email
+          });
+
+          newUser.save((err, doc) => {
+            if (err) {
+              return res.sendStatus(500);
+            } else {
+              next(null, doc);
+            }
+          });
+        })
+        .catch(e => {
+          return res.sendStatus(500);
+        })
       }
     });
   },

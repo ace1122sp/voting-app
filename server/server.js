@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const passport = require('passport');
 const session = require('express-session');
+const bcrypt = require('bcrypt');
 const LocalStrategy = require('passport-local').Strategy;
 
 const router = require('./routes');
@@ -34,8 +35,12 @@ passport.use(new LocalStrategy((username, password, done) => {
   User.findOne({ username: username }, (err, user) => {
     if (err) return done(err);
     if (!user) return done(null, false);
-    if (user.password !== password) return done(null, false);    
-    return done(null, user);
+    bcrypt.compare(password, user.password)
+      .then(res => {
+        console.log(res);
+        if (!res) return done(null, false);
+        return done(null, user);
+      })
   });
 }));
 
