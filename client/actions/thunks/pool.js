@@ -3,56 +3,21 @@ import { schedulePoolForDelete } from '../scheduleForDelete';
 import { loadPool, unloadPool, vote, addOption, removeOption, loadInitPoolCards, loadAdditionalPoolCards } from '../pools';
 import { followPool, unfollowPool, addToCreatedPools, removeFromCreatedPools } from '../user';
 
-// export const fetchPoolCards = offset =>
-//   dispatch => {
-//     const url = `${URL_POOLS}?offset=${offset}`;
-//     return fetch(url, { mode: 'cors', credentials: 'include' })
-//       .then(res => {
-//         if (res.ok) return res.json();
-//         throw new Error('Bad request');
-//       })
-//       .then(poolCards => {
-//         dispatch(loadPoolCards(poolCards));
-//       })
-//       .catch(err => {
-//         // send some info about err to user 
-//         console.error(err.message);
-//       });
-//   }
-
-export const fetchInitPoolCards = () =>
-  dispatch => {
-    const url = `${URL_POOLS}?offset=0`;
-    return fetch(url, { mode: 'cors', credentials: 'include' })
-      .then(res => {
-        if (res.ok) return res.json();
-        throw new Error('Bad reques');
-      })
-      .then(poolCards => {
-        dispatch(loadInitPoolCards(poolCards));
-      })
-      .catch(err => {
-        // send some info abour err to user
-        console.error(err.message)
-      })
-  }
-
-
-export const fetchAdditionalPoolCards = offset =>
+export const fetchPoolCards = (offset, action) =>
   dispatch => {
     const url = `${URL_POOLS}?offset=${offset}`;
     return fetch(url, { mode: 'cors', credentials: 'include' })
       .then(res => {
         if (res.ok) return res.json();
-        throw new Error('Bad reques');
+        throw new Error('Bad request');
       })
       .then(poolCards => {
-        dispatch(loadAdditionalPoolCards(poolCards));
+        dispatch(action(poolCards));
       })
       .catch(err => {
-        // send some info abour err to user
-        console.error(err.message)
-      })
+        // send some info about err to user 
+        console.error(err.message);
+      });
   }
 
 export const fetchNewPool = pool =>
