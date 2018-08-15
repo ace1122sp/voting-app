@@ -7,7 +7,8 @@ class Pool extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      newOption: ''
+      newOption: '',
+      voted: false
     };
 
     this.props.getPool_f(this.props.poolId)
@@ -91,6 +92,7 @@ class Pool extends Component {
       if (input.checked) {
         let votedOption = input.value;
         this.props.vote_f(this.props.poolId, votedOption);
+        this.setState({ voted: true });
       }
     });
   }
@@ -123,10 +125,10 @@ class Pool extends Component {
           <h2>{this.props.pool.name}</h2>
           <h4>created by {this.props.pool.creator || 'n/a'} <span>{this.props.pool.dateCreated}</span></h4>
           <div>
-            {this.props.pool.name && this.getOptions(this.props.pool.options, this.props.pool.name, isCreator)}
+            {this.props.pool.name && !this.state.voted && this.getOptions(this.props.pool.options, this.props.pool.name, isCreator)}
           </div>
-          <button onClick={this.handleVoting}>Vote</button><br />
-        {this.props.pool.name && this.props.username && <form onSubmit={this.handleAddingNewOption}>
+          {!this.state.voted && <button onClick={this.handleVoting}>Vote</button>}<br/>
+          {this.props.pool.name && this.props.username && !this.state.voted && <form onSubmit={this.handleAddingNewOption}>
           <p>add new option</p>
           <input type='text' value={this.state.newOption} onChange={this.handleChangeForNewOption} />
           <input type='submit' value='add' /><br />
