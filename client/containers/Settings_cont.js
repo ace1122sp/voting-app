@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Settings from '../components/Settings';
-import { fetchUserUpdate, fetchUserDelete } from '../actions/thunks/user';
+import { updateUser } from '../actions/user';
 
 const mapStateToProps = state => {
   return {
@@ -10,8 +10,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    changePassword: newPassword => dispatch(fetchUserUpdate(newPassword)),
-    deleteProfile: () => dispatch(fetchUserDelete())
+    resetUserStatus_f: () => {
+      dispatch(updateUser(null));
+    }
   }
 }
 
