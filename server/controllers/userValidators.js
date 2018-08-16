@@ -20,9 +20,9 @@ const validateNewUser = [
 ];
 
 const validatePassword = [
-  check.check('newPassword')
+  check.check('newPassword', 'currentPassword')
     .exists(),
-  filter.sanitizeBody('newPassword')
+  filter.sanitizeBody('newPassword', 'currentPassword')
     .trim()
     .escape()
 ];

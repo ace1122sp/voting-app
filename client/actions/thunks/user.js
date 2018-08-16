@@ -90,28 +90,28 @@ export const fetchUser = () =>
       });
   }
 
-export const fetchUserUpdate = newPassword =>
+export const fetchUserUpdate = (currentPassword, newPassword) =>
   dispatch => {
     const options = {
       method: 'PUT',
       mode: 'cors', 
       credentials: 'include',
       body: JSON.stringify({
+        currentPassword,
         newPassword
       }),
       headers: { 'Content-Type': 'application/json' }
     };
     return fetch(URL_PROFILE, options)
       .then(res => {
-        if (res.ok) return true;
-        throw new Error('Bad request');
-      })
-      .then(res => {
-        dispatch(updateUser('Your password has been successfuly changed!'));
+        if (res.ok) {
+          dispatch(updateUser('Your password has been successfuly changed!'));
+        } else if (!res.ok) {
+          dispatch(updateUser('Password has not been changed. Incorrect password.'));        
+        }
       })
       .catch(err => {
-        // inform user about error
-        console.error(err.message);
+        console.log(res);
       });
   }
 

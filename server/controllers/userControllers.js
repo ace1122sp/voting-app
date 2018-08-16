@@ -62,16 +62,27 @@ module.exports = {
   updatePassword: (req, res) => {
     const id = req.user._id;
     const newPassword = req.body.newPassword;
-
+    const currentPassword = req.body.currentPassword;
+    
     User.findById(id, (err, doc) => {
       if (err) {
         console.error(err.message);
         return res.sendStatus(500);
       } else {
-        doc.update({ $set: { password: newPassword } })
+        bcrypt.compare(currentPassword, doc.password)
+          .then(res => {
+            if (!res) throw new Error('Bad password');
+            return true;
+          })
+          .then(res => {
+            return bcrypt.hash(newPassword, 8);
+          })
+          .then(hash => {
+            return doc.update({ $set: { password: hash } });  
+          })  
           .then(doc => {
             return res.sendStatus(200);
-          })
+          })      
           .catch(err => {
             console.error(err.message);
             return res.sendStatus(500);
