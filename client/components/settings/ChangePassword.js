@@ -35,17 +35,15 @@ class ChangePassword extends React.Component {
   }
 
   showForm = () => 
-    <div>
-      <form action={URL_PROFILE} method="PUT" onSubmit={this.handleRequest}>
-        <label htmlFor="currentPassword">current password</label>
-        <input type="password" name="currentPassword" id="currentPassword" onChange={this.handleOldPasswordTyping} value={this.state.currentPassword} /><br />
-        <label htmlFor="newPassword">new password</label>
-        <input type="password" name="newPassword" id="newPassword" onChange={this.handleNewPasswordTyping} value={this.state.newPassword} /><br />
-        <label htmlFor="reNewPassword">retype new password</label>
-        <input type="password" name="reNewPassword" id="reNewPassword" onChange={this.handleNewPasswordRetyping} value={this.state.reNewPassword} /><br />
-        <input type="submit" value="Confirm" />
-      </form>
-    </div>
+    <form action={URL_PROFILE} method="PUT" onSubmit={this.handleRequest}>
+      <label htmlFor="currentPassword">current password</label>
+      <input type="password" name="currentPassword" id="currentPassword" onChange={this.handleOldPasswordTyping} value={this.state.currentPassword} /><br />
+      <label htmlFor="newPassword">new password</label>
+      <input type="password" name="newPassword" id="newPassword" onChange={this.handleNewPasswordTyping} value={this.state.newPassword} /><br />
+      <label htmlFor="reNewPassword">retype new password</label>
+      <input type="password" name="reNewPassword" id="reNewPassword" onChange={this.handleNewPasswordRetyping} value={this.state.reNewPassword} /><br />
+      <input type="submit" value="Confirm" />
+    </form>
 
   showMessage = () => 
     <div>
