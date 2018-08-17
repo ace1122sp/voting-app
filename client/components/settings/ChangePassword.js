@@ -7,7 +7,8 @@ class ChangePassword extends React.Component {
     this.state = { 
       currentPassword: '',
       newPassword: '',
-      reNewPassword: ''
+      reNewPassword: '',
+      warning: null
     };
   }
 
@@ -27,12 +28,22 @@ class ChangePassword extends React.Component {
 
   handleRequest = e => {
     e.preventDefault();
+    if (this.state.newPassword.length < 5) {
+      this.setState({ showWarning: true });
+      return;
+    } else {
+      this.setState({ showWarning: false });
+    }
+
     if (this.state.newPassword === this.state.reNewPassword) {
       this.props.updatePassword_f(this.state.currentPassword, this.state.newPassword);
     } else {
       console.log('passwords do not match');
     }
   }
+
+  showWarning = () => 
+    <p>Your new password must be at least 5 characters long!</p>
 
   showForm = () => 
     <form action={URL_PROFILE} method="PUT" onSubmit={this.handleRequest}>
@@ -53,6 +64,7 @@ class ChangePassword extends React.Component {
   render () {
     return (
       <div>
+        { this.state.showWarning && this.showWarning() }
         { !this.props.updateStatus && this.showForm() || this.showMessage() }
       </div>
     );

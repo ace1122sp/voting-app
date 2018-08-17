@@ -14,6 +14,8 @@ const validateNewUser = [
     .exists(),
   check.body('email')
     .isEmail(),
+  check.body('password')
+    .isLength({ min: 5, max: 30 }),
   filter.sanitizeBody(['username', 'password'])
     .trim()
     .escape()
@@ -22,6 +24,8 @@ const validateNewUser = [
 const validatePassword = [
   check.check('newPassword', 'currentPassword')
     .exists(),
+  check.check('newPassword') 
+    .isLength({ min: 5, max: 30 }),
   filter.sanitizeBody('newPassword', 'currentPassword')
     .trim()
     .escape()
