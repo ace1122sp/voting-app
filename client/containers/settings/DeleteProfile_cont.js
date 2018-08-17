@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import DeleteProfile from '../../components/settings/DeleteProfile';
 import { fetchUserDelete } from '../../actions/thunks/user';
+import { unloadUser, updateUser } from '../../actions/user';
 
 const mapStateToProps = state => {
   return {
@@ -12,6 +13,10 @@ const mapDispatchToProps = dispatch => {
   return {
     deleteProfile_f: () => {
       dispatch(fetchUserDelete());
+    },
+    renderRedirect_f: () => {
+      dispatch(unloadUser());
+      dispatch(updateUser(null));
     }
   }
 }

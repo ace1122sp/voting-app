@@ -15,8 +15,7 @@ class DeleteProfile extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    // this.props.deleteProfile_f();
-    console.log(this.state.password);
+    this.props.deleteProfile_f();
   }
 
   showForm = () => 
@@ -29,6 +28,7 @@ class DeleteProfile extends React.Component {
   showMessage = () => 
     <div>
       {this.props.updateStatus}
+      <button onClick={this.props.renderRedirect_f}>Ok</button>
     </div>
 
   render () {
