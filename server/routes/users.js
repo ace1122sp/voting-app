@@ -13,7 +13,8 @@ usersRouter.route('/register')
   );
 
 usersRouter.route('/login')
-  .post(passport.authenticate('local', { failureRedirect: '/badLogin' }), controllers.getUser);
+  // .post(passport.authenticate('local', { failureRedirect: '/badLogin' }), controllers.getUser);
+  .post(passport.authenticate('local'), controllers.getUser);
 
 usersRouter.route('/logout')
   .get(controllers.logout);
@@ -22,6 +23,10 @@ usersRouter.route('/')
   .get(ensureAuthenticated, controllers.getUser) 
   .put(ensureAuthenticated, validatePassword, errorResponse, controllers.updatePassword)
   .delete(ensureAuthenticated, controllers.deleteUser);
+
+usersRouter.all('/badLogin', (req, res) => {
+  res.status(403).json({ "message": "username or password incorrect" });
+});
 
 usersRouter.route('/unauthorized')
   .get((req, res) => {

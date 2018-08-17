@@ -1,13 +1,21 @@
 import { connect } from 'react-redux';
 import SignIn from '../../components/Authenticate/SignIn';
 import { fetchLogin } from '../../actions/thunks/user';
+import { updateBadLoginStatus } from '../../actions/user';
 
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = state => {
   return {
-    signIn_f: credentials => dispatch(fetchLogin(credentials))
+    badLoginStatus: state.badLoginStatus
   }
 }
 
-const SignIn_cont = connect(null, mapDispatchToProps)(SignIn);
+const mapDispatchToProps = dispatch => {
+  return {
+    signIn_f: credentials => dispatch(fetchLogin(credentials)),
+    resetBadLoginStatus_f: () => dispatch(updateBadLoginStatus(null))
+  }
+}
+
+const SignIn_cont = connect(mapStateToProps, mapDispatchToProps)(SignIn);
 
 export default SignIn_cont;

@@ -6,6 +6,7 @@ import { poolToDelete } from './poolToDelete';
 import { poolLoading } from './poolLoading';
 import { user } from './user';
 import { userUpdateStatus } from './userUpdateStatus';
+import { badLoginStatus } from './badLoginStatus';
 
 const rootReducer = combineReducers({
   pool,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   poolToDelete,
   poolLoading,
   user,
-  userUpdateStatus
+  userUpdateStatus,
+  badLoginStatus
 });
 
 export default rootReducer;

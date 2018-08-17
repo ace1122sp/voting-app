@@ -1,4 +1,4 @@
-import { loadUser, unloadUser, updateUser } from '../user';
+import { loadUser, unloadUser, updateUser, updateBadLoginStatus } from '../user';
 import { URL_REGISTER, URL_LOGIN, URL_LOGOUT, URL_PROFILE } from '../../resources/urls';
 
 export const fetchRegister = user => 
@@ -47,14 +47,14 @@ export const fetchLogin = user =>
     return fetch(URL_LOGIN, options)
       .then(res => {
         if (res.ok) return res.json();
-        throw new Error('Bad request');
-      })
+        throw new Error('Bad Login');
+      })  
       .then(user => {
         dispatch(loadUser(user));
       })
       .catch(err => {
-        // send some info about err to user
-        console.error(err.message);
+        if (err.message == 'Bad Login') return dispatch(updateBadLoginStatus(true));
+        console.log(err);
       });
   }
 
