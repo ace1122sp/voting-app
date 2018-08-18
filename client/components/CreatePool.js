@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Portal from './Portal';
 import { Redirect } from 'react-router-dom';
 import { validator } from '../util/validator';
 
@@ -9,20 +10,17 @@ class CreatePool extends Component {
       name: '',
       toAddOption: '',
       options: [],
-      redirect: false
+      incorrectPool: false,
+      poolCreated: false
     }
   }
 
-  renderRedirect() {
-    if (this.state.redirect) return <Redirect to='/' />;
-  }
-
   handlePoolNameChange = e => {
-    this.setState({ name: e.target.value });
+    this.setState({ name: e.target.value, incorrectPool: false });
   }
 
   handleOptionChange = e => {
-    this.setState({ toAddOption: e.target.value });
+    this.setState({ toAddOption: e.target.value, incorrectPool: false });
   }
 
   addOption = e => {
@@ -77,6 +75,20 @@ class CreatePool extends Component {
     this.props.history.goBack();
   }
 
+  showIncorrectPoolWarning = () => 
+    <p>Pool must have a name at least three letters long and there must be at least two options for which you can vote!</p>
+
+  handleRedirect = () => {
+    this.goBack();
+  }
+
+  poolCreatedPortal = () => 
+    <Portal>
+      <h1>Pool Created</h1>  
+      <p>Pool {validator.trimEverything(this.state.name)} has been created.</p>
+      <button onClick={this.handleRedirect}>ok</button>
+    </Portal>
+  
   handleSubmit = () => {
 
     // Validate pool
@@ -91,19 +103,17 @@ class CreatePool extends Component {
       };
 
       this.props.createPool_f(createdPool);
-      this.setState({ options: [], name: '', redirect: true });
-
-      alert(`Pool "${trimmedPoolName}" Created`);
-      this.goBack();
+      this.setState({ options: [], poolCreated: true });
     } else {
-      alert('Pool must have a name at least three letters long and there must be at least two options for which you can vote!');
+      this.setState({ incorrectPool: true });
     }
   }
 
   render() {
     return (
       <div>
-        {this.renderRedirect()}
+        {this.state.poolCreated && this.poolCreatedPortal()}
+        {this.state.incorrectPool && this.showIncorrectPoolWarning()}
         <h2>Create Pool</h2>
         <div>
           <label>Pool Name</label><br />
