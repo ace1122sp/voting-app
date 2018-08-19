@@ -1,4 +1,4 @@
-import { LOAD_USER, UNLOAD_USER, UPDATE_USER, ADD_TO_CREATED_POOLS, REMOVE_FROM_CREATED_POOLS, FOLLOW_POOL, UNFOLLOW_POOL } from '../constants';
+import { LOAD_USER, UNLOAD_USER, ADD_TO_CREATED_POOLS, REMOVE_FROM_CREATED_POOLS, FOLLOW_POOL, UNFOLLOW_POOL } from '../constants';
 
 export const user = (state = null, action) => {
   let updatedCreatedPools, updatedFollowingPools;

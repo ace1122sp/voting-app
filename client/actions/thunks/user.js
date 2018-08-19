@@ -1,4 +1,4 @@
-import { loadUser, unloadUser, updateUser, updateBadLoginStatus } from '../user';
+import { loadUser, unloadUser, updateUser, updateBadLoginStatus, updateRegisterStatus, fetchingRequest } from '../user';
 import { URL_REGISTER, URL_LOGIN, URL_LOGOUT, URL_PROFILE } from '../../resources/urls';
 
 export const fetchRegister = user => 
@@ -16,18 +16,28 @@ export const fetchRegister = user =>
       ),
       headers: { 'Content-Type': 'application/json' }
     };
+    dispatch(fetchingRequest(true));
     return fetch(URL_REGISTER, options)
+      .then(res => res.json())
       .then(res => {
-        if (res.ok) return res.json();
-        throw new Error('Bad request');
+        if (!res.message) return res;
+        if (res.message == 'username not available') {
+          throw new Error(res.message);
+        } else {
+          throw new Error('bad request');
+        }
       })
       .then(user => {
-        dispatch(loadUser(user));
+        // dispatch(loadUser(user));// should I manually ask for user??
+        dispatch(updateRegisterStatus('ok'));
       })
       .catch(err => {
-        // send some info about err to user
+        dispatch(updateRegisterStatus(err.message));
         console.error(err.message);
-      });
+      })
+      .then(() => {
+        dispatch(fetchingRequest(false));
+      }); 
   }
 
 export const fetchLogin = user =>
@@ -47,13 +57,13 @@ export const fetchLogin = user =>
     return fetch(URL_LOGIN, options)
       .then(res => {
         if (res.ok) return res.json();
-        throw new Error('Bad Login');
+        throw new Error('bad login');
       })  
       .then(user => {
         dispatch(loadUser(user));
       })
       .catch(err => {
-        if (err.message == 'Bad Login') return dispatch(updateBadLoginStatus(true));
+        if (err.message == 'bad login') return dispatch(updateBadLoginStatus(true));
         console.log(err);
       });
   }
@@ -63,7 +73,7 @@ export const fetchLogout = () =>
     return fetch(URL_LOGOUT, { mode: 'cors',  credentials: 'include',})
       .then(res => {
         if (res.ok) return true;
-        throw new Error('Bad request');
+        throw new Error('bad request');
       })
       .then(res => {  
         dispatch(unloadUser());
@@ -76,10 +86,11 @@ export const fetchLogout = () =>
 
 export const fetchUser = () =>
   dispatch => {
+    dispatch(fetchingRequest(true));
     return fetch(URL_PROFILE, { mode: 'cors',  credentials: 'include',})
       .then(res => {
         if (res.ok) return res.json();
-        throw new Error('Bad request');
+        throw new Error('bad request');
       })
       .then(user => {
         dispatch(loadUser(user));
@@ -87,6 +98,9 @@ export const fetchUser = () =>
       .catch(err => {
         // send some info about err to user
         console.error(err.message);
+      })
+      .then(() => {
+        dispatch(fetchingRequest(false));
       });
   }
 
@@ -125,7 +139,7 @@ export const fetchUserDelete = () =>
     return fetch(URL_PROFILE, options)
       .then(res => {
         if (res.ok) return true;
-        throw new Error('Bad request');
+        throw new Error('bad request');
       })
       .then(res => {
         dispatch(updateUser('Your profile has been deleted!'))

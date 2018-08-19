@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { validator } from '../../util/validator';
-import { Redirect } from 'react-router-dom';
+import Portal from '../Portal';
 
 class SignUp extends Component {
   constructor(props) {
@@ -10,13 +10,20 @@ class SignUp extends Component {
       username: '',
       password: '',
       passwordAgain: '',
-      redirect: false
+      shortPassword: false,
     };
   }
 
-  renderRedirect = () => {
-    if (this.state.redirect) return <Redirect to='/' />
+  loadUser = () => {
+    this.props.resetRegisterStatus_f();
+    this.props.getUser_f();
   }
+
+  renderPortal = () => 
+    <Portal>
+      <h1>Registration successful!</h1>
+      {!this.props.fetchingRequest && <button onClick={this.loadUser}>ok</button>}
+    </Portal>
 
   handleChangeEmail = e => {
     this.setState({ email: validator.removeSpaces(e.target.value) });
@@ -24,45 +31,45 @@ class SignUp extends Component {
 
   handleChangeUsername = e => {
     this.setState({ username: validator.removeSpaces(e.target.value) });
+    this.props.resetRegisterStatus_f();
   }
 
   handleChangePassword = e => {
-    this.setState({ password: e.target.value })
+    this.setState({ password: e.target.value, shortPassword: false })
   }
 
   handleChangePasswordAgain = e => {
     this.setState({ passwordAgain: e.target.value });
   }
 
+  isError = () => this.props.registerStatus !== null && this.props.registerStatus !== 'ok'
+  
+  showIncorrectPasswordWarning = () => 
+    <p>Passwords must match and password must be at least 5 characters long!</p>
+  
+  showErrorMessage = () => 
+    <p>error: {this.props.registerStatus}</p>
+
   handleSubmit = e => {
     e.preventDefault();
-
+    
     // Password validation
-    if (this.state.password === this.state.passwordAgain && this.state.password.length > 3) {
+    if (this.state.password === this.state.passwordAgain && this.state.password.length > 4) {
 
       // Init validators
-      const usernameLongEnough = this.state.username.length > 3;
+      const usernameLongEnough = this.state.username.length > 4;
       const emailValid = this.state.email.length > 9;
 
       // Username & email validation
       if (usernameLongEnough && emailValid) {
-
         this.props.createUser_f({ username: this.state.username, email: this.state.email, password: this.state.password });
-        this.setState({
-          email: '',
-          username: '',
-          password: '',
-          passwordAgain: '',
-          redirect: true
-        });
-      } else {
-        alert('Oops, somebody has taken that username. And also be sure that your username is longer than 3 characters and your email is longer than 9 characters.');
       }
+
     } else {
-      alert('Your password must be longer than 3 characters and passwords must match.');
       this.setState({
         password: '',
-        passwordAgain: ''
+        passwordAgain: '',
+        shortPassword: true
       });
     }
   }
@@ -70,7 +77,9 @@ class SignUp extends Component {
   render() {
     return (
       <div>
-        {this.renderRedirect()}
+        {this.props.registerStatus === 'ok' && this.renderPortal()}
+        {this.state.shortPassword && this.showIncorrectPasswordWarning()}
+        {this.isError() && this.showErrorMessage()}      
         <h3>Create Your Account</h3>
         <form onSubmit={this.handleSubmit}>
           <label>email</label><br />
@@ -84,7 +93,8 @@ class SignUp extends Component {
           <label>confirm password</label><br />
           <input type='password' value={this.state.passwordAgain} onChange={this.handleChangePasswordAgain} /><br />
           <br /><br />
-          <input type='submit' value='Create Account' /><br />
+          {!this.props.fetchingRequest && <input type='submit' value='Create Account' />}<br />
+          {this.props.fetchingRequest && <span>loading...</span>}
         </form><br />
       </div>
     );

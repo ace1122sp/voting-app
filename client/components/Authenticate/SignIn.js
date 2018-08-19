@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 
 class SignIn extends Component {
   constructor(props) {
@@ -26,8 +25,6 @@ class SignIn extends Component {
     const password = this.state.password;
     // validate input if necessary 
     this.props.signIn_f({ username, password });
-
-    // handle bad login
   }
 
   showBadLoginWarning = () => 

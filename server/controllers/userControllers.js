@@ -7,7 +7,7 @@ module.exports = {
       if (err) {
         next(err);
       } else if (user) {
-        return res.status(400).json({ "message": "username already taken" });
+        return res.status(400).json({ "message": "username not available" });
       } else {
         bcrypt.hash(req.body.password, 8)
         .then(hash => {

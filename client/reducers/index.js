@@ -7,6 +7,8 @@ import { poolLoading } from './poolLoading';
 import { user } from './user';
 import { userUpdateStatus } from './userUpdateStatus';
 import { badLoginStatus } from './badLoginStatus';
+import { registerStatus } from './registerStatus';
+import { fetchingRequest } from './fetchingRequest';
 
 const rootReducer = combineReducers({
   pool,
@@ -15,7 +17,9 @@ const rootReducer = combineReducers({
   poolLoading,
   user,
   userUpdateStatus,
-  badLoginStatus
+  badLoginStatus,
+  registerStatus,
+  fetchingRequest
 });
 
 export default rootReducer;
