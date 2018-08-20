@@ -3,10 +3,12 @@ const User = require('../models/user');
 
 module.exports = {
   getPools: (req, res) => {
-    
-    // you'll need to think about a way how to serve sets of pools and how to implement lazy loading
-    // this method needs to be upgraded
-    Pool.find({})
+    let findCriteria = {};
+    const lastPoolId = req.query.offset;
+    if (lastPoolId) findCriteria = { _id: { $lt: lastPoolId } };
+
+    Pool.find(findCriteria)
+      .sort({ _id: -1 })
       .limit(10)
       .select('_id name')
       .exec((err, doc) => {

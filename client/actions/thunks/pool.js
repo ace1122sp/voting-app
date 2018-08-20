@@ -3,7 +3,7 @@ import { schedulePoolForDelete } from '../scheduleForDelete';
 import { loadPool, unloadPool, vote, addOption, removeOption, loadInitPoolCards, loadAdditionalPoolCards } from '../pools';
 import { followPool, unfollowPool, addToCreatedPools, removeFromCreatedPools } from '../user';
 
-export const fetchPoolCards = (offset, action) =>
+export const fetchPoolCards = (action, offset = '') =>
   dispatch => {
     const url = `${URL_POOLS}?offset=${offset}`;
     return fetch(url, { mode: 'cors', credentials: 'include' })

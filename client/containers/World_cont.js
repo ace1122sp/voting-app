@@ -15,14 +15,14 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   
   // this is hacky solution, think about better approach
-  dispatch(fetchPoolCards(0, loadInitPoolCards));
+  dispatch(fetchPoolCards(loadInitPoolCards));
   return {
     deletePool_f: () => {
       dispatch(unloadPool());
       dispatch(schedulePoolForDelete(false));
     },
     getAdditionalPoolCards_f: offset => {
-      dispatch(fetchPoolCards(offset, loadAdditionalPoolCards));
+      dispatch(fetchPoolCards(loadAdditionalPoolCards, offset));
     }
   }
 }

@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { validatePool, validatePoolId, validateOptionId, validateOption, validateOptions } = require('../controllers/poolValidators');
+const { validatePool, validatePoolId, validateOptionId, validateOption, validateOptions, validateOffset } = require('../controllers/poolValidators');
 const { ensureOwner, ensureAuthenticated } = require('../controllers/userValidators');
 const controllers = require('../controllers/poolControllers');
 const { errorResponse } = require('../controllers/errorControllers');
@@ -8,7 +8,7 @@ const { errorResponse } = require('../controllers/errorControllers');
 const poolsRouter = express.Router();
 
 poolsRouter.route('/')
-  .get(controllers.getPools) 
+  .get(validateOffset, controllers.getPools) 
   .post(ensureAuthenticated, validatePool, validateOptions, errorResponse, controllers.createPool);
 
 poolsRouter.route('/:poolId')

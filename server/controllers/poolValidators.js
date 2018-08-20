@@ -36,12 +36,21 @@ const validateOptions = (req, res, next) => {
   // sanitize every option 
   next();
 }
+const validateOffset = (req, res, next) => {
+  if (req.query.offset) {
+    if (check.query('offset').isMongoId()) return next();
+    return res.sendStatus(422);
+  } else {
+    next();
+  }
+}
 
 module.exports = {
   validatePool, 
   validatePoolId,
   validateOptionId,
   validateOption,
-  validateOptions
+  validateOptions,
+  validateOffset
 }
 
