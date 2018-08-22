@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Loading from '../Loading';
 
 class SignIn extends Component {
   constructor(props) {
@@ -31,6 +32,8 @@ class SignIn extends Component {
     <p>Username or password incorrect!</p>
 
   render() {
+    if (this.props.fetching) return <Loading />;
+
     return (
       <div>
         <h3>Sign in</h3>

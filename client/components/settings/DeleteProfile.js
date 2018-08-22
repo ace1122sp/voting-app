@@ -1,5 +1,4 @@
 import React from 'react';
-import { URL_PROFILE } from '../../resources/urls';
 
 class DeleteProfile extends React.Component {
   constructor(props) {
@@ -13,17 +12,16 @@ class DeleteProfile extends React.Component {
     this.setState({ password: e.target.value });
   }
 
-  handleSubmit = e => {
-    e.preventDefault();
+  handleSubmit = () => {
     this.props.deleteProfile_f();
   }
 
-  showForm = () => 
-    <form action={URL_PROFILE} method="DELETE" onSubmit={this.handleSubmit}>
-      <label htmlFor="password">password</label>
-      <input type="password" name="password" id="password" onChange={this.handlePasswordTyping} value={this.state.password} />
-      <input type="submit" name="submit" value="Delete" />
-    </form>
+  showPrompt = () => 
+    <div>
+      <span>Are you sure you want to delete your profile?</span>
+      <button onClick={this.handleSubmit}>confirm</button>
+    </div>
+      
 
   showMessage = () => 
     <div>
@@ -32,9 +30,11 @@ class DeleteProfile extends React.Component {
     </div>
 
   render () {
+    if (this.props.fetching) return <span>Loading...</span>;
+
     return (
       <div>
-        { !this.props.updateStatus && this.showForm() || this.showMessage() }
+        { !this.props.updateStatus && this.showPrompt() || this.showMessage() }
       </div>
     );
   }

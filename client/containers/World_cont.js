@@ -8,7 +8,8 @@ const mapStateToProps = state => {
   console.log(state);
   return {
     poolCards: state.poolCards,
-    poolToDelete: state.poolToDelete
+    poolToDelete: state.poolToDelete,
+    fetching: state.fetchingRequest
   }
 }
 

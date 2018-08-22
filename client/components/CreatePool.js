@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Portal from './Portal';
-import { Redirect } from 'react-router-dom';
 import { validator } from '../util/validator';
+import Loading from './Loading';
 
 class CreatePool extends Component {
   constructor(props) {
@@ -71,15 +71,11 @@ class CreatePool extends Component {
     this.setState({ options: [...updatedOptions] });
   }
 
-  goBack = () => {
-    this.props.history.goBack();
-  }
-
   showIncorrectPoolWarning = () => 
     <p>Pool must have a name at least three letters long and there must be at least two options for which you can vote!</p>
 
   handleRedirect = () => {
-    this.goBack();
+    this.props.history.goBack();
   }
 
   poolCreatedPortal = () => 
@@ -110,6 +106,8 @@ class CreatePool extends Component {
   }
 
   render() {
+    if (this.props.fetching) return <Loading />;
+
     return (
       <div>
         {this.state.poolCreated && this.poolCreatedPortal()}

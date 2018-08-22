@@ -7,13 +7,13 @@ import { unloadPool } from '../actions/pools';
 const mapStateToProps = state => {
   return {
     user: state.user,
-    poolToDelete: state.poolToDelete,
+    poolToDelete: state.poolToDelete
   };
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    deletePool_f: () => { // not used atm
+    deletePool_f: () => { 
       dispatch(unloadPool());
       dispatch(schedulePoolForDelete(false));
     }

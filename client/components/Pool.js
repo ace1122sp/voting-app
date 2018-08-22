@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import { validator } from '../util/validator';
-
-const Loading = () => <h1>Page is loading...</h1>
+import Loading from './Loading';
 
 class Pool extends Component {
   constructor(props) {
     super(props);
     this.state = {
       newOption: '',
-      voted: false
+      voted: false,
+      redirect: false
     };
 
     this.props.getPool_f(this.props.poolId)
@@ -109,15 +110,14 @@ class Pool extends Component {
 
   handlePoolDelete = () => {
     this.props.deletePool_f(this.props.poolId);
-    this.goBack();
-  }
-
-  goBack = () => {
-    this.props.history.goBack();
+    this.setState({ redirect: true });
   }
 
   render() {
     if (this.props.poolLoading) return <Loading />;  
+
+    if (this.state.redirect && !this.props.fetching) return <Redirect to='/' />;
+
     const isCreator = this.props.username === this.props.pool.creator;
     return (
       <main>

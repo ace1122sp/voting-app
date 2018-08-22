@@ -39,7 +39,7 @@ class Settings extends React.Component {
   deleteProfilePortalImplementation = () => 
     <Portal>
       <DeleteProfile_cont />
-      <button onClick={this.closeDeleteProfilePortal}>Close</button>
+      <button onClick={this.closeDeleteProfilePortal}>Cancel</button>
     </Portal>
 
   render () {

@@ -5,7 +5,8 @@ import { unloadUser, updateUser } from '../../actions/user';
 
 const mapStateToProps = state => {
   return {
-    updateStatus: state.userUpdateStatus
+    updateStatus: state.userUpdateStatus,
+    fetching: state.fetchingRequest
   }
 }
 

@@ -85,7 +85,7 @@ module.exports = {
           })      
           .catch(err => {
             console.error(err.message);
-            return res.sendStatus(500);
+            return res.sendStatus(403);
           });
       }
     });

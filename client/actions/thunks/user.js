@@ -1,4 +1,5 @@
-import { loadUser, unloadUser, updateUser, updateBadLoginStatus, updateRegisterStatus, fetchingRequest } from '../user';
+import { loadUser, unloadUser, updateUser, updateBadLoginStatus, updateRegisterStatus } from '../user';
+import { fetchingRequest } from '../misc';
 import { URL_REGISTER, URL_LOGIN, URL_LOGOUT, URL_PROFILE } from '../../resources/urls';
 
 export const fetchRegister = user => 
@@ -28,7 +29,6 @@ export const fetchRegister = user =>
         }
       })
       .then(user => {
-        // dispatch(loadUser(user));// should I manually ask for user??
         dispatch(updateRegisterStatus('ok'));
       })
       .catch(err => {
@@ -54,6 +54,7 @@ export const fetchLogin = user =>
       ),
       headers: { 'Content-Type': 'application/json' }
     };
+    dispatch(fetchingRequest(true));
     return fetch(URL_LOGIN, options)
       .then(res => {
         if (res.ok) return res.json();
@@ -65,11 +66,15 @@ export const fetchLogin = user =>
       .catch(err => {
         if (err.message == 'bad login') return dispatch(updateBadLoginStatus(true));
         console.log(err);
+      })
+      .then(() => {
+        dispatch(fetchingRequest(false));
       });
   }
 
 export const fetchLogout = () =>
   dispatch => {
+    dispatch(fetchingRequest(true));
     return fetch(URL_LOGOUT, { mode: 'cors',  credentials: 'include',})
       .then(res => {
         if (res.ok) return true;
@@ -81,6 +86,9 @@ export const fetchLogout = () =>
       .catch(err => {
         // inform user about err 
         console.error(err.message);
+      })
+      .then(() => {
+        dispatch(fetchingRequest(false));
       });
   }
 
@@ -116,6 +124,7 @@ export const fetchUserUpdate = (currentPassword, newPassword) =>
       }),
       headers: { 'Content-Type': 'application/json' }
     };
+    dispatch(fetchingRequest(true));
     return fetch(URL_PROFILE, options)
       .then(res => {
         if (res.ok) {
@@ -126,6 +135,9 @@ export const fetchUserUpdate = (currentPassword, newPassword) =>
       })
       .catch(err => {
         console.log(res);
+      })
+      .then(() => {
+        dispatch(fetchingRequest(false));
       });
   }
 
@@ -136,6 +148,7 @@ export const fetchUserDelete = () =>
       mode: 'cors',
       credentials: 'include'
     };
+    dispatch(fetchingRequest(true));
     return fetch(URL_PROFILE, options)
       .then(res => {
         if (res.ok) return true;
@@ -145,7 +158,10 @@ export const fetchUserDelete = () =>
         dispatch(updateUser('Your profile has been deleted!'))
       })
       .catch(err => {
-        // inform user about error
         console.error(err.message);
+        dispatch(updateUser('Server Error'));
+      })
+      .then(() => {
+        dispatch(fetchingRequest(false));
       });
-  }
+  } 

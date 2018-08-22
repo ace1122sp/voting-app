@@ -4,7 +4,8 @@ import { fetchNewPool } from '../actions/thunks/pool';
 
 const mapStateToProps = state => {
   return {
-    username: state.user.username
+    username: state.user.username,
+    fetching: state.fetchingRequest
   }
 }
 

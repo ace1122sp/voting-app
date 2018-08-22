@@ -1,11 +1,13 @@
 import { URL_POOLS, urlPool, urlVote, urlFollowers, urlAddOption, urlRemoveOption } from '../../resources/urls';
 import { schedulePoolForDelete } from '../scheduleForDelete';
-import { loadPool, unloadPool, vote, addOption, removeOption, loadInitPoolCards, loadAdditionalPoolCards } from '../pools';
+import { loadPool, unloadPool, vote, addOption, removeOption } from '../pools';
 import { followPool, unfollowPool, addToCreatedPools, removeFromCreatedPools } from '../user';
+import { fetchingRequest } from '../misc';
 
 export const fetchPoolCards = (action, offset = '') =>
   dispatch => {
     const url = `${URL_POOLS}?offset=${offset}`;
+    dispatch(fetchingRequest(true));
     return fetch(url, { mode: 'cors', credentials: 'include' })
       .then(res => {
         if (res.ok) return res.json();
@@ -17,6 +19,9 @@ export const fetchPoolCards = (action, offset = '') =>
       .catch(err => {
         // send some info about err to user 
         console.error(err.message);
+      })
+      .then(() => {
+        dispatch(fetchingRequest(false));
       });
   }
 
@@ -28,6 +33,7 @@ export const fetchNewPool = pool =>
       body: JSON.stringify(pool),
       headers: { 'Content-Type': 'application/json' }
     };
+    dispatch(fetchingRequest(true));
     return fetch(URL_POOLS, options)
       .then(res => {
         if (res.ok) return res.json();
@@ -44,6 +50,9 @@ export const fetchNewPool = pool =>
       .catch(err => {
         // send some info about err to user
         console.error(err.message);
+      })
+      .then(() => {
+        dispatch(fetchingRequest(false));
       });
   }
 
@@ -73,6 +82,7 @@ export const fetchPoolDelete = poolId =>
       method: 'DELETE',
       mode: 'cors', credentials: 'include'
     };
+    dispatch(fetchingRequest(true))
     return fetch(urlPool(poolId), options)
       .then(res => {
         if (res.ok) {
@@ -85,6 +95,9 @@ export const fetchPoolDelete = poolId =>
       .catch(err => {
         // send some info about err to user
         console.error(err.message);
+      })
+      .then(() => {
+        dispatch(fetchingRequest(false));
       });
   }
 

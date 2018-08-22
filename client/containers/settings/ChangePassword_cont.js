@@ -4,7 +4,8 @@ import { fetchUserUpdate } from '../../actions/thunks/user';
 
 const mapStateToProps = state => {
   return {
-    updateStatus: state.userUpdateStatus
+    updateStatus: state.userUpdateStatus,
+    fetching: state.fetchingRequest
   }
 }
 

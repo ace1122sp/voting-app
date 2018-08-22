@@ -5,7 +5,8 @@ import { updateBadLoginStatus } from '../../actions/user';
 
 const mapStateToProps = state => {
   return {
-    badLoginStatus: state.badLoginStatus
+    badLoginStatus: state.badLoginStatus,
+    fetching: state.fetchingRequest
   }
 }
 

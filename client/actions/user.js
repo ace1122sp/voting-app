@@ -1,4 +1,4 @@
-import { LOAD_USER, UNLOAD_USER, UPDATE_USER, ADD_TO_CREATED_POOLS, REMOVE_FROM_CREATED_POOLS, FOLLOW_POOL, UNFOLLOW_POOL, UPDATE_BAD_LOGIN_STATUS, UPDATE_REGISTER_STATUS, FETCHING_REQUEST } from '../constants';
+import { LOAD_USER, UNLOAD_USER, UPDATE_USER, ADD_TO_CREATED_POOLS, REMOVE_FROM_CREATED_POOLS, FOLLOW_POOL, UNFOLLOW_POOL, UPDATE_BAD_LOGIN_STATUS, UPDATE_REGISTER_STATUS } from '../constants';
 
 export const loadUser = user => {
   return {
@@ -30,13 +30,6 @@ export const updateBadLoginStatus = status => {
 export const updateRegisterStatus = status => {
   return {
     type: UPDATE_REGISTER_STATUS,
-    status
-  }
-}
-
-export const fetchingRequest = status => {
-  return {
-    type: FETCHING_REQUEST,
     status
   }
 }
