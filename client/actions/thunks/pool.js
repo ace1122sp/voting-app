@@ -59,20 +59,26 @@ export const fetchNewPool = pool =>
 export const fetchPool = poolId =>
   dispatch => {
     dispatch(unloadPool());
+    dispatch(fetchingRequest(true));
     return fetch(urlPool(poolId), { mode: 'cors', credentials: 'include' })
       .then(res => {
         if (res.ok) return res.json();
         if (res.status == 410) {
-          dispatch(unloadPool());
-          return Promise.resolve('deleted');
+          return { pool: 'deleted' };
         }
       })
       .then(pool => {
-        return Promise.resolve(dispatch(loadPool(pool)));
+        if (pool.pool === 'deleted') return pool;
+        dispatch(loadPool(pool));
+        return pool;
       })
       .catch(err => {
-        console.error('Something went wrong');
-        return Promise.reject('Something went wrong');
+        console.error(err.message);
+        throw new Error('Something went wrong');
+      })
+      .then(pool => {
+        dispatch(fetchingRequest(false));
+        return pool;
       });
   }
 

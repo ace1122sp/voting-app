@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import Pool from '../components/Pool';
 import { general } from '../util/general';
 import { fetchVote, fetchOptionAdd, fetchOptionRemove, fetchFollow, fetchUnfollow, fetchPool, fetchPoolDelete } from '../actions/thunks/pool';
-import { startLoadingPool, endLoadingPool } from '../actions/pools';
 
 const mapStateToProps = (state, ownProps) => {
   const username = state.user ? state.user.username : null;
@@ -17,14 +16,14 @@ const mapStateToProps = (state, ownProps) => {
     poolLoading: state.poolLoading,
     isFollowedByActiveUser,
     totalVotes,
-    username
+    username,
+    fetching: state.fetchingRequest
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     getPool_f: poolId => {
-      dispatch(startLoadingPool());
       return Promise.resolve(dispatch(fetchPool(poolId)));
     },
     vote_f: (poolId, optionId) => dispatch(fetchVote(poolId, optionId)),
@@ -37,8 +36,6 @@ const mapDispatchToProps = dispatch => {
     },
     deletePool_f: poolId => dispatch(fetchPoolDelete(poolId)),
     removePoolOption_f: (poolId, optionId) => dispatch(fetchOptionRemove(poolId, optionId)),
-    startLoading_f: () => dispatch(startLoadingPool()),
-    endLoading_f: () => dispatch(endLoadingPool())
   }
 }
 

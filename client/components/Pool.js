@@ -8,23 +8,21 @@ class Pool extends Component {
     super(props);
     this.state = {
       newOption: '',
+      redirect: false,
       voted: false,
-      redirect: false
     };
-
+  }
+  
+  componentWillMount() {
     this.props.getPool_f(this.props.poolId)
-      .then(promise => {
-        if (promise.pool == 'deleted') {
-          this.handleUnfollowing();
+      .then(pool => {
+        if (pool.pool == 'deleted') {
+          if (this.props.username) this.handleUnfollowing();
           this.props.history.push('/no-pool');
-        } else {
-          return Promise.resolve(true)
         }
       })
-      .then(() => {
-        this.props.endLoading_f();
-      })
       .catch(err => {
+        console.log(err)
         this.props.history.push('/server-error');
       });     
   }
@@ -114,9 +112,9 @@ class Pool extends Component {
   }
 
   render() {
-    if (this.props.poolLoading) return <Loading />;  
+    if (this.props.fetching) return <Loading />;  
 
-    if (this.state.redirect && !this.props.fetching) return <Redirect to='/' />;
+    if (this.state.redirect) return <Redirect to='/' />;
 
     const isCreator = this.props.username === this.props.pool.creator;
     return (
