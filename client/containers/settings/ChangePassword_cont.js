@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
+
 import ChangePassword from '../../components/settings/ChangePassword';
+
 import { fetchUserUpdate } from '../../actions/thunks/user';
 
 const mapStateToProps = state => {

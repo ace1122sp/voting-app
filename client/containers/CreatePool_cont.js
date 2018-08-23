@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
+
 import CreatePool from '../components/CreatePool';
+
 import { fetchNewPool } from '../actions/thunks/pool';
 
 const mapStateToProps = state => {

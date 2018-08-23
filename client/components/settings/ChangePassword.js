@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { URL_PROFILE } from '../../resources/urls';
 
 class ChangePassword extends React.Component {

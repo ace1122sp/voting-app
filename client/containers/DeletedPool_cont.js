@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
+
 import DeletedPool from '../components/DeletedPool';
+
 import { endLoadingPool } from '../actions/pools';
 
 const mapDispatchToProps = dispatch => {

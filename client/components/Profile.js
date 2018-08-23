@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+
 import PoolCard from './PoolCard';
+
 import { general } from '../util/general';
 
 class Profile extends Component {

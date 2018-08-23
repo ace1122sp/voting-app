@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
+
 import ServerError from '../components/ServerError';
+
 import { endLoadingPool } from '../actions/pools';
 
 const mapDispatchToProps = dispatch => {

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { validator } from '../../util/validator';
+
 import Portal from '../Portal';
+
+import { validator } from '../../util/validator';
 
 class SignUp extends Component {
   constructor(props) {

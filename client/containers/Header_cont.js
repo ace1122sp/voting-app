@@ -1,7 +1,9 @@
 import { connect } from 'react-redux';
-import Header from '../components/Header';
-import { fetchLogout } from '../actions/thunks/user';
 import { withRouter } from 'react-router-dom';
+
+import Header from '../components/Header';
+
+import { fetchLogout } from '../actions/thunks/user';
 
 const mapStateToProps = state => {
   return {

@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import Pool from '../components/Pool';
+
 import { general } from '../util/general';
 import { fetchVote, fetchOptionAdd, fetchOptionRemove, fetchFollow, fetchUnfollow, fetchPool, fetchPoolDelete } from '../actions/thunks/pool';
 

@@ -1,10 +1,11 @@
 import React from 'react';
 import { render } from 'react-dom';
-import App from './components/App';
-import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import thunk from 'redux-thunk';
+
+import App from './components/App';
 
 import { URL_PROFILE } from './resources/urls';
 import rootReducer from './reducers';

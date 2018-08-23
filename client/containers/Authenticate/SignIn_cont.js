@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
+
 import SignIn from '../../components/Authenticate/SignIn';
+
 import { fetchLogin } from '../../actions/thunks/user';
 import { updateBadLoginStatus } from '../../actions/user';
 

@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
+
 import World from '../components/World';
+
 import { fetchPoolCards } from '../actions/thunks/pool';
 import { unloadPool, loadInitPoolCards, loadAdditionalPoolCards } from '../actions/pools';
 import { schedulePoolForDelete } from '../actions/scheduleForDelete';
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     poolCards: state.poolCards,
     poolToDelete: state.poolToDelete,

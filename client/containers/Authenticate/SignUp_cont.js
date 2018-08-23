@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
+
 import SignUp from '../../components/Authenticate/SignUp';
+
 import { fetchRegister, fetchUser } from '../../actions/thunks/user';
 import { updateRegisterStatus } from '../../actions/user';
 

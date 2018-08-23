@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import { validator } from '../util/validator';
+
 import Loading from './Loading';
+
+import { validator } from '../util/validator';
 
 class Pool extends Component {
   constructor(props) {

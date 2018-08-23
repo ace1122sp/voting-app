@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+
 import Profile from '../components/Profile';
 
 import { schedulePoolForDelete } from '../actions/scheduleForDelete';

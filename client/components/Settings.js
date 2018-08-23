@@ -1,7 +1,9 @@
 import React from 'react';
-import Portal from './Portal';
+
 import ChangePassword_cont from '../containers/settings/ChangePassword_cont';
 import DeleteProfile_cont from '../containers/settings/DeleteProfile_cont';
+
+import Portal from './Portal';
 
 class Settings extends React.Component {
   constructor(props) {

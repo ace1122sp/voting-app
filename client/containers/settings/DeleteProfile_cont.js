@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
+
 import DeleteProfile from '../../components/settings/DeleteProfile';
+
 import { fetchUserDelete } from '../../actions/thunks/user';
 import { unloadUser, updateUser } from '../../actions/user';
 

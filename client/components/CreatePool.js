@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+
 import Portal from './Portal';
-import { validator } from '../util/validator';
 import Loading from './Loading';
+
+import { validator } from '../util/validator';
 
 class CreatePool extends Component {
   constructor(props) {

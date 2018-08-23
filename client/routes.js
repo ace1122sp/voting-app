@@ -1,11 +1,11 @@
 import World_cont from './containers/World_cont'
-import Authenticate from './components/Authenticate/';
+import Pool_cont from './containers/Pool_cont';
 import CreatePool_cont from './containers/CreatePool_cont';
+import DeletedPool_cont from './containers/DeletedPool_cont';
 import Profile_cont from './containers/Profile_cont';
 import Settings_cont from './containers/Settings_cont';
-import Pool_cont from './containers/Pool_cont';
-import DeletedPool_cont from './containers/DeletedPool_cont';
 import ServerError_cont from './containers/ServerError_cont';
+import Authenticate from './components/Authenticate/';
 
 export const commonRoutes = [
   {
