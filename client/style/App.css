@@ -23,6 +23,9 @@ a:active {
 li {
   list-style: none; }
 
+button, input[type='button'], input[type='submit'], input[type='submit'] {
+  box-shadow: 1px 1px 7px -1px #535e65; }
+
 button {
   color: #f5fbfe;
   background: linear-gradient(to right, #1fadff, #85d2ff);
@@ -34,7 +37,8 @@ button {
 
 button:hover, input[type='button']:hover, input[type='submit']:hover, input[type='submit']:hover {
   cursor: pointer;
-  transform: scale(0.92); }
+  transform: scale(0.92);
+  box-shadow: none; }
 
 button:active {
   background: linear-gradient(to right, #ffa21f, #ffcc85); }

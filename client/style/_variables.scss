@@ -8,8 +8,10 @@ $color-dark: hsl(202, 10%, 36%);
 $color-light: hsl(202, 90%, 98%);
 
 $transition-duration-base: 200ms;
-$base-transition: all $transition-duration-base ease-out;
+$transition-base: all $transition-duration-base ease-out;
 
 $margin-base: 2px;
 $padding-base: 5.7px;
 $border-radius-base: 4px;
+
+$box-shadow-base: 1px 1px 7px -1px $color-dark;

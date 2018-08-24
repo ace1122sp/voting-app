@@ -15,7 +15,7 @@ body {
 a {
   text-decoration: none;
   color: $color1;
-  transition: $base-transition;
+  transition: $transition-base;
 }
 
 a:hover {
@@ -30,6 +30,10 @@ li {
   list-style: none; 
 }
 
+button, input[type='button'], input[type='submit'] {
+  box-shadow: $box-shadow-base;
+}
+
 button {
   color: $color-light;
   background: linear-gradient(to right, $color1, hsl(202, 100%, 76%));
@@ -37,12 +41,13 @@ button {
   border-radius: $border-radius-base;
   margin: $margin-base;
   padding: $padding-base;
-  transition: $base-transition;
+  transition: $transition-base;
 }
 
 button:hover, input[type='button']:hover, input[type='submit']:hover {
   cursor: pointer;
   transform: scale(0.92);
+  box-shadow: none;
 }
 
 button:active {
@@ -53,11 +58,11 @@ input[type='button'] {
   border-style: none;
   margin: $margin-base;
   padding: $padding-base;
-  transition: $base-transition;
+  transition: $transition-base;
 }
 
 input[type='submit'] {
-  @extend input[type='button'];
+  @extend input, [type='button'];
   background: hsl(202, 100%, 56%);
   border-radius: $border-radius-base;
 }
