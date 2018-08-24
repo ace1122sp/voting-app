@@ -4,6 +4,8 @@ import Header_cont from '../containers/Header_cont';
 import Main_cont from '../containers/Main_cont';
 import Footer from './Footer';
 
+import '../style/App.css';
+
 const App = () =>
   <div>
     <Header_cont />

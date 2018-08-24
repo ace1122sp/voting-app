@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
+
+$font-family-base: 'Open Sans Condensed', sans-serif;
+$color1: hsl(202, 100%, 56%);
+$color2: hsl(35, 100%, 56%);
+$color3: hsl(5, 100%, 56%);
+$color-dark: hsl(202, 10%, 36%);
+$color-light: hsl(202, 90%, 98%);
+
+$transition-duration-base: 200ms;
+$base-transition: all $transition-duration-base ease-out;
+
+$margin-base: 2px;
+$padding-base: 5.7px;
+$border-radius-base: 4px;

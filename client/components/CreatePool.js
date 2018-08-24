@@ -59,7 +59,6 @@ class CreatePool extends Component {
       div.appendChild(span);
       div.appendChild(button);
       optionsContainer.appendChild(div);
-      console.log(updatedOptions)
       this.setState({ toAddOption: '', options: [...updatedOptions] });
     }
   }

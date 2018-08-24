@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300");
+html, body {
+  min-height: 100%;
+  margin: 0;
+  color: #535e65; }
+
+body {
+  font-family: "Open Sans Condensed", sans-serif;
+  display: flex;
+  flex-direction: column; }
+
+a {
+  text-decoration: none;
+  color: #1fadff;
+  transition: all 200ms ease-out; }
+
+a:hover {
+  color: #0074b8; }
+
+a:active {
+  color: #85bfe0; }
+
+li {
+  list-style: none; }
+
+button {
+  color: #f5fbfe;
+  background: linear-gradient(to right, #1fadff, #85d2ff);
+  border-style: none;
+  border-radius: 4px;
+  margin: 2px;
+  padding: 5.7px;
+  transition: all 200ms ease-out; }
+
+button:hover, input[type='button']:hover, input[type='submit']:hover, input[type='submit']:hover {
+  cursor: pointer;
+  transform: scale(0.92); }
+
+button:active {
+  background: linear-gradient(to right, #ffa21f, #ffcc85); }
+
+input[type='button'], input[type='submit'] {
+  border-style: none;
+  margin: 2px;
+  padding: 5.7px;
+  transition: all 200ms ease-out; }
+
+input[type='submit'] {
+  background: #1fadff;
+  border-radius: 4px; }
+
+/*# sourceMappingURL=App.css.map */

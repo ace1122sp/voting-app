@@ -1,0 +1,63 @@
+@import 'variables.scss';
+
+html, body {
+  min-height: 100%;
+  margin: 0;
+  color: $color-dark;
+}
+
+body {
+  font-family: $font-family-base;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  color: $color1;
+  transition: $base-transition;
+}
+
+a:hover {
+  color: hsl(202, 100%, 36%);
+}
+
+a:active {
+  color: hsl(202, 60%, 70%);
+}
+
+li {
+  list-style: none; 
+}
+
+button {
+  color: $color-light;
+  background: linear-gradient(to right, $color1, hsl(202, 100%, 76%));
+  border-style: none;
+  border-radius: $border-radius-base;
+  margin: $margin-base;
+  padding: $padding-base;
+  transition: $base-transition;
+}
+
+button:hover, input[type='button']:hover, input[type='submit']:hover {
+  cursor: pointer;
+  transform: scale(0.92);
+}
+
+button:active {
+  background: linear-gradient(to right, $color2, hsl(35, 100%, 76%));
+}
+
+input[type='button'] {
+  border-style: none;
+  margin: $margin-base;
+  padding: $padding-base;
+  transition: $base-transition;
+}
+
+input[type='submit'] {
+  @extend input[type='button'];
+  background: hsl(202, 100%, 56%);
+  border-radius: $border-radius-base;
+}

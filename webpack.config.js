@@ -14,8 +14,14 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.sass$/,
-        loader: "extract-loader!style-loader!css-loader!postcss-loader!sass-loader"
+        test: /\.(sa|sc|c)ss$/,
+        use: ["style-loader", {
+          loader: "css-loader",
+          options: {
+            modules: true,
+            minimize: true
+          }
+        }, "postcss-loader", "sass-loader"]
       },
       {
         test: /\.js$/,
