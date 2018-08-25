@@ -123,15 +123,14 @@ class Pool extends Component {
       <main>
         <div>
           <h2>{this.props.pool.name}</h2>
-          <h4>created by {this.props.pool.creator || 'n/a'} <span>{this.props.pool.dateCreated}</span></h4>
+          <address>created by {this.props.pool.creator || 'n/a'} <time>{this.props.pool.dateCreated}</time></address>
           <div>
             {this.props.pool.name && !this.state.voted && this.getOptions(this.props.pool.options, this.props.pool.name, isCreator)}
           </div>
           {!this.state.voted && <button onClick={this.handleVoting}>Vote</button>}<br/>
           {this.props.pool.name && this.props.username && !this.state.voted && <form onSubmit={this.handleAddingNewOption}>
-          <p>add new option</p>
           <input type='text' value={this.state.newOption} onChange={this.handleChangeForNewOption} />
-          <input type='submit' value='add' /><br />
+          <input type='submit' value='add new option' /><br />
         </form>}
         {this.props.username && <div>
           <button onClick={this.followOrUnfollow}>{this.props.isFollowedByActiveUser}</button>

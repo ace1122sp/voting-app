@@ -1,7 +1,6 @@
 import React from 'react';
 
 import PoolCard from './PoolCard';
-import Loading from './Loading';
 
 const World = props => {
   let lastPoolId = '';
@@ -19,13 +18,12 @@ const World = props => {
     props.getAdditionalPoolCards_f(lastPoolId);
   }
 
-  if (props.fetching) return <Loading />;
-
   return (
     <div>
       <ul>
         {pools}
       </ul>
+      {props.fetching && <span>loading...</span>}
       <button onClick={handleGettingPoolCards}>load more polls...</button>
     </div>
   );

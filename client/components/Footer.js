@@ -11,7 +11,9 @@ const Footer = props => {
         </p>
       </div>
       <div>
-        <span>coded by ace11</span>
+        <address>
+          <p>coded by ace11</p>
+        </address>
         <ul>
           <li><a href="https://github.com/ace1122sp" target="_blank"><i className="fa fa-github" aria-hidden="true"></i>github</a></li>
           <li><a href="https://www.linkedin.com/in/aleksandar-bulovi%C4%87-83aa74139/" target="_blank"><i className="fa fa-linkedin" aria-hidden="true"></i>linkedin</a></li>
