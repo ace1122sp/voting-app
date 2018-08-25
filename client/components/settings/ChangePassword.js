@@ -53,15 +53,15 @@ class ChangePassword extends React.Component {
     </form>
 
   showMessage = () => 
-    <div>
-      {this.props.updateStatus}
-    </div>
+      <p>
+        {this.props.updateStatus}
+      </p>
   
   render () {
-    if (this.props.fetching) return <span>Loading...</span>
+    if (this.props.fetching) return <em>Loading...</em>
     return (
       <div>
-        { this.state.warning }
+        <p>{ this.state.warning }</p>
         { !this.props.updateStatus && this.showForm() || this.showMessage() }
       </div>
     );

@@ -47,20 +47,20 @@ class Pool extends Component {
   
   getOptions = (optionsArray, name, creator) =>
     optionsArray.sort(this._sortOptions).map((option, index) =>
-      <React.Fragment key={option.value}>
+      <li key={option.value}>
         <input type='radio' id={`vote-option-${index}`} name={name} value={option.id} />
         <label htmlFor={`vote-option-${index}`}>{option.value}</label>
         {creator && <button value={option.id} onClick={this.handleOptionDelete}>X</button>}
         <br />
-      </React.Fragment>
+      </li>
     );
 
   showResults = resultsArray =>
     resultsArray.sort(this._sortOptions).map(option =>
-      <div key={option.id}>
+      <li key={option.id}>
         <strong>{option.value}: </strong>
-        <span>{option.votes}</span>
-      </div>
+        {option.votes}
+      </li>
     );
 
   handleChangeForNewOption = e => {
@@ -121,29 +121,30 @@ class Pool extends Component {
     const isCreator = this.props.username === this.props.pool.creator;
     return (
       <main>
-        <div>
+        <section>
           <h2>{this.props.pool.name}</h2>
           <address>created by {this.props.pool.creator || 'n/a'} <time>{this.props.pool.dateCreated}</time></address>
-          <div>
-            {this.props.pool.name && !this.state.voted && this.getOptions(this.props.pool.options, this.props.pool.name, isCreator)}
-          </div>
-          {!this.state.voted && <button onClick={this.handleVoting}>Vote</button>}<br/>
+          {this.props.pool.name && !this.state.voted && <ul>{this.getOptions(this.props.pool.options, this.props.pool.name, isCreator)}</ul>}
+          {!this.state.voted && <button onClick={this.handleVoting}>Vote</button>}
+          <br /><br />
           {this.props.pool.name && this.props.username && !this.state.voted && <form onSubmit={this.handleAddingNewOption}>
-          <input type='text' value={this.state.newOption} onChange={this.handleChangeForNewOption} />
-          <input type='submit' value='add new option' /><br />
-        </form>}
-        {this.props.username && <div>
-          <button onClick={this.followOrUnfollow}>{this.props.isFollowedByActiveUser}</button>
-          <button>tweet </button>
-          <button>share </button>
-        </div>}
-        </div>
+            <input type='text' value={this.state.newOption} onChange={this.handleChangeForNewOption} />
+            <input type='submit' value='add new option' />
+            <br /><br />
+          </form>}
+          {this.props.username && <div>
+            <button onClick={this.followOrUnfollow}>{this.props.isFollowedByActiveUser}</button>
+            <button>tweet </button>
+            <button>share </button>
+          </div>}
+        </section>
+        <br />
         {isCreator && <button onClick={this.handlePoolDelete}>delete pool</button>}
-        <div>
+        <section>
           <h3>Chart</h3>
           <p>imagine some chart over here</p>
-          {this.props.pool.name && this.showResults(this.props.pool.options)}
-        </div>
+          {this.props.pool.name && <ul>{this.showResults(this.props.pool.options)}</ul>}
+        </section>
       </main>
     );
   }

@@ -10,7 +10,7 @@ const Footer = props => {
           vulnerabilities. Please do not store any sensitive information in the app and do not use passwords which you are using in other apps.
         </p>
       </div>
-      <div>
+      <section>
         <address>
           <p>coded by ace11</p>
         </address>
@@ -21,7 +21,7 @@ const Footer = props => {
           <li><a href="https://codepen.io/ace1122/" target="_blank"><i className="fa fa-codepen" aria-hidden="true"></i>codepen</a></li>
           <li><a href='https://ace1122sp.github.io/portfolio/' target="_blank">portfolio</a></li>
         </ul>
-      </div>
+      </section>
     </footer>
   );
 }

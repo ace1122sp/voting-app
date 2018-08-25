@@ -23,7 +23,7 @@ class SignUp extends Component {
 
   renderPortal = () => 
     <Portal>
-      <h1>Registration successful!</h1>
+      <h2>Registration successful!</h2>
       {!this.props.fetchingRequest && <button onClick={this.loadUser}>ok</button>}
     </Portal>
 
@@ -78,27 +78,34 @@ class SignUp extends Component {
 
   render() {
     return (
-      <div>
+      <main>
         {this.props.registerStatus === 'ok' && this.renderPortal()}
         {this.state.shortPassword && this.showIncorrectPasswordWarning()}
         {this.isError() && this.showErrorMessage()}      
-        <h3>Create Your Account</h3>
+        <h2>Create Your Account</h2>
         <form onSubmit={this.handleSubmit}>
-          <label>email</label><br />
-          <input type='email' value={this.state.email} onChange={this.handleChangeEmail} /><br />
+          <label>email</label>
           <br />
-          <label>username</label><br />
-          <input type='text' value={this.state.username} onChange={this.handleChangeUsername} /><br />
-          <br />
-          <label>password</label><br />
-          <input type='password' value={this.state.password} onChange={this.handleChangePassword} /><br />
-          <label>confirm password</label><br />
-          <input type='password' value={this.state.passwordAgain} onChange={this.handleChangePasswordAgain} /><br />
+          <input type='email' value={this.state.email} onChange={this.handleChangeEmail} />
           <br /><br />
-          {!this.props.fetchingRequest && <input type='submit' value='Create Account' />}<br />
+          <label>username</label>
+          <br />
+          <input type='text' value={this.state.username} onChange={this.handleChangeUsername} />
+          <br /><br />
+          <label>password</label>
+          <br />
+          <input type='password' value={this.state.password} onChange={this.handleChangePassword} />
+          <br />
+          <label>confirm password</label>
+          <br />
+          <input type='password' value={this.state.passwordAgain} onChange={this.handleChangePasswordAgain} />
+          <br />
+          <br />
+          {!this.props.fetchingRequest && <input type='submit' value='Create Account' />}
           {this.props.fetchingRequest && <span>loading...</span>}
-        </form><br />
-      </div>
+        </form>
+        <br />
+      </main>
     );
   }
 }

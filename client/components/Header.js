@@ -43,7 +43,7 @@ class Header extends Component {
     const headerToRender= user ? <UserHeader signOut={this.props.signOut_f} /> : <GuestHeader />;
     return (
       <header>
-        <h3>voting-app</h3>
+        <h1>voting-app</h1>
         {headerToRender}
       </header>
     );

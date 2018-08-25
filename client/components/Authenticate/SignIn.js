@@ -36,19 +36,24 @@ class SignIn extends Component {
     if (this.props.fetching) return <Loading />;
 
     return (
-      <div>
-        <h3>Sign in</h3>
+      <main>
+        <h2>Sign in</h2>
         {this.props.badLoginStatus && this.showBadLoginWarning()}
         <form onSubmit={this.handleSubmit}>
-          <label>username</label><br />
-          <input type='username' value={this.state.username} onChange={this.handleChangeUsername} /><br />
+          <label>username</label>
           <br />
-          <label>password</label><br />
-          <input type='password' value={this.state.password} onChange={this.handleChangePassword} /><br />
+          <input type='username' value={this.state.username} onChange={this.handleChangeUsername} />
           <br /><br />
-          <input type='submit' value='Confirm' /><br />
-        </form><br />
-      </div>
+          <label>password</label>
+          <br />
+          <input type='password' value={this.state.password} onChange={this.handleChangePassword} />
+          <br /><br />
+          <br />
+          <input type='submit' value='Confirm' />
+          <br />
+        </form>
+        <br />
+      </main>
     );
   }
 }

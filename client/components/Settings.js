@@ -46,22 +46,22 @@ class Settings extends React.Component {
 
   render () {
     return (
-      <div>
+      <main>
         {this.state.updatePasswordPortal && 
         this.updatePasswordPortalImplementation()
           }
         {this.state.deleteProfilePortal &&
           this.deleteProfilePortalImplementation()
         }
-        <h1>Settings</h1>
-        <h2>{this.props.username}</h2>
+        <h2>Settings</h2>
+        <h3>{this.props.username}</h3>
         <form>
-          <input type='button' value='Change Password' onClick={this.openUpdatePasswordPortal} /><br />
+          <input type='button' value='Change Password' onClick={this.openUpdatePasswordPortal} />
           <br /><br />
-          <input type='button' value='Delete Profile' onClick={this.openDeleteProfilePortal} /><br />
-          <br />
-        </form><br />
-      </div>
+          <input type='button' value='Delete Profile' onClick={this.openDeleteProfilePortal} />
+          <br /><br />
+        </form>
+      </main>
     );
   }
 }

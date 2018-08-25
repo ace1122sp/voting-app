@@ -81,7 +81,7 @@ class CreatePool extends Component {
 
   poolCreatedPortal = () => 
     <Portal>
-      <h1>Pool Created</h1>  
+      <h2>Pool Created</h2>  
       <p>Pool {validator.trimEverything(this.state.name)} has been created.</p>
       <button onClick={this.handleRedirect}>ok</button>
     </Portal>
@@ -110,24 +110,26 @@ class CreatePool extends Component {
     if (this.props.fetching) return <Loading />;
 
     return (
-      <div>
+      <main>
         {this.state.poolCreated && this.poolCreatedPortal()}
         {this.state.incorrectPool && this.showIncorrectPoolWarning()}
         <h2>Create Pool</h2>
-        <div>
-          <label>Pool Name</label><br />
-          <input type='text' value={this.state.name} onChange={this.handlePoolNameChange} placeholder='enter pool name' /><br /><br />
+        <section>
+          <label>Pool Name</label>
+          <br />
+          <input type='text' value={this.state.name} onChange={this.handlePoolNameChange} placeholder='enter pool name' />
+          <br /><br />
           <form onSubmit={this.addOption}>
             <input type='text' value={this.state.toAddOption} onChange={this.handleOptionChange} />
             <input type='submit' value='add option' />
           </form>
-        </div>
-        <br />
-        <h4>options:</h4>
+        </section>
+        <h3>options:</h3>
         <div id='poolOptions'>
         </div>
+        <br />
         <button onClick={this.handleSubmit}>Submit</button>
-      </div>
+      </main>
     );
   }
 }
