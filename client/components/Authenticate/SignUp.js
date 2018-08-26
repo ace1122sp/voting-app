@@ -24,7 +24,7 @@ class SignUp extends Component {
   renderPortal = () => 
     <Portal>
       <h2>Registration successful!</h2>
-      {!this.props.fetchingRequest && <button onClick={this.loadUser}>ok</button>}
+      {!this.props.fetchingRequest && <button className='aggressive-btn' onClick={this.loadUser}>ok</button>}
     </Portal>
 
   handleChangeEmail = e => {
@@ -101,7 +101,7 @@ class SignUp extends Component {
           <input type='password' value={this.state.passwordAgain} onChange={this.handleChangePasswordAgain} />
           <br />
           <br />
-          {!this.props.fetchingRequest && <input type='submit' value='Create Account' />}
+          {!this.props.fetchingRequest && <input className='aggressive-btn' type='submit' value='Create Account' />}
           {this.props.fetchingRequest && <span>loading...</span>}
         </form>
         <br />

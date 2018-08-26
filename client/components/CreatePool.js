@@ -128,7 +128,7 @@ class CreatePool extends Component {
         <div id='poolOptions'>
         </div>
         <br />
-        <button onClick={this.handleSubmit}>Submit</button>
+        <button className='aggressive-btn' onClick={this.handleSubmit}>Submit</button>
       </main>
     );
   }

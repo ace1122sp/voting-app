@@ -56,9 +56,9 @@ class Settings extends React.Component {
         <h2>Settings</h2>
         <h3>{this.props.username}</h3>
         <form>
-          <input type='button' value='Change Password' onClick={this.openUpdatePasswordPortal} />
+          <input className='neutral-btn' type='button' value='Change Password' onClick={this.openUpdatePasswordPortal} />
           <br /><br />
-          <input type='button' value='Delete Profile' onClick={this.openDeleteProfilePortal} />
+          <input className='neutral-btn' type='button' value='Delete Profile' onClick={this.openDeleteProfilePortal} />
           <br /><br />
         </form>
       </main>

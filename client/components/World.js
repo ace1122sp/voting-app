@@ -25,7 +25,7 @@ const World = props => {
       </ul>
       {props.fetching && <em>loading...</em>}
       <br />
-      <button onClick={handleGettingPoolCards}>load more polls...</button>
+      <button className='aggressive-btn' onClick={handleGettingPoolCards}>load more polls...</button>
     </main>
   );
 }

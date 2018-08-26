@@ -30,16 +30,13 @@ li {
   list-style: none; 
 }
 
-button, input[type='button'], input[type='submit'] {
-  box-shadow: $box-shadow-base;
-}
-
 button {
-  color: $color-light;
-  background: linear-gradient(to right, $color1, hsl(202, 100%, 76%));
+  color: $color-dark;
+  background: linear-gradient(to right, hsla(202, 100%, 76%, 0.4), hsla(202, 100%, 56%, 0.1));
+  box-shadow: $box-shadow-base;
   border-style: none;
-  border-radius: $border-radius-base;
   margin: $margin-base;
+  border-radius: $border-radius-base;
   padding: $padding-base;
   transition: $transition-base;
 }
@@ -50,19 +47,43 @@ button:hover, input[type='button']:hover, input[type='submit']:hover {
   box-shadow: none;
 }
 
-button:active {
-  background: linear-gradient(to right, $color2, hsl(35, 100%, 76%));
-}
-
 input[type='button'] {
-  border-style: none;
-  margin: $margin-base;
-  padding: $padding-base;
-  transition: $transition-base;
+  @extend button;
 }
 
 input[type='submit'] {
-  @extend input, [type='button'];
-  background: hsl(202, 100%, 56%);
-  border-radius: $border-radius-base;
+  @extend button;
+}
+
+input[type='text'] {
+  color: $color-dark;
+  font-weight: 300;
+  border: none;
+  border-bottom: 1px dashed $color-dark;
+}
+
+input[type='text']::placeholder, input[type='email']::placeholder, input[type='password']::placeholder {
+  color: $color1;
+}
+
+input[type='password'] {
+  @extend input, [type='text'];
+}
+
+input[type='email'] {
+  @extend input, [type='text'];
+}
+
+.aggressive-btn { 
+  color: $color-light;
+  background: linear-gradient(to right, $color1, hsl(202, 100%, 76%));
+}
+
+.aggressive-btn:active {
+  background: linear-gradient(to right, $color2, hsl(35, 100%, 76%));
+}
+
+.danger-btn {
+  color: $color-light;
+  background: linear-gradient(to right, $color3, hsl(5, 100%, 76%));
 }

@@ -16,7 +16,7 @@ const UserHeader = props => {
       {' | '}
       <NavLink to='/settings'>settings</NavLink>
       {' | '}
-      <button onClick={signOut}>Sign Out</button>
+      <button className='aggressive-btn' onClick={signOut}>Sign Out</button>
     </nav>
   );
 }

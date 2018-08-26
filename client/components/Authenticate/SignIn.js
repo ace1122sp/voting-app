@@ -42,14 +42,14 @@ class SignIn extends Component {
         <form onSubmit={this.handleSubmit}>
           <label>username</label>
           <br />
-          <input type='username' value={this.state.username} onChange={this.handleChangeUsername} />
+          <input type='text' value={this.state.username} onChange={this.handleChangeUsername} />
           <br /><br />
           <label>password</label>
           <br />
           <input type='password' value={this.state.password} onChange={this.handleChangePassword} />
           <br /><br />
           <br />
-          <input type='submit' value='Confirm' />
+          <input className='aggressive-btn' type='submit' value='Confirm' />
           <br />
         </form>
         <br />

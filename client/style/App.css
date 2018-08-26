@@ -23,34 +23,39 @@ a:active {
 li {
   list-style: none; }
 
-button, input[type='button'], input[type='submit'], input[type='submit'] {
-  box-shadow: 1px 1px 7px -1px #535e65; }
-
-button {
-  color: #f5fbfe;
-  background: linear-gradient(to right, #1fadff, #85d2ff);
+button, input[type='button'], input[type='submit'] {
+  color: #535e65;
+  background: linear-gradient(to right, rgba(133, 210, 255, 0.4), rgba(31, 173, 255, 0.1));
+  box-shadow: 1px 1px 7px -1px #535e65;
   border-style: none;
-  border-radius: 4px;
   margin: 2px;
+  border-radius: 4px;
   padding: 5.7px;
   transition: all 200ms ease-out; }
 
-button:hover, input[type='button']:hover, input[type='submit']:hover, input[type='submit']:hover {
+button:hover, input[type='button']:hover, input[type='submit']:hover, input[type='button']:hover, input[type='submit']:hover {
   cursor: pointer;
   transform: scale(0.92);
   box-shadow: none; }
 
-button:active {
+input[type='text'], input[type='password'], input[type='email'] {
+  color: #535e65;
+  font-weight: 300;
+  border: none;
+  border-bottom: 1px dashed #535e65; }
+
+input[type='text']::placeholder, input[type='password']::placeholder, input[type='email']::placeholder, input[type='email']::placeholder, input[type='password']::placeholder {
+  color: #1fadff; }
+
+.aggressive-btn {
+  color: #f5fbfe;
+  background: linear-gradient(to right, #1fadff, #85d2ff); }
+
+.aggressive-btn:active {
   background: linear-gradient(to right, #ffa21f, #ffcc85); }
 
-input[type='button'], input[type='submit'] {
-  border-style: none;
-  margin: 2px;
-  padding: 5.7px;
-  transition: all 200ms ease-out; }
-
-input[type='submit'] {
-  background: #1fadff;
-  border-radius: 4px; }
+.danger-btn {
+  color: #f5fbfe;
+  background: linear-gradient(to right, #ff311f, #ff8f85); }
 
 /*# sourceMappingURL=App.css.map */
