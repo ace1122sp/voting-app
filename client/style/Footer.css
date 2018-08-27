@@ -1,13 +1,27 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300");
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 footer {
   background: #0074b8;
   padding: 5.7px; }
   footer p, footer span {
-    color: #f5fbfe; }
+    color: #f5fbfe;
+    text-align: justify;
+    font-size: 14px;
+    margin: 20px 4px 4px;
+    padding: 5.7px; }
   footer a {
     color: #f5fbfe;
-    text-shadow: 0px 0px 0 #535e65; }
-  footer ul {
-    background: rgba(255, 190, 184, 0.4); }
+    text-shadow: 0px 0px 0 #535e65;
+    font-size: 24px;
+    margin: 20px 10px;
+    padding: 5.7px; }
+  footer address p, footer address span {
+    text-align: center; }
+
+.social-media {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  background: rgba(255, 190, 184, 0.4); }
 
 /*# sourceMappingURL=Footer.css.map */
