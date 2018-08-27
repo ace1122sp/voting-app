@@ -1,13 +1,20 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300");
 html, body {
   min-height: 100%;
   margin: 0;
-  color: #535e65; }
+  color: #535e65;
+  overflow-x: hidden; }
 
 body {
   font-family: "Open Sans Condensed", sans-serif;
   display: flex;
   flex-direction: column; }
+
+main {
+  display: flex;
+  flex-direction: column;
+  margin: 0; }
 
 a {
   text-decoration: none;
@@ -21,7 +28,8 @@ a:active {
   color: #85bfe0; }
 
 li {
-  list-style: none; }
+  list-style: none;
+  overflow: hidden; }
 
 button, input[type='button'], input[type='submit'] {
   border-style: none;
@@ -80,5 +88,22 @@ nav {
 .stripes {
   background: linear-gradient(45deg, #1fadff 64%, #ffa21f 50%);
   color: #f5fbfe; }
+
+.pool-card {
+  background: transparent;
+  box-shadow: 1px 3px 10px -3px #a47d46;
+  margin: 30px 20px;
+  padding: 10px;
+  font-size: 35px;
+  text-align: center;
+  display: flex; }
+  .pool-card a {
+    margin: 0;
+    padding: 0;
+    flex-grow: 1; }
+
+.pool-card a:hover {
+  cursor: pointer;
+  color: #ffa21f; }
 
 /*# sourceMappingURL=App.css.map */

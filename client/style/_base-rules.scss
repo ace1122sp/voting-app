@@ -4,12 +4,19 @@ html, body {
   min-height: 100%;
   margin: 0;
   color: $color-dark;
+  overflow-x: hidden;
 }
 
 body {
   font-family: $font-family-base;
   display: flex;
   flex-direction: column;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
 }
 
 a {
@@ -28,6 +35,7 @@ a:active {
 
 li {
   list-style: none; 
+    overflow: hidden;
 }
 
 button {
@@ -73,47 +81,3 @@ nav {
   box-shadow: 0 1px 7px -3px $color-dark;
 }
 
-.aggressive-btn { 
-  color: $color-light;
-  background: linear-gradient(to right, $color1, hsl(202, 100%, 76%));
-  box-shadow: $box-shadow-base;
-}
-
-.aggressive-btn:active {
-  background: linear-gradient(to right, $color2, hsl(35, 100%, 76%));
-}
-
-.danger-btn {
-  color: $color-light;
-  background: linear-gradient(to right, $color3, hsl(5, 100%, 76%));
-  box-shadow: $box-shadow-base;
-}
-
-.neutral-btn {
-  color: hsl(202, 50%, 56%);
-  background: transparent;  
-}
-
-.neutral-btn:hover {
-  background: hsl(35, 100%, 86%);
-}
-
-.tab {
-  background: transparent;
-  color: hsl(202, 100%, 36%);
-}
-
-.tab-active {
-  background: $color1;
-  color: hsl(202, 100%, 30%);
-}
-
-.aggressive-btn:hover, .danger-btn:hover {
-  transform: scale(0.92);
-  box-shadow: none;
-}
-
-.stripes {
-  background: linear-gradient(45deg, hsl(202, 100%, 56%) 64%, hsl(35, 100%, 56%) 50%);
-  color: $color-light;
-}

@@ -11,7 +11,7 @@ const World = props => {
     lastPoolId = props.poolCards[poolCount - 1]._id;
   }
 
-  const pools = props.poolCards.map(pool => <li key={pool._id}><PoolCard id={pool._id} name={pool.name} /></li>);
+  const pools = props.poolCards.map(pool => <li className='pool-card' key={pool._id}><PoolCard id={pool._id} name={pool.name} /></li>);
 
   // need to work on this implementation
   const handleGettingPoolCards = () => {

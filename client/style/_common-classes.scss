@@ -1,0 +1,67 @@
+@import 'variables';
+
+.aggressive-btn { 
+  color: $color-light;
+  background: linear-gradient(to right, $color1, hsl(202, 100%, 76%));
+  box-shadow: $box-shadow-base;
+}
+
+.aggressive-btn:active {
+  background: linear-gradient(to right, $color2, hsl(35, 100%, 76%));
+}
+
+.danger-btn {
+  color: $color-light;
+  background: linear-gradient(to right, $color3, hsl(5, 100%, 76%));
+  box-shadow: $box-shadow-base;
+}
+
+.neutral-btn {
+  color: hsl(202, 50%, 56%);
+  background: transparent;  
+}
+
+.neutral-btn:hover {
+  background: hsl(35, 100%, 86%);
+}
+
+.tab {
+  background: transparent;
+  color: hsl(202, 100%, 36%);
+}
+
+.tab-active {
+  background: $color1;
+  color: hsl(202, 100%, 30%);
+}
+
+.aggressive-btn:hover, .danger-btn:hover {
+  transform: scale(0.92);
+  box-shadow: none;
+}
+
+.stripes {
+  background: linear-gradient(45deg, hsl(202, 100%, 56%) 64%, hsl(35, 100%, 56%) 50%);
+  color: $color-light;
+}
+
+.pool-card {
+  background: transparent;
+  box-shadow: 1px 3px 10px -3px hsl(35, 40%, 46%);
+  margin: 30px 20px;
+  padding: 10px;
+  font-size: 35px;
+  text-align: center;
+  display: flex;
+
+  a {
+    margin: 0;
+    padding: 0;
+    flex-grow: 1;
+  }
+}
+
+.pool-card a:hover {
+  cursor: pointer;
+  color: $color2;
+}
