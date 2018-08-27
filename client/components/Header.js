@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
+import '../style/Header.css';
+
 const UserHeader = props => {
   const signOut = () => {
     props.signOut();
@@ -16,7 +18,7 @@ const UserHeader = props => {
       {' | '}
       <NavLink to='/settings'>settings</NavLink>
       {' | '}
-      <button className='aggressive-btn' onClick={signOut}>Sign Out</button>
+      <button id='sign-out-btn' onClick={signOut}>Sign Out</button>
     </nav>
   );
 }

@@ -9,9 +9,6 @@ body {
   display: flex;
   flex-direction: column; }
 
-header a {
-  color: #f5fbfe; }
-
 a {
   text-decoration: none;
   color: #1fadff;
