@@ -12,6 +12,12 @@ body {
   flex-direction: column;
 }
 
+header {
+  a {
+    color: $color-light;
+  }
+}
+
 a {
   text-decoration: none;
   color: $color1;
@@ -31,9 +37,6 @@ li {
 }
 
 button {
-  color: $color-dark;
-  background: linear-gradient(to right, hsla(202, 100%, 76%, 0.4), hsla(202, 100%, 56%, 0.1));
-  box-shadow: $box-shadow-base;
   border-style: none;
   margin: $margin-base;
   border-radius: $border-radius-base;
@@ -43,8 +46,6 @@ button {
 
 button:hover, input[type='button']:hover, input[type='submit']:hover {
   cursor: pointer;
-  transform: scale(0.92);
-  box-shadow: none;
 }
 
 input[type='button'] {
@@ -52,7 +53,7 @@ input[type='button'] {
 }
 
 input[type='submit'] {
-  @extend button;
+  @extend input, [type='button'];
 }
 
 input[type='text'] {
@@ -74,9 +75,14 @@ input[type='email'] {
   @extend input, [type='text'];
 }
 
+nav {
+  box-shadow: 0 1px 7px -3px $color-dark;
+}
+
 .aggressive-btn { 
   color: $color-light;
   background: linear-gradient(to right, $color1, hsl(202, 100%, 76%));
+  box-shadow: $box-shadow-base;
 }
 
 .aggressive-btn:active {
@@ -86,4 +92,34 @@ input[type='email'] {
 .danger-btn {
   color: $color-light;
   background: linear-gradient(to right, $color3, hsl(5, 100%, 76%));
+  box-shadow: $box-shadow-base;
+}
+
+.neutral-btn {
+  color: hsl(202, 50%, 56%);
+  background: transparent;  
+}
+
+.neutral-btn:hover {
+  background: hsl(35, 100%, 86%);
+}
+
+.tab {
+  background: transparent;
+  color: hsl(202, 100%, 36%);
+}
+
+.tab-active {
+  background: $color1;
+  color: hsl(202, 100%, 30%);
+}
+
+.aggressive-btn:hover, .danger-btn:hover {
+  transform: scale(0.92);
+  box-shadow: none;
+}
+
+.stripes {
+  background: linear-gradient(45deg, hsl(202, 100%, 56%) 64%, hsl(35, 100%, 56%) 50%);
+  color: $color-light;
 }

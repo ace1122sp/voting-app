@@ -9,6 +9,9 @@ body {
   display: flex;
   flex-direction: column; }
 
+header a {
+  color: #f5fbfe; }
+
 a {
   text-decoration: none;
   color: #1fadff;
@@ -24,19 +27,14 @@ li {
   list-style: none; }
 
 button, input[type='button'], input[type='submit'] {
-  color: #535e65;
-  background: linear-gradient(to right, rgba(133, 210, 255, 0.4), rgba(31, 173, 255, 0.1));
-  box-shadow: 1px 1px 7px -1px #535e65;
   border-style: none;
   margin: 2px;
   border-radius: 4px;
   padding: 5.7px;
   transition: all 200ms ease-out; }
 
-button:hover, input[type='button']:hover, input[type='submit']:hover, input[type='button']:hover, input[type='submit']:hover {
-  cursor: pointer;
-  transform: scale(0.92);
-  box-shadow: none; }
+button:hover, input[type='button']:hover, input[type='submit']:hover, input[type='button']:hover, input[type='submit']:hover, input[type='submit']:hover {
+  cursor: pointer; }
 
 input[type='text'], input[type='password'], input[type='email'] {
   color: #535e65;
@@ -47,15 +45,43 @@ input[type='text'], input[type='password'], input[type='email'] {
 input[type='text']::placeholder, input[type='password']::placeholder, input[type='email']::placeholder, input[type='email']::placeholder, input[type='password']::placeholder {
   color: #1fadff; }
 
+nav {
+  box-shadow: 0 1px 7px -3px #535e65; }
+
 .aggressive-btn {
   color: #f5fbfe;
-  background: linear-gradient(to right, #1fadff, #85d2ff); }
+  background: linear-gradient(to right, #1fadff, #85d2ff);
+  box-shadow: 1px 1px 7px -1px #535e65; }
 
 .aggressive-btn:active {
   background: linear-gradient(to right, #ffa21f, #ffcc85); }
 
 .danger-btn {
   color: #f5fbfe;
-  background: linear-gradient(to right, #ff311f, #ff8f85); }
+  background: linear-gradient(to right, #ff311f, #ff8f85);
+  box-shadow: 1px 1px 7px -1px #535e65; }
+
+.neutral-btn {
+  color: #579ec7;
+  background: transparent; }
+
+.neutral-btn:hover {
+  background: #ffe1b8; }
+
+.tab {
+  background: transparent;
+  color: #0074b8; }
+
+.tab-active {
+  background: #1fadff;
+  color: #006199; }
+
+.aggressive-btn:hover, .danger-btn:hover {
+  transform: scale(0.92);
+  box-shadow: none; }
+
+.stripes {
+  background: linear-gradient(45deg, #1fadff 64%, #ffa21f 50%);
+  color: #f5fbfe; }
 
 /*# sourceMappingURL=App.css.map */
