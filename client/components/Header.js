@@ -42,7 +42,7 @@ class Header extends Component {
     let user = this.props.user == null ? false : true;
     const headerToRender= user ? <UserHeader signOut={this.props.signOut_f} /> : <GuestHeader />;
     return (
-      <header>
+      <header className='stripes'>
         <h1>voting-app</h1>
         {headerToRender}
       </header>

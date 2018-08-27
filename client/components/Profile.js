@@ -8,20 +8,33 @@ class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = { poolsToShow: 'all' };
-
+    this.tabs = document.getElementsByClassName('tab');
     if (this.props.poolToDelete) this.props.deletePool_f();
   }
 
-  showAllPools = () => {
+  _resetToTabClass = () => {
+    const count = this.tabs.length;
+    for (let i = 0; i < count; i++) {
+      this.tabs[i].className = 'tab';
+    }
+  }
+
+  showAllPools = e => {
     this.setState({ poolsToShow: 'all' });
+    this._resetToTabClass();
+    e.target.className = 'tab tab-active';
   }
 
-  showOwnPools = () => {
+  showOwnPools = e => {
     this.setState({ poolsToShow: 'own' });
+    this._resetToTabClass();
+    e.target.className = 'tab tab-active';
   }
 
-  showFollowedPools = () => {
+  showFollowedPools = e => {
     this.setState({ poolsToShow: 'followed' });
+    this._resetToTabClass();
+    e.target.className = 'tab tab-active';
   }
 
   render() {
@@ -48,9 +61,9 @@ class Profile extends Component {
         </aside>
         <div>
           <nav>
-            <button onClick={this.showAllPools}>all</button>
-            <button onClick={this.showOwnPools}>my pools</button>
-            <button onClick={this.showFollowedPools}>following</button>
+            <button className='tab' onClick={this.showAllPools}>all</button>
+            <button className='tab' onClick={this.showOwnPools}>my pools</button>
+            <button className='tab' onClick={this.showFollowedPools}>following</button>
           </nav>
           <ul>
             {pools}

@@ -50,7 +50,7 @@ class Pool extends Component {
       <li key={option.value}>
         <input type='radio' id={`vote-option-${index}`} name={name} value={option.id} />
         <label htmlFor={`vote-option-${index}`}>{option.value}</label>
-        {creator && <button value={option.id} onClick={this.handleOptionDelete}>X</button>}
+        {creator && <button className='neutral-btn' value={option.id} onClick={this.handleOptionDelete}>X</button>}
         <br />
       </li>
     );
@@ -129,13 +129,13 @@ class Pool extends Component {
           <br /><br />
           {this.props.pool.name && this.props.username && !this.state.voted && <form onSubmit={this.handleAddingNewOption}>
             <input type='text' value={this.state.newOption} onChange={this.handleChangeForNewOption} />
-            <input type='submit' value='add new option' />
+            <input className='neutral-btn' type='submit' value='add new option' />
             <br /><br />
           </form>}
           {this.props.username && <div>
-            <button onClick={this.followOrUnfollow}>{this.props.isFollowedByActiveUser}</button>
-            <button>tweet </button>
-            <button>share </button>
+            <button className='neutral-btn' onClick={this.followOrUnfollow}>{this.props.isFollowedByActiveUser}</button>
+            <button className='neutral-btn'>tweet </button>
+            <button className='neutral-btn'>share </button>
           </div>}
         </section>
         <br />

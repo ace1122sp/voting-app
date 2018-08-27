@@ -26,7 +26,7 @@ class Settings extends React.Component {
   updatePasswordPortalImplementation = () => 
     <Portal>
       <ChangePassword_cont />
-      <button onClick={this.closeUpdatePasswordPortal}>Close</button>
+      <button className='neutral-btn' onClick={this.closeUpdatePasswordPortal}>Close</button>
     </Portal>
 
   openDeleteProfilePortal = () => {
@@ -41,7 +41,7 @@ class Settings extends React.Component {
   deleteProfilePortalImplementation = () => 
     <Portal>
       <DeleteProfile_cont />
-      <button onClick={this.closeDeleteProfilePortal}>Cancel</button>
+      <button className='neutral-btn' onClick={this.closeDeleteProfilePortal}>Cancel</button>
     </Portal>
 
   render () {

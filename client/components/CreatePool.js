@@ -53,6 +53,7 @@ class CreatePool extends Component {
       div.setAttribute('data-name', validOption);
       span.innerText = validOption;
       button.innerText = 'x';
+      button.className = 'neutral-btn';
       button.addEventListener('click', this.deleteOption);
 
       // Add to DOM
@@ -83,7 +84,7 @@ class CreatePool extends Component {
     <Portal>
       <h2>Pool Created</h2>  
       <p>Pool {validator.trimEverything(this.state.name)} has been created.</p>
-      <button onClick={this.handleRedirect}>ok</button>
+      <button className='neutral-btn' onClick={this.handleRedirect}>ok</button>
     </Portal>
   
   handleSubmit = () => {
@@ -121,7 +122,7 @@ class CreatePool extends Component {
           <br /><br />
           <form onSubmit={this.addOption}>
             <input type='text' value={this.state.toAddOption} onChange={this.handleOptionChange} />
-            <input type='submit' value='add option' />
+            <input className='neutral-btn' type='submit' value='add option' />
           </form>
         </section>
         <h3>options:</h3>
