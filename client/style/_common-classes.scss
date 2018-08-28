@@ -4,6 +4,8 @@
   color: $color-light;
   background: linear-gradient(to right, $color1, hsl(202, 100%, 76%));
   box-shadow: $box-shadow-base;
+  font-size: 33px;
+  padding: 14px 20px;
 }
 
 .aggressive-btn:active {
@@ -48,9 +50,9 @@
 .pool-card {
   background: transparent;
   box-shadow: 1px 3px 10px -3px hsl(35, 40%, 46%);
-  margin: 30px 20px;
-  padding: 10px;
-  font-size: 35px;
+  margin: 35px 20px;
+  padding: 10px 55px;
+  font-size: 43px;
   text-align: center;
   display: flex;
 

@@ -84,7 +84,7 @@ class CreatePool extends Component {
     <Portal>
       <h2>Pool Created</h2>  
       <p>Pool {validator.trimEverything(this.state.name)} has been created.</p>
-      <button className='neutral-btn' onClick={this.handleRedirect}>ok</button>
+      <button className='neutral-btn' onClick={this.handleRedirect}>Ok</button>
     </Portal>
   
   handleSubmit = () => {

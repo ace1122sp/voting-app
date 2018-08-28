@@ -101,7 +101,7 @@ class SignUp extends Component {
           <input type='password' value={this.state.passwordAgain} onChange={this.handleChangePasswordAgain} />
           <br />
           <br />
-          {!this.props.fetchingRequest && <input className='aggressive-btn' type='submit' value='Create Account' />}
+          {!this.props.fetchingRequest && <button className='aggressive-btn'>Create Account</button>}
           {this.props.fetchingRequest && <span>loading...</span>}
         </form>
         <br />

@@ -19,7 +19,7 @@ class DeleteProfile extends React.Component {
   showPrompt = () => 
     <div>
       <span>Are you sure you want to delete your profile?</span>
-      <button onClick={this.handleSubmit}>confirm</button>
+      <button onClick={this.handleSubmit}>Confirm</button>
     </div>
       
 

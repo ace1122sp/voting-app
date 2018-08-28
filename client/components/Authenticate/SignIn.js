@@ -49,7 +49,7 @@ class SignIn extends Component {
           <input type='password' value={this.state.password} onChange={this.handleChangePassword} />
           <br /><br />
           <br />
-          <input className='aggressive-btn' type='submit' value='Confirm' />
+          <button className='aggressive-btn'>Confirm</button>
           <br />
         </form>
         <br />

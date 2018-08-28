@@ -16,7 +16,10 @@ body {
 main {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   margin: 0;
+  justify-content: space-around;
+  align-items: center;
 }
 
 a {
@@ -31,6 +34,10 @@ a:hover {
 
 a:active {
   color: hsl(202, 60%, 70%);
+}
+
+ul {
+  padding: 0;
 }
 
 li {

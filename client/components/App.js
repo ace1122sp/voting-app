@@ -9,9 +9,7 @@ import '../style/App.css';
 const App = () =>
   <div>
     <Header_cont />
-    <hr />
     <Main_cont />
-    <hr />
     <Footer />
   </div>
 
