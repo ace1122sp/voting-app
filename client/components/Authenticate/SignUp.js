@@ -78,7 +78,7 @@ class SignUp extends Component {
 
   render() {
     return (
-      <main>
+      <main className='wrapper wrap-space-around'>
         {this.props.registerStatus === 'ok' && this.renderPortal()}
         {this.state.shortPassword && this.showIncorrectPasswordWarning()}
         {this.isError() && this.showErrorMessage()}      

@@ -67,3 +67,20 @@
   cursor: pointer;
   color: $color2;
 }
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    font-size: 8vw;
+  }
+}
+
+.wrap-space-around {
+  justify-content: space-around;
+}
+
+.wrap-flex-start {
+  justify-content: flex-start;
+}

@@ -36,7 +36,7 @@ class SignIn extends Component {
     if (this.props.fetching) return <Loading />;
 
     return (
-      <main>
+      <main className='wrapper wrap-space-around'>
         <h2>Sign in</h2>
         {this.props.badLoginStatus && this.showBadLoginWarning()}
         <form onSubmit={this.handleSubmit}>

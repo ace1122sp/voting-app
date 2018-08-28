@@ -120,7 +120,7 @@ class Pool extends Component {
 
     const isCreator = this.props.username === this.props.pool.creator;
     return (
-      <main>
+      <main className='wrapper wrap-space-around'>
         <section>
           <h2>{this.props.pool.name}</h2>
           <address>created by {this.props.pool.creator || 'n/a'} <time>{this.props.pool.dateCreated}</time></address>

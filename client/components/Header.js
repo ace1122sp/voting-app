@@ -8,13 +8,15 @@ const UserHeader = props => {
     props.signOut();
   }
 
+  const username = props.username; // TODO napisi funkciju koja skracuje dugacka imena i prikazuje samo deo uz 3 tacke
+
   return (
     <nav>
       <NavLink to='/new-pool'>+ new pool</NavLink>
       {' | '}
       <NavLink to='/'>world</NavLink>
       {' | '}
-      <NavLink to='/profile'>profile</NavLink>
+      <NavLink to='/profile'>{username}</NavLink>
       {' | '}
       <NavLink to='/settings'>settings</NavLink>
       {' | '}
@@ -42,7 +44,7 @@ class Header extends Component {
 
   render () {
     let user = this.props.user == null ? false : true;
-    const headerToRender= user ? <UserHeader signOut={this.props.signOut_f} /> : <GuestHeader />;
+    const headerToRender= user ? <UserHeader username={this.props.user.username} signOut={this.props.signOut_f} /> : <GuestHeader />;
     return (
       <header className='stripes'>
         <h1>voting-app</h1>

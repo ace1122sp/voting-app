@@ -111,7 +111,7 @@ class CreatePool extends Component {
     if (this.props.fetching) return <Loading />;
 
     return (
-      <main>
+      <main className='wrapper wrap-flex-start'>
         {this.state.poolCreated && this.poolCreatedPortal()}
         {this.state.incorrectPool && this.showIncorrectPoolWarning()}
         <h2>Create Pool</h2>

@@ -44,7 +44,7 @@ class Profile extends Component {
     let pools = poolsSelection.map(pool => <li className='pool-card' key={pool._id}><PoolCard id={pool._id} name={pool.name} /></li>);
     
     return (
-      <main>
+      <main className='wrapper wrap-space-around'>
         <aside>
           <div>
             <b>username</b>

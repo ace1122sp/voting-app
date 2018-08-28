@@ -116,4 +116,16 @@ nav {
   cursor: pointer;
   color: #ffa21f; }
 
+.wrapper {
+  display: flex;
+  flex-direction: column; }
+  .wrapper h2 {
+    font-size: 8vw; }
+
+.wrap-space-around {
+  justify-content: space-around; }
+
+.wrap-flex-start {
+  justify-content: flex-start; }
+
 /*# sourceMappingURL=App.css.map */
