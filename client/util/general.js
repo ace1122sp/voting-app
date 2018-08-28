@@ -46,6 +46,15 @@ export const general = (() => {
       }
 
       return uniqueResults;
-   }
+    },
+
+    roundString: (str, maxLength) => {
+      const currentLength = str.length;
+      let validString = str;
+       
+      if (currentLength > maxLength) validString = validString.substr(0, maxLength - 2) + '...';
+ 
+      return validString;
+    } 
   }
 })();

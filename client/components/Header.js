@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
+import { general } from '../util/general';
+
 import '../style/Header.css';
 
 const UserHeader = props => {
@@ -8,7 +10,7 @@ const UserHeader = props => {
     props.signOut();
   }
 
-  const username = props.username; // TODO napisi funkciju koja skracuje dugacka imena i prikazuje samo deo uz 3 tacke
+  const username = general.roundString(props.username, 12); 
 
   return (
     <nav>
