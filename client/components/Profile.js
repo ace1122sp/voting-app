@@ -61,9 +61,9 @@ class Profile extends Component {
         </aside>
         <div>
           <nav>
-            <button className='tab tab-active' onClick={this.showAllPools}>all</button>
-            <button className='tab' onClick={this.showOwnPools}>my pools</button>
-            <button className='tab' onClick={this.showFollowedPools}>following</button>
+            <button className='tab tab-active' onClick={this.showAllPools}>All</button>
+            <button className='tab' onClick={this.showOwnPools}>My Pools</button>
+            <button className='tab' onClick={this.showFollowedPools}>Following</button>
           </nav>
           <ul>
             {pools}

@@ -3,6 +3,8 @@
 footer {
   background: hsl(202, 100%, 36%);
   padding: $padding-base; 
+  display: flex;
+  flex-direction: column;
 
   p {
     color: $color-light;
@@ -26,6 +28,10 @@ footer {
 
   address p {
     text-align: center;
+  }
+
+  section {
+    margin: 70px 10px 10px;
   }
   
 }

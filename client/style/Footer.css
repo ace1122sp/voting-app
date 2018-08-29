@@ -2,7 +2,9 @@
 @import url("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 footer {
   background: #0074b8;
-  padding: 5.7px; }
+  padding: 5.7px;
+  display: flex;
+  flex-direction: column; }
   footer p, footer span {
     color: #f5fbfe;
     text-align: justify;
@@ -17,6 +19,8 @@ footer {
     padding: 5.7px; }
   footer address p, footer address span {
     text-align: center; }
+  footer section {
+    margin: 70px 10px 10px; }
 
 .social-media {
   display: flex;

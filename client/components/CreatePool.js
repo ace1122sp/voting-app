@@ -5,6 +5,8 @@ import Loading from './Loading';
 
 import { validator } from '../util/validator';
 
+import '../style/CreatePool.css';
+
 class CreatePool extends Component {
   constructor(props) {
     super(props);
@@ -45,21 +47,21 @@ class CreatePool extends Component {
       const updatedOptions = [...this.state.options, option];
 
       // Create elements
-      const div = document.createElement('div');
+      const li = document.createElement('li');
       const span = document.createElement('span');
       const button = document.createElement('button');
 
-      div.setAttribute('id', formatedId);
-      div.setAttribute('data-name', validOption);
+      li.setAttribute('id', formatedId);
+      li.setAttribute('data-name', validOption);
       span.innerText = validOption;
       button.innerText = 'x';
       button.className = 'neutral-btn';
       button.addEventListener('click', this.deleteOption);
 
       // Add to DOM
-      div.appendChild(span);
-      div.appendChild(button);
-      optionsContainer.appendChild(div);
+      li.appendChild(span);
+      li.appendChild(button);
+      optionsContainer.appendChild(li);
       this.setState({ toAddOption: '', options: [...updatedOptions] });
     }
   }
@@ -122,12 +124,12 @@ class CreatePool extends Component {
           <br /><br />
           <form onSubmit={this.addOption}>
             <input type='text' value={this.state.toAddOption} onChange={this.handleOptionChange} />
-            <input className='neutral-btn' type='submit' value='add option' />
+            <input className='neutral-btn' type='submit' value='Add Option' />
           </form>
         </section>
         <h3>options:</h3>
-        <div id='poolOptions'>
-        </div>
+        <ul id='poolOptions' className='options-list'>
+        </ul>
         <br />
         <button className='aggressive-btn' onClick={this.handleSubmit}>Submit</button>
       </main>

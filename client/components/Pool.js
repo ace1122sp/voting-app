@@ -58,7 +58,7 @@ class Pool extends Component {
   showResults = resultsArray =>
     resultsArray.sort(this._sortOptions).map(option =>
       <li key={option.id}>
-        <strong>{option.value}: </strong>
+        <span>{option.value}: </span>
         {option.votes}
       </li>
     );
@@ -124,12 +124,12 @@ class Pool extends Component {
         <section>
           <h2>{this.props.pool.name}</h2>
           <address>created by {this.props.pool.creator || 'n/a'} <time>{this.props.pool.dateCreated}</time></address>
-          {this.props.pool.name && !this.state.voted && <ul>{this.getOptions(this.props.pool.options, this.props.pool.name, isCreator)}</ul>}
+          {this.props.pool.name && !this.state.voted && <ul className='options-list'>{this.getOptions(this.props.pool.options, this.props.pool.name, isCreator)}</ul>}
           {!this.state.voted && <button className='aggressive-btn' onClick={this.handleVoting}>Vote</button>}
           <br /><br />
           {this.props.pool.name && this.props.username && !this.state.voted && <form onSubmit={this.handleAddingNewOption}>
             <input type='text' value={this.state.newOption} onChange={this.handleChangeForNewOption} />
-            <input className='neutral-btn' type='submit' value='add new option' />
+            <input className='neutral-btn' type='submit' value='Add New Option' />
             <br /><br />
           </form>}
           {this.props.username && <div>
@@ -139,11 +139,11 @@ class Pool extends Component {
           </div>}
         </section>
         <br />
-        {isCreator && <button className='danger-btn' onClick={this.handlePoolDelete}>delete pool</button>}
+        {isCreator && <button className='danger-btn' onClick={this.handlePoolDelete}>Delete Pool</button>}
         <section>
           <h3>Chart</h3>
           <p>imagine some chart over here</p>
-          {this.props.pool.name && <ul>{this.showResults(this.props.pool.options)}</ul>}
+          {this.props.pool.name && <ul className='options-list'>{this.showResults(this.props.pool.options)}</ul>}
         </section>
       </main>
     );

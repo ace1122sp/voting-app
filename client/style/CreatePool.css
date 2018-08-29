@@ -1,72 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300");
 @import url("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
-@import url("https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300");
-@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
-html, body {
-  min-height: 100%;
-  margin: 0;
-  color: #535e65;
-  overflow-x: hidden; }
-
-body {
-  font-family: "Open Sans Condensed", sans-serif;
-  display: flex;
-  flex-direction: column; }
-
-main {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  margin: 0;
-  justify-content: space-around;
-  align-items: center; }
-
-a {
-  text-decoration: none;
-  color: #1fadff;
-  transition: all 200ms ease-out; }
-
-a:hover {
-  color: #0074b8; }
-
-a:active {
-  color: #85bfe0; }
-
-ul {
-  padding: 0; }
-
-li {
-  list-style: none;
-  overflow: hidden; }
-
-button, input[type='button'], input[type='submit'] {
-  border-style: none;
-  margin: 2px;
-  border-radius: 4px;
-  padding: 5.7px;
-  transition: all 200ms ease-out; }
-
-button:hover, input[type='button']:hover, input[type='submit']:hover, input[type='button']:hover, input[type='submit']:hover, input[type='submit']:hover {
-  cursor: pointer; }
-
-input, input[type='submit'], input[type='password'], input[type='email'] {
-  font-size: 43px;
-  color: #535e65;
-  font-weight: 300; }
-
-input[type='text'], input[type='password'], input[type='email'] {
-  border: none;
-  border-bottom: 2px dashed #535e65; }
-
-input[type='text']::placeholder, input[type='password']::placeholder, input[type='email']::placeholder, input[type='email']::placeholder, input[type='password']::placeholder {
-  color: #1fadff; }
-
-nav {
-  box-shadow: 0 1px 7px -3px #535e65; }
-
-form {
-  font-size: 55px; }
-
 .aggressive-btn {
   color: #f5fbfe;
   background: linear-gradient(to right, #1fadff, #85d2ff);
@@ -136,7 +69,7 @@ form {
 .wrap-flex-start {
   justify-content: flex-start; }
 
-.form-base, .options-list {
+.form-base, .options-list, section {
   box-shadow: 5px 5px 82px -28px #535e65;
   padding: 35px; }
 
@@ -146,8 +79,16 @@ form {
   font-size: 5.5vw; }
   .options-list li {
     text-align: right; }
-  .options-list button, .options-list input[type='button'], .options-list input[type='submit'] {
+  .options-list button {
     font-size: inherit;
     margin-left: 30px; }
 
-/*# sourceMappingURL=App.css.map */
+section {
+  margin-top: 15%;
+  margin-bottom: 10%; }
+  section label {
+    font-size: 60px; }
+  section input {
+    margin-top: 36px; }
+
+/*# sourceMappingURL=CreatePool.css.map */

@@ -4,7 +4,7 @@
   color: $color-light;
   background: linear-gradient(to right, $color1, hsl(202, 100%, 76%));
   box-shadow: $box-shadow-base;
-  font-size: 33px;
+  font-size: 40px;
   padding: 14px 20px;
 }
 
@@ -20,7 +20,7 @@
 
 .neutral-btn {
   color: hsl(202, 50%, 56%);
-  background: transparent;  
+  background: transparent; 
 }
 
 .neutral-btn:hover {
@@ -71,9 +71,13 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-
+  
   h2 {
     font-size: 8vw;
+  }
+
+  h3 {
+    font-size: 6vw;
   }
 }
 
@@ -88,4 +92,20 @@
 .form-base {
   box-shadow: 5px 5px 82px -28px $color-dark;
   padding: $padding-form;
+}
+
+.options-list {
+  @extend .form-base;
+  margin-right: 4%;
+  margin-left: 4%;
+  font-size: 5.5vw;
+
+  li {
+    text-align: right;
+  }
+
+  button {
+    font-size: inherit;
+    margin-left: $margin-large;
+  }
 }

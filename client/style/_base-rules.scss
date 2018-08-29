@@ -42,7 +42,7 @@ ul {
 
 li {
   list-style: none; 
-    overflow: hidden;
+  overflow: hidden;
 }
 
 button {
@@ -58,7 +58,7 @@ button:hover, input[type='button']:hover, input[type='submit']:hover {
 }
 
 input {
-  font-size: 35px;
+  font-size: $input-font-size;
   color: $color-dark;
   font-weight: 300;
 }
@@ -92,5 +92,5 @@ nav {
 }
 
 form {
-  font-size: 45px;
+  font-size: $form-font-size;
 }

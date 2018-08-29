@@ -1,0 +1,15 @@
+@import 'common-classes';
+
+section {
+  @extend .form-base;
+  margin-top: 15%;
+  margin-bottom: 10%;
+
+  label {
+    font-size: 60px;
+  }  
+
+  input {
+    margin-top: 36px;
+  }
+}

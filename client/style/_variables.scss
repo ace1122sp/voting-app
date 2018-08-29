@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
 @import url('//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
-$font-family-base: 'Open Sans Condensed', sans-serif;
 $color1: hsl(202, 100%, 56%);
 $color2: hsl(35, 100%, 56%);
 $color3: hsl(5, 100%, 56%);
@@ -12,8 +11,14 @@ $transition-duration-base: 200ms;
 $transition-base: all $transition-duration-base ease-out;
 
 $margin-base: 2px;
+$margin-large: 30px;
 $padding-base: 5.7px;
 $padding-form: 35px;
 $border-radius-base: 4px;
 
 $box-shadow-base: 1px 1px 7px -1px $color-dark;
+
+$font-family-base: 'Open Sans Condensed', sans-serif;
+
+$form-font-size: 55px;
+$input-font-size: 43px;
