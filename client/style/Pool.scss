@@ -1,0 +1,33 @@
+@import 'variables';
+
+.voting-option {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.voting-option label {
+  position: relative;
+  display: flex;
+  flex-grow: 1;
+  cursor: pointer;
+  text-align: left;
+}
+
+.voting-option span {
+  flex-grow: 1;
+}
+
+.voting-option input[type='radio']:checked ~ span {
+ background: $color2; 
+}
+
+.voting-option input[type='radio']:hover ~ span {
+  background: $color2-fade;
+}
+
+.voting-option input {
+  position: absolute;
+  opacity: 0;
+}

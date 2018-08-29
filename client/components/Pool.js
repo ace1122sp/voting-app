@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import Loading from './Loading';
 
 import { validator } from '../util/validator';
+import '../style/Pool.css';
 
 class Pool extends Component {
   constructor(props) {
@@ -47,11 +48,12 @@ class Pool extends Component {
   
   getOptions = (optionsArray, name, creator) =>
     optionsArray.sort(this._sortOptions).map((option, index) =>
-      <li key={option.value}>
-        <input type='radio' id={`vote-option-${index}`} name={name} value={option.id} />
-        <label htmlFor={`vote-option-${index}`}>{option.value}</label>
+      <li className='voting-option' key={option.value}>
+        <label>
+          <input type='radio' name={name} value={option.id} />
+          <span>{option.value}</span>
+        </label>
         {creator && <button className='neutral-btn' value={option.id} onClick={this.handleOptionDelete}>X</button>}
-        <br />
       </li>
     );
 

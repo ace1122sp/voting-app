@@ -19,12 +19,12 @@
 }
 
 .neutral-btn {
-  color: hsl(202, 50%, 56%);
+  color: $color1-fade;
   background: transparent; 
 }
 
 .neutral-btn:hover {
-  background: hsl(35, 100%, 86%);
+  background: $color2-fade;
 }
 
 .tab {
