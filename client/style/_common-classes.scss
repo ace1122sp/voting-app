@@ -84,3 +84,8 @@
 .wrap-flex-start {
   justify-content: flex-start;
 }
+
+.form-base {
+  box-shadow: 5px 5px 82px -28px $color-dark;
+  padding: $padding-form;
+}

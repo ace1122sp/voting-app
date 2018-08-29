@@ -39,7 +39,7 @@ class SignIn extends Component {
       <main className='wrapper wrap-space-around'>
         <h2>Sign in</h2>
         {this.props.badLoginStatus && this.showBadLoginWarning()}
-        <form onSubmit={this.handleSubmit}>
+        <form className='form-base' onSubmit={this.handleSubmit}>
           <label>username</label>
           <br />
           <input type='text' value={this.state.username} onChange={this.handleChangeUsername} />

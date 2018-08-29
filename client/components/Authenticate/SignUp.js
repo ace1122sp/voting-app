@@ -83,7 +83,7 @@ class SignUp extends Component {
         {this.state.shortPassword && this.showIncorrectPasswordWarning()}
         {this.isError() && this.showErrorMessage()}      
         <h2>Create Your Account</h2>
-        <form onSubmit={this.handleSubmit}>
+        <form className='form-base' onSubmit={this.handleSubmit}>
           <label>email</label>
           <br />
           <input type='email' value={this.state.email} onChange={this.handleChangeEmail} />
