@@ -5,6 +5,8 @@ import DeleteProfile_cont from '../containers/settings/DeleteProfile_cont';
 
 import Portal from './Portal';
 
+import '../style/Settings.css';
+
 class Settings extends React.Component {
   constructor(props) {
     super(props);
@@ -54,11 +56,12 @@ class Settings extends React.Component {
           this.deleteProfilePortalImplementation()
         }
         <h2>Settings</h2>
-        <h3>{this.props.username}</h3>
-        <button className='neutral-btn' onClick={this.openUpdatePasswordPortal}>Change Password</button>
-        <br /><br />
-        <button className='neutral-btn' onClick={this.openDeleteProfilePortal}>Delete Profile</button>
-        <br /><br />
+        <div>
+          <div className='form-base settings-wrapper'>
+            <button className='button-base neutral-btn' onClick={this.openUpdatePasswordPortal}>Change Password</button>
+            <button className='button-base neutral-btn' onClick={this.openDeleteProfilePortal}>Delete Profile</button>
+          </div>
+        </div>
       </main>
     );
   }

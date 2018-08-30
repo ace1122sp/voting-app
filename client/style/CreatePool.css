@@ -22,6 +22,17 @@
 .neutral-btn:hover {
   background: #ffe1b8; }
 
+.add-neutral-btn {
+  font-size: 43px;
+  font-weight: 300;
+  padding: 10px;
+  margin: 7px auto;
+  color: #535e65;
+  background: rgba(133, 210, 255, 0.42); }
+
+.add-neutral-btn:hover {
+  color: #ffe1b8; }
+
 .tab {
   background: transparent;
   color: #0074b8; }
@@ -69,7 +80,7 @@
 .wrap-flex-start {
   justify-content: flex-start; }
 
-.form-base, .options-list, section {
+.form-base, .options-list {
   box-shadow: 5px 5px 82px -28px #535e65;
   padding: 35px; }
 
@@ -83,12 +94,21 @@
     font-size: inherit;
     margin-left: 30px; }
 
-section {
+.pool-section {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 82%;
   margin-top: 15%;
-  margin-bottom: 10%; }
-  section label {
-    font-size: 60px; }
-  section input {
-    margin-top: 36px; }
+  margin-bottom: 10%;
+  padding: 35px; }
+
+.pool-shadow {
+  box-shadow: 5px 5px 82px -28px #535e65; }
+
+section label {
+  font-size: 60px; }
+section input {
+  margin-top: 36px; }
 
 /*# sourceMappingURL=CreatePool.css.map */

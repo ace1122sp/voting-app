@@ -117,14 +117,14 @@ class CreatePool extends Component {
         {this.state.poolCreated && this.poolCreatedPortal()}
         {this.state.incorrectPool && this.showIncorrectPoolWarning()}
         <h2>Create Pool</h2>
-        <section>
+        <section className='pool-section pool-shadow'>
           <label>Pool Name</label>
           <br />
           <input type='text' value={this.state.name} onChange={this.handlePoolNameChange} placeholder='enter pool name' />
           <br /><br />
           <form onSubmit={this.addOption}>
             <input type='text' value={this.state.toAddOption} onChange={this.handleOptionChange} />
-            <input className='neutral-btn' type='submit' value='Add Option' />
+            <button className='add-neutral-btn'>Add Option</button>
           </form>
         </section>
         <h3>options:</h3>

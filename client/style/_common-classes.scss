@@ -1,11 +1,15 @@
 @import 'variables';
 
-.aggressive-btn { 
-  color: $color-light;
-  background: linear-gradient(to right, $color1, hsl(202, 100%, 76%));
+.button-base {
   box-shadow: $box-shadow-base;
   font-size: 40px;
   padding: 14px 20px;
+}
+
+.aggressive-btn { 
+  @extend .button-base;
+  color: $color-light;
+  background: linear-gradient(to right, $color1, hsl(202, 100%, 76%));
 }
 
 .aggressive-btn:active {
@@ -13,9 +17,9 @@
 }
 
 .danger-btn {
+  @extend .button-base;
   color: $color-light;
   background: linear-gradient(to right, $color3, hsl(5, 100%, 76%));
-  box-shadow: $box-shadow-base;
 }
 
 .neutral-btn {
@@ -25,6 +29,19 @@
 
 .neutral-btn:hover {
   background: $color2-fade;
+}
+
+.add-neutral-btn {
+  font-size: $input-font-size;
+  font-weight: 300;
+  padding: 10px;
+  margin: 7px auto;
+  color: $color-dark;
+  background: hsla(202, 100%, 76%, .42);
+}
+
+.add-neutral-btn:hover {
+  color: $color2-fade;
 }
 
 .tab {
@@ -109,3 +126,19 @@
     margin-left: $margin-large;
   }
 }
+
+.pool-section {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: $cloud-width;
+  margin-top: 15%;
+  margin-bottom: 10%;
+  padding: $padding-form;
+}
+
+.pool-shadow {
+  box-shadow: 5px 5px 82px -28px $color-dark;
+}
+
+

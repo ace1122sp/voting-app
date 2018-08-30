@@ -18,7 +18,6 @@ main {
   flex-direction: column;
   flex-grow: 1;
   margin: 0;
-  justify-content: space-around;
   align-items: center; }
 
 a {
@@ -67,20 +66,21 @@ nav {
 form {
   font-size: 55px; }
 
-.aggressive-btn {
-  color: #f5fbfe;
-  background: linear-gradient(to right, #1fadff, #85d2ff);
+.button-base, .aggressive-btn, .danger-btn {
   box-shadow: 1px 1px 7px -1px #535e65;
   font-size: 40px;
   padding: 14px 20px; }
+
+.aggressive-btn {
+  color: #f5fbfe;
+  background: linear-gradient(to right, #1fadff, #85d2ff); }
 
 .aggressive-btn:active {
   background: linear-gradient(to right, #ffa21f, #ffcc85); }
 
 .danger-btn {
   color: #f5fbfe;
-  background: linear-gradient(to right, #ff311f, #ff8f85);
-  box-shadow: 1px 1px 7px -1px #535e65; }
+  background: linear-gradient(to right, #ff311f, #ff8f85); }
 
 .neutral-btn {
   color: #579ec7;
@@ -88,6 +88,17 @@ form {
 
 .neutral-btn:hover {
   background: #ffe1b8; }
+
+.add-neutral-btn {
+  font-size: 43px;
+  font-weight: 300;
+  padding: 10px;
+  margin: 7px auto;
+  color: #535e65;
+  background: rgba(133, 210, 255, 0.42); }
+
+.add-neutral-btn:hover {
+  color: #ffe1b8; }
 
 .tab {
   background: transparent;
@@ -149,5 +160,17 @@ form {
   .options-list button, .options-list input[type='button'], .options-list input[type='submit'] {
     font-size: inherit;
     margin-left: 30px; }
+
+.pool-section {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 82%;
+  margin-top: 15%;
+  margin-bottom: 10%;
+  padding: 35px; }
+
+.pool-shadow {
+  box-shadow: 5px 5px 82px -28px #535e65; }
 
 /*# sourceMappingURL=App.css.map */

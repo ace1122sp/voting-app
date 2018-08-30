@@ -1,0 +1,22 @@
+@import 'variables';
+
+main > div {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin: 0;
+  width: 90%;
+  justify-content: center;
+}
+
+.settings-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: $cloud-width;
+  margin: 5vh auto;
+  justify-content: center;
+}
+
+.settings-wrapper button {
+  margin: $margin-large;
+}

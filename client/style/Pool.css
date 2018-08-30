@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300");
 @import url("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+address {
+  font-size: 43px; }
+
 .voting-option {
   position: relative;
   display: flex;
@@ -25,5 +28,12 @@
 .voting-option input {
   position: absolute;
   opacity: 0; }
+
+.handle-pool {
+  display: flex;
+  flex-direction: row; }
+
+.social-btn-sizes {
+  font-size: 43px; }
 
 /*# sourceMappingURL=Pool.css.map */

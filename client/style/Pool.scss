@@ -1,5 +1,9 @@
 @import 'variables';
 
+address {
+  font-size: $input-font-size;
+}
+
 .voting-option {
   position: relative;
   display: flex;
@@ -30,4 +34,13 @@
 .voting-option input {
   position: absolute;
   opacity: 0;
+}
+
+.handle-pool {
+  display: flex;
+  flex-direction: row;
+}
+
+.social-btn-sizes {
+  font-size: $input-font-size;
 }

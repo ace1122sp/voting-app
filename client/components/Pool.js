@@ -123,7 +123,7 @@ class Pool extends Component {
     const isCreator = this.props.username === this.props.pool.creator;
     return (
       <main className='wrapper wrap-space-around'>
-        <section>
+        <section className='pool-section pool-shadow'>
           <h2>{this.props.pool.name}</h2>
           <address>created by {this.props.pool.creator || 'n/a'} <time>{this.props.pool.dateCreated}</time></address>
           {this.props.pool.name && !this.state.voted && <ul className='options-list'>{this.getOptions(this.props.pool.options, this.props.pool.name, isCreator)}</ul>}
@@ -131,18 +131,20 @@ class Pool extends Component {
           <br /><br />
           {this.props.pool.name && this.props.username && !this.state.voted && <form onSubmit={this.handleAddingNewOption}>
             <input type='text' value={this.state.newOption} onChange={this.handleChangeForNewOption} />
-            <input className='neutral-btn' type='submit' value='Add New Option' />
+            <button className='add-neutral-btn'>Add New Option</button>
             <br /><br />
           </form>}
-          {this.props.username && <div>
-            <button className='neutral-btn' onClick={this.followOrUnfollow}>{this.props.isFollowedByActiveUser}</button>
-            <button className='neutral-btn'>tweet </button>
-            <button className='neutral-btn'>share </button>
-          </div>}
         </section>
         <br />
+        <div className='handle-pool'>
+          {this.props.username && <div>
+            <button className='neutral-btn social-btn-sizes' onClick={this.followOrUnfollow}>{this.props.isFollowedByActiveUser}</button>
+            <button className='neutral-btn social-btn-sizes'>tweet </button>
+            <button className='neutral-btn social-btn-sizes'>share </button>
+          </div>}
         {isCreator && <button className='danger-btn' onClick={this.handlePoolDelete}>Delete Pool</button>}
-        <section>
+        </div>
+        <section className='pool-section'>
           <h3>Chart</h3>
           <p>imagine some chart over here</p>
           {this.props.pool.name && <ul className='options-list'>{this.showResults(this.props.pool.options)}</ul>}
