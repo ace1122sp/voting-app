@@ -30,7 +30,7 @@ class SignIn extends Component {
   }
 
   showBadLoginWarning = () => 
-    <p>Username or password incorrect!</p>
+    <p className='warning-msg'>Username or password incorrect!</p>
 
   render() {
     if (this.props.fetching) return <Loading />;

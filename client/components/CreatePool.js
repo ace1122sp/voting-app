@@ -76,7 +76,7 @@ class CreatePool extends Component {
   }
 
   showIncorrectPoolWarning = () => 
-    <p>Pool must have a name at least three letters long and there must be at least two options for which you can vote!</p>
+    <p className='warning-msg'>Pool must have a name at least three letters long and there must be at least two options for which you can vote!</p>
 
   handleRedirect = () => {
     this.props.history.goBack();

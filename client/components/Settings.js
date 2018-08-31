@@ -6,6 +6,7 @@ import DeleteProfile_cont from '../containers/settings/DeleteProfile_cont';
 import Portal from './Portal';
 
 import '../style/Settings.css';
+import '../style/Portal.css';
 
 class Settings extends React.Component {
   constructor(props) {
@@ -27,8 +28,10 @@ class Settings extends React.Component {
 
   updatePasswordPortalImplementation = () => 
     <Portal>
-      <ChangePassword_cont />
-      <button className='neutral-btn' onClick={this.closeUpdatePasswordPortal}>Close</button>
+      <div className='portal-inner-wrap pool-shadow'>
+        <ChangePassword_cont />
+        <button className='button-base neutral-btn' onClick={this.closeUpdatePasswordPortal}>Close</button>
+      </div>
     </Portal>
 
   openDeleteProfilePortal = () => {
@@ -42,8 +45,10 @@ class Settings extends React.Component {
 
   deleteProfilePortalImplementation = () => 
     <Portal>
-      <DeleteProfile_cont />
-      <button className='neutral-btn' onClick={this.closeDeleteProfilePortal}>Cancel</button>
+      <div className='portal-inner-wrap pool-shadow'>
+        <DeleteProfile_cont />
+        <button className='button-base neutral-btn' onClick={this.closeDeleteProfilePortal}>Cancel</button>
+      </div>
     </Portal>
 
   render () {

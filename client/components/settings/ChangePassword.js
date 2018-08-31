@@ -2,6 +2,8 @@ import React from 'react';
 
 import { URL_PROFILE } from '../../resources/urls';
 
+import '../../style/Portal.css';
+
 class ChangePassword extends React.Component {
   constructor(props) {
     super(props);
@@ -44,11 +46,14 @@ class ChangePassword extends React.Component {
   showForm = () => 
     <form action={URL_PROFILE} method="PUT" onSubmit={this.handleRequest}>
       <label htmlFor="currentPassword">current password</label>
-      <input type="password" name="currentPassword" id="currentPassword" onChange={this.handleOldPasswordTyping} value={this.state.currentPassword} /><br />
+      <input type="password" name="currentPassword" id="currentPassword" onChange={this.handleOldPasswordTyping} value={this.state.currentPassword} />
+      <br />
       <label htmlFor="newPassword">new password</label>
-      <input type="password" name="newPassword" id="newPassword" onChange={this.handleNewPasswordTyping} value={this.state.newPassword} /><br />
+      <input type="password" name="newPassword" id="newPassword" onChange={this.handleNewPasswordTyping} value={this.state.newPassword} />
+      <br />
       <label htmlFor="reNewPassword">retype new password</label>
-      <input type="password" name="reNewPassword" id="reNewPassword" onChange={this.handleNewPasswordRetyping} value={this.state.reNewPassword} /><br />
+      <input type="password" name="reNewPassword" id="reNewPassword" onChange={this.handleNewPasswordRetyping} value={this.state.reNewPassword} />
+      <br />
       <button className='aggressive-btn'>Confirm</button>
     </form>
 
@@ -60,8 +65,9 @@ class ChangePassword extends React.Component {
   render () {
     if (this.props.fetching) return <em>Loading...</em>
     return (
-      <div>
-        <p>{ this.state.warning }</p>
+      <div className='portal-inner-wrap'>
+        <h2>Change Password</h2>
+        <p className='warning-msg'>{ this.state.warning }</p>
         { !this.props.updateStatus && this.showForm() || this.showMessage() }
       </div>
     );
