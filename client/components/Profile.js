@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import PoolCard from './PoolCard';
 
 import { general } from '../util/general';
+import '../style/Profile.css';
 
 class Profile extends Component {
   constructor(props) {
@@ -44,23 +45,14 @@ class Profile extends Component {
     let pools = poolsSelection.map(pool => <li className='pool-card' key={pool._id}><PoolCard id={pool._id} name={pool.name} /></li>);
     
     return (
-      <main className='wrapper wrap-space-around'>
-        <aside>
-          <div>
-            <b>username</b>
-            <br />
-            <span>{this.props.user.username}</span>
-          </div>
-          <br />
-          <div>
-            <b>total pools</b>
-            <br />
-            <span>{this.props.user.createdPools.length}</span>
-          </div>
-          <br />
-        </aside>
-        <div>
-          <nav>
+      <main className='wrapper wrap-flex-start'>
+        <h2>{this.props.user.username}</h2>
+        <p>
+          <b>total pools: </b>
+          <span>{this.props.user.createdPools.length}</span>
+        </p>
+        <section className='profile-content pool-section'>
+          <nav className='nav-tabs'>
             <button className='tab tab-active' onClick={this.showAllPools}>All</button>
             <button className='tab' onClick={this.showOwnPools}>My Pools</button>
             <button className='tab' onClick={this.showFollowedPools}>Following</button>
@@ -68,7 +60,7 @@ class Profile extends Component {
           <ul>
             {pools}
           </ul>
-        </div>
+        </section>
       </main>
     );
   }

@@ -1,0 +1,17 @@
+@import 'variables';
+
+p {
+  font-size: 5.6vw;
+  margin: 0;
+}
+
+.nav-tabs {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  margin-bottom: 10%;
+}
+
+.nav-tabs > button {
+  width: 33.3%;
+}

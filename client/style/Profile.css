@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300");
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+p {
+  font-size: 5.6vw;
+  margin: 0; }
+
+.nav-tabs {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  margin-bottom: 10%; }
+
+.nav-tabs > button {
+  width: 33.3%; }
+
+/*# sourceMappingURL=Profile.css.map */

@@ -1,4 +1,5 @@
 @import 'variables.scss';
+@import 'common-classes';
 
 html, body {
   min-height: 100%;
@@ -92,4 +93,10 @@ nav {
 
 form {
   font-size: $form-font-size;
+}
+
+h2 {
+  @extend .stripes;
+  width: $cloud-width;
+  padding: $padding-base 24px;
 }
