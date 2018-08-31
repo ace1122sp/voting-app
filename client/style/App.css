@@ -113,6 +113,12 @@
 .pool-shadow {
   box-shadow: 5px 5px 82px -28px #535e65; }
 
+.center-children > * {
+  text-align: center; }
+
+.center-children > a {
+  font-size: 5vw; }
+
 html, body {
   min-height: 100%;
   margin: 0;
@@ -289,5 +295,11 @@ h2 {
 
 .pool-shadow {
   box-shadow: 5px 5px 82px -28px #535e65; }
+
+.center-children > * {
+  text-align: center; }
+
+.center-children > a {
+  font-size: 5vw; }
 
 /*# sourceMappingURL=App.css.map */

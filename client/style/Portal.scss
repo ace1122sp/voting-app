@@ -1,0 +1,36 @@
+@import 'variables';
+@import 'common-classes';
+
+#root-modal > div {
+  @extend .wrapper;
+  @extend .wrap-space-around; 
+  @extend .portal-wrap;
+}
+
+.portal-wrap {
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  align-items: center;
+  overflow: hidden;
+  background: $color1-fade-transparent;
+}
+
+.portal-inner-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: $cloud-width;
+  padding: $padding-form;
+  background: $color-light;
+}
+
+.portal-inner-wrap p {
+  margin-bottom: 2vw;
+}

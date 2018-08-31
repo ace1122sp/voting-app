@@ -143,4 +143,10 @@
   box-shadow: 5px 5px 82px -28px $color-dark;
 }
 
+.center-children > * {
+  text-align: center;
+}
 
+.center-children > a {
+  font-size: 5vw;
+}
