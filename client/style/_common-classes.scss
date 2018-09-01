@@ -62,8 +62,12 @@
 }
 
 .stripes {
-  background: linear-gradient(45deg, hsl(202, 100%, 56%) 64%, hsl(35, 100%, 56%) 50%);
+  background: linear-gradient(45deg, $color1 64%, $color2 50%);
   color: $color-light;
+}
+
+.pale-stripes {
+  background: linear-gradient(45deg, $color1-fade 64%, $color2-fade 50%);
 }
 
 .pool-card {
@@ -153,4 +157,8 @@
 
 .warning-msg {
   color: $color3;
+}
+
+.invisible {
+  opacity: 0;
 }

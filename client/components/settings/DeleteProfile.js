@@ -15,6 +15,9 @@ class DeleteProfile extends React.Component {
   }
 
   handleSubmit = () => {
+    const cancelBtn = document.getElementById('delete-cancel-btn');
+    cancelBtn.setAttribute('disabled', '');
+    cancelBtn.className += ' invisible';
     this.props.deleteProfile_f();
   }
 
@@ -28,12 +31,12 @@ class DeleteProfile extends React.Component {
   showMessage = () => 
     <div className='portal-inner-wrap'>
       <p>{this.props.updateStatus}</p>
-      <button className='button base neutral-btn' onClick={this.props.renderRedirect_f}>Ok</button>
+      <button className='button-base neutral-btn' onClick={this.props.renderRedirect_f}>Ok</button>
     </div>
 
   render () {
     if (this.props.fetching) return <span>Loading...</span>;
-
+    
     return (
       <div className='portal-inner-wrap'>
         <h2>Delete Profile</h2>

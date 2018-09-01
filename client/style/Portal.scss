@@ -34,3 +34,7 @@
 .portal-inner-wrap p {
   margin-bottom: 2vw;
 }
+
+.portal-inner-wrap h2 {
+  @extend .pale-stripes;
+}

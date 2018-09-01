@@ -47,7 +47,7 @@ class Settings extends React.Component {
     <Portal>
       <div className='portal-inner-wrap pool-shadow'>
         <DeleteProfile_cont />
-        <button className='button-base neutral-btn' onClick={this.closeDeleteProfilePortal}>Cancel</button>
+        <button id='delete-cancel-btn' className='button-base neutral-btn' onClick={this.closeDeleteProfilePortal}>Cancel</button>
       </div>
     </Portal>
 

@@ -56,6 +56,9 @@
   background: linear-gradient(45deg, #1fadff 64%, #ffa21f 50%);
   color: #f5fbfe; }
 
+.pale-stripes {
+  background: linear-gradient(45deg, #579ec7 64%, #ffe1b8 50%); }
+
 .pool-card {
   background: transparent;
   box-shadow: 1px 3px 10px -3px #a47d46;
@@ -121,6 +124,9 @@
 
 .warning-msg {
   color: #ff311f; }
+
+.invisible {
+  opacity: 0; }
 
 html, body {
   min-height: 100%;
@@ -242,6 +248,9 @@ h2 {
   background: linear-gradient(45deg, #1fadff 64%, #ffa21f 50%);
   color: #f5fbfe; }
 
+.pale-stripes {
+  background: linear-gradient(45deg, #579ec7 64%, #ffe1b8 50%); }
+
 .pool-card {
   background: transparent;
   box-shadow: 1px 3px 10px -3px #a47d46;
@@ -307,5 +316,8 @@ h2 {
 
 .warning-msg {
   color: #ff311f; }
+
+.invisible {
+  opacity: 0; }
 
 /*# sourceMappingURL=App.css.map */
