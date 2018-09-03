@@ -1,6 +1,8 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
+
 import '../style/Main.css';
+import '../style/Loading.css';
 
 import { commonRoutes, authenticatedRoutes, guestRoutes } from '../routes';
 
