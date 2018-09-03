@@ -4,6 +4,8 @@ import { URL_PROFILE } from '../../resources/urls';
 
 import '../../style/Portal.css';
 
+import InlineLoading from '../InlineLoading';
+
 class ChangePassword extends React.Component {
   constructor(props) {
     super(props);
@@ -63,7 +65,7 @@ class ChangePassword extends React.Component {
       </p>
   
   render () {
-    if (this.props.fetching) return <em>Loading...</em>
+    if (this.props.fetching) return <InlineLoading />;
     return (
       <div className='portal-inner-wrap'>
         <h2>Change Password</h2>

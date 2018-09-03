@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 
-import Portal from '../Portal';
-
 import { validator } from '../../util/validator';
+
 import '../../style/Portal.css';
+
+import InlineLoading from '../InlineLoading';
+import Portal from '../Portal';
 
 class SignUp extends Component {
   constructor(props) {
@@ -111,7 +113,7 @@ class SignUp extends Component {
           <br />
           <br />
           {!this.props.fetchingRequest && <button type='submit' className='aggressive-btn'>Create Account</button>}        
-          {this.props.fetchingRequest && <span>loading...</span>}
+          {this.props.fetchingRequest && <InlineLoading />}
         </form>
         <br />
       </main>

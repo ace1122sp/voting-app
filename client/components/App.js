@@ -1,10 +1,11 @@
 import React from 'react';
 
+import '../style/App.css';
+
 import Header_cont from '../containers/Header_cont';
 import Main_cont from '../containers/Main_cont';
-import Footer from './Footer';
 
-import '../style/App.css';
+import Footer from './Footer';
 
 const App = () =>
   <div>

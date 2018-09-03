@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-import Portal from './Portal';
-import Loading from './Loading';
-
 import { validator } from '../util/validator';
 
 import '../style/CreatePool.css';
+
+import Loading from './Loading';
+import Portal from './Portal';
 
 class CreatePool extends Component {
   constructor(props) {

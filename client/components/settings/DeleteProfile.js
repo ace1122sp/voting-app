@@ -2,6 +2,8 @@ import React from 'react';
 
 import '../../style/Portal.css';
 
+import InlineLoading from '../InlineLoading.js';
+
 class DeleteProfile extends React.Component {
   constructor(props) {
     super(props);
@@ -35,7 +37,7 @@ class DeleteProfile extends React.Component {
     </div>
 
   render () {
-    if (this.props.fetching) return <span>Loading...</span>;
+    if (this.props.fetching) return <InlineLoading />;
     
     return (
       <div className='portal-inner-wrap'>

@@ -1,5 +1,6 @@
 import React from 'react';
 
+import InlineLoading from './InlineLoading';
 import PoolCard from './PoolCard';
 
 const World = props => {
@@ -13,7 +14,6 @@ const World = props => {
 
   const pools = props.poolCards.map(pool => <li className='pool-card' key={pool._id}><PoolCard id={pool._id} name={pool.name} /></li>);
 
-  // need to work on this implementation
   const handleGettingPoolCards = () => {
     props.getAdditionalPoolCards_f(lastPoolId);
   }
@@ -23,7 +23,7 @@ const World = props => {
       <ul>
         {pools}
       </ul>
-      {props.fetching && <em>loading...</em>}
+      {props.fetching && <InlineLoading />}
       <br />
       <button className='aggressive-btn' onClick={handleGettingPoolCards}>Load More Polls</button>
     </main>

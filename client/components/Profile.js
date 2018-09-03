@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 
-import PoolCard from './PoolCard';
-
 import { general } from '../util/general';
+
 import '../style/Profile.css';
+
+import PoolCard from './PoolCard';
 
 class Profile extends Component {
   constructor(props) {

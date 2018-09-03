@@ -162,3 +162,43 @@
 .invisible {
   opacity: 0;
 }
+
+.loading-span {
+  background: $color2;
+  width: 5vw;
+  height: 5vw;
+  border-radius: 50%;
+  margin: 5px;
+  animation: loading 700ms ease-out;
+  animation-iteration-count: infinite
+}
+
+.inline-loading-spans {
+  font-size: $input-font-size;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-grow: unset;
+}
+
+.align-center {
+  align-items: center;
+}
+
+@keyframes loading {
+  0% {
+    transform: rotateX(0deg);
+    background: $color1;
+    opacity: 1;
+  }
+  50% {
+    transform: rotateX(180deg);
+    background: $color2;
+    opacity: 0.5;
+  }
+  100% {
+    transform: rotateX(0deg);
+    background: $color1;
+    opacity: 1;
+  }
+}
