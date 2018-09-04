@@ -55,6 +55,19 @@ export const general = (() => {
       if (currentLength > maxLength) validString = validString.substr(0, maxLength - 2) + '...';
  
       return validString;
-    } 
+    },
+    
+    getRandomColor: () => {
+      const randomPercentage = () => 10 + Math.floor(Math.random() * 90);
+
+      const h = Math.floor(Math.random() * 360);
+      const s = randomPercentage();
+      const l = randomPercentage();
+
+      const backgroundColor = `hsla(${h}, ${s}%, ${l}%, 0.3)`;
+      const borderColor = `hsl(${h}, ${s}%, ${l}%)`;
+      console.log(backgroundColor, borderColor);
+      return [backgroundColor, borderColor];
+    }
   }
 })();

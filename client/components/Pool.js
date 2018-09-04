@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import 'chart.js';
 
 import { validator } from '../util/validator';
+import { general } from '../util/general';
 
 import '../style/Pool.css';
 
@@ -14,6 +16,7 @@ class Pool extends Component {
       newOption: '',
       redirect: false,
       voted: false,
+      init: false // temp solution
     };
   }
   
@@ -24,11 +27,17 @@ class Pool extends Component {
           if (this.props.username) this.handleUnfollowing();
           this.props.history.push('/no-pool');
         }
+        this.createChart();
+        this.setState({ init: true }); // temp solution
       })
       .catch(err => {
         console.log(err)
         this.props.history.push('/server-error');
       });     
+  }
+
+  componentDidUpdate() { // temp solution
+    if (this.state.init) this.createChart();
   }
 
   handleOptionDelete = e => {
@@ -101,6 +110,52 @@ class Pool extends Component {
     });
   }
 
+  createChart = () => {
+    let ctx = document.getElementById("myChart");
+    let labels = [];
+    let data = [];
+    let backgroundColor = [];
+    let borderColor = [];
+
+    for(let option in this.props.pool.options) {
+      labels.push(this.props.pool.options[option].value);
+      data.push(this.props.pool.options[option].votes);
+      const color = general.getRandomColor();
+      backgroundColor.push(color[0]);
+      borderColor.push(color[1]);
+    }
+
+    Chart.defaults.global.defaultFontSize = 40;
+    let myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels,
+        datasets: [{
+            label: '# of Votes',
+            data,
+            backgroundColor,
+            borderColor,
+            borderWidth: 1
+        }]
+    },
+    options: {
+        defaultFontSize: 30,
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        },
+        legend: {
+          labels: {
+            fontSize: 50
+          }
+        }
+    }
+});
+  }
+
   handleFollowing = () => {
     this.props.follow_f(this.props.poolId, this.props.pool.name);
   }
@@ -122,6 +177,8 @@ class Pool extends Component {
     if (this.state.redirect) return <Redirect to='/' />;
 
     const isCreator = this.props.username === this.props.pool.creator;
+    
+
     return (
       <main className='wrapper wrap-space-around'>
         <section className='pool-section pool-shadow'>
@@ -146,8 +203,7 @@ class Pool extends Component {
         {isCreator && <button className='danger-btn' onClick={this.handlePoolDelete}>Delete Pool</button>}
         </div>
         <section className='pool-section'>
-          <h3>Chart</h3>
-          <p>imagine some chart over here</p>
+          <canvas id="myChart" width="300px" height="300px"></canvas>
           {this.props.pool.name && <ul className='options-list'>{this.showResults(this.props.pool.options)}</ul>}
         </section>
       </main>
