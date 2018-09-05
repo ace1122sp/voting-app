@@ -58,16 +58,12 @@ export const general = (() => {
     },
     
     getRandomColor: () => {
-      const randomPercentage = () => 10 + Math.floor(Math.random() * 90);
+      const randomPercentage = () => 30 + Math.floor(Math.random() * 70);
 
       const h = Math.floor(Math.random() * 360);
-      const s = randomPercentage();
       const l = randomPercentage();
 
-      const backgroundColor = `hsla(${h}, ${s}%, ${l}%, 0.3)`;
-      const borderColor = `hsl(${h}, ${s}%, ${l}%)`;
-      console.log(backgroundColor, borderColor);
-      return [backgroundColor, borderColor];
+      return `hsl(${h}, 50%, ${l}%)`;
     }
   }
 })();

@@ -118,8 +118,7 @@ class Pool extends Component {
     for (let option in this.props.pool.options) {
       optionNames.push(this.props.pool.options[option].value);
       optionVotes.push(this.props.pool.options[option].votes);
-      const color = general.getRandomColor();
-      backgroundColor.push(color[1]);
+      backgroundColor.push(general.getRandomColor());
     }
 
     let ctx = document.getElementById("myChart");
