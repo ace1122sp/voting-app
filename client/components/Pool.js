@@ -111,49 +111,32 @@ class Pool extends Component {
   }
 
   createChart = () => {
-    let ctx = document.getElementById("myChart");
-    let labels = [];
-    let data = [];
-    let backgroundColor = [];
-    let borderColor = [];
+    const optionVotes = [];
+    const optionNames = [];
+    const backgroundColor = [];
 
-    for(let option in this.props.pool.options) {
-      labels.push(this.props.pool.options[option].value);
-      data.push(this.props.pool.options[option].votes);
+    for (let option in this.props.pool.options) {
+      optionNames.push(this.props.pool.options[option].value);
+      optionVotes.push(this.props.pool.options[option].votes);
       const color = general.getRandomColor();
-      backgroundColor.push(color[0]);
-      borderColor.push(color[1]);
+      backgroundColor.push(color[1]);
     }
 
-    Chart.defaults.global.defaultFontSize = 40;
-    let myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels,
-        datasets: [{
-            label: '# of Votes',
-            data,
-            backgroundColor,
-            borderColor,
-            borderWidth: 1
-        }]
-    },
-    options: {
-        defaultFontSize: 30,
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true
-                }
-            }]
-        },
-        legend: {
-          labels: {
-            fontSize: 50
-          }
-        }
+    let ctx = document.getElementById("myChart");
+    const data = {
+      datasets: [{
+        data: [...optionVotes],
+        backgroundColor
+      }],
+      labels: [...optionNames],
     }
-});
+    
+    Chart.defaults.global.defaultFontSize = 40;
+    let pieChart = new Chart(ctx, {
+      type: 'pie',
+      data,
+      // options
+    });
   }
 
   handleFollowing = () => {
@@ -203,7 +186,7 @@ class Pool extends Component {
         {isCreator && <button className='danger-btn' onClick={this.handlePoolDelete}>Delete Pool</button>}
         </div>
         <section className='pool-section'>
-          <canvas id="myChart" width="300px" height="300px"></canvas>
+          <canvas id="myChart" width="65vw" height="80vw"></canvas>
           {this.props.pool.name && <ul className='options-list'>{this.showResults(this.props.pool.options)}</ul>}
         </section>
       </main>
