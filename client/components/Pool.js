@@ -150,7 +150,7 @@ class Pool extends Component {
 
   handlePoolDelete = () => {
     this.props.deletePool_f(this.props.poolId);
-    this.setState({ redirect: true });
+    this.setState({ redirect: true, init: false });
   }
 
   render() {
