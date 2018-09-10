@@ -14,6 +14,7 @@ class Pool extends Component {
     super(props);
     this.state = {
       newOption: '',
+      invalidOption: false,
       redirect: false,
       voted: false,
       dateCreated: 'na',
@@ -77,8 +78,11 @@ class Pool extends Component {
     );
 
   handleChangeForNewOption = e => {
-    this.setState({ newOption: e.target.value });
+    this.setState({ newOption: e.target.value, invalidOption: false });
   }
+
+  showIncorrectPoolWarning = () =>
+    <p className='warning-msg'>'New option can't be an empty string and it can't match some of the existing options!'</p>
 
   handleAddingNewOption = e => {
     e.preventDefault();
@@ -95,7 +99,7 @@ class Pool extends Component {
       this.props.addVotingOption_f(this.props.poolId, option);
       this.setState({ newOption: '' });
     } else {
-      alert('New option can\'t be an empty string and it can\'t match some of the existing options.');
+      this.setState({ invalidOption: true });
     }
   }
 
@@ -169,6 +173,7 @@ class Pool extends Component {
     
     return (
       <main className='wrapper wrap-space-around'>
+        {this.state.invalidOption && this.showIncorrectPoolWarning()}
         <section className='pool-section pool-shadow'>
           <h2>{this.props.pool.name}</h2>
           <address>created by {this.props.pool.creator || 'n/a'} <time>{this.state.dateCreated}</time></address>
