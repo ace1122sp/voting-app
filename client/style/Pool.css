@@ -36,4 +36,10 @@ address {
 .social-btn-sizes {
   font-size: 43px; }
 
+.twitter {
+  background: #1fadff;
+  color: white;
+  padding: 5.7px;
+  border-radius: 3px; }
+
 /*# sourceMappingURL=Pool.css.map */

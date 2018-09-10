@@ -156,7 +156,8 @@ class Pool extends Component {
 
   tweet = () => {
     const poolUrl = `http://localhost:8080${this.props.history.location.pathname}`;
-    window.open('https://twitter.com/intent/tweet?text=Check out voting app\'s pool ' + this.props.pool.name + ' ' + poolUrl);
+    const twitterUrl = `https://twitter.com/intent/tweet?text=Check out voting app\'s pool ${this.props.pool.name}&url=${poolUrl}`;
+    window.open(twitterUrl);
   }
 
   render() {
@@ -166,7 +167,6 @@ class Pool extends Component {
 
     const isCreator = this.props.username === this.props.pool.creator;
     
-
     return (
       <main className='wrapper wrap-space-around'>
         <section className='pool-section pool-shadow'>
@@ -177,7 +177,7 @@ class Pool extends Component {
           <br /><br />
           {this.props.pool.name && this.props.username && !this.state.voted && <form onSubmit={this.handleAddingNewOption}>
             <input type='text' value={this.state.newOption} onChange={this.handleChangeForNewOption} />
-            <button className='add-neutral-btn'>Add New Option</button>
+            <button className='add-neutral-btn'>Add New Option</button>            
             <br /><br />
           </form>}
         </section>
@@ -185,7 +185,7 @@ class Pool extends Component {
         <div className='handle-pool'>
           {this.props.username && <div>
             <button className='neutral-btn social-btn-sizes' onClick={this.followOrUnfollow}>{this.props.isFollowedByActiveUser}</button>
-            <button className='neutral-btn social-btn-sizes' onClick={this.tweet}>tweet </button>
+            <button className='twitter social-btn-sizes' onClick={this.tweet}><i className='fa fa-twitter' aria-hidden='true'></i> tweet </button>
           </div>}
         {isCreator && <button className='danger-btn' onClick={this.handlePoolDelete}>Delete Pool</button>}
         </div>
