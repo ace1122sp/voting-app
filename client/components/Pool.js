@@ -16,6 +16,7 @@ class Pool extends Component {
       newOption: '',
       redirect: false,
       voted: false,
+      dateCreated: 'na',
       init: false // temp solution
     };
   }
@@ -28,7 +29,7 @@ class Pool extends Component {
           this.props.history.push('/no-pool');
         }
         this.createChart();
-        this.setState({ init: true }); // temp solution
+        this.setState({ init: true, dateCreated: general.formatMongooseDate(this.props.pool.dateCreated) }); // temp solution
       })
       .catch(err => {
         console.log(err)
@@ -153,6 +154,11 @@ class Pool extends Component {
     this.setState({ redirect: true, init: false });
   }
 
+  tweet = () => {
+    const poolUrl = `http://localhost:8080${this.props.history.location.pathname}`;
+    window.open('https://twitter.com/intent/tweet?text=Check out voting app\'s pool ' + this.props.pool.name + ' ' + poolUrl);
+  }
+
   render() {
     if (this.props.fetching) return <Loading />;  
 
@@ -165,7 +171,7 @@ class Pool extends Component {
       <main className='wrapper wrap-space-around'>
         <section className='pool-section pool-shadow'>
           <h2>{this.props.pool.name}</h2>
-          <address>created by {this.props.pool.creator || 'n/a'} <time>{this.props.pool.dateCreated}</time></address>
+          <address>created by {this.props.pool.creator || 'n/a'} <time>{this.state.dateCreated}</time></address>
           {this.props.pool.name && !this.state.voted && <ul className='options-list'>{this.getOptions(this.props.pool.options, this.props.pool.name, isCreator)}</ul>}
           {!this.state.voted && <button className='aggressive-btn' onClick={this.handleVoting}>Vote</button>}
           <br /><br />
@@ -179,8 +185,7 @@ class Pool extends Component {
         <div className='handle-pool'>
           {this.props.username && <div>
             <button className='neutral-btn social-btn-sizes' onClick={this.followOrUnfollow}>{this.props.isFollowedByActiveUser}</button>
-            <button className='neutral-btn social-btn-sizes'>tweet </button>
-            <button className='neutral-btn social-btn-sizes'>share </button>
+            <button className='neutral-btn social-btn-sizes' onClick={this.tweet}>tweet </button>
           </div>}
         {isCreator && <button className='danger-btn' onClick={this.handlePoolDelete}>Delete Pool</button>}
         </div>

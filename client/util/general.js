@@ -64,6 +64,8 @@ export const general = (() => {
       const l = randomPercentage();
 
       return `hsl(${h}, 50%, ${l}%)`;
-    }
+    },
+
+    formatMongooseDate: date => date.substring(0, 10)
   }
 })();
