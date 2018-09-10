@@ -34,6 +34,7 @@ address {
   flex-direction: row; }
 
 .social-btn-sizes {
+  padding: 5.7px;
   font-size: 43px; }
 
 .twitter {

@@ -192,7 +192,7 @@ class Pool extends Component {
             <button className='neutral-btn social-btn-sizes' onClick={this.followOrUnfollow}>{this.props.isFollowedByActiveUser}</button>
             <button className='twitter social-btn-sizes' onClick={this.tweet}><i className='fa fa-twitter' aria-hidden='true'></i> tweet </button>
           </div>}
-        {isCreator && <button className='danger-btn' onClick={this.handlePoolDelete}>Delete Pool</button>}
+        {isCreator && <button className='danger-btn-small social-btn-sizes' onClick={this.handlePoolDelete}>Delete Pool</button>}
         </div>
         <section className='pool-section'>
           <canvas id="myChart" width="65vw" height="80vw"></canvas>

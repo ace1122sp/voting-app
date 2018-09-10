@@ -22,6 +22,11 @@
   background: linear-gradient(to right, $color3, hsl(5, 100%, 76%));
 }
 
+.danger-btn-small {
+  color: $color-light;
+  background: linear-gradient(to right, $color3, hsl(5, 100%, 76%));
+}
+
 .neutral-btn {
   color: $color1-fade;
   background: transparent; 

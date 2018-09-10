@@ -20,6 +20,10 @@
   color: #f5fbfe;
   background: linear-gradient(to right, #ff311f, #ff8f85); }
 
+.danger-btn-small {
+  color: #f5fbfe;
+  background: linear-gradient(to right, #ff311f, #ff8f85); }
+
 .neutral-btn {
   color: #579ec7;
   background: transparent; }
@@ -241,6 +245,10 @@ h2 {
   background: linear-gradient(to right, #ffa21f, #ffcc85); }
 
 .danger-btn {
+  color: #f5fbfe;
+  background: linear-gradient(to right, #ff311f, #ff8f85); }
+
+.danger-btn-small {
   color: #f5fbfe;
   background: linear-gradient(to right, #ff311f, #ff8f85); }
 
