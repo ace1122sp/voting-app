@@ -1,19 +1,24 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300");
 @import url("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+.button-base, .aggressive-btn, .danger-btn {
+  box-shadow: 1px 1px 7px -1px #535e65;
+  font-size: 22px;
+  padding: 14px 20px; }
+
 .aggressive-btn {
   color: #f5fbfe;
-  background: linear-gradient(to right, #1fadff, #85d2ff);
-  box-shadow: 1px 1px 7px -1px #535e65;
-  font-size: 40px;
-  padding: 14px 20px; }
+  background: linear-gradient(to right, #1fadff, #85d2ff); }
 
 .aggressive-btn:active {
   background: linear-gradient(to right, #ffa21f, #ffcc85); }
 
 .danger-btn {
   color: #f5fbfe;
-  background: linear-gradient(to right, #ff311f, #ff8f85);
-  box-shadow: 1px 1px 7px -1px #535e65; }
+  background: linear-gradient(to right, #ff311f, #ff8f85); }
+
+.danger-btn-small {
+  color: #f5fbfe;
+  background: linear-gradient(to right, #ff311f, #ff8f85); }
 
 .neutral-btn {
   color: #579ec7;
@@ -23,7 +28,7 @@
   background: #ffe1b8; }
 
 .add-neutral-btn {
-  font-size: 43px;
+  font-size: 15px;
   font-weight: 300;
   padding: 10px;
   margin: 7px auto;
@@ -35,7 +40,9 @@
 
 .tab {
   background: transparent;
-  color: #0074b8; }
+  color: #0074b8;
+  font-size: 15px;
+  padding: 5.7px; }
 
 .tab-active {
   background: #1fadff;
@@ -49,12 +56,15 @@
   background: linear-gradient(45deg, #1fadff 64%, #ffa21f 50%);
   color: #f5fbfe; }
 
+.pale-stripes {
+  background: linear-gradient(45deg, #579ec7 64%, #ffe1b8 50%); }
+
 .pool-card {
   background: transparent;
   box-shadow: 1px 3px 10px -3px #a47d46;
   margin: 35px 20px;
   padding: 10px 55px;
-  font-size: 43px;
+  font-size: 23px;
   text-align: center;
   display: flex; }
   .pool-card a {
@@ -106,6 +116,50 @@
 .pool-shadow {
   box-shadow: 5px 5px 82px -28px #535e65; }
 
+.center-children > * {
+  text-align: center; }
+
+.center-children > a {
+  font-size: 5vw; }
+
+.warning-msg {
+  color: #ff311f; }
+
+.invisible {
+  opacity: 0; }
+
+.loading-span {
+  background: #ffa21f;
+  width: 5vw;
+  height: 5vw;
+  border-radius: 50%;
+  margin: 5px;
+  animation: loading 700ms ease-out;
+  animation-iteration-count: infinite; }
+
+.inline-loading-spans {
+  font-size: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-grow: unset; }
+
+.align-center {
+  align-items: center; }
+
+@keyframes loading {
+  0% {
+    transform: rotateX(0deg);
+    background: #1fadff;
+    opacity: 1; }
+  50% {
+    transform: rotateX(180deg);
+    background: #ffa21f;
+    opacity: 0.5; }
+  100% {
+    transform: rotateX(0deg);
+    background: #1fadff;
+    opacity: 1; } }
 section label {
   font-size: 60px; }
 section input {

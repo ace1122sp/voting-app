@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300");
 @import url("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 address {
-  font-size: 43px; }
+  font-size: 15px; }
 
 .voting-option {
   position: relative;
@@ -35,7 +35,7 @@ address {
 
 .social-btn-sizes {
   padding: 5.7px;
-  font-size: 43px; }
+  font-size: 15px; }
 
 .twitter {
   background: #1fadff;

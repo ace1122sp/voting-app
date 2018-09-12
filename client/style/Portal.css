@@ -4,8 +4,8 @@
 @import url("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 .button-base, .aggressive-btn, .danger-btn {
   box-shadow: 1px 1px 7px -1px #535e65;
-  font-size: 40px;
-  padding: 14px 20px; }
+  font-size: 10px;
+  padding: 10px 19px; }
 
 .aggressive-btn {
   color: #f5fbfe;
@@ -18,6 +18,10 @@
   color: #f5fbfe;
   background: linear-gradient(to right, #ff311f, #ff8f85); }
 
+.danger-btn-small {
+  color: #f5fbfe;
+  background: linear-gradient(to right, #ff311f, #ff8f85); }
+
 .neutral-btn {
   color: #579ec7;
   background: transparent; }
@@ -26,7 +30,7 @@
   background: #ffe1b8; }
 
 .add-neutral-btn {
-  font-size: 43px;
+  font-size: 15px;
   font-weight: 300;
   padding: 10px;
   margin: 7px auto;
@@ -39,7 +43,7 @@
 .tab {
   background: transparent;
   color: #0074b8;
-  font-size: 43px;
+  font-size: 15px;
   padding: 5.7px; }
 
 .tab-active {
@@ -60,9 +64,9 @@
 .pool-card {
   background: transparent;
   box-shadow: 1px 3px 10px -3px #a47d46;
-  margin: 35px 20px;
-  padding: 10px 55px;
-  font-size: 43px;
+  margin: 28px 20px;
+  padding: 8px 55px;
+  font-size: 15px;
   text-align: center;
   display: flex; }
   .pool-card a {
@@ -90,7 +94,8 @@
 
 .form-base, .options-list {
   box-shadow: 5px 5px 82px -28px #535e65;
-  padding: 35px; }
+  margin: auto;
+  padding: 20px; }
 
 .options-list {
   margin-right: 4%;
@@ -109,7 +114,7 @@
   width: 82%;
   margin-top: 15%;
   margin-bottom: 10%;
-  padding: 35px; }
+  padding: 20px; }
 
 .pool-shadow {
   box-shadow: 5px 5px 82px -28px #535e65; }
@@ -126,6 +131,53 @@
 .invisible {
   opacity: 0; }
 
+.loading-span {
+  background: #ffa21f;
+  width: 5vw;
+  height: 5vw;
+  border-radius: 50%;
+  margin: 5px;
+  animation: loading 700ms ease-out;
+  animation-iteration-count: infinite; }
+
+.inline-loading-spans {
+  font-size: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-grow: unset; }
+
+.align-center {
+  align-items: center; }
+
+@keyframes loading {
+  0% {
+    transform: rotateX(0deg);
+    background: #1fadff;
+    opacity: 1; }
+  50% {
+    transform: rotateX(180deg);
+    background: #ffa21f;
+    opacity: 0.5; }
+  100% {
+    transform: rotateX(0deg);
+    background: #1fadff;
+    opacity: 1; } }
+@media (min-width: 440px) {
+  .wrapper h2, #root-modal > div h2 {
+    font-size: 35px; }
+  .wrapper h3, #root-modal > div h3 {
+    font-size: 25px; } }
+@media (min-width: 525px) {
+  .pool-card {
+    margin: 30px 20px;
+    padding: 10px 55px;
+    font-size: 3vw; } }
+@media (min-width: 650px) {
+  .pool-card {
+    margin: 30px 20px;
+    padding: 10px 100px;
+    font-size: 2vw; } }
 .portal-wrap, #root-modal > div {
   z-index: 10;
   position: fixed;
@@ -145,7 +197,7 @@
   align-items: center;
   text-align: center;
   width: 82%;
-  padding: 35px;
+  padding: 20px;
   background: #f5fbfe; }
 
 .portal-inner-wrap p {

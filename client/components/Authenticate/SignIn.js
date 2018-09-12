@@ -36,22 +36,24 @@ class SignIn extends Component {
     if (this.props.fetching) return <Loading />;
 
     return (
-      <main className='wrapper wrap-space-around'>
+      <main className='wrapper'>
         <h2>Sign in</h2>
         {this.props.badLoginStatus && this.showBadLoginWarning()}
-        <form className='form-base' onSubmit={this.handleSubmit}>
-          <label>username</label>
-          <br />
-          <input type='text' value={this.state.username} onChange={this.handleChangeUsername} />
-          <br /><br />
-          <label>password</label>
-          <br />
-          <input type='password' value={this.state.password} onChange={this.handleChangePassword} />
-          <br /><br />
-          <br />
-          <button className='aggressive-btn'>Confirm</button>
-          <br />
-        </form>
+        <div className='wrapper wrap-space-around'>
+          <form className='form-base' onSubmit={this.handleSubmit}>
+            <label>username</label>
+            <br />
+            <input type='text' value={this.state.username} onChange={this.handleChangeUsername} />
+            <br /><br />
+            <label>password</label>
+            <br />
+            <input type='password' value={this.state.password} onChange={this.handleChangePassword} />
+            <br /><br />
+            <br />
+            <button className='aggressive-btn'>Confirm</button>
+            <br />
+          </form>
+        </div>
         <br />
       </main>
     );

@@ -2,8 +2,10 @@
 
 .button-base {
   box-shadow: $box-shadow-base;
-  font-size: 40px;
-  padding: 14px 20px;
+  // font-size: 40px;
+  font-size: 10px;
+  // padding: 14px 20px;
+  padding: 10px 19px;
 }
 
 .aggressive-btn { 
@@ -78,9 +80,12 @@
 .pool-card {
   background: transparent;
   box-shadow: 1px 3px 10px -3px hsl(35, 40%, 46%);
-  margin: 35px 20px;
-  padding: 10px 55px;
-  font-size: 43px;
+  // margin: 35px 20px;
+  // padding: 10px 55px;
+  margin: 28px 20px;
+  padding: 8px 55px;
+  // font-size: 43px;
+  font-size: 15px;
   text-align: center;
   display: flex;
 
@@ -119,6 +124,7 @@
 
 .form-base {
   box-shadow: 5px 5px 82px -28px $color-dark;
+  margin: auto;
   padding: $padding-form;
 }
 
@@ -207,3 +213,5 @@
     opacity: 1;
   }
 }
+
+@import 'common-classes-responsive';

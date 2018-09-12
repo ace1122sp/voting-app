@@ -88,33 +88,35 @@ class SignUp extends Component {
 
   render() {
     return (
-      <main className='wrapper wrap-space-around'>
+      <main className='wrapper'>
         {this.props.registerStatus === 'ok' && this.renderPortal()}
         {this.state.shortPassword && this.showIncorrectPasswordWarning()}
         {this.state.shortUsername && this.showShortUsernameWarning()}
         {this.isError() && this.showErrorMessage()}      
         <h2>Create Your Account</h2>
-        <form className='form-base' onSubmit={this.handleSubmit}>
-          <label>email</label>
-          <br />
-          <input type='email' value={this.state.email} onChange={this.handleChangeEmail} />
-          <br /><br />
-          <label>username</label>
-          <br />
-          <input type='text' value={this.state.username} onChange={this.handleChangeUsername} />
-          <br /><br />
-          <label>password</label>
-          <br />
-          <input type='password' value={this.state.password} onChange={this.handleChangePassword} />
-          <br />
-          <label>confirm password</label>
-          <br />
-          <input type='password' value={this.state.passwordAgain} onChange={this.handleChangePasswordAgain} />
-          <br />
-          <br />
-          {!this.props.fetchingRequest && <button type='submit' className='aggressive-btn'>Create Account</button>}        
-          {this.props.fetchingRequest && <InlineLoading />}
-        </form>
+        <div className='wrapper wrap-space-around'>
+          <form className='form-base' onSubmit={this.handleSubmit}>
+            <label>email</label>
+            <br />
+            <input type='email' value={this.state.email} onChange={this.handleChangeEmail} />
+            <br /><br />
+            <label>username</label>
+            <br />
+            <input type='text' value={this.state.username} onChange={this.handleChangeUsername} />
+            <br /><br />
+            <label>password</label>
+            <br />
+            <input type='password' value={this.state.password} onChange={this.handleChangePassword} />
+            <br />
+            <label>confirm password</label>
+            <br />
+            <input type='password' value={this.state.passwordAgain} onChange={this.handleChangePasswordAgain} />
+            <br />
+            <br />
+            {!this.props.fetchingRequest && <button type='submit' className='aggressive-btn'>Create Account</button>}
+            {this.props.fetchingRequest && <InlineLoading />}
+          </form>
+        </div>
         <br />
       </main>
     );

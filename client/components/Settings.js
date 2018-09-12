@@ -53,7 +53,7 @@ class Settings extends React.Component {
 
   render () {
     return (
-      <main className='wrapper wrap-space-around'>
+      <main className='wrapper'>
         {this.state.updatePasswordPortal && 
         this.updatePasswordPortalImplementation()
           }

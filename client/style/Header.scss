@@ -5,7 +5,8 @@
   border-radius: 0;
   color: $color2;
   text-shadow: 1px 1px 1px $color-dark;
-  font-size: 30px;
+  // font-size: 30px;
+  font-size: 3.2vw;
 }
 
 #sign-out-btn:hover {
@@ -31,16 +32,21 @@ header {
 
   a {
     color: $color-light;
-    font-size: 35px;
-    margin: auto 11px;
+    // font-size: 35px;
+    font-size: 3.2vw;
+    // margin: auto 11px;
+    margin: auto 1vw;
   }
 }
 
 h1 {
-  font-size: 40px;
+  // font-size: 40px;
+  font-size: 4vw;
   color: $color1;
   text-shadow: 1px 1px 1px $color-light;
   box-shadow: 1px 3px 15px -5px $color-dark;
   margin-right: 13px;
   padding: 4px 1vw;
 }
+
+@import 'Header-responsive';

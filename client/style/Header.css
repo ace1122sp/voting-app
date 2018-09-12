@@ -5,7 +5,7 @@
   border-radius: 0;
   color: #ffa21f;
   text-shadow: 1px 1px 1px #535e65;
-  font-size: 30px; }
+  font-size: 3.2vw; }
 
 #sign-out-btn:hover {
   background: rgba(255, 162, 31, 0.2); }
@@ -26,15 +26,27 @@ header {
     margin-left: 10px; }
   header a {
     color: #f5fbfe;
-    font-size: 35px;
-    margin: auto 11px; }
+    font-size: 3.2vw;
+    margin: auto 1vw; }
 
 h1 {
-  font-size: 40px;
+  font-size: 4vw;
   color: #1fadff;
   text-shadow: 1px 1px 1px #f5fbfe;
   box-shadow: 1px 3px 15px -5px #535e65;
   margin-right: 13px;
   padding: 4px 1vw; }
+
+@media (min-width: 620px) {
+  #sign-out-btn, header a {
+    font-size: 20px; }
+
+  header a {
+    margin: auto 2vw; }
+
+  h1 {
+    font-size: 30px;
+    margin-top: 5px;
+    margin-bottom: 5px; } }
 
 /*# sourceMappingURL=Header.css.map */

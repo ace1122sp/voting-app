@@ -9,6 +9,7 @@ $color2-fade: hsl(35, 100%, 86%);
 $color3: hsl(5, 100%, 56%);
 $color-dark: hsl(202, 10%, 36%);
 $color-light: hsl(202, 90%, 98%);
+$color-light-pale: hsl(202, 90%, 78%);
 
 $transition-duration-base: 200ms;
 $transition-base: all $transition-duration-base ease-out;
@@ -18,12 +19,15 @@ $cloud-width: 82%;
 $margin-base: 2px;
 $margin-large: 30px;
 $padding-base: 5.7px;
-$padding-form: 35px;
+$padding-form: 20px;
 $border-radius-base: 4px;
 
 $box-shadow-base: 1px 1px 7px -1px $color-dark;
 
 $font-family-base: 'Open Sans Condensed', sans-serif;
 
-$form-font-size: 55px;
-$input-font-size: 43px;
+// $form-font-size: 55px;
+// $input-font-size: 43px;
+
+$form-font-size: 20px;
+$input-font-size: 15px;

@@ -1,6 +1,16 @@
 #main-comp {
-  padding: 20% 3%;
+  padding: 17% 3%;
   min-height: 90vh;
   display: flex; }
+
+@media (min-width: 700px) {
+  #main-comp {
+    padding: 13% 3%; } }
+@media (min-width: 850px) {
+  #main-comp {
+    padding: 11% 3%; } }
+@media (min-width: 950px) {
+  #main-comp {
+    padding: 9% 3%; } }
 
 /*# sourceMappingURL=Main.css.map */
