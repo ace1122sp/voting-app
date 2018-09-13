@@ -107,7 +107,7 @@ class SignUp extends Component {
             <label>password</label>
             <br />
             <input type='password' value={this.state.password} onChange={this.handleChangePassword} />
-            <br />
+            <br /><br />
             <label>confirm password</label>
             <br />
             <input type='password' value={this.state.passwordAgain} onChange={this.handleChangePasswordAgain} />

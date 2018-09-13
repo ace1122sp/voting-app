@@ -12,11 +12,15 @@
   }
 }
 
-@media (min-width: 525px) {
+@media all and (min-width: 525px) {
   .pool-card {
     margin: 30px 20px;
     padding: 10px 55px;
     font-size: 3vw;
+  }
+
+  .form-base {
+    padding: 4% 10%;
   }
 }
 

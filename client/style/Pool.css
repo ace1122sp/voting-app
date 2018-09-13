@@ -13,6 +13,7 @@ address {
   position: relative;
   display: flex;
   flex-grow: 1;
+  font-size: 25px;
   cursor: pointer;
   text-align: left; }
 

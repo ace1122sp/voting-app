@@ -35,7 +35,7 @@
   font-size: 15px;
   font-weight: 300;
   padding: 10px;
-  margin: 7px auto;
+  margin: 7px;
   color: #535e65;
   background: rgba(133, 210, 255, 0.42); }
 
@@ -94,20 +94,24 @@
 .wrap-flex-start {
   justify-content: flex-start; }
 
-.form-base, .options-list {
+.form-base, .options-list, .options-list-no-box-shadow {
   box-shadow: 5px 5px 82px -28px #535e65;
   margin: auto;
   padding: 20px; }
 
-.options-list {
-  margin-right: 4%;
-  margin-left: 4%;
-  font-size: 5.5vw; }
-  .options-list li {
+.options-list, .options-list-no-box-shadow {
+  margin: 11%;
+  padding: 20px;
+  color: #535e65;
+  font-size: 25px; }
+  .options-list li, .options-list-no-box-shadow li {
     text-align: right; }
-  .options-list button, .options-list input[type='button'], .options-list input[type='submit'] {
+  .options-list button, .options-list-no-box-shadow button, .options-list input[type='button'], .options-list-no-box-shadow input[type='button'], .options-list input[type='submit'], .options-list-no-box-shadow input[type='submit'] {
     font-size: inherit;
     margin-left: 30px; }
+
+.options-list-no-box-shadow {
+  box-shadow: none; }
 
 .pool-section {
   display: flex;
@@ -135,8 +139,8 @@
 
 .loading-span {
   background: #ffa21f;
-  width: 5vw;
-  height: 5vw;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   margin: 5px;
   animation: loading 700ms ease-out;
@@ -172,11 +176,14 @@
     padding-right: 20%; }
   .wrapper h3 {
     font-size: 25px; } }
-@media (min-width: 525px) {
+@media all and (min-width: 525px) {
   .pool-card {
     margin: 30px 20px;
     padding: 10px 55px;
-    font-size: 3vw; } }
+    font-size: 3vw; }
+
+  .form-base, .options-list, .options-list-no-box-shadow {
+    padding: 4% 10%; } }
 @media (min-width: 650px) {
   .pool-card {
     margin: 30px 20px;
@@ -244,7 +251,7 @@ nav {
   box-shadow: 0 1px 7px -3px #535e65; }
 
 form {
-  font-size: 20px; }
+  font-size: 17px; }
 
 h2 {
   width: 82%;
@@ -281,7 +288,7 @@ h2 {
   font-size: 15px;
   font-weight: 300;
   padding: 10px;
-  margin: 7px auto;
+  margin: 7px;
   color: #535e65;
   background: rgba(133, 210, 255, 0.42); }
 
@@ -340,20 +347,24 @@ h2 {
 .wrap-flex-start {
   justify-content: flex-start; }
 
-.form-base, .options-list {
+.form-base, .options-list, .options-list-no-box-shadow {
   box-shadow: 5px 5px 82px -28px #535e65;
   margin: auto;
   padding: 20px; }
 
-.options-list {
-  margin-right: 4%;
-  margin-left: 4%;
-  font-size: 5.5vw; }
-  .options-list li {
+.options-list, .options-list-no-box-shadow {
+  margin: 11%;
+  padding: 20px;
+  color: #535e65;
+  font-size: 25px; }
+  .options-list li, .options-list-no-box-shadow li {
     text-align: right; }
-  .options-list button, .options-list input[type='button'], .options-list input[type='submit'] {
+  .options-list button, .options-list-no-box-shadow button, .options-list input[type='button'], .options-list-no-box-shadow input[type='button'], .options-list input[type='submit'], .options-list-no-box-shadow input[type='submit'] {
     font-size: inherit;
     margin-left: 30px; }
+
+.options-list-no-box-shadow {
+  box-shadow: none; }
 
 .pool-section {
   display: flex;
@@ -381,8 +392,8 @@ h2 {
 
 .loading-span {
   background: #ffa21f;
-  width: 5vw;
-  height: 5vw;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   margin: 5px;
   animation: loading 700ms ease-out;
@@ -418,11 +429,14 @@ h2 {
     padding-right: 20%; }
   .wrapper h3 {
     font-size: 25px; } }
-@media (min-width: 525px) {
+@media all and (min-width: 525px) {
   .pool-card {
     margin: 30px 20px;
     padding: 10px 55px;
-    font-size: 3vw; } }
+    font-size: 3vw; }
+
+  .form-base, .options-list, .options-list-no-box-shadow {
+    padding: 4% 10%; } }
 @media (min-width: 650px) {
   .pool-card {
     margin: 30px 20px;

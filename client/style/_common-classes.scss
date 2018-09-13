@@ -42,7 +42,7 @@
   font-size: $input-font-size;
   font-weight: 300;
   padding: 10px;
-  margin: 7px auto;
+  margin: 7px;
   color: $color-dark;
   background: hsla(202, 100%, 76%, .42);
 }
@@ -130,9 +130,11 @@
 
 .options-list {
   @extend .form-base;
-  margin-right: 4%;
-  margin-left: 4%;
-  font-size: 5.5vw;
+  margin: 11%;
+  // font-size: 5.5vw;
+  padding: $padding-form;
+  color: $color-dark;
+  font-size: 25px;
 
   li {
     text-align: right;
@@ -142,6 +144,11 @@
     font-size: inherit;
     margin-left: $margin-large;
   }
+}
+
+.options-list-no-box-shadow {
+  @extend .options-list;
+  box-shadow: none;
 }
 
 .pool-section {
@@ -176,8 +183,10 @@
 
 .loading-span {
   background: $color2;
-  width: 5vw;
-  height: 5vw;
+  // width: 5vw;
+  // height: 5vw;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   margin: 5px;
   animation: loading 700ms ease-out;

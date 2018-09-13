@@ -2,8 +2,8 @@
 @import url("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 .button-base, .aggressive-btn, .danger-btn {
   box-shadow: 1px 1px 7px -1px #535e65;
-  font-size: 22px;
-  padding: 14px 20px; }
+  font-size: 10px;
+  padding: 10px 19px; }
 
 .aggressive-btn {
   color: #f5fbfe;
@@ -31,7 +31,7 @@
   font-size: 15px;
   font-weight: 300;
   padding: 10px;
-  margin: 7px auto;
+  margin: 7px;
   color: #535e65;
   background: rgba(133, 210, 255, 0.42); }
 
@@ -62,9 +62,9 @@
 .pool-card {
   background: transparent;
   box-shadow: 1px 3px 10px -3px #a47d46;
-  margin: 35px 20px;
-  padding: 10px 55px;
-  font-size: 23px;
+  margin: 28px 20px;
+  padding: 8px 55px;
+  font-size: 15px;
   text-align: center;
   display: flex; }
   .pool-card a {
@@ -90,19 +90,24 @@
 .wrap-flex-start {
   justify-content: flex-start; }
 
-.form-base, .options-list {
+.form-base, .options-list, .options-list-no-box-shadow {
   box-shadow: 5px 5px 82px -28px #535e65;
-  padding: 35px; }
+  margin: auto;
+  padding: 20px; }
 
-.options-list {
-  margin-right: 4%;
-  margin-left: 4%;
-  font-size: 5.5vw; }
-  .options-list li {
+.options-list, .options-list-no-box-shadow {
+  margin: 11%;
+  padding: 20px;
+  color: #535e65;
+  font-size: 25px; }
+  .options-list li, .options-list-no-box-shadow li {
     text-align: right; }
-  .options-list button {
+  .options-list button, .options-list-no-box-shadow button {
     font-size: inherit;
     margin-left: 30px; }
+
+.options-list-no-box-shadow {
+  box-shadow: none; }
 
 .pool-section {
   display: flex;
@@ -111,7 +116,7 @@
   width: 82%;
   margin-top: 15%;
   margin-bottom: 10%;
-  padding: 35px; }
+  padding: 20px; }
 
 .pool-shadow {
   box-shadow: 5px 5px 82px -28px #535e65; }
@@ -130,8 +135,8 @@
 
 .loading-span {
   background: #ffa21f;
-  width: 5vw;
-  height: 5vw;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   margin: 5px;
   animation: loading 700ms ease-out;
@@ -160,6 +165,26 @@
     transform: rotateX(0deg);
     background: #1fadff;
     opacity: 1; } }
+@media (min-width: 440px) {
+  .wrapper h2 {
+    font-size: 35px;
+    width: auto;
+    padding-right: 20%; }
+  .wrapper h3 {
+    font-size: 25px; } }
+@media all and (min-width: 525px) {
+  .pool-card {
+    margin: 30px 20px;
+    padding: 10px 55px;
+    font-size: 3vw; }
+
+  .form-base, .options-list, .options-list-no-box-shadow {
+    padding: 4% 10%; } }
+@media (min-width: 650px) {
+  .pool-card {
+    margin: 30px 20px;
+    padding: 10px 100px;
+    font-size: 2vw; } }
 section label {
   font-size: 60px; }
 section input {

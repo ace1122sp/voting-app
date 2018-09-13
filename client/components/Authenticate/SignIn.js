@@ -25,7 +25,7 @@ class SignIn extends Component {
     e.preventDefault();
     const username = this.state.username;
     const password = this.state.password;
-    // validate input if necessary 
+    
     this.props.signIn_f({ username, password });
   }
 

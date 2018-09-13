@@ -135,11 +135,10 @@ class Pool extends Component {
       labels: [...optionNames],
     }
     
-    Chart.defaults.global.defaultFontSize = 40;
+    Chart.defaults.global.defaultFontSize = 20;
     let pieChart = new Chart(ctx, {
       type: 'pie',
       data,
-      // options
     });
   }
 
@@ -177,7 +176,7 @@ class Pool extends Component {
         <section className='pool-section pool-shadow'>
           <h2>{this.props.pool.name}</h2>
           <address>created by {this.props.pool.creator || 'n/a'} <time>{this.state.dateCreated}</time></address>
-          {this.props.pool.name && !this.state.voted && <ul className='options-list'>{this.getOptions(this.props.pool.options, this.props.pool.name, isCreator)}</ul>}
+          {this.props.pool.name && !this.state.voted && <ul className='options-list-no-box-shadow'>{this.getOptions(this.props.pool.options, this.props.pool.name, isCreator)}</ul>}
           {!this.state.voted && <button className='aggressive-btn' onClick={this.handleVoting}>Vote</button>}
           <br /><br />
           {this.props.pool.name && this.props.username && !this.state.voted && <form onSubmit={this.handleAddingNewOption}>
@@ -195,7 +194,7 @@ class Pool extends Component {
         {isCreator && <button className='danger-btn-small social-btn-sizes' onClick={this.handlePoolDelete}>Delete Pool</button>}
         </div>
         <section className='pool-section'>
-          <canvas id="myChart" width="65vw" height="80vw"></canvas>
+          <canvas id="myChart" width="240" height="240"></canvas>
           {this.props.pool.name && <ul className='options-list'>{this.showResults(this.props.pool.options)}</ul>}
         </section>
       </main>
