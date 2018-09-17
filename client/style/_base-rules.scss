@@ -95,6 +95,14 @@ form {
   font-size: $form-font-size;
 }
 
+form input[type='password'], form input[type='email'], form input[type='text'] {
+  float: right;
+}
+
+form label {
+  float: left;
+}
+
 h2 {
   @extend .stripes;
   width: $cloud-width;

@@ -13,9 +13,15 @@ main > div {
   flex-direction: column;
   width: 82%;
   margin: 5vh auto;
-  justify-content: center; }
+  justify-content: center;
+  align-items: center; }
 
 .settings-wrapper button {
-  margin: 30px; }
+  margin: 30px;
+  width: 200px; }
+
+@media (min-width: 700px) {
+  .settings-wrapper button {
+    width: 250px; } }
 
 /*# sourceMappingURL=Settings.css.map */

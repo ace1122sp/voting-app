@@ -62,7 +62,7 @@ class Settings extends React.Component {
         }
         <h2>Settings</h2>
         <div>
-          <div className='form-base settings-wrapper'>
+          <div className='settings-wrapper'>
             <button className='button-base neutral-btn' onClick={this.openUpdatePasswordPortal}>Change Password</button>
             <button className='button-base neutral-btn' onClick={this.openDeleteProfilePortal}>Delete Profile</button>
           </div>

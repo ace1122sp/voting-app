@@ -15,8 +15,16 @@ main > div {
   width: $cloud-width;
   margin: 5vh auto;
   justify-content: center;
+  align-items: center;
 }
 
 .settings-wrapper button {
   margin: $margin-large;
+  width: 200px;
+}
+
+@media (min-width: 700px) {
+  .settings-wrapper button {
+    width: 250px;
+  }
 }

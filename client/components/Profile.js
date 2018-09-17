@@ -47,11 +47,9 @@ class Profile extends Component {
     
     return (
       <main className='wrapper wrap-flex-start'>
-        <h2>{this.props.user.username}</h2>
-        <p>
-          <b>total pools: </b>
-          <span>{this.props.user.createdPools.length}</span>
-        </p>
+        <h2>{this.props.user.username} - <b>pools created: </b>
+            <span>{this.props.user.createdPools.length}</span>
+        </h2>
         <section className='profile-content pool-section'>
           <nav className='nav-tabs'>
             <button className='tab tab-active' onClick={this.showAllPools}>All</button>

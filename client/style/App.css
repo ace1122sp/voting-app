@@ -68,7 +68,7 @@
   box-shadow: 1px 3px 10px -3px #a47d46;
   margin: 28px 20px;
   padding: 8px 55px;
-  font-size: 15px;
+  font-size: 13px;
   text-align: center;
   display: flex; }
   .pool-card a {
@@ -118,7 +118,8 @@
   flex-direction: column;
   flex-grow: 1;
   width: 82%;
-  margin-top: 15%;
+  max-width: 400px;
+  margin-top: 40px;
   margin-bottom: 10%;
   padding: 20px; }
 
@@ -179,8 +180,7 @@
 @media all and (min-width: 525px) {
   .pool-card {
     margin: 30px 20px;
-    padding: 10px 55px;
-    font-size: 3vw; }
+    padding: 10px 55px; }
 
   .form-base, .options-list, .options-list-no-box-shadow {
     padding: 4% 10%; } }
@@ -188,7 +188,7 @@
   .pool-card {
     margin: 30px 20px;
     padding: 10px 100px;
-    font-size: 2vw; } }
+    font-size: 15.5px; } }
 html, body {
   min-height: 100%;
   margin: 0;
@@ -252,6 +252,12 @@ nav {
 
 form {
   font-size: 17px; }
+
+form input[type='password'], form input[type='email'], form input[type='text'], form input[type='password'], form input[type='email'] {
+  float: right; }
+
+form label {
+  float: left; }
 
 h2 {
   width: 82%;
@@ -321,7 +327,7 @@ h2 {
   box-shadow: 1px 3px 10px -3px #a47d46;
   margin: 28px 20px;
   padding: 8px 55px;
-  font-size: 15px;
+  font-size: 13px;
   text-align: center;
   display: flex; }
   .pool-card a {
@@ -371,7 +377,8 @@ h2 {
   flex-direction: column;
   flex-grow: 1;
   width: 82%;
-  margin-top: 15%;
+  max-width: 400px;
+  margin-top: 40px;
   margin-bottom: 10%;
   padding: 20px; }
 
@@ -432,8 +439,7 @@ h2 {
 @media all and (min-width: 525px) {
   .pool-card {
     margin: 30px 20px;
-    padding: 10px 55px;
-    font-size: 3vw; }
+    padding: 10px 55px; }
 
   .form-base, .options-list, .options-list-no-box-shadow {
     padding: 4% 10%; } }
@@ -441,6 +447,6 @@ h2 {
   .pool-card {
     margin: 30px 20px;
     padding: 10px 100px;
-    font-size: 2vw; } }
+    font-size: 15.5px; } }
 
 /*# sourceMappingURL=App.css.map */
