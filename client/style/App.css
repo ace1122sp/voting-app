@@ -6,7 +6,7 @@
 @import url("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 .button-base, .aggressive-btn, .danger-btn {
   box-shadow: 1px 1px 7px -1px #535e65;
-  font-size: 10px;
+  font-size: 14px;
   padding: 10px 19px; }
 
 .aggressive-btn {
@@ -32,7 +32,7 @@
   background: #ffe1b8; }
 
 .add-neutral-btn {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 300;
   padding: 10px;
   margin: 7px;
@@ -45,7 +45,7 @@
 .tab {
   background: transparent;
   color: #0074b8;
-  font-size: 15px;
+  font-size: 14px;
   padding: 5.7px; }
 
 .tab-active {
@@ -105,7 +105,10 @@
   color: #535e65;
   font-size: 25px; }
   .options-list li, .options-list-no-box-shadow li {
-    text-align: right; }
+    text-align: right;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap; }
   .options-list button, .options-list-no-box-shadow button, .options-list input[type='button'], .options-list-no-box-shadow input[type='button'], .options-list input[type='submit'], .options-list-no-box-shadow input[type='submit'] {
     font-size: inherit;
     margin-left: 30px; }
@@ -119,7 +122,7 @@
   flex-grow: 1;
   width: 82%;
   max-width: 400px;
-  margin-top: 40px;
+  margin-top: 10%;
   margin-bottom: 10%;
   padding: 20px; }
 
@@ -148,7 +151,7 @@
   animation-iteration-count: infinite; }
 
 .inline-loading-spans {
-  font-size: 15px;
+  font-size: 14px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -236,7 +239,7 @@ button:hover, input[type='button']:hover, input[type='submit']:hover, input[type
   cursor: pointer; }
 
 input, input[type='submit'], input[type='password'], input[type='email'] {
-  font-size: 15px;
+  font-size: 14px;
   color: #535e65;
   font-weight: 300; }
 
@@ -265,7 +268,7 @@ h2 {
 
 .button-base, .aggressive-btn, .danger-btn {
   box-shadow: 1px 1px 7px -1px #535e65;
-  font-size: 10px;
+  font-size: 14px;
   padding: 10px 19px; }
 
 .aggressive-btn {
@@ -291,7 +294,7 @@ h2 {
   background: #ffe1b8; }
 
 .add-neutral-btn {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 300;
   padding: 10px;
   margin: 7px;
@@ -304,7 +307,7 @@ h2 {
 .tab {
   background: transparent;
   color: #0074b8;
-  font-size: 15px;
+  font-size: 14px;
   padding: 5.7px; }
 
 .tab-active {
@@ -364,7 +367,10 @@ h2 {
   color: #535e65;
   font-size: 25px; }
   .options-list li, .options-list-no-box-shadow li {
-    text-align: right; }
+    text-align: right;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap; }
   .options-list button, .options-list-no-box-shadow button, .options-list input[type='button'], .options-list-no-box-shadow input[type='button'], .options-list input[type='submit'], .options-list-no-box-shadow input[type='submit'] {
     font-size: inherit;
     margin-left: 30px; }
@@ -378,7 +384,7 @@ h2 {
   flex-grow: 1;
   width: 82%;
   max-width: 400px;
-  margin-top: 40px;
+  margin-top: 10%;
   margin-bottom: 10%;
   padding: 20px; }
 
@@ -407,7 +413,7 @@ h2 {
   animation-iteration-count: infinite; }
 
 .inline-loading-spans {
-  font-size: 15px;
+  font-size: 14px;
   display: flex;
   flex-direction: row;
   justify-content: center;

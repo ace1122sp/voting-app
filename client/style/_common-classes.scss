@@ -3,7 +3,8 @@
 .button-base {
   box-shadow: $box-shadow-base;
   // font-size: 40px;
-  font-size: 10px;
+  // font-size: 10px;
+  font-size: $input-font-size;
   // padding: 14px 20px;
   padding: 10px 19px;
 }
@@ -138,6 +139,9 @@
 
   li {
     text-align: right;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
   }
 
   button {

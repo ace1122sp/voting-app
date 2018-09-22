@@ -1,12 +1,73 @@
+@import 'variables';
 @import 'common-classes';
+
+main {
+  max-width: 100%;
+}
 
 section {
 
   label {
-    font-size: 60px;
+    font-size: 30px;
   }  
 
   input {
     margin-top: 36px;
+    font-size: $input-font-size; 
+  }
+}
+
+form input[type='text'], form label {
+  float: unset;
+}
+
+.create-pool-form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.options-box {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 200px; 
+  
+  ul {
+    max-width: 100%;
+  }
+}
+
+.options-alignment {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  text-align: unset;
+  margin: 0;
+  
+  span {
+    text-align: left;
+    overflow-x: hidden;
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 845px) {
+  .create-pool-form {
+    justify-content: space-around;
+  }
+
+  .pool-section {
+    flex-grow: 0;
+    margin-bottom: auto;
+  }
+
+  .pool-creator {
+    margin-bottom: auto !important;
   }
 }

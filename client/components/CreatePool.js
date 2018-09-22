@@ -53,6 +53,7 @@ class CreatePool extends Component {
 
       li.setAttribute('id', formatedId);
       li.setAttribute('data-name', validOption);
+      li.className = 'options-alignment';
       span.innerText = validOption;
       button.innerText = 'x';
       button.className = 'neutral-btn';
@@ -119,19 +120,23 @@ class CreatePool extends Component {
         {this.state.poolCreated && this.poolCreatedPortal()}
         {this.state.incorrectPool && this.showIncorrectPoolWarning()}
         <h2>Create Pool</h2>
-        <section className='pool-section pool-shadow'>
-          <label>Pool Name</label>
-          <br />
-          <input type='text' value={this.state.name} onChange={this.handlePoolNameChange} placeholder='enter pool name' />
-          <br /><br />
-          <form onSubmit={this.addOption}>
-            <input type='text' value={this.state.toAddOption} onChange={this.handleOptionChange} />
-            <button className='add-neutral-btn'>Add Option</button>
-          </form>
-        </section>
-        <h3>options:</h3>
-        <ul id='poolOptions' className='options-list'>
-        </ul>
+        <div className='create-pool-form'>
+          <section className='pool-section pool-shadow pool-creator'>
+            <label>Pool Name</label>
+            <br />
+            <input type='text' value={this.state.name} onChange={this.handlePoolNameChange} placeholder='enter pool name' />
+            <br /><br />
+            <form onSubmit={this.addOption}>
+              <input type='text' value={this.state.toAddOption} onChange={this.handleOptionChange} />
+              <button className='add-neutral-btn'>Add Option</button>
+            </form>
+          </section>
+          <div className='pool-section options-box pool-shadow'>
+            <h3>options:</h3>
+            <ul id='poolOptions' className='options-list-no-box-shadow'>
+            </ul>
+          </div>
+        </div>
         <br />
         <button className='aggressive-btn' onClick={this.handleSubmit}>Submit</button>
       </main>
