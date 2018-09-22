@@ -1,7 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300");
 @import url("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 address {
-  font-size: 15px; }
+  font-size: 14px; }
+
+.options-list-no-box-shadow {
+  max-height: 40vh;
+  overflow-y: scroll; }
 
 .voting-option {
   position: relative;
@@ -12,22 +16,26 @@ address {
 .voting-option label {
   position: relative;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-grow: 1;
-  font-size: 25px;
+  font-size: 17px;
   cursor: pointer;
   text-align: left; }
 
 .voting-option span {
-  flex-grow: 1; }
+  flex-grow: 1;
+  padding: 5.7px; }
 
 .voting-option input[type='radio']:checked ~ span {
-  background: #ffa21f; }
+  background: #ffa21f;
+  border-radius: 4px; }
 
 .voting-option input[type='radio']:hover ~ span {
-  background: #ffe1b8; }
+  background: #ffe1b8;
+  border-radius: 4px; }
 
 .voting-option input {
-  position: absolute;
   opacity: 0; }
 
 .handle-pool {
@@ -36,12 +44,15 @@ address {
 
 .social-btn-sizes {
   padding: 5.7px;
-  font-size: 15px; }
+  font-size: 14px; }
 
 .twitter {
   background: #1fadff;
   color: white;
   padding: 5.7px;
   border-radius: 3px; }
+
+.remove-option-btn {
+  font-size: 17px; }
 
 /*# sourceMappingURL=Pool.css.map */

@@ -4,6 +4,11 @@ address {
   font-size: $input-font-size;
 }
 
+.options-list-no-box-shadow {
+  max-height: 40vh;
+  overflow-y: scroll;
+}
+
 .voting-option {
   position: relative;
   display: flex;
@@ -14,26 +19,30 @@ address {
 .voting-option label {
   position: relative;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-grow: 1;
-  font-size: 25px;
+  font-size: 17px;
   cursor: pointer;
   text-align: left;
 }
 
 .voting-option span {
   flex-grow: 1;
+  padding: $padding-base;
 }
 
 .voting-option input[type='radio']:checked ~ span {
- background: $color2; 
+ background: $color2;
+ border-radius: $border-radius-base; 
 }
 
 .voting-option input[type='radio']:hover ~ span {
   background: $color2-fade;
+  border-radius: $border-radius-base;
 }
 
 .voting-option input {
-  position: absolute;
   opacity: 0;
 }
 
@@ -52,4 +61,8 @@ address {
   color: white;
   padding: $padding-base;
   border-radius: 3px;
+}
+
+.remove-option-btn {
+  font-size: 17px;
 }

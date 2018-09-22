@@ -65,7 +65,7 @@ class Pool extends Component {
           <input type='radio' name={name} value={option.id} />
           <span>{option.value}</span>
         </label>
-        {creator && <button className='neutral-btn' value={option.id} onClick={this.handleOptionDelete}>X</button>}
+        {creator && <button className='neutral-btn remove-option-btn' value={option.id} onClick={this.handleOptionDelete}>X</button>}
       </li>
     );
 

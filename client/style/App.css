@@ -103,7 +103,7 @@
   margin: 11%;
   padding: 20px;
   color: #535e65;
-  font-size: 25px; }
+  font-size: 15px; }
   .options-list li, .options-list-no-box-shadow li {
     text-align: right;
     display: flex;
@@ -122,7 +122,7 @@
   flex-grow: 1;
   width: 82%;
   max-width: 400px;
-  margin-top: 10%;
+  margin-top: 40px;
   margin-bottom: 10%;
   padding: 20px; }
 
@@ -365,7 +365,7 @@ h2 {
   margin: 11%;
   padding: 20px;
   color: #535e65;
-  font-size: 25px; }
+  font-size: 15px; }
   .options-list li, .options-list-no-box-shadow li {
     text-align: right;
     display: flex;
@@ -384,7 +384,7 @@ h2 {
   flex-grow: 1;
   width: 82%;
   max-width: 400px;
-  margin-top: 10%;
+  margin-top: 40px;
   margin-bottom: 10%;
   padding: 20px; }
 
