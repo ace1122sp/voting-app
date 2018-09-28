@@ -28,6 +28,10 @@ footer {
     padding: $padding-base;
   }
 
+  a:hover {
+    color: $color2
+  }
+
   address p {
     text-align: center;
     font-style: normal;

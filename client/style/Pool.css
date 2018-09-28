@@ -3,16 +3,6 @@
 address {
   font-size: 14px; }
 
-.options-list-no-box-shadow {
-  max-height: 40vh;
-  overflow-y: scroll; }
-
-.voting-option {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap; }
-
 .voting-option label {
   position: relative;
   display: flex;
@@ -51,6 +41,9 @@ address {
   color: white;
   padding: 5.7px;
   border-radius: 3px; }
+
+.twitter:hover {
+  color: #94d4f9; }
 
 .remove-option-btn {
   font-size: 17px; }

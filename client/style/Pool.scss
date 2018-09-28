@@ -4,17 +4,17 @@ address {
   font-size: $input-font-size;
 }
 
-.options-list-no-box-shadow {
-  max-height: 40vh;
-  overflow-y: scroll;
-}
+// .options-list-no-box-shadow {
+//   max-height: 40vh;
+//   overflow-y: scroll;
+// }
 
-.voting-option {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-}
+// .voting-option {
+//   position: relative;
+//   display: flex;
+//   flex-direction: row;
+//   flex-wrap: nowrap;
+// }
 
 .voting-option label {
   position: relative;
@@ -49,7 +49,7 @@ address {
 .handle-pool {
   display: flex;
   flex-direction: row;
-}
+  }
 
 .social-btn-sizes {
   padding: $padding-base;
@@ -61,6 +61,10 @@ address {
   color: white;
   padding: $padding-base;
   border-radius: 3px;
+}
+
+.twitter:hover {
+  color: $color-light-pale;
 }
 
 .remove-option-btn {

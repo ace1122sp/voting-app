@@ -18,6 +18,8 @@ footer {
     margin: 20px 10px;
     margin: 20px 7px;
     padding: 5.7px; }
+  footer a:hover {
+    color: #ffa21f; }
   footer address p, footer address span {
     text-align: center;
     font-style: normal;
