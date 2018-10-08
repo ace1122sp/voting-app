@@ -30,6 +30,10 @@
   background: linear-gradient(to right, $color3, hsl(5, 100%, 76%));
 }
 
+.danger-btn:hover, .danger-btn-small:hover {
+  color: $color3-fade;
+}
+
 .neutral-btn {
   color: $color1-fade;
   background: transparent; 

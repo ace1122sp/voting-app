@@ -24,6 +24,9 @@
   color: #f5fbfe;
   background: linear-gradient(to right, #ff311f, #ff8f85); }
 
+.danger-btn:hover, .danger-btn-small:hover {
+  color: #c76057; }
+
 .neutral-btn {
   color: #579ec7;
   background: transparent; }
@@ -266,6 +269,19 @@ h2 {
   width: 82%;
   padding: 5.7px 24px; }
 
+::-webkit-scrollbar {
+  width: 6.5px;
+  height: 6.5px; }
+
+::-webkit-scrollbar-track {
+  background: #f5fbfe; }
+
+::-webkit-scrollbar-thumb {
+  background: #1fadff; }
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94d4f9; }
+
 .button-base, .aggressive-btn, .danger-btn {
   box-shadow: 1px 1px 7px -1px #535e65;
   font-size: 14px;
@@ -285,6 +301,9 @@ h2 {
 .danger-btn-small {
   color: #f5fbfe;
   background: linear-gradient(to right, #ff311f, #ff8f85); }
+
+.danger-btn:hover, .danger-btn-small:hover {
+  color: #c76057; }
 
 .neutral-btn {
   color: #579ec7;

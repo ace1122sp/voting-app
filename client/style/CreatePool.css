@@ -22,6 +22,9 @@
   color: #f5fbfe;
   background: linear-gradient(to right, #ff311f, #ff8f85); }
 
+.danger-btn:hover, .danger-btn-small:hover {
+  color: #c76057; }
+
 .neutral-btn {
   color: #579ec7;
   background: transparent; }
@@ -101,7 +104,7 @@
   margin: 11%;
   padding: 20px;
   color: #535e65;
-  font-size: 25px; }
+  font-size: 15px; }
   .options-list li, .options-list-no-box-shadow li {
     text-align: right;
     display: flex;

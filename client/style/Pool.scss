@@ -4,32 +4,30 @@ address {
   font-size: $input-font-size;
 }
 
-// .options-list-no-box-shadow {
-//   max-height: 40vh;
-//   overflow-y: scroll;
-// }
-
-// .voting-option {
-//   position: relative;
-//   display: flex;
-//   flex-direction: row;
-//   flex-wrap: nowrap;
-// }
+.options-pool {
+  max-height: 40vh;
+  overflow: auto;
+  margin: 5px;
+  padding: 5px;
+}
 
 .voting-option label {
   position: relative;
+  width: 70%;
+  overflow: auto;
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
-  flex-grow: 1;
   font-size: 17px;
   cursor: pointer;
   text-align: left;
 }
 
-.voting-option span {
+.voting-option span { 
   flex-grow: 1;
   padding: $padding-base;
+  overflow: auto;
 }
 
 .voting-option input[type='radio']:checked ~ span {
@@ -49,7 +47,8 @@ address {
 .handle-pool {
   display: flex;
   flex-direction: row;
-  }
+  justify-content: center;
+}
 
 .social-btn-sizes {
   padding: $padding-base;
@@ -69,4 +68,39 @@ address {
 
 .remove-option-btn {
   font-size: 17px;
+}
+
+// newly added classes
+
+.pool-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  justify-content: space-evenly;
+}
+
+.voting-section {
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;    
+}
+
+.vote-new-option-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  button {
+    margin: auto;
+  }
+
+  form {
+    text-align: center;
+  }
+
+  form input {
+    margin: auto 10px;
+  }
 }

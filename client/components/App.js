@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import '../style/App.css';
 
@@ -7,11 +7,28 @@ import Main_cont from '../containers/Main_cont';
 
 import Footer from './Footer';
 
-const App = () =>
-  <div>
-    <Header_cont />
-    <Main_cont />
-    <Footer />
-  </div>
+class App extends Component {
+  componentDidUpdate() {
+    this.setMainMarginTop();
+  }
+
+  setMainMarginTop = () => {
+    const header = document.getElementsByTagName('header')[0];
+    const main = document.getElementsByTagName('main')[0];
+
+    const height = header.offsetHeight;
+    main.style.marginTop = height + 'px';
+  }
+
+  render() {
+    return (
+      <div>
+        <Header_cont />
+        <Main_cont />
+        <Footer />
+      </div>
+    );
+  }
+}
 
 export default App;

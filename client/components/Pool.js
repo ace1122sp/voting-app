@@ -39,9 +39,18 @@ class Pool extends Component {
   }
 
   componentDidUpdate() { // temp solution
-    if (this.state.init) this.createChart();
+    if (this.state.voted) this.createChart();
+    this.setMainMarginTop();
   }
 
+  setMainMarginTop = () => {
+    const header = document.getElementsByTagName('header')[0];
+    const main = document.getElementsByTagName('main')[0];
+
+    const height = header.offsetHeight;
+    main.style.marginTop = height + 'px';
+  }
+  
   handleOptionDelete = e => {
     e.preventDefault();
     const isAllowed = this.props.username === this.props.pool.creator;
@@ -115,10 +124,24 @@ class Pool extends Component {
     });
   }
 
+  _removeAndCreateCanvas = () => {
+    const section = document.getElementById('graphSection');
+    const canvas = document.getElementById('myChart');
+    const newCanvas = document.createElement('canvas');
+
+    newCanvas.id = 'myChart';
+    newCanvas.setAttribute('width', '300px');
+    newCanvas.setAttribute('height', '600px');
+    
+    section.replaceChild(newCanvas, canvas);
+  }
+
   createChart = () => {
     const optionVotes = [];
     const optionNames = [];
     const backgroundColor = [];
+
+    this._removeAndCreateCanvas();
 
     for (let option in this.props.pool.options) {
       optionNames.push(this.props.pool.options[option].value);
@@ -135,7 +158,7 @@ class Pool extends Component {
       labels: [...optionNames],
     }
     
-    Chart.defaults.global.defaultFontSize = 20;
+    Chart.defaults.global.defaultFontSize = 13;
     let pieChart = new Chart(ctx, {
       type: 'pie',
       data,
@@ -171,32 +194,42 @@ class Pool extends Component {
     const isCreator = this.props.username === this.props.pool.creator;
     
     return (
-      <main className='wrapper wrap-space-around'>
+      <main>
         {this.state.invalidOption && this.showIncorrectPoolWarning()}
-        <section className='pool-section pool-shadow'>
-          <h2>{this.props.pool.name}</h2>
-          <address>created by {this.props.pool.creator || 'n/a'} <time>{this.state.dateCreated}</time></address>
-          {this.props.pool.name && !this.state.voted && <ul className='options-list-no-box-shadow'>{this.getOptions(this.props.pool.options, this.props.pool.name, isCreator)}</ul>}
-          {!this.state.voted && <button className='aggressive-btn' onClick={this.handleVoting}>Vote</button>}
-          <br /><br />
-          {this.props.pool.name && this.props.username && !this.state.voted && <form onSubmit={this.handleAddingNewOption}>
-            <input type='text' value={this.state.newOption} onChange={this.handleChangeForNewOption} />
-            <button className='add-neutral-btn'>Add New Option</button>            
-            <br /><br />
-          </form>}
-        </section>
-        <br />
-        <div className='handle-pool'>
-          {this.props.username && <div>
-            <button className='neutral-btn social-btn-sizes' onClick={this.followOrUnfollow}>{this.props.isFollowedByActiveUser}</button>
-            <button className='twitter social-btn-sizes' onClick={this.tweet}><i className='fa fa-twitter' aria-hidden='true'></i> tweet </button>
-          </div>}
-        {isCreator && <button className='danger-btn-small social-btn-sizes' onClick={this.handlePoolDelete}>Delete Pool</button>}
+        <h2>{this.props.pool.name}</h2>
+
+        <div className='pool-wrapper'>
+          <section className='voting-section'>
+            <address>created by {this.props.pool.creator || 'n/a'} <time>{this.state.dateCreated}</time></address>
+
+            {!this.state.voted && <div className='vote-new-option-div'>
+              {this.props.pool.name && !this.state.voted && <ul className='options-list-no-box-shadow options-pool'>{this.getOptions(this.props.pool.options, this.props.pool.name, isCreator)}</ul>}
+              {!this.state.voted && <button className='aggressive-btn' onClick={this.handleVoting}>Vote</button>}
+              <br /><br />
+              {this.props.pool.name && this.props.username && !this.state.voted && <form onSubmit={this.handleAddingNewOption}>
+                <input type='text' value={this.state.newOption} onChange={this.handleChangeForNewOption} />
+                <button className='add-neutral-btn'>Add New Option</button>
+                <br /><br />
+              </form>}
+            </div>}
+            
+            {this.state.voted && <div>
+              {this.props.pool.name && <ul className='options-list'>{this.showResults(this.props.pool.options)}</ul>}
+            </div>}
+            
+            <div className='handle-pool'>
+              {this.props.username && <div>
+                <button className='neutral-btn social-btn-sizes' onClick={this.followOrUnfollow}>{this.props.isFollowedByActiveUser}</button>
+                <button className='twitter social-btn-sizes' onClick={this.tweet}><i className='fa fa-twitter' aria-hidden='true'></i> tweet </button>
+              </div>}
+              {isCreator && <button className='danger-btn-small social-btn-sizes' onClick={this.handlePoolDelete}>Delete Pool</button>}
+            </div>
+          </section>
+
+          <section id='graphSection'>
+            <canvas id='myChart' width='300' height='600'></canvas>          
+          </section>
         </div>
-        <section className='pool-section'>
-          <canvas id="myChart" width="240" height="240"></canvas>
-          {this.props.pool.name && <ul className='options-list'>{this.showResults(this.props.pool.options)}</ul>}
-        </section>
       </main>
     );
   }
