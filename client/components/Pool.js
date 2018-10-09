@@ -46,9 +46,14 @@ class Pool extends Component {
   setMainMarginTop = () => {
     const header = document.getElementsByTagName('header')[0];
     const main = document.getElementsByTagName('main')[0];
+    const h2 = document.getElementById('poolHeading');
 
     const height = header.offsetHeight;
+    
     main.style.marginTop = height + 'px';
+    if (h2) {
+      h2.style.marginBottom = height + 'px';
+    }
   }
   
   handleOptionDelete = e => {
@@ -80,9 +85,9 @@ class Pool extends Component {
 
   showResults = resultsArray =>
     resultsArray.sort(this._sortOptions).map(option =>
-      <li key={option.id}>
-        <span>{option.value}: </span>
-        {option.votes}
+      <li key={option.id} className='voting-option'>
+        <label>{option.value}: </label>
+        <span>{option.votes}</span>
       </li>
     );
 
@@ -149,7 +154,7 @@ class Pool extends Component {
       backgroundColor.push(general.getRandomColor());
     }
 
-    let ctx = document.getElementById("myChart");
+    let ctx = document.getElementById('myChart');
     const data = {
       datasets: [{
         data: [...optionVotes],
@@ -196,11 +201,12 @@ class Pool extends Component {
     return (
       <main>
         {this.state.invalidOption && this.showIncorrectPoolWarning()}
-        <h2>{this.props.pool.name}</h2>
-
-        <div className='pool-wrapper'>
-          <section className='voting-section'>
-            <address>created by {this.props.pool.creator || 'n/a'} <time>{this.state.dateCreated}</time></address>
+        <h2 id='poolHeading'>{this.props.pool.name}
+          <address>created by {this.props.pool.creator || 'n/a'} <time>{this.state.dateCreated}</time></address>
+        </h2>
+        
+        <div className='pool-wrapper'>  
+          <section id='votingSection'>
 
             {!this.state.voted && <div className='vote-new-option-div'>
               {this.props.pool.name && !this.state.voted && <ul className='options-list-no-box-shadow options-pool'>{this.getOptions(this.props.pool.options, this.props.pool.name, isCreator)}</ul>}
@@ -225,7 +231,7 @@ class Pool extends Component {
               {isCreator && <button className='danger-btn-small social-btn-sizes' onClick={this.handlePoolDelete}>Delete Pool</button>}
             </div>
           </section>
-
+          
           <section id='graphSection'>
             <canvas id='myChart' width='300' height='600'></canvas>          
           </section>

@@ -76,15 +76,16 @@ address {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
   justify-content: space-evenly;
+  align-items: flex-start;
 }
 
-.voting-section {
+#votingSection {
   max-width: 450px;
   display: flex;
   flex-direction: column;
   justify-content: center;    
+  flex-grow: 1;
 }
 
 .vote-new-option-div {
