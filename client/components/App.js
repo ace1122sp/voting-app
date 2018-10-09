@@ -18,6 +18,7 @@ class App extends Component {
 
     const height = header.offsetHeight;
     main.style.marginTop = height + 'px';
+    main.style.marginBottom = height + 'px';
   }
 
   render() {

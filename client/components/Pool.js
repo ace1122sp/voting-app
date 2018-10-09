@@ -51,6 +51,7 @@ class Pool extends Component {
     const height = header.offsetHeight;
     
     main.style.marginTop = height + 'px';
+    main.style.marginBottom = height + 'px';
     if (h2) {
       h2.style.marginBottom = height + 'px';
     }
@@ -204,12 +205,12 @@ class Pool extends Component {
         <h2 id='poolHeading'>{this.props.pool.name}
           <address>created by {this.props.pool.creator || 'n/a'} <time>{this.state.dateCreated}</time></address>
         </h2>
-        
+
         <div className='pool-wrapper'>  
           <section id='votingSection'>
 
             {!this.state.voted && <div className='vote-new-option-div'>
-              {this.props.pool.name && !this.state.voted && <ul className='options-list-no-box-shadow options-pool'>{this.getOptions(this.props.pool.options, this.props.pool.name, isCreator)}</ul>}
+              {this.props.pool.name && !this.state.voted && <ul className='options-list options-pool'>{this.getOptions(this.props.pool.options, this.props.pool.name, isCreator)}</ul>}
               {!this.state.voted && <button className='aggressive-btn' onClick={this.handleVoting}>Vote</button>}
               <br /><br />
               {this.props.pool.name && this.props.username && !this.state.voted && <form onSubmit={this.handleAddingNewOption}>
