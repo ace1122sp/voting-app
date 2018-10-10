@@ -2,10 +2,7 @@
 
 .button-base {
   box-shadow: $box-shadow-base;
-  // font-size: 40px;
-  // font-size: 10px;
   font-size: $input-font-size;
-  // padding: 14px 20px;
   padding: 10px 19px;
 }
 
@@ -85,11 +82,8 @@
 .pool-card {
   background: transparent;
   box-shadow: 1px 3px 10px -3px hsl(35, 40%, 46%);
-  // margin: 35px 20px;
-  // padding: 10px 55px;
   margin: 28px 20px;
   padding: 8px 55px;
-  // font-size: 43px;
   font-size: 13px;
   text-align: center;
   display: flex;
@@ -136,7 +130,6 @@
 .options-list {
   @extend .form-base;
   margin: 11%;
-  // font-size: 5.5vw;
   padding: $padding-form;
   color: $color-dark;
   font-size: 15px;
@@ -192,8 +185,6 @@
 
 .loading-span {
   background: $color2;
-  // width: 5vw;
-  // height: 5vw;
   width: 18px;
   height: 18px;
   border-radius: 50%;

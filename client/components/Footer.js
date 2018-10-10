@@ -7,7 +7,7 @@ const Footer = props => {
       <div>
         <p>
           This web app is created for freeCodeCamp project task. It is part of my studying process and because of that, it may have some security
-          vulnerabilities. Please do not store any sensitive information in the app and do not use passwords which you are using in other apps.
+          vulnerabilities. Please do not store any sensitive information in the app and do not use passwords which are being used with your other accounts and applications.
         </p>
       </div>
       <section>
