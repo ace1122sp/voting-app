@@ -131,11 +131,11 @@ class CreatePool extends Component {
               <button className='add-neutral-btn'>Add Option</button>
             </form>
           </section>
-          <div className='pool-section options-box pool-shadow'>
-            <h3>options:</h3>
+          <section className='pool-section options-box pool-shadow'>
+            <label>options:</label>
             <ul id='poolOptions' className='options-list-no-box-shadow'>
             </ul>
-          </div>
+          </section>
         </div>
         <br />
         <button className='aggressive-btn' onClick={this.handleSubmit}>Submit</button>

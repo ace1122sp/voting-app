@@ -50,8 +50,11 @@ class Pool extends Component {
 
     const height = header.offsetHeight;
     
-    main.style.marginTop = height + 'px';
-    main.style.marginBottom = height + 'px';
+    if (main) {
+      main.style.marginTop = height + 'px';
+      main.style.marginBottom = height + 'px';
+    }
+    
     if (h2) {
       h2.style.marginBottom = height + 'px';
     }

@@ -8,7 +8,7 @@ main {
 section {
 
   label {
-    font-size: 30px;
+    font-size: 20px;
   }  
 
   input {
@@ -35,9 +35,15 @@ form input[type='text'], form label {
   justify-content: center;
   align-items: center;
   min-width: 200px; 
+  overflow: auto; 
   
   ul {
     max-width: 100%;
+  }
+
+  label {
+    color: $color2;
+    font-weight: bold;
   }
 }
 

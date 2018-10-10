@@ -197,7 +197,7 @@ main {
   max-width: 100%; }
 
 section label {
-  font-size: 30px; }
+  font-size: 20px; }
 section input {
   margin-top: 36px;
   font-size: 14px; }
@@ -217,9 +217,13 @@ form input[type='text'], form label {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-width: 200px; }
+  min-width: 200px;
+  overflow: auto; }
   .options-box ul {
     max-width: 100%; }
+  .options-box label {
+    color: #ffa21f;
+    font-weight: bold; }
 
 .options-alignment {
   position: relative;

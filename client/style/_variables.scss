@@ -11,6 +11,7 @@ $color3-fade: hsl(5, 50%, 56%);
 $color-dark: hsl(202, 10%, 36%);
 $color-light: hsl(202, 90%, 98%);
 $color-light-pale: hsl(202, 90%, 78%);
+$color-light-pale-transparent: hsla(202, 90%, 78%, .5);
 
 $transition-duration-base: 200ms;
 $transition-base: all $transition-duration-base ease-out;
