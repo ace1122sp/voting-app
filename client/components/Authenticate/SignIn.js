@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { general } from '../../util/general';
+
 import Loading from '../Loading';
 
 class SignIn extends Component {
@@ -9,6 +11,10 @@ class SignIn extends Component {
       username: '',
       password: ''
     };
+  }
+
+  componentDidUpdate() {
+    general.setMainMarginTop();
   }
 
   handleChangeUsername = e => {

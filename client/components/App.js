@@ -7,18 +7,11 @@ import Main_cont from '../containers/Main_cont';
 
 import Footer from './Footer';
 
+import { general } from '../util/general';
+
 class App extends Component {
   componentDidUpdate() {
-    this.setMainMarginTop();
-  }
-
-  setMainMarginTop = () => {
-    const header = document.getElementsByTagName('header')[0];
-    const main = document.getElementsByTagName('main')[0];
-
-    const height = header.offsetHeight;
-    main.style.marginTop = height + 'px';
-    main.style.marginBottom = height + 'px';
+    general.setMainMarginTop();
   }
 
   render() {

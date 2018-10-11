@@ -1,6 +1,18 @@
 export const general = (() => {
   return {
 
+    setMainMarginTop: () => {
+      const header = document.getElementsByTagName('header')[0];
+      const main = document.getElementsByTagName('main')[0];
+
+      const height = header.offsetHeight;
+
+      if (main) {
+        main.style.marginTop = height + 'px';
+        main.style.marginBottom = height + 'px';
+      }
+    },
+
     // takes an object and return its objects' usernames in an array
     getUsernamesInArray: obj => {
       const usernames = [];

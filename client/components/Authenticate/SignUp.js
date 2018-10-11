@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import { general } from '../../util/general';
 import { validator } from '../../util/validator';
 
 import '../../style/Portal.css';
@@ -18,6 +19,10 @@ class SignUp extends Component {
       shortPassword: false,
       shortUsername: false
     };
+  }
+
+  didComponentUpdate() {
+    general.setMainMarginTop();
   }
 
   loadUser = () => {
@@ -90,10 +95,10 @@ class SignUp extends Component {
     return (
       <main className='wrapper'>
         {this.props.registerStatus === 'ok' && this.renderPortal()}
+        <h2>Create Your Account</h2>
         {this.state.shortPassword && this.showIncorrectPasswordWarning()}
         {this.state.shortUsername && this.showShortUsernameWarning()}
         {this.isError() && this.showErrorMessage()}      
-        <h2>Create Your Account</h2>
         <div className='wrapper wrap-space-around'>
           <form className='form-base' onSubmit={this.handleSubmit}>
             <label>email</label>

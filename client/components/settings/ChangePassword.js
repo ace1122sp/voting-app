@@ -55,7 +55,7 @@ class ChangePassword extends React.Component {
       <br />
       <label htmlFor="reNewPassword">retype new password</label>
       <input type="password" name="reNewPassword" id="reNewPassword" onChange={this.handleNewPasswordRetyping} value={this.state.reNewPassword} />
-      <br />
+      <br /><br />
       <button className='aggressive-btn'>Confirm</button>
     </form>
 
