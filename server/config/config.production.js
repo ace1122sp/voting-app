@@ -5,7 +5,7 @@ module.exports = {
   db: {
     host: process.env.HOST,
     port: process.env.PORT,
-    username: proces.env.MONGO_USER,
+    username: process.env.MONGO_USER,
     password: process.env.MONGO_PASSWORD,
     dbName: process.env.DB_NAME
   },
