@@ -5,7 +5,9 @@ module.exports = {
   db: {
     host: 'localhost',
     port: 27017,
-    name: 'voting-app-db'
+    username: null,
+    password: null,
+    dbName: 'voting-app-db'
   },
   session: {
     secret: 'figureoutsomesecret'
