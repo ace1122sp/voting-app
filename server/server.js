@@ -17,7 +17,9 @@ const User = require('./models/user');
 // Initialize
 const PUBLIC = path.resolve('voting-app', '../dist/');
 const PORT = process.env.PORT || 3000;
-const MONGO_URL = `mongodb://${config.db.host}:${config.db.port}/voting-app`;
+const MONGO_URL = config.db.username ? 
+  `mongodb://${config.db.username}:${config.db.password}@${config.db.host}:${config.db.port}/${config.db.dbName}` 
+  : `mongodb://${config.db.host}:${config.db.port}/${config.db.dbName}`;
 const app = express();
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 const jsonParser = bodyParser.json();
