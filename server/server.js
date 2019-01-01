@@ -26,7 +26,7 @@ const jsonParser = bodyParser.json();
 
 // Set up database connection 
 mongoose.Promise = global.Promise;
-mongoose.connect(MONGO_URL)
+mongoose.connect(MONGO_URL, { useNewUrlParser: true })
   .catch(error => {
     console.error(error.message);
     process.exit(1);

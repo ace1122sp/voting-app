@@ -1,6 +1,5 @@
-const PROXY = 'http://localhost:3000';
-const URL_USER = PROXY + '/api/users/';
-const URL_POOL = PROXY + '/api/pools/'
+const URL_USER = '/api/users/';
+const URL_POOL = '/api/pools/'
 
 // user urls
 export const URL_REGISTER = URL_USER + 'register';
