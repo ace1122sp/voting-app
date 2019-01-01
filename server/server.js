@@ -55,21 +55,11 @@ passport.deserializeUser((id, done) => {
   });
 });
 
-// enable access to SPA
-const enableSPAtoAccess = (req, res, next) => {
-  res.header("Access-Control-Allow-Credentials", true);
-  res.header("Access-Control-Allow-Origin", "http://localhost:8080");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header("Access-Control-Allow-Methods", "POST, GET, DELETE, PUT, PATCH");
-  next();
-}
-
 // Add Middlewares
 app.use(jsonParser);
 app.use(urlencodedParser);
 app.use(express.static(PUBLIC));
 app.use(morgan('dev'));
-app.use(enableSPAtoAccess);
 
 app.use(session({
   // secret: process.env.SESSION_SECRET,
