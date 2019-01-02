@@ -15,7 +15,7 @@ const router = require('./routes');
 const User = require('./models/user');
 
 // Initialize
-const PUBLIC = path.resolve('voting-app', '../dist/');
+const PUBLIC = path.resolve(__dirname, '../dist/');
 const PORT = process.env.PORT || 3000;
 const MONGO_URL = config.db.username ? 
   `mongodb://${config.db.username}:${config.db.password}@${config.db.host}:${config.db.port}/${config.db.dbName}` 
@@ -62,7 +62,6 @@ app.use(express.static(PUBLIC));
 app.use(morgan('dev'));
 
 app.use(session({
-  // secret: process.env.SESSION_SECRET,
   secret: config.session.secret,
   resave: true,
   saveUninitialized: true
